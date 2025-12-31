@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "mod_demo_001",
+    "modifier": "Men",
+    "category": "demographics",
+    "example": "Statin Use in Men: Special Considerations"
+  },
+  {
+    "id": "mod_demo_002",
+    "modifier": "Women",
+    "category": "demographics",
+    "example": "How Menopause Affects Lp(a) Levels in Women"
+  },
+  {
+    "id": "mod_demo_003",
+    "modifier": "Age 18-30 (Young Adults)",
+    "category": "demographics",
+    "example": "Early Prevention: Tracking Apo B in Your 20s"
+  },
+  {
+    "id": "mod_demo_004",
+    "modifier": "Age 30-45 (Middle-Aged Adults)",
+    "category": "demographics",
+    "example": "Hypertension Management for the 30-45 Age Group"
+  },
+  {
+    "id": "mod_demo_005",
+    "modifier": "Age 45-65 (Pre-Retirement)",
+    "category": "demographics",
+    "example": "CAC Scoring: Should You Get Tested in Your 50s?"
+  },
+  {
+    "id": "mod_demo_006",
+    "modifier": "Age 65+ (Elderly/Seniors)",
+    "category": "demographics",
+    "example": "Blood Pressure Goals for Adults Over 65"
+  },
+  {
+    "id": "mod_demo_007",
+    "modifier": "Pregnant Women",
+    "category": "demographics",
+    "example": "Managing Hypertension During Pregnancy"
+  },
+  {
+    "id": "mod_demo_008",
+    "modifier": "Postmenopausal Women",
+    "category": "demographics",
+    "example": "Cardiovascular Risk After Menopause: What Changes?"
+  },
+  {
+    "id": "mod_demo_009",
+    "modifier": "Athletes/Highly Active Individuals",
+    "category": "demographics",
+    "example": "ECG Findings in Endurance Athletes: What's Normal?"
+  },
+  {
+    "id": "mod_demo_010",
+    "modifier": "Sedentary/Office Workers",
+    "category": "demographics",
+    "example": "Metabolic Syndrome in Desk Workers: Prevention Tips"
+  },
+  {
+    "id": "mod_demo_011",
+    "modifier": "Healthcare Workers",
+    "category": "demographics",
+    "example": "Shift Work and Cardiovascular Risk: Evidence for Nurses"
+  },
+  {
+    "id": "mod_demo_012",
+    "modifier": "Parents/Caregivers",
+    "category": "demographics",
+    "example": "Teaching Children Heart-Healthy Habits"
+  },
+  {
+    "id": "mod_demo_013",
+    "modifier": "Patients with Diabetes",
+    "category": "demographics",
+    "example": "Optimal Blood Pressure Targets for Diabetics"
+  },
+  {
+    "id": "mod_demo_014",
+    "modifier": "Patients with CKD",
+    "category": "demographics",
+    "example": "Lipid Management in CKD Patients"
+  },
+  {
+    "id": "mod_demo_015",
+    "modifier": "Cancer Survivors",
+    "category": "demographics",
+    "example": "Cardio-Oncology: Monitoring After Chemotherapy"
+  },
+  {
+    "id": "mod_demo_016",
+    "modifier": "Ethnic/Racial Groups",
+    "category": "demographics",
+    "example": "Hypertension Prevalence in African American Populations"
+  },
+  {
+    "id": "mod_demo_017",
+    "modifier": "Low Socioeconomic Status",
+    "category": "demographics",
+    "example": "Affordable Heart Health: Low-Cost Strategies"
+  },
+  {
+    "id": "mod_demo_018",
+    "modifier": "Rural Populations",
+    "category": "demographics",
+    "example": "Accessing Cardiology Care in Rural Areas"
+  },
+  {
+    "id": "mod_demo_019",
+    "modifier": "LGBTQ+ Individuals",
+    "category": "demographics",
+    "example": "Cardiovascular Health Disparities in LGBTQ+ Communities"
+  },
+  {
+    "id": "mod_demo_020",
+    "modifier": "First-Time Cardiac Patients",
+    "category": "demographics",
+    "example": "What to Expect After Your First Heart Attack"
+  },
+  {
+    "id": "mod_aware_001",
+    "modifier": "Complete Beginner",
+    "category": "awareness-levels",
+    "example": "What is Lp(a)? A Complete Beginner's Guide"
+  },
+  {
+    "id": "mod_aware_002",
+    "modifier": "Basic Awareness",
+    "category": "awareness-levels",
+    "example": "Beyond the Basics: Why HDL Isn't Just 'Good Cholesterol'"
+  },
+  {
+    "id": "mod_aware_003",
+    "modifier": "Intermediate Knowledge",
+    "category": "awareness-levels",
+    "example": "Advanced Lipid Testing: When to Go Beyond Standard Panels"
+  },
+  {
+    "id": "mod_aware_004",
+    "modifier": "Advanced Patient",
+    "category": "awareness-levels",
+    "example": "Interpreting Your CAC Score: Nuances for Informed Patients"
+  },
+  {
+    "id": "mod_aware_005",
+    "modifier": "Healthcare Professional",
+    "category": "awareness-levels",
+    "example": "PCSK9 Inhibitors: Clinical Decision-Making for Cardiologists"
+  },
+  {
+    "id": "mod_aware_006",
+    "modifier": "Recently Diagnosed",
+    "category": "awareness-levels",
+    "example": "Just Diagnosed with AFib? Your First 30 Days"
+  },
+  {
+    "id": "mod_aware_007",
+    "modifier": "Long-Term Disease Management",
+    "category": "awareness-levels",
+    "example": "Living with Heart Failure for 10+ Years: Optimization Strategies"
+  },
+  {
+    "id": "mod_aware_008",
+    "modifier": "Pre-Diagnosis/Curious",
+    "category": "awareness-levels",
+    "example": "Should You Test Your Apo B? Risk-Benefit Analysis"
+  },
+  {
+    "id": "mod_aware_009",
+    "modifier": "Post-Treatment/Recovery",
+    "category": "awareness-levels",
+    "example": "After Stenting: What Your Cardiologist Wants You to Know"
+  },
+  {
+    "id": "mod_aware_010",
+    "modifier": "Preventive-Minded",
+    "category": "awareness-levels",
+    "example": "Preventive Cardiology for the Healthy 40-Year-Old"
+  },
+  {
+    "id": "mod_aware_011",
+    "modifier": "Second Opinion Seekers",
+    "category": "awareness-levels",
+    "example": "When to Seek a Second Opinion in Cardiology"
+  },
+  {
+    "id": "mod_aware_012",
+    "modifier": "Research Enthusiasts",
+    "category": "awareness-levels",
+    "example": "How to Read a Cardiology Study: A Guide"
+  },
+  {
+    "id": "mod_aware_013",
+    "modifier": "Skeptical/Alternative Medicine Interested",
+    "category": "awareness-levels",
+    "example": "Evidence-Based Natural Approaches to Blood Pressure Control"
+  },
+  {
+    "id": "mod_aware_014",
+    "modifier": "Newly Engaged (Triggered by Event)",
+    "category": "awareness-levels",
+    "example": "After a Family Member's Heart Attack: Assessing Your Own Risk"
+  },
+  {
+    "id": "mod_aware_015",
+    "modifier": "Optimization-Focused",
+    "category": "awareness-levels",
+    "example": "Already Healthy? Optimization Strategies for Elite Cardiovascular Fitness"
+  },
+  {
+    "id": "mod_angle_001",
+    "modifier": "Explainer/Educational",
+    "category": "content-angles",
+    "example": "What is Troponin? How It Signals Heart Damage"
+  },
+  {
+    "id": "mod_angle_002",
+    "modifier": "How-To Guide",
+    "category": "content-angles",
+    "example": "How to Lower Your Triglycerides Naturally"
+  },
+  {
+    "id": "mod_angle_003",
+    "modifier": "Step-by-Step Protocol",
+    "category": "content-angles",
+    "example": "5 Steps to Interpreting Your Lipid Panel"
+  },
+  {
+    "id": "mod_angle_004",
+    "modifier": "Myth-Busting",
+    "category": "content-angles",
+    "example": "Myth: All Cholesterol is Bad—The Truth About HDL"
+  },
+  {
+    "id": "mod_angle_005",
+    "modifier": "Comparison (X vs. Y)",
+    "category": "content-angles",
+    "example": "TAVR vs. SAVR: Which Valve Replacement is Right for You?"
+  },
+  {
+    "id": "mod_angle_006",
+    "modifier": "Pros and Cons Analysis",
+    "category": "content-angles",
+    "example": "Beta-Blockers: Benefits and Side Effects Explained"
+  },
+  {
+    "id": "mod_angle_007",
+    "modifier": "Case Study/Patient Story",
+    "category": "content-angles",
+    "example": "How John Reversed His Metabolic Syndrome: A Case Study"
+  },
+  {
+    "id": "mod_angle_008",
+    "modifier": "Common Mistakes",
+    "category": "content-angles",
+    "example": "5 Mistakes People Make When Managing Hypertension"
+  },
+  {
+    "id": "mod_angle_009",
+    "modifier": "Tips and Tricks",
+    "category": "content-angles",
+    "example": "3 Quick Tips to Reduce Sodium Without Sacrificing Flavor"
+  },
+  {
+    "id": "mod_angle_010",
+    "modifier": "Checklist",
+    "category": "content-angles",
+    "example": "Pre-Cardiac Catheterization Checklist: What to Bring and Ask"
+  },
+  {
+    "id": "mod_angle_011",
+    "modifier": "Timeline/Progression",
+    "category": "content-angles",
+    "example": "The Natural History of Atherosclerosis: From Youth to Old Age"
+  },
+  {
+    "id": "mod_angle_012",
+    "modifier": "Decision Framework",
+    "category": "content-angles",
+    "example": "Should You Start a Statin? A Decision Tree"
+  },
+  {
+    "id": "mod_angle_013",
+    "modifier": "FAQ Format",
+    "category": "content-angles",
+    "example": "10 Most Asked Questions About Atrial Fibrillation"
+  },
+  {
+    "id": "mod_angle_014",
+    "modifier": "Listicle",
+    "category": "content-angles",
+    "example": "7 Early Warning Signs of Heart Failure"
+  },
+  {
+    "id": "mod_angle_015",
+    "modifier": "Deep Dive Analysis",
+    "category": "content-angles",
+    "example": "The Molecular Mechanisms of PCSK9 Inhibition"
+  },
+  {
+    "id": "mod_angle_016",
+    "modifier": "Quick Summary/TLDR",
+    "category": "content-angles",
+    "example": "CAC Scoring Explained in 60 Seconds"
+  },
+  {
+    "id": "mod_angle_017",
+    "modifier": "Infographic-Style",
+    "category": "content-angles",
+    "example": "Blood Pressure Categories: Visual Guide"
+  },
+  {
+    "id": "mod_angle_018",
+    "modifier": "Interview/Q&A Format",
+    "category": "content-angles",
+    "example": "Cardiologist Answers Your AFib Questions"
+  },
+  {
+    "id": "mod_angle_019",
+    "modifier": "Research Review",
+    "category": "content-angles",
+    "example": "Breaking Down the Latest JUPITER Trial Findings"
+  },
+  {
+    "id": "mod_angle_020",
+    "modifier": "Actionable Next Steps",
+    "category": "content-angles",
+    "example": "What to Do If Your Lp(a) is Elevated: 5 Action Steps"
+  },
+  {
+    "id": "mod_temporal_001",
+    "modifier": "Prevention (Before Disease)",
+    "category": "temporal-stage",
+    "example": "Primary Prevention: Stopping Heart Disease Before It Starts"
+  },
+  {
+    "id": "mod_temporal_002",
+    "modifier": "Early Detection",
+    "category": "temporal-stage",
+    "example": "Early Markers of Coronary Disease: What to Test at Age 40"
+  },
+  {
+    "id": "mod_temporal_003",
+    "modifier": "Acute Phase (During Event)",
+    "category": "temporal-stage",
+    "example": "What Happens in the First Hour of a Heart Attack?"
+  },
+  {
+    "id": "mod_temporal_004",
+    "modifier": "Immediate Post-Event (Days-Weeks)",
+    "category": "temporal-stage",
+    "example": "The First Week After Stenting: Do's and Don'ts"
+  },
+  {
+    "id": "mod_temporal_005",
+    "modifier": "Short-Term Management (1-6 Months)",
+    "category": "temporal-stage",
+    "example": "Your First 3 Months on Statins: What to Expect"
+  },
+  {
+    "id": "mod_temporal_006",
+    "modifier": "Long-Term Management (Years)",
+    "category": "temporal-stage",
+    "example": "Living with AFib: 10-Year Management Strategies"
+  },
+  {
+    "id": "mod_temporal_007",
+    "modifier": "Disease Progression",
+    "category": "temporal-stage",
+    "example": "How Heart Failure Progresses: Understanding the Stages"
+  },
+  {
+    "id": "mod_temporal_008",
+    "modifier": "Remission/Stability",
+    "category": "temporal-stage",
+    "example": "Maintaining Stable Blood Pressure: Long-Term Success"
+  },
+  {
+    "id": "mod_temporal_009",
+    "modifier": "Relapse/Recurrence",
+    "category": "temporal-stage",
+    "example": "Why Some People Have Repeat Heart Attacks"
+  },
+  {
+    "id": "mod_temporal_010",
+    "modifier": "End-Stage Management",
+    "category": "temporal-stage",
+    "example": "Advanced Heart Failure: Palliative Care Options"
+  },
+  {
+    "id": "mod_temporal_011",
+    "modifier": "Seasonal Timing",
+    "category": "temporal-stage",
+    "example": "Winter Heart Attacks: Why Cold Weather Matters"
+  },
+  {
+    "id": "mod_temporal_012",
+    "modifier": "Life Transitions",
+    "category": "temporal-stage",
+    "example": "Cardiovascular Changes During Menopause"
+  },
+  {
+    "id": "mod_temporal_013",
+    "modifier": "Pre-Procedure",
+    "category": "temporal-stage",
+    "example": "Preparing for Your First Echocardiogram"
+  },
+  {
+    "id": "mod_temporal_014",
+    "modifier": "Post-Procedure Recovery",
+    "category": "temporal-stage",
+    "example": "CABG Recovery Timeline: Month by Month"
+  },
+  {
+    "id": "mod_temporal_015",
+    "modifier": "Before Medication Start",
+    "category": "temporal-stage",
+    "example": "What to Know Before Starting Blood Thinners"
+  },
+  {
+    "id": "mod_temporal_016",
+    "modifier": "During Medication Adjustment",
+    "category": "temporal-stage",
+    "example": "Titrating Beta-Blockers: What You'll Experience"
+  },
+  {
+    "id": "mod_temporal_017",
+    "modifier": "Monitoring Phase",
+    "category": "temporal-stage",
+    "example": "How Often Should You Check Your Blood Pressure?"
+  },
+  {
+    "id": "mod_temporal_018",
+    "modifier": "Maintenance Phase",
+    "category": "temporal-stage",
+    "example": "Staying on Track: Long-Term Adherence Strategies"
+  },
+  {
+    "id": "mod_temporal_019",
+    "modifier": "Pre-Diagnostic Testing",
+    "category": "temporal-stage",
+    "example": "What to Expect Before a Stress Test"
+  },
+  {
+    "id": "mod_temporal_020",
+    "modifier": "Annual Review/Check-In",
+    "category": "temporal-stage",
+    "example": "Your Annual Cardiology Check-Up: What Should Be Evaluated?"
+  },
+  {
+    "id": "mod_geo_001",
+    "modifier": "Western Diet Patterns",
+    "category": "geographic-cultural",
+    "example": "How the Standard American Diet Affects Heart Health"
+  },
+  {
+    "id": "mod_geo_002",
+    "modifier": "Mediterranean Regions",
+    "category": "geographic-cultural",
+    "example": "Why Mediterranean Populations Have Lower Heart Disease Rates"
+  },
+  {
+    "id": "mod_geo_003",
+    "modifier": "Asian Populations",
+    "category": "geographic-cultural",
+    "example": "Cardiovascular Risk Factors Unique to Asian Ethnicities"
+  },
+  {
+    "id": "mod_geo_004",
+    "modifier": "Urban vs. Rural Settings",
+    "category": "geographic-cultural",
+    "example": "Heart Health Challenges in Rural America"
+  },
+  {
+    "id": "mod_geo_005",
+    "modifier": "High-Altitude Populations",
+    "category": "geographic-cultural",
+    "example": "Cardiovascular Adaptations at High Altitude"
+  },
+  {
+    "id": "mod_geo_006",
+    "modifier": "Tropical Climates",
+    "category": "geographic-cultural",
+    "example": "Heat and Heart Health: Considerations for Tropical Regions"
+  },
+  {
+    "id": "mod_geo_007",
+    "modifier": "Cold Climates",
+    "category": "geographic-cultural",
+    "example": "Cold Weather and Heart Attack Risk: Nordic Studies"
+  },
+  {
+    "id": "mod_geo_008",
+    "modifier": "Food Desert Areas",
+    "category": "geographic-cultural",
+    "example": "Heart-Healthy Eating in Food Deserts: Practical Solutions"
+  },
+  {
+    "id": "mod_geo_009",
+    "modifier": "Healthcare Access Disparities",
+    "category": "geographic-cultural",
+    "example": "Managing Hypertension Without Regular Doctor Access"
+  },
+  {
+    "id": "mod_geo_010",
+    "modifier": "Cultural Dietary Practices",
+    "category": "geographic-cultural",
+    "example": "Heart Health in Vegetarian Hindu Populations"
+  },
+  {
+    "id": "mod_geo_011",
+    "modifier": "Immigrant Populations",
+    "category": "geographic-cultural",
+    "example": "Cardiovascular Disease Risk in First-Generation Immigrants"
+  },
+  {
+    "id": "mod_geo_012",
+    "modifier": "Indigenous Communities",
+    "category": "geographic-cultural",
+    "example": "Heart Disease Disparities in Native American Populations"
+  },
+  {
+    "id": "mod_geo_013",
+    "modifier": "Developed vs. Developing Nations",
+    "category": "geographic-cultural",
+    "example": "The Epidemiologic Transition: Heart Disease in Developing Countries"
+  },
+  {
+    "id": "mod_geo_014",
+    "modifier": "Polluted Urban Centers",
+    "category": "geographic-cultural",
+    "example": "Air Pollution and Cardiovascular Risk in Major Cities"
+  },
+  {
+    "id": "mod_geo_015",
+    "modifier": "Coastal vs. Inland Populations",
+    "category": "geographic-cultural",
+    "example": "Fish Consumption and Omega-3 Levels in Coastal Communities"
+  },
+  {
+    "id": "mod_lifestyle_001",
+    "modifier": "Exercise/Active Lifestyle",
+    "category": "lifestyle-behavioral",
+    "example": "How Exercise Affects Lp(a) Levels"
+  },
+  {
+    "id": "mod_lifestyle_002",
+    "modifier": "Sedentary Lifestyle",
+    "category": "lifestyle-behavioral",
+    "example": "Breaking the Sitting Cycle: Cardio Risks of Desk Jobs"
+  },
+  {
+    "id": "mod_lifestyle_003",
+    "modifier": "Plant-Based Diet",
+    "category": "lifestyle-behavioral",
+    "example": "Vegan Diets and Cardiovascular Outcomes: What the Evidence Shows"
+  },
+  {
+    "id": "mod_lifestyle_004",
+    "modifier": "Low-Carb/Keto Diet",
+    "category": "lifestyle-behavioral",
+    "example": "Ketogenic Diet Effects on Lipid Profiles"
+  },
+  {
+    "id": "mod_lifestyle_005",
+    "modifier": "Intermittent Fasting",
+    "category": "lifestyle-behavioral",
+    "example": "Time-Restricted Eating and Blood Pressure: Current Research"
+  },
+  {
+    "id": "mod_lifestyle_006",
+    "modifier": "Smoking Cessation",
+    "category": "lifestyle-behavioral",
+    "example": "Cardiovascular Recovery Timeline After Quitting Smoking"
+  },
+  {
+    "id": "mod_lifestyle_007",
+    "modifier": "Alcohol Consumption",
+    "category": "lifestyle-behavioral",
+    "example": "Moderate Drinking and Heart Health: Debunking the French Paradox"
+  },
+  {
+    "id": "mod_lifestyle_008",
+    "modifier": "Sleep Patterns",
+    "category": "lifestyle-behavioral",
+    "example": "How Sleep Duration Affects Blood Pressure"
+  },
+  {
+    "id": "mod_lifestyle_009",
+    "modifier": "Stress Management",
+    "category": "lifestyle-behavioral",
+    "example": "Chronic Stress and Atherosclerosis: Mechanistic Links"
+  },
+  {
+    "id": "mod_lifestyle_010",
+    "modifier": "Shift Work",
+    "category": "lifestyle-behavioral",
+    "example": "Night Shift Workers: Higher Cardiovascular Risk?"
+  },
+  {
+    "id": "mod_lifestyle_011",
+    "modifier": "Social Connection",
+    "category": "lifestyle-behavioral",
+    "example": "Loneliness as a Cardiovascular Risk Factor"
+  },
+  {
+    "id": "mod_lifestyle_012",
+    "modifier": "Travel/Frequent Flyers",
+    "category": "lifestyle-behavioral",
+    "example": "DVT Prevention for Frequent Travelers"
+  },
+  {
+    "id": "mod_lifestyle_013",
+    "modifier": "Weight Loss Journey",
+    "category": "lifestyle-behavioral",
+    "example": "Cardiovascular Benefits of 10% Weight Loss"
+  },
+  {
+    "id": "mod_lifestyle_014",
+    "modifier": "Weight Gain/Obesity",
+    "category": "lifestyle-behavioral",
+    "example": "Metabolic Effects of Weight Gain on Heart Health"
+  },
+  {
+    "id": "mod_lifestyle_015",
+    "modifier": "Supplement Use",
+    "category": "lifestyle-behavioral",
+    "example": "Do Omega-3 Supplements Really Help Heart Health?"
+  },
+  {
+    "id": "mod_lifestyle_016",
+    "modifier": "Meditation Practice",
+    "category": "lifestyle-behavioral",
+    "example": "Mindfulness and Blood Pressure: Evidence Review"
+  },
+  {
+    "id": "mod_lifestyle_017",
+    "modifier": "Sauna Use",
+    "category": "lifestyle-behavioral",
+    "example": "Cardiovascular Benefits of Regular Sauna Bathing"
+  },
+  {
+    "id": "mod_lifestyle_018",
+    "modifier": "Cold Exposure",
+    "category": "lifestyle-behavioral",
+    "example": "Cold Plunges and Heart Health: Risks and Benefits"
+  },
+  {
+    "id": "mod_lifestyle_019",
+    "modifier": "Screen Time/Digital Life",
+    "category": "lifestyle-behavioral",
+    "example": "Sedentary Screen Time and Metabolic Syndrome"
+  },
+  {
+    "id": "mod_lifestyle_020",
+    "modifier": "Outdoor Activity",
+    "category": "lifestyle-behavioral",
+    "example": "Green Space Exposure and Cardiovascular Outcomes"
+  },
+  {
+    "id": "mod_comorbid_001",
+    "modifier": "With Diabetes",
+    "category": "comorbidity",
+    "example": "Managing Hypertension in Diabetic Patients"
+  },
+  {
+    "id": "mod_comorbid_002",
+    "modifier": "With Chronic Kidney Disease",
+    "category": "comorbidity",
+    "example": "Statins in CKD: Dosing Considerations"
+  },
+  {
+    "id": "mod_comorbid_003",
+    "modifier": "With Obesity",
+    "category": "comorbidity",
+    "example": "Weight Loss Strategies for Obese Hypertensive Patients"
+  },
+  {
+    "id": "mod_comorbid_004",
+    "modifier": "With Sleep Apnea",
+    "category": "comorbidity",
+    "example": "CPAP Therapy and Blood Pressure Control"
+  },
+  {
+    "id": "mod_comorbid_005",
+    "modifier": "With Depression",
+    "category": "comorbidity",
+    "example": "Depression After MI: Recognition and Treatment"
+  },
+  {
+    "id": "mod_comorbid_006",
+    "modifier": "With Anxiety",
+    "category": "comorbidity",
+    "example": "Anxiety-Induced Palpitations vs. True Arrhythmias"
+  },
+  {
+    "id": "mod_comorbid_007",
+    "modifier": "With Thyroid Disease",
+    "category": "comorbidity",
+    "example": "Hypothyroidism and Cardiovascular Risk"
+  },
+  {
+    "id": "mod_comorbid_008",
+    "modifier": "With Autoimmune Conditions",
+    "category": "comorbidity",
+    "example": "Lupus and Accelerated Atherosclerosis"
+  },
+  {
+    "id": "mod_comorbid_009",
+    "modifier": "With COPD",
+    "category": "comorbidity",
+    "example": "Beta-Blocker Use in COPD and Heart Failure"
+  },
+  {
+    "id": "mod_comorbid_010",
+    "modifier": "With Cancer History",
+    "category": "comorbidity",
+    "example": "Cardio-Oncology: Monitoring After Radiation Therapy"
+  },
+  {
+    "id": "mod_comorbid_011",
+    "modifier": "With Liver Disease",
+    "category": "comorbidity",
+    "example": "Statin Safety in Patients with Fatty Liver"
+  },
+  {
+    "id": "mod_comorbid_012",
+    "modifier": "With Gout",
+    "category": "comorbidity",
+    "example": "Allopurinol and Cardiovascular Outcomes"
+  },
+  {
+    "id": "mod_comorbid_013",
+    "modifier": "With Erectile Dysfunction",
+    "category": "comorbidity",
+    "example": "ED as an Early Marker of Cardiovascular Disease"
+  },
+  {
+    "id": "mod_comorbid_014",
+    "modifier": "With Pregnancy Complications",
+    "category": "comorbidity",
+    "example": "Preeclampsia History and Future CVD Risk"
+  },
+  {
+    "id": "mod_comorbid_015",
+    "modifier": "With Inflammatory Diseases",
+    "category": "comorbidity",
+    "example": "Rheumatoid Arthritis and Heart Disease Risk"
+  },
+  {
+    "id": "mod_comorbid_016",
+    "modifier": "With Smoking History",
+    "category": "comorbidity",
+    "example": "Former Smokers: Residual Cardiovascular Risk"
+  },
+  {
+    "id": "mod_comorbid_017",
+    "modifier": "With Family History",
+    "category": "comorbidity",
+    "example": "Early Screening When Parents Had Heart Disease"
+  },
+  {
+    "id": "mod_comorbid_018",
+    "modifier": "With Multiple Risk Factors",
+    "category": "comorbidity",
+    "example": "Metabolic Syndrome: Managing the Cluster"
+  },
+  {
+    "id": "mod_comorbid_019",
+    "modifier": "With Medication Interactions",
+    "category": "comorbidity",
+    "example": "Polypharmacy in Heart Failure: Drug Interactions to Watch"
+  },
+  {
+    "id": "mod_comorbid_020",
+    "modifier": "With Cognitive Impairment",
+    "category": "comorbidity",
+    "example": "Heart Failure Management in Dementia Patients"
+  },
+  {
+    "id": "mod_tech_001",
+    "modifier": "Using Smartwatches",
+    "category": "technology",
+    "example": "Apple Watch AFib Detection: Accuracy and Limitations"
+  },
+  {
+    "id": "mod_tech_002",
+    "modifier": "Using Fitness Trackers",
+    "category": "technology",
+    "example": "Tracking Heart Rate Variability with Wearables"
+  },
+  {
+    "id": "mod_tech_003",
+    "modifier": "With Continuous Monitoring",
+    "category": "technology",
+    "example": "Implantable Loop Recorders: When Are They Needed?"
+  },
+  {
+    "id": "mod_tech_004",
+    "modifier": "AI-Assisted Diagnosis",
+    "category": "technology",
+    "example": "AI in ECG Interpretation: Current Capabilities"
+  },
+  {
+    "id": "mod_tech_005",
+    "modifier": "Telemedicine/Virtual Care",
+    "category": "technology",
+    "example": "Remote Cardiac Monitoring: Effectiveness and Limitations"
+  },
+  {
+    "id": "mod_tech_006",
+    "modifier": "Mobile Health Apps",
+    "category": "technology",
+    "example": "Blood Pressure Apps: Which Ones Are Clinically Validated?"
+  },
+  {
+    "id": "mod_tech_007",
+    "modifier": "Home Monitoring Devices",
+    "category": "technology",
+    "example": "Home Blood Pressure Monitors: How to Choose and Use"
+  },
+  {
+    "id": "mod_tech_008",
+    "modifier": "Genetic Testing",
+    "category": "technology",
+    "example": "Polygenic Risk Scores for CAD: Should You Get Tested?"
+  },
+  {
+    "id": "mod_tech_009",
+    "modifier": "Advanced Imaging",
+    "category": "technology",
+    "example": "Cardiac MRI vs. CT: Which Is Better for CAD Detection?"
+  },
+  {
+    "id": "mod_tech_010",
+    "modifier": "Robotic Surgery",
+    "category": "technology",
+    "example": "Robotic-Assisted CABG: Outcomes vs. Traditional Approach"
+  },
+  {
+    "id": "mod_tech_011",
+    "modifier": "3D Printing Applications",
+    "category": "technology",
+    "example": "3D Heart Models for Surgical Planning"
+  },
+  {
+    "id": "mod_tech_012",
+    "modifier": "Digital Therapeutics",
+    "category": "technology",
+    "example": "App-Based Cardiac Rehabilitation Programs"
+  },
+  {
+    "id": "mod_tech_013",
+    "modifier": "Remote Patient Monitoring",
+    "category": "technology",
+    "example": "Post-Discharge Monitoring: Reducing Readmissions"
+  },
+  {
+    "id": "mod_tech_014",
+    "modifier": "Electronic Health Records",
+    "category": "technology",
+    "example": "How EHRs Improve Cardiovascular Care Coordination"
+  },
+  {
+    "id": "mod_tech_015",
+    "modifier": "Precision Medicine",
+    "category": "technology",
+    "example": "Personalized Statin Therapy Based on Genetics"
+  },
+  {
+    "id": "mod_setting_001",
+    "modifier": "At Home",
+    "category": "setting-context",
+    "example": "Home-Based Cardiac Rehab Exercises"
+  },
+  {
+    "id": "mod_setting_002",
+    "modifier": "At Work",
+    "category": "setting-context",
+    "example": "Managing Hypertension During High-Stress Work Situations"
+  },
+  {
+    "id": "mod_setting_003",
+    "modifier": "While Traveling",
+    "category": "setting-context",
+    "example": "Taking Heart Medications Across Time Zones"
+  },
+  {
+    "id": "mod_setting_004",
+    "modifier": "During Holidays",
+    "category": "setting-context",
+    "example": "Heart-Healthy Holiday Eating Strategies"
+  },
+  {
+    "id": "mod_setting_005",
+    "modifier": "In Restaurants",
+    "category": "setting-context",
+    "example": "Navigating Restaurant Menus with Heart Disease"
+  },
+  {
+    "id": "mod_setting_006",
+    "modifier": "At the Gym",
+    "category": "setting-context",
+    "example": "Safe Exercise Intensity After Heart Attack"
+  },
+  {
+    "id": "mod_setting_007",
+    "modifier": "During Illness",
+    "category": "setting-context",
+    "example": "Managing Heart Failure During Respiratory Infections"
+  },
+  {
+    "id": "mod_setting_008",
+    "modifier": "In Emergency Situations",
+    "category": "setting-context",
+    "example": "When to Call 911 for Chest Pain"
+  },
+  {
+    "id": "mod_setting_009",
+    "modifier": "During Pregnancy",
+    "category": "setting-context",
+    "example": "Cardiac Medications Safe During Pregnancy"
+  },
+  {
+    "id": "mod_setting_010",
+    "modifier": "Post-Surgery Recovery",
+    "category": "setting-context",
+    "example": "Home Recovery After CABG: Week-by-Week Guide"
+  },
+  {
+    "id": "mod_setting_011",
+    "modifier": "In Clinical Settings",
+    "category": "setting-context",
+    "example": "What Happens During a Cardiology Consult?"
+  },
+  {
+    "id": "mod_setting_012",
+    "modifier": "During Hospitalization",
+    "category": "setting-context",
+    "example": "Understanding Your Cardiac ICU Stay"
+  },
+  {
+    "id": "mod_setting_013",
+    "modifier": "In Rehabilitation Programs",
+    "category": "setting-context",
+    "example": "What to Expect in Cardiac Rehab"
+  },
+  {
+    "id": "mod_setting_014",
+    "modifier": "During Social Events",
+    "category": "setting-context",
+    "example": "Alcohol at Social Gatherings: Guidelines for Heart Patients"
+  },
+  {
+    "id": "mod_setting_015",
+    "modifier": "In Extreme Weather",
+    "category": "setting-context",
+    "example": "Heart Safety During Heat Waves"
+  },
+  {
+    "id": "mod_compare_001",
+    "modifier": "Traditional vs. Novel Approach",
+    "category": "comparison",
+    "example": "Traditional Lipid Panel vs. Advanced Testing"
+  },
+  {
+    "id": "mod_compare_002",
+    "modifier": "Drug Class Comparison",
+    "category": "comparison",
+    "example": "ACE Inhibitors vs. ARBs: Which Is Better?"
+  },
+  {
+    "id": "mod_compare_003",
+    "modifier": "Procedure Comparison",
+    "category": "comparison",
+    "example": "Angioplasty vs. CABG: Decision Factors"
+  },
+  {
+    "id": "mod_compare_004",
+    "modifier": "Test Comparison",
+    "category": "comparison",
+    "example": "Stress Echo vs. Nuclear Stress Test"
+  },
+  {
+    "id": "mod_compare_005",
+    "modifier": "Dietary Pattern Comparison",
+    "category": "comparison",
+    "example": "Mediterranean vs. DASH Diet for Blood Pressure"
+  },
+  {
+    "id": "mod_compare_006",
+    "modifier": "Biomarker Comparison",
+    "category": "comparison",
+    "example": "Apo B vs. LDL-C: Which Matters More?"
+  },
+  {
+    "id": "mod_compare_007",
+    "modifier": "Age Group Comparison",
+    "category": "comparison",
+    "example": "Statin Benefits: Young Adults vs. Elderly"
+  },
+  {
+    "id": "mod_compare_008",
+    "modifier": "Gender Comparison",
+    "category": "comparison",
+    "example": "Heart Attack Symptoms: Men vs. Women"
+  },
+  {
+    "id": "mod_compare_009",
+    "modifier": "Severity Comparison",
+    "category": "comparison",
+    "example": "Mild vs. Severe Hypertension: Treatment Differences"
+  },
+  {
+    "id": "mod_compare_010",
+    "modifier": "Risk Stratification",
+    "category": "comparison",
+    "example": "Low-Risk vs. High-Risk AFib: Anticoagulation Decisions"
+  },
+  {
+    "id": "mod_compare_011",
+    "modifier": "Before vs. After Intervention",
+    "category": "comparison",
+    "example": "Lipid Changes Before and After Statin Therapy"
+  },
+  {
+    "id": "mod_compare_012",
+    "modifier": "Natural vs. Pharmacological",
+    "category": "comparison",
+    "example": "Lifestyle Modification vs. Medication for Mild Hypertension"
+  },
+  {
+    "id": "mod_compare_013",
+    "modifier": "Invasive vs. Non-Invasive",
+    "category": "comparison",
+    "example": "Cardiac Cath vs. CT Angiography"
+  },
+  {
+    "id": "mod_compare_014",
+    "modifier": "Short-Term vs. Long-Term",
+    "category": "comparison",
+    "example": "Immediate vs. Long-Term Benefits of Exercise"
+  },
+  {
+    "id": "mod_compare_015",
+    "modifier": "Cost-Benefit Analysis",
+    "category": "comparison",
+    "example": "Generic vs. Brand-Name Statins: Value Comparison"
+  },
+  {
+    "id": "mod_outcome_001",
+    "modifier": "Lowering Specific Biomarker",
+    "category": "outcome-goal",
+    "example": "Strategies to Lower Lp(a) by 20%"
+  },
+  {
+    "id": "mod_outcome_002",
+    "modifier": "Preventing First Event",
+    "category": "outcome-goal",
+    "example": "Preventing Your First Heart Attack: Primary Prevention"
+  },
+  {
+    "id": "mod_outcome_003",
+    "modifier": "Preventing Recurrence",
+    "category": "outcome-goal",
+    "example": "Preventing a Second Stroke: Secondary Prevention"
+  },
+  {
+    "id": "mod_outcome_004",
+    "modifier": "Reversing Disease",
+    "category": "outcome-goal",
+    "example": "Can You Reverse Atherosclerosis? Evidence Review"
+  },
+  {
+    "id": "mod_outcome_005",
+    "modifier": "Achieving Optimal Levels",
+    "category": "outcome-goal",
+    "example": "Achieving Optimal LDL Targets: Below 70 vs. Below 55"
+  },
+  {
+    "id": "mod_outcome_006",
+    "modifier": "Improving Symptoms",
+    "category": "outcome-goal",
+    "example": "Reducing Angina Frequency: Treatment Options"
+  },
+  {
+    "id": "mod_outcome_007",
+    "modifier": "Reducing Medication",
+    "category": "outcome-goal",
+    "example": "When Can You Reduce Blood Pressure Medications?"
+  },
+  {
+    "id": "mod_outcome_008",
+    "modifier": "Enhancing Quality of Life",
+    "category": "outcome-goal",
+    "example": "Improving Exercise Capacity in Heart Failure"
+  },
+  {
+    "id": "mod_outcome_009",
+    "modifier": "Minimizing Side Effects",
+    "category": "outcome-goal",
+    "example": "Reducing Statin Muscle Pain: Evidence-Based Strategies"
+  },
+  {
+    "id": "mod_outcome_010",
+    "modifier": "Optimizing Performance",
+    "category": "outcome-goal",
+    "example": "Cardiovascular Optimization for Athletes"
+  },
+  {
+    "id": "mod_outcome_011",
+    "modifier": "Extending Lifespan",
+    "category": "outcome-goal",
+    "example": "Interventions That Increase Cardiovascular Longevity"
+  },
+  {
+    "id": "mod_outcome_012",
+    "modifier": "Achieving Remission",
+    "category": "outcome-goal",
+    "example": "Type 2 Diabetes Remission and Cardiovascular Benefits"
+  },
+  {
+    "id": "mod_outcome_013",
+    "modifier": "Normalizing Function",
+    "category": "outcome-goal",
+    "example": "Restoring Normal EF After Heart Failure"
+  },
+  {
+    "id": "mod_outcome_014",
+    "modifier": "Reducing Hospitalizations",
+    "category": "outcome-goal",
+    "example": "Preventing Heart Failure Readmissions"
+  },
+  {
+    "id": "mod_outcome_015",
+    "modifier": "Maximizing Independence",
+    "category": "outcome-goal",
+    "example": "Maintaining Independence with Advanced Heart Disease"
+  },
+  {
+    "id": "mod_evidence_001",
+    "modifier": "Latest Clinical Trial",
+    "category": "evidence-research",
+    "example": "FOURIER Trial Results: PCSK9 Inhibitor Outcomes"
+  },
+  {
+    "id": "mod_evidence_002",
+    "modifier": "Meta-Analysis Findings",
+    "category": "evidence-research",
+    "example": "What 50 Studies Say About Coffee and Heart Health"
+  },
+  {
+    "id": "mod_evidence_003",
+    "modifier": "Guideline Updates",
+    "category": "evidence-research",
+    "example": "2023 AHA/ACC Hypertension Guidelines: What Changed?"
+  },
+  {
+    "id": "mod_evidence_004",
+    "modifier": "Emerging Research",
+    "category": "evidence-research",
+    "example": "New Research on Gut Microbiome and Atherosclerosis"
+  },
+  {
+    "id": "mod_evidence_005",
+    "modifier": "Controversial Studies",
+    "category": "evidence-research",
+    "example": "The Saturated Fat Debate: Analyzing Conflicting Studies"
+  },
+  {
+    "id": "mod_evidence_006",
+    "modifier": "Landmark Studies",
+    "category": "evidence-research",
+    "example": "Framingham Heart Study: 75 Years of Insights"
+  },
+  {
+    "id": "mod_evidence_007",
+    "modifier": "Real-World Evidence",
+    "category": "evidence-research",
+    "example": "Registry Data on TAVR Outcomes"
+  },
+  {
+    "id": "mod_evidence_008",
+    "modifier": "Mechanistic Research",
+    "category": "evidence-research",
+    "example": "How PCSK9 Inhibitors Work: The Molecular Mechanism"
+  },
+  {
+    "id": "mod_evidence_009",
+    "modifier": "Long-Term Follow-Up",
+    "category": "evidence-research",
+    "example": "20-Year Outcomes After CABG"
+  },
+  {
+    "id": "mod_evidence_010",
+    "modifier": "Comparative Effectiveness",
+    "category": "evidence-research",
+    "example": "Head-to-Head: Statin vs. Ezetimibe Studies"
+  },
+  {
+    "id": "mod_evidence_011",
+    "modifier": "Safety Data",
+    "category": "evidence-research",
+    "example": "Long-Term Safety Profile of SGLT2 Inhibitors"
+  },
+  {
+    "id": "mod_evidence_012",
+    "modifier": "Population Studies",
+    "category": "evidence-research",
+    "example": "Epidemiological Data on Lp(a) Prevalence"
+  },
+  {
+    "id": "mod_evidence_013",
+    "modifier": "Genetic Studies",
+    "category": "evidence-research",
+    "example": "GWAS Findings on Hypertension Susceptibility"
+  },
+  {
+    "id": "mod_evidence_014",
+    "modifier": "Observational Data",
+    "category": "evidence-research",
+    "example": "Cohort Studies on Exercise and Mortality"
+  },
+  {
+    "id": "mod_evidence_015",
+    "modifier": "Expert Consensus",
+    "category": "evidence-research",
+    "example": "Expert Statements on Aspirin for Primary Prevention"
+  },
+  {
+    "id": "mod_barrier_001",
+    "modifier": "Medication Adherence Issues",
+    "category": "barriers-challenges",
+    "example": "Overcoming Statin Non-Adherence: Practical Tips"
+  },
+  {
+    "id": "mod_barrier_002",
+    "modifier": "Cost Barriers",
+    "category": "barriers-challenges",
+    "example": "Affordable Alternatives to Expensive Cardiac Medications"
+  },
+  {
+    "id": "mod_barrier_003",
+    "modifier": "Side Effect Management",
+    "category": "barriers-challenges",
+    "example": "Managing Beta-Blocker Fatigue"
+  },
+  {
+    "id": "mod_barrier_004",
+    "modifier": "Lifestyle Change Difficulty",
+    "category": "barriers-challenges",
+    "example": "Why Diets Fail and How to Succeed Long-Term"
+  },
+  {
+    "id": "mod_barrier_005",
+    "modifier": "Access to Care",
+    "category": "barriers-challenges",
+    "example": "Getting Cardiology Care Without Insurance"
+  },
+  {
+    "id": "mod_barrier_006",
+    "modifier": "Conflicting Information",
+    "category": "barriers-challenges",
+    "example": "Navigating Contradictory Diet Advice for Heart Health"
+  },
+  {
+    "id": "mod_barrier_007",
+    "modifier": "Time Constraints",
+    "category": "barriers-challenges",
+    "example": "Heart-Healthy Habits for Busy Professionals"
+  },
+  {
+    "id": "mod_barrier_008",
+    "modifier": "Family Opposition",
+    "category": "barriers-challenges",
+    "example": "Making Dietary Changes When Family Resists"
+  },
+  {
+    "id": "mod_barrier_009",
+    "modifier": "Motivation Lapses",
+    "category": "barriers-challenges",
+    "example": "Staying Motivated in Chronic Disease Management"
+  },
+  {
+    "id": "mod_barrier_010",
+    "modifier": "Fear and Anxiety",
+    "category": "barriers-challenges",
+    "example": "Overcoming Fear of Cardiac Procedures"
+  },
+  {
+    "id": "mod_barrier_011",
+    "modifier": "Cultural Barriers",
+    "category": "barriers-challenges",
+    "example": "Traditional Diets vs. Heart-Healthy Recommendations"
+  },
+  {
+    "id": "mod_barrier_012",
+    "modifier": "Knowledge Gaps",
+    "category": "barriers-challenges",
+    "example": "Common Misunderstandings About Blood Pressure"
+  },
+  {
+    "id": "mod_barrier_013",
+    "modifier": "Healthcare System Navigation",
+    "category": "barriers-challenges",
+    "example": "How to Prepare for Your Cardiology Appointment"
+  },
+  {
+    "id": "mod_barrier_014",
+    "modifier": "Polypharmacy Complexity",
+    "category": "barriers-challenges",
+    "example": "Managing Multiple Cardiac Medications"
+  },
+  {
+    "id": "mod_barrier_015",
+    "modifier": "Stigma",
+    "category": "barriers-challenges",
+    "example": "Addressing Mental Health in Heart Disease Patients"
+  },
+  {
+    "id": "mod_economic_001",
+    "modifier": "Low-Cost Options",
+    "category": "economic-access",
+    "example": "Effective Hypertension Management on a Budget"
+  },
+  {
+    "id": "mod_economic_002",
+    "modifier": "Generic vs. Brand",
+    "category": "economic-access",
+    "example": "Generic Statins: Efficacy and Cost Savings"
+  },
+  {
+    "id": "mod_economic_003",
+    "modifier": "Insurance Coverage",
+    "category": "economic-access",
+    "example": "Understanding Medicare Coverage for Cardiac Tests"
+  },
+  {
+    "id": "mod_economic_004",
+    "modifier": "Out-of-Pocket Costs",
+    "category": "economic-access",
+    "example": "True Cost of PCSK9 Inhibitors with Insurance"
+  },
+  {
+    "id": "mod_economic_005",
+    "modifier": "Free Resources",
+    "category": "economic-access",
+    "example": "Free Blood Pressure Monitoring Programs"
+  },
+  {
+    "id": "mod_economic_006",
+    "modifier": "Community Programs",
+    "category": "economic-access",
+    "example": "Community-Based Cardiac Rehab Options"
+  },
+  {
+    "id": "mod_economic_007",
+    "modifier": "Telemedicine Cost-Effectiveness",
+    "category": "economic-access",
+    "example": "Virtual Cardiology: Cost vs. In-Person Visits"
+  },
+  {
+    "id": "mod_economic_008",
+    "modifier": "Prescription Assistance",
+    "category": "economic-access",
+    "example": "Patient Assistance Programs for Expensive Heart Drugs"
+  },
+  {
+    "id": "mod_economic_009",
+    "modifier": "DIY Monitoring",
+    "category": "economic-access",
+    "example": "At-Home Blood Pressure Monitoring: Affordable Devices"
+  },
+  {
+    "id": "mod_economic_010",
+    "modifier": "Value-Based Choices",
+    "category": "economic-access",
+    "example": "High-Value vs. Low-Value Cardiac Tests"
+  },
+  {
+    "id": "mod_economic_011",
+    "modifier": "Healthcare Disparities",
+    "category": "economic-access",
+    "example": "Addressing Cardiovascular Care Inequities"
+  },
+  {
+    "id": "mod_economic_012",
+    "modifier": "Rural Access",
+    "category": "economic-access",
+    "example": "Telemedicine Solutions for Rural Heart Patients"
+  },
+  {
+    "id": "mod_economic_013",
+    "modifier": "Preventive Investment",
+    "category": "economic-access",
+    "example": "ROI of Preventive Cardiology Measures"
+  },
+  {
+    "id": "mod_economic_014",
+    "modifier": "Policy Implications",
+    "category": "economic-access",
+    "example": "How Healthcare Policy Affects Cardiac Care Access"
+  },
+  {
+    "id": "mod_economic_015",
+    "modifier": "Global Health Perspective",
+    "category": "economic-access",
+    "example": "Affordable Heart Disease Management in Low-Resource Settings"
+  },
+  {
+    "id": "mod_emotional_001",
+    "modifier": "Anxiety Management",
+    "category": "emotional-psychological",
+    "example": "Coping with Anxiety After Heart Attack Diagnosis"
+  },
+  {
+    "id": "mod_emotional_002",
+    "modifier": "Depression Screening",
+    "category": "emotional-psychological",
+    "example": "Post-MI Depression: Recognition and Treatment"
+  },
+  {
+    "id": "mod_emotional_003",
+    "modifier": "Fear of Death",
+    "category": "emotional-psychological",
+    "example": "Addressing Mortality Fears in Heart Disease Patients"
+  },
+  {
+    "id": "mod_emotional_004",
+    "modifier": "Body Image Issues",
+    "category": "emotional-psychological",
+    "example": "Body Image After Open-Heart Surgery"
+  },
+  {
+    "id": "mod_emotional_005",
+    "modifier": "Relationship Impact",
+    "category": "emotional-psychological",
+    "example": "How Heart Disease Affects Intimate Relationships"
+  },
+  {
+    "id": "mod_emotional_006",
+    "modifier": "Caregiver Burden",
+    "category": "emotional-psychological",
+    "example": "Supporting Caregivers of Heart Failure Patients"
+  },
+  {
+    "id": "mod_emotional_007",
+    "modifier": "Emotional Eating",
+    "category": "emotional-psychological",
+    "example": "Breaking the Stress-Eating Cycle for Heart Health"
+  },
+  {
+    "id": "mod_emotional_008",
+    "modifier": "PTSD from Cardiac Event",
+    "category": "emotional-psychological",
+    "example": "Post-Cardiac Arrest PTSD: What to Know"
+  },
+  {
+    "id": "mod_emotional_009",
+    "modifier": "Loss of Identity",
+    "category": "emotional-psychological",
+    "example": "Redefining Self After Becoming a 'Heart Patient'"
+  },
+  {
+    "id": "mod_emotional_010",
+    "modifier": "Acceptance Stages",
+    "category": "emotional-psychological",
+    "example": "The Stages of Accepting a Chronic Heart Condition"
+  },
+  {
+    "id": "mod_emotional_011",
+    "modifier": "Hope and Optimism",
+    "category": "emotional-psychological",
+    "example": "Maintaining Hope with Advanced Heart Failure"
+  },
+  {
+    "id": "mod_emotional_012",
+    "modifier": "Resilience Building",
+    "category": "emotional-psychological",
+    "example": "Building Psychological Resilience After Cardiac Events"
+  },
+  {
+    "id": "mod_emotional_013",
+    "modifier": "Social Isolation",
+    "category": "emotional-psychological",
+    "example": "Combating Loneliness in Heart Disease Recovery"
+  },
+  {
+    "id": "mod_emotional_014",
+    "modifier": "Anger and Frustration",
+    "category": "emotional-psychological",
+    "example": "Managing Frustration with Medication Side Effects"
+  },
+  {
+    "id": "mod_emotional_015",
+    "modifier": "Empowerment",
+    "category": "emotional-psychological",
+    "example": "Taking Control: Self-Advocacy in Cardiac Care"
+  }
+]

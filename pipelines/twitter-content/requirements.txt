@@ -1,0 +1,30 @@
+# Core
+python-dotenv>=1.0.0
+requests>=2.31.0
+httpx>=0.25.0
+
+# AstraDB
+astrapy>=1.0.0
+
+# Embeddings
+openai>=1.0.0
+
+# LLM (Anthropic direct)
+anthropic>=0.18.0
+
+# PubMed XML parsing
+lxml>=4.9.0
+xmltodict>=0.13.0
+
+# Async support
+aiohttp>=3.9.0
+
+# CLI
+rich>=13.0.0
+typer>=0.9.0
+
+# Optional: Better RAG (uncomment if needed)
+# langchain>=0.1.0
+# langchain-community>=0.0.20
+# sentence-transformers>=2.2.0
+# cohere>=4.0.0

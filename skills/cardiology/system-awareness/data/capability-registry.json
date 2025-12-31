@@ -1,0 +1,312 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": "2024-12-31",
+    "total_skills": 184,
+    "cardiology_skills": 48,
+    "scientific_skills": 136
+  },
+  "categories": {
+    "content-creation": {
+      "description": "Skills for creating various content formats",
+      "subcategories": ["youtube", "twitter", "newsletter", "editorial", "long-form"]
+    },
+    "research": {
+      "description": "Skills for finding and synthesizing information",
+      "subcategories": ["pubmed", "trends", "rag", "literature"]
+    },
+    "visual": {
+      "description": "Skills for generating images and graphics",
+      "subcategories": ["images", "infographics", "charts", "diagrams"]
+    },
+    "quality": {
+      "description": "Skills for review and refinement",
+      "subcategories": ["voice", "accuracy", "ai-detection"]
+    },
+    "databases": {
+      "description": "Skills for accessing scientific databases",
+      "subcategories": ["genomics", "proteins", "chemicals", "clinical"]
+    },
+    "analysis": {
+      "description": "Skills for data analysis and ML",
+      "subcategories": ["bioinformatics", "statistics", "ml", "visualization"]
+    },
+    "utilities": {
+      "description": "Supporting tools and automation",
+      "subcategories": ["routing", "extraction", "automation"]
+    }
+  },
+  "skills": [
+    {
+      "id": "youtube-script-master",
+      "name": "YouTube Script Master",
+      "category": "cardiology",
+      "subcategory": "content-creation/youtube",
+      "description": "Data-driven Hinglish YouTube scripts (15-30 min)",
+      "inputs": ["topic", "research_data", "target_duration", "audience_archetype"],
+      "outputs": ["hinglish_script", "hooks", "cta_suggestions", "b-roll_notes"],
+      "dependencies": ["research-engine", "knowledge-pipeline", "viral-content-predictor"],
+      "use_cases": ["youtube_content", "hinglish_video", "educational_script", "debunk_content"],
+      "coverage": ["cardiology", "patient-education", "hinglish", "myth-busting"],
+      "has_scripts": false,
+      "complexity": "high",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "x-post-creator-skill",
+      "name": "X Post Creator",
+      "category": "cardiology",
+      "subcategory": "content-creation/twitter",
+      "description": "Twitter thought leadership with frameworks (batches of 10)",
+      "inputs": ["topic", "seed_ideas", "modifiers", "framework_type"],
+      "outputs": ["tweet_batch", "thread_option", "engagement_predictions"],
+      "dependencies": ["pubmed-database", "knowledge-pipeline"],
+      "use_cases": ["twitter_content", "thought_leadership", "medical_education"],
+      "coverage": ["cardiology", "twitter", "eric-topol-voice"],
+      "has_scripts": false,
+      "complexity": "medium",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "cardiology-tweet-writer",
+      "name": "Cardiology Tweet Writer",
+      "category": "cardiology",
+      "subcategory": "content-creation/twitter",
+      "description": "Simplified tweet generation with seed + modifier permutation",
+      "inputs": ["topic", "seed_idea", "modifier"],
+      "outputs": ["tweets", "variations"],
+      "dependencies": [],
+      "use_cases": ["quick_tweets", "batch_content"],
+      "coverage": ["cardiology", "twitter"],
+      "has_scripts": false,
+      "complexity": "low",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "cardiology-newsletter-writer",
+      "name": "Cardiology Newsletter Writer",
+      "category": "cardiology",
+      "subcategory": "content-creation/newsletter",
+      "description": "Newsletter creation with Topol style + anti-AI guidelines",
+      "inputs": ["topic", "research_brief", "target_length"],
+      "outputs": ["newsletter_draft", "subject_lines", "preview_text"],
+      "dependencies": ["knowledge-pipeline", "authentic-voice"],
+      "use_cases": ["email_newsletter", "weekly_digest"],
+      "coverage": ["cardiology", "newsletter", "topol-voice"],
+      "has_scripts": false,
+      "complexity": "medium",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "cardiology-trial-editorial",
+      "name": "Cardiology Trial Editorial",
+      "category": "cardiology",
+      "subcategory": "content-creation/editorial",
+      "description": "Landmark trial editorials with scoring + infographics",
+      "inputs": ["trial_data", "pmid", "full_text_url"],
+      "outputs": ["editorial_500_words", "trial_score", "html_infographic"],
+      "dependencies": ["pubmed-database", "knowledge-pipeline"],
+      "use_cases": ["trial_analysis", "jacc_style_editorial", "infographic_creation"],
+      "coverage": ["cardiology", "clinical-trials", "editorials"],
+      "has_scripts": true,
+      "scripts": ["score_trial.py"],
+      "complexity": "high",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "viral-content-predictor",
+      "name": "Viral Content Predictor",
+      "category": "cardiology",
+      "subcategory": "research/trends",
+      "description": "ML-based viral potential scoring (0-100)",
+      "inputs": ["content_ideas", "topic", "format"],
+      "outputs": ["viral_score", "predicted_views", "content_blueprint", "seo_recommendations"],
+      "dependencies": [],
+      "use_cases": ["content_prioritization", "topic_selection", "viral_prediction"],
+      "coverage": ["content-strategy", "youtube", "engagement"],
+      "has_scripts": true,
+      "scripts": ["analyze_content_ideas.py"],
+      "complexity": "high",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "social-media-trends-research",
+      "name": "Social Media Trends Research",
+      "category": "cardiology",
+      "subcategory": "research/trends",
+      "description": "Zero-cost trend research using pytrends + Reddit + Perplexity",
+      "inputs": ["keywords", "subreddits", "timeframe"],
+      "outputs": ["trending_topics", "rising_queries", "reddit_discussions", "recommendations"],
+      "dependencies": [],
+      "use_cases": ["trend_discovery", "content_ideas", "audience_research"],
+      "coverage": ["trends", "google", "reddit", "social-media"],
+      "has_scripts": true,
+      "scripts": ["trend_research.py", "reddit_scraper.py"],
+      "complexity": "medium",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "knowledge-pipeline",
+      "name": "Knowledge Pipeline",
+      "category": "cardiology",
+      "subcategory": "research/rag",
+      "description": "RAG system for AstraDB guidelines + PubMed synthesis",
+      "inputs": ["query", "max_chunks", "max_articles"],
+      "outputs": ["knowledge_context", "citations", "synthesis"],
+      "dependencies": ["pubmed-database"],
+      "use_cases": ["research_synthesis", "guideline_lookup", "evidence_gathering"],
+      "coverage": ["guidelines", "acc", "esc", "ada", "pubmed"],
+      "has_scripts": true,
+      "complexity": "high",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "cardiology-visual-system",
+      "name": "Cardiology Visual System",
+      "category": "cardiology",
+      "subcategory": "visual/routing",
+      "description": "Intelligent routing to optimal visual tool (Fal.ai, Gemini, Mermaid, Plotly)",
+      "inputs": ["request_description", "output_format"],
+      "outputs": ["image_file", "diagram_code", "chart_html"],
+      "dependencies": [],
+      "use_cases": ["blog_images", "infographics", "flowcharts", "data_viz"],
+      "coverage": ["images", "diagrams", "charts", "infographics"],
+      "has_scripts": true,
+      "scripts": ["fal_image.py", "gemini_infographic.py"],
+      "complexity": "high",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "multi-model-writer",
+      "name": "Multi-Model Writer",
+      "category": "cardiology",
+      "subcategory": "utilities/routing",
+      "description": "Unified routing to 6 LLM models (Claude, GPT, Gemini, Grok, GLM)",
+      "inputs": ["prompt", "model_preference", "task_type"],
+      "outputs": ["response", "model_used", "tokens_used"],
+      "dependencies": [],
+      "use_cases": ["model_comparison", "cost_optimization", "fallback_routing"],
+      "coverage": ["llm", "routing", "multi-model"],
+      "has_scripts": true,
+      "scripts": ["model_router.py"],
+      "complexity": "medium",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "authentic-voice",
+      "name": "Authentic Voice",
+      "category": "cardiology",
+      "subcategory": "quality/ai-detection",
+      "description": "AI detection avoidance and human-sounding content verification",
+      "inputs": ["content_draft"],
+      "outputs": ["refined_content", "ai_score", "corrections_made"],
+      "dependencies": [],
+      "use_cases": ["anti_ai_detection", "voice_consistency", "natural_writing"],
+      "coverage": ["quality", "ai-detection", "voice"],
+      "has_scripts": false,
+      "complexity": "low",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "pubmed-database",
+      "name": "PubMed Database",
+      "category": "scientific",
+      "subcategory": "databases/clinical",
+      "description": "35M+ biomedical articles via NCBI E-utilities API",
+      "inputs": ["query", "date_range", "max_results"],
+      "outputs": ["pmids", "abstracts", "citations", "metadata"],
+      "dependencies": [],
+      "use_cases": ["literature_search", "citation_gathering", "evidence_lookup"],
+      "coverage": ["pubmed", "medical-literature", "research"],
+      "has_scripts": false,
+      "complexity": "medium",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "scanpy",
+      "name": "Scanpy",
+      "category": "scientific",
+      "subcategory": "analysis/bioinformatics",
+      "description": "Single-cell RNA-seq analysis with Leiden clustering, UMAP/t-SNE",
+      "inputs": ["adata_file", "analysis_type"],
+      "outputs": ["clustering_results", "visualizations", "marker_genes"],
+      "dependencies": ["anndata"],
+      "use_cases": ["scrna_seq", "cell_clustering", "gene_expression"],
+      "coverage": ["single-cell", "genomics", "bioinformatics"],
+      "has_scripts": false,
+      "complexity": "high",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "alphafold-database",
+      "name": "AlphaFold Database",
+      "category": "scientific",
+      "subcategory": "databases/proteins",
+      "description": "AI-predicted protein structures, 200M+ proteins",
+      "inputs": ["uniprot_id", "sequence"],
+      "outputs": ["structure_pdb", "confidence_scores", "pae_matrix"],
+      "dependencies": [],
+      "use_cases": ["protein_structure", "drug_design", "structural_biology"],
+      "coverage": ["proteins", "structures", "alphafold"],
+      "has_scripts": false,
+      "complexity": "medium",
+      "usage_count": 0,
+      "last_used": null
+    },
+    {
+      "id": "chembl-database",
+      "name": "ChEMBL Database",
+      "category": "scientific",
+      "subcategory": "databases/chemicals",
+      "description": "2M+ bioactive molecules with IC50/Ki data",
+      "inputs": ["compound_name", "target_protein", "activity_type"],
+      "outputs": ["compound_data", "bioactivity", "sar_analysis"],
+      "dependencies": [],
+      "use_cases": ["drug_discovery", "sar_studies", "compound_search"],
+      "coverage": ["chemistry", "drugs", "bioactivity"],
+      "has_scripts": false,
+      "complexity": "medium",
+      "usage_count": 0,
+      "last_used": null
+    }
+  ],
+  "coverage_matrix": {
+    "domains": {
+      "cardiology": ["youtube-script-master", "x-post-creator-skill", "cardiology-newsletter-writer", "cardiology-trial-editorial", "cardiology-visual-system"],
+      "research": ["knowledge-pipeline", "pubmed-database", "social-media-trends-research", "viral-content-predictor"],
+      "genomics": ["scanpy", "alphafold-database", "ensembl-database"],
+      "chemistry": ["chembl-database", "drugbank-database", "rdkit"],
+      "clinical": ["clinicaltrials-database", "clinical-decision-support"]
+    },
+    "outputs": {
+      "text_content": ["youtube-script-master", "x-post-creator-skill", "cardiology-newsletter-writer"],
+      "images": ["cardiology-visual-system", "gemini-imagegen"],
+      "data": ["pubmed-database", "knowledge-pipeline", "scanpy"],
+      "analysis": ["viral-content-predictor", "cardiology-trial-editorial"]
+    },
+    "formats": {
+      "hinglish": ["youtube-script-master"],
+      "twitter": ["x-post-creator-skill", "cardiology-tweet-writer"],
+      "newsletter": ["cardiology-newsletter-writer", "medical-newsletter-writer"],
+      "editorial": ["cardiology-trial-editorial", "cardiology-editorial"]
+    }
+  },
+  "gap_indicators": {
+    "missing_capabilities": [],
+    "low_coverage_domains": [],
+    "requested_but_unavailable": []
+  }
+}

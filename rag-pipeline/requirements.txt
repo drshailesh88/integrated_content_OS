@@ -1,0 +1,34 @@
+# Portable RAG System Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core RAG Dependencies
+astrapy>=1.0.0                    # AstraDB vector database client
+langchain>=0.1.0                  # LangChain for document processing
+langchain-community>=0.0.20       # Community integrations
+langchain-text-splitters>=0.0.1   # Text splitting utilities
+
+# PDF Processing
+pypdf>=4.0.0                      # PDF loading and parsing
+
+# Text Processing
+tiktoken>=0.5.0                   # Token counting (OpenAI)
+
+# Embeddings & LLM
+openai>=1.12.0                    # OpenAI API (embeddings + synthesis)
+
+# Retrieval & Reranking
+rank-bm25>=0.2.2                  # BM25 sparse retrieval
+cohere>=4.47                      # Cohere reranking API
+numpy>=1.24.0                     # Numerical operations
+
+# Environment
+python-dotenv>=1.0.0              # Environment variable management
+
+# Progress & CLI
+tqdm>=4.66.0                      # Progress bars
+
+# Optional (uncomment if needed)
+# sentence-transformers>=2.3.0    # Cross-encoder fallback
+# faiss-cpu>=1.7.4                # Local vector search fallback
+# unstructured>=0.12.0            # Advanced document parsing
+# pdfplumber>=0.11.0              # PDF table extraction

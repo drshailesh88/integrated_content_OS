@@ -1,0 +1,536 @@
+{
+  "meta": {
+    "version": "2.0",
+    "last_updated": "2024-12-17",
+    "purpose": "Shadow medical school mapping - channels that shape patient beliefs before clinic visits"
+  },
+
+  "narrative_types": {
+    "ldl_skepticism": "Belief that LDL cholesterol is not causal for heart disease",
+    "statin_fear": "Fear of statins, emphasis on side effects over benefits",
+    "insulin_primacy": "Insulin resistance as the sole/primary driver of CVD",
+    "fasting_absolutism": "Fasting as universal solution for metabolic disease",
+    "exercise_compensation": "Belief that exercise can compensate for plaque",
+    "supplement_superiority": "Supplements outperform 'boring' medications",
+    "seed_oil_villain": "Seed oils as primary cause of chronic disease",
+    "evidence_based": "Proper evidence synthesis and nuance",
+    "patient_empowerment": "Teaching patients to ask better questions",
+    "fear_mongering": "Creating anxiety to drive views"
+  },
+
+  "strategic_actions": {
+    "primary_inspiration": "Absorb techniques, format, depth - model your content after this",
+    "absorb_techniques": "Learn their hooks, formats, editing style",
+    "translate": "Bring excellent English content to Hinglish audiences",
+    "debunk_directly": "Create 'What X gets wrong about...' response content",
+    "correct_gently": "Address beliefs without naming the source",
+    "monitor": "Track for trending topics, don't respond directly",
+    "anti_pattern": "Study what NOT to do",
+    "differentiate": "Cover same topics with better evidence"
+  },
+
+  "competition_hindi": [
+    {
+      "name": "Dr Navin Agrawal CARDIO CARE",
+      "channel_url": "https://www.youtube.com/@DrNavinAgrawalCARDIOCARE",
+      "type": "competition",
+      "language": "hindi",
+      "niche": "interventional-cardiology",
+      "subscriber_estimate": "300K+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "differentiate",
+      "notes": "Similar profile - interventional cardiologist. FACC, FESC. 90+ PubMed publications. Gone generalist in content."
+    },
+    {
+      "name": "Cardiac Second Opinion",
+      "channel_url": "https://www.youtube.com/@CardiacSecondOpinion",
+      "type": "competition",
+      "language": "hindi",
+      "niche": "cardiac-surgery-guidelines",
+      "subscriber_estimate": "100K+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based", "patient_empowerment"],
+      "strategic_action": "absorb_techniques",
+      "notes": "Dr. Mahesh Wadhwani. Surgeon. ESC/ACC guidelines based. EMULATE THIS APPROACH."
+    },
+    {
+      "name": "SAAOL Heart Center",
+      "channel_url": "https://www.youtube.com/@SAAOLHeartCenter",
+      "type": "anti_pattern",
+      "language": "hindi",
+      "niche": "non-invasive-alternative",
+      "subscriber_estimate": "3.4M",
+      "influence_rating": 5,
+      "narrative_types": ["statin_fear", "fasting_absolutism"],
+      "strategic_action": "anti_pattern",
+      "notes": "Dr. Bimal Chhajer. 3.4M subs, 4B views. Non-invasive alternative medicine. OPPOSITE of evidence-based. Good for identifying beliefs to correct."
+    }
+  ],
+
+  "indian_mega_channels": [
+    {
+      "name": "Fit Tuber",
+      "channel_url": "https://www.youtube.com/@FitTuber",
+      "type": "attention_competitor",
+      "language": "hindi",
+      "niche": "fitness-lifestyle",
+      "subscriber_estimate": "7M+",
+      "influence_rating": 5,
+      "narrative_types": ["supplement_superiority", "fear_mongering"],
+      "strategic_action": "monitor",
+      "notes": "Dominates Indian health attention. Not medical but competes for same audience. His narrative shapes patient expectations."
+    },
+    {
+      "name": "Dr Vikas Bangar",
+      "channel_url": "https://www.youtube.com/@DrVikasBangarOfficial",
+      "type": "attention_competitor",
+      "language": "hindi",
+      "niche": "lifestyle-disease",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 4,
+      "narrative_types": ["patient_empowerment"],
+      "strategic_action": "differentiate",
+      "notes": "Indian doctor. Lifestyle disease focus. Less cardiology-specific but same preventive health seeker audience."
+    },
+    {
+      "name": "Satvic Movement",
+      "channel_url": "https://www.youtube.com/@SatvicMovement",
+      "type": "belief_seeder",
+      "language": "hindi",
+      "niche": "diet-natural-healing",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 4,
+      "narrative_types": ["statin_fear", "supplement_superiority"],
+      "strategic_action": "correct_gently",
+      "notes": "Diet-centric, anti-modern-medicine leaning. Strong influence on heart patients via food narratives."
+    },
+    {
+      "name": "Dr Biswaroop Roy Chowdhury",
+      "channel_url": "https://www.youtube.com/@DrBiswaroopRoyChowdhury",
+      "type": "anti_pattern",
+      "language": "hindi",
+      "niche": "pseudo-medical",
+      "subscriber_estimate": "4M+",
+      "influence_rating": 5,
+      "narrative_types": ["statin_fear", "fear_mongering"],
+      "strategic_action": "debunk_directly",
+      "notes": "CRITICAL ANTI-PATTERN. Pseudo-medical, extremely influential. Patients arrive with beliefs seeded here. Must actively counter."
+    }
+  ],
+
+  "inspiration_english": [
+    {
+      "name": "Peter Attia MD",
+      "channel_url": "https://www.youtube.com/@PeterAttiaMD",
+      "type": "primary_inspiration",
+      "language": "english",
+      "niche": "longevity-preventive",
+      "subscriber_estimate": "1.5M+",
+      "influence_rating": 5,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "primary_inspiration",
+      "notes": "PRIMARY MODEL. User wants: 'Peter Attia speaking Hinglish talking cardiology'. Absorb depth, rigor, systems thinking. Translate to Indian context."
+    },
+    {
+      "name": "York Cardiology - Dr. Sanjay Gupta UK",
+      "channel_url": "https://www.youtube.com/@YorkCardiology",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "patient-education",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 5,
+      "narrative_types": ["evidence_based", "patient_empowerment"],
+      "strategic_action": "absorb_techniques",
+      "notes": "UK cardiologist. Clinical explanations, calm authority. Less lifestyle-heavy than Attia. Excellent patient education format."
+    },
+    {
+      "name": "Nutrition Made Simple - Dr Gil Carvalho",
+      "channel_url": "https://www.youtube.com/@NutritionMadeSimple",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "nutrition-evidence-based",
+      "subscriber_estimate": "1.2M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "translate",
+      "notes": "Evidence-first nutrition. Not cardiologist but competes for same rational, science-literate audience."
+    },
+    {
+      "name": "The Proof with Simon Hill",
+      "channel_url": "https://www.youtube.com/@thepraboratory",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "nutrition-longevity",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "absorb_techniques",
+      "notes": "Deep conversations, evidence-based. More lifestyle and plant-forward. Overlaps heavily in prevention audience."
+    },
+    {
+      "name": "Dr. Ford Brewer - PrevMed",
+      "channel_url": "https://www.youtube.com/@PrevMed",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "preventive-cardiology",
+      "subscriber_estimate": "700K+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based", "patient_empowerment"],
+      "strategic_action": "translate",
+      "notes": "Preventive cardiology focus. Calcium scores, lipids. Older demographic, US-heavy. Direct overlap with your niche."
+    },
+    {
+      "name": "Medlife Crisis - Dr Rohin Francis",
+      "channel_url": "https://www.youtube.com/@MedlifeCrisis",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "cardiology-debunking",
+      "subscriber_estimate": "1.5M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "absorb_techniques",
+      "notes": "UK cardiologist. Satire and debunking format. Strong educated audience overlap. Study his debunking style."
+    }
+  ],
+
+  "adjacent_giants": [
+    {
+      "name": "Dr Eric Berg",
+      "channel_url": "https://www.youtube.com/@DrEricBergDC",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "keto-metabolic",
+      "subscriber_estimate": "11M+",
+      "influence_rating": 5,
+      "narrative_types": ["insulin_primacy", "statin_fear", "ldl_skepticism"],
+      "strategic_action": "debunk_directly",
+      "notes": "MASSIVE reach. Keto-forward, often oversimplified. You will constantly correct beliefs seeded here. Chiropractor, not MD."
+    },
+    {
+      "name": "Dr Mark Hyman",
+      "channel_url": "https://www.youtube.com/@DrMarkHyman",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "functional-medicine",
+      "subscriber_estimate": "3M+",
+      "influence_rating": 5,
+      "narrative_types": ["insulin_primacy", "supplement_superiority"],
+      "strategic_action": "correct_gently",
+      "notes": "Functional medicine flagship. Lifestyle cardiometabolic framing. Less rigorous, very influential."
+    },
+    {
+      "name": "Andrew Huberman",
+      "channel_url": "https://www.youtube.com/@AndrewHubermanLab",
+      "type": "attention_competitor",
+      "language": "english",
+      "niche": "neuroscience-health",
+      "subscriber_estimate": "5M+",
+      "influence_rating": 5,
+      "narrative_types": ["supplement_superiority"],
+      "strategic_action": "monitor",
+      "notes": "Neuroscience brand but touches metabolism, CVD risk, supplements. Competes for long-form attention."
+    }
+  ],
+
+  "functional_medicine_broadcasters": [
+    {
+      "name": "Dr Sten Ekberg",
+      "channel_url": "https://www.youtube.com/@DrStenEkberg",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "insulin-fasting",
+      "subscriber_estimate": "3.5M+",
+      "influence_rating": 5,
+      "narrative_types": ["insulin_primacy", "fasting_absolutism", "ldl_skepticism"],
+      "strategic_action": "debunk_directly",
+      "notes": "Ex-Olympian chiropractor. Most powerful insulin/fasting narrative builder. CVD risk constantly reframed away from LDL."
+    },
+    {
+      "name": "Dr Ken Berry",
+      "channel_url": "https://www.youtube.com/@KenDBerryMD",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "carnivore-keto",
+      "subscriber_estimate": "2.5M+",
+      "influence_rating": 5,
+      "narrative_types": ["ldl_skepticism", "statin_fear", "seed_oil_villain"],
+      "strategic_action": "debunk_directly",
+      "notes": "Family physician turned carnivore advocate. Cardiovascular risk minimization is core to his message."
+    },
+    {
+      "name": "Dr Jason Fung",
+      "channel_url": "https://www.youtube.com/@drjasonfung",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "fasting-diabetes",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 4,
+      "narrative_types": ["fasting_absolutism", "insulin_primacy"],
+      "strategic_action": "correct_gently",
+      "notes": "Nephrologist. Fasting and insulin resistance focus. Highly trusted by diabetics with heart disease."
+    },
+    {
+      "name": "Dr Pradip Jamnadas",
+      "channel_url": "https://www.youtube.com/@DrPradipJamnadas",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "fasting-cardiology",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 4,
+      "narrative_types": ["fasting_absolutism", "insulin_primacy"],
+      "strategic_action": "correct_gently",
+      "notes": "Cardiology-adjacent, fasting evangelism. Popular in Indian diaspora. Claims cardiology credential."
+    },
+    {
+      "name": "Dr Paul Saladino",
+      "channel_url": "https://www.youtube.com/@PaulSaladinoMD",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "carnivore-animal-based",
+      "subscriber_estimate": "2M+",
+      "influence_rating": 4,
+      "narrative_types": ["ldl_skepticism", "seed_oil_villain"],
+      "strategic_action": "monitor",
+      "notes": "Carnivore then animal-based. Lipids and atherosclerosis constantly reinterpreted. MD credential gives authority."
+    },
+    {
+      "name": "Dr Chris Knobbe",
+      "channel_url": null,
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "seed-oils",
+      "subscriber_estimate": "400K+",
+      "influence_rating": 3,
+      "narrative_types": ["seed_oil_villain"],
+      "strategic_action": "monitor",
+      "notes": "Seed oils, hyperinsulinemia. Ideas propagate through other channels. Ophthalmologist."
+    },
+    {
+      "name": "High Intensity Health - Mike Mutzel",
+      "channel_url": "https://www.youtube.com/@Highintensityhealth",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "functional-metabolic",
+      "subscriber_estimate": "700K+",
+      "influence_rating": 3,
+      "narrative_types": ["insulin_primacy", "supplement_superiority"],
+      "strategic_action": "monitor",
+      "notes": "Functional medicine, metabolic inflammation. Very persuasive, not always precise."
+    }
+  ],
+
+  "longevity_biohacker_channels": [
+    {
+      "name": "FoundMyFitness - Dr Rhonda Patrick",
+      "channel_url": "https://www.youtube.com/@FoundMyFitness",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "longevity-micronutrients",
+      "subscriber_estimate": "1.3M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based", "supplement_superiority"],
+      "strategic_action": "absorb_techniques",
+      "notes": "Deep dives, micronutrients, inflammation, CVD adjacent. Strong science veneer, high trust. PhD."
+    },
+    {
+      "name": "Thomas DeLauer",
+      "channel_url": "https://www.youtube.com/@ThomasDeLauerOfficial",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "keto-fasting",
+      "subscriber_estimate": "3.5M+",
+      "influence_rating": 5,
+      "narrative_types": ["insulin_primacy", "fasting_absolutism"],
+      "strategic_action": "monitor",
+      "notes": "Former trainer turned metabolic explainer. Frequently overconfident, massively influential on fasting/keto beliefs."
+    },
+    {
+      "name": "Siim Land",
+      "channel_url": "https://www.youtube.com/@SiimLand",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "fasting-longevity",
+      "subscriber_estimate": "700K+",
+      "influence_rating": 3,
+      "narrative_types": ["fasting_absolutism"],
+      "strategic_action": "monitor",
+      "notes": "Appeals to disciplined self-optimizers who later self-experiment into lipid disasters."
+    },
+    {
+      "name": "Leo and Longevity",
+      "channel_url": "https://www.youtube.com/@LeoandLongevity",
+      "type": "attention_competitor",
+      "language": "english",
+      "niche": "biohacking-hormones",
+      "subscriber_estimate": "400K+",
+      "influence_rating": 3,
+      "narrative_types": ["supplement_superiority"],
+      "strategic_action": "monitor",
+      "notes": "Aggressive biohacking, hormones, supplements. Cautionary influence but real audience overlap."
+    }
+  ],
+
+  "fitness_crossover": [
+    {
+      "name": "Jeff Nippard",
+      "channel_url": "https://www.youtube.com/@JeffNippard",
+      "type": "attention_competitor",
+      "language": "english",
+      "niche": "evidence-based-fitness",
+      "subscriber_estimate": "5M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "monitor",
+      "notes": "Evidence-aware lifting. When he talks cholesterol, BP, supplements - people listen. PhD."
+    },
+    {
+      "name": "Athlean-X - Jeff Cavaliere",
+      "channel_url": "https://www.youtube.com/@ataboratoryhleanx",
+      "type": "attention_competitor",
+      "language": "english",
+      "niche": "fitness-training",
+      "subscriber_estimate": "13M+",
+      "influence_rating": 4,
+      "narrative_types": [],
+      "strategic_action": "monitor",
+      "notes": "Biomechanics and training. Viewers assume medical spillover credibility."
+    },
+    {
+      "name": "Renaissance Periodization - Dr Mike Israetel",
+      "channel_url": "https://www.youtube.com/@RenaissancePeriodization",
+      "type": "attention_competitor",
+      "language": "english",
+      "niche": "training-nutrition",
+      "subscriber_estimate": "3M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "monitor",
+      "notes": "PhD credibility. Dieting, metabolic stress, cardiovascular strain. Very adjacent to heart risk discussions."
+    },
+    {
+      "name": "More Plates More Dates - Derek",
+      "channel_url": "https://www.youtube.com/@MorePlatesMoreDates",
+      "type": "attention_competitor",
+      "language": "english",
+      "niche": "hormones-bloodwork",
+      "subscriber_estimate": "2M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "absorb_techniques",
+      "notes": "Hormones, PEDs, lipids, blood work. Accidentally one of biggest lipid education channels. Study his deep-dive format."
+    }
+  ],
+
+  "diet_wars_channels": [
+    {
+      "name": "Low Carb Down Under",
+      "channel_url": "https://www.youtube.com/@LowCarbDownUnder",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "low-carb-conferences",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 4,
+      "narrative_types": ["ldl_skepticism", "insulin_primacy"],
+      "strategic_action": "debunk_directly",
+      "notes": "Conference clips. LDL denial, insulin framing. You compete with this ideology daily."
+    },
+    {
+      "name": "What I've Learned",
+      "channel_url": "https://www.youtube.com/@WhatIveLearned",
+      "type": "belief_seeder",
+      "language": "english",
+      "niche": "health-documentary",
+      "subscriber_estimate": "2M+",
+      "influence_rating": 4,
+      "narrative_types": ["insulin_primacy"],
+      "strategic_action": "correct_gently",
+      "notes": "Simplified science storytelling. Strong narrative pull, mixed accuracy. Frames heart disease through diet wars."
+    },
+    {
+      "name": "Plant Chompers",
+      "channel_url": "https://www.youtube.com/@PlantChompers",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "keto-debunking",
+      "subscriber_estimate": "600K+",
+      "influence_rating": 3,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "absorb_techniques",
+      "notes": "Debunks keto and carnivore claims. Audience overlaps heavily with preventive cardiology. Study debunking format."
+    },
+    {
+      "name": "Dr Brad Stanfield",
+      "channel_url": "https://www.youtube.com/@DrBradStanfield",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "longevity-medicine",
+      "subscriber_estimate": "1M+",
+      "influence_rating": 4,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "translate",
+      "notes": "Longevity medicine, statins, supplements, CAC scores. Very adjacent to your core territory. NZ doctor."
+    },
+    {
+      "name": "Nutrition Library",
+      "channel_url": "https://www.youtube.com/@NutritionLibrary",
+      "type": "inspiration",
+      "language": "english",
+      "niche": "nutrition-evidence",
+      "subscriber_estimate": "600K+",
+      "influence_rating": 3,
+      "narrative_types": ["evidence_based"],
+      "strategic_action": "absorb_techniques",
+      "notes": "Evidence-heavy nutrition explanations. Smaller but intellectually aligned with preventive cardiology."
+    }
+  ],
+
+  "scrape_config": {
+    "videos_per_channel": 100,
+    "comments_per_video": 200,
+    "sleep_between_requests": 2,
+    "priority_tiers": {
+      "tier_1_daily": ["competition_hindi", "indian_mega_channels"],
+      "tier_2_weekly": ["inspiration_english", "adjacent_giants"],
+      "tier_3_monthly": ["functional_medicine_broadcasters", "diet_wars_channels"],
+      "tier_4_quarterly": ["longevity_biohacker_channels", "fitness_crossover"]
+    }
+  },
+
+  "debunk_priority": {
+    "high": [
+      "Dr Eric Berg",
+      "Dr Sten Ekberg",
+      "Dr Ken Berry",
+      "Dr Biswaroop Roy Chowdhury",
+      "Low Carb Down Under"
+    ],
+    "medium": [
+      "Dr Mark Hyman",
+      "Dr Jason Fung",
+      "Dr Pradip Jamnadas",
+      "What I've Learned",
+      "SAAOL Heart Center",
+      "Satvic Movement"
+    ],
+    "low": [
+      "Thomas DeLauer",
+      "Siim Land",
+      "Dr Paul Saladino"
+    ]
+  },
+
+  "translation_priority": {
+    "high": [
+      "Peter Attia MD",
+      "York Cardiology - Dr. Sanjay Gupta UK",
+      "Dr. Ford Brewer - PrevMed",
+      "Dr Brad Stanfield"
+    ],
+    "medium": [
+      "Nutrition Made Simple - Dr Gil Carvalho",
+      "Medlife Crisis - Dr Rohin Francis",
+      "Plant Chompers"
+    ]
+  }
+}

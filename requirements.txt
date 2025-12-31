@@ -1,0 +1,44 @@
+# Dr. Shailesh Content System - Dependencies
+
+# ============================================
+# CORE: YouTube API (for official quota-based access)
+# ============================================
+google-api-python-client>=2.100.0
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+
+# ============================================
+# SCRAPING: No-API YouTube data extraction
+# ============================================
+scrapetube>=2.5.0                    # Channel/playlist scraping (no API)
+youtube-comment-downloader>=0.1.67   # Comment scraping (no API)
+
+# ============================================
+# DATA SCIENCE: Analysis & ML
+# ============================================
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0                  # View prediction model
+textblob>=0.17.1                     # Sentiment analysis
+
+# ============================================
+# NLP & TEXT PROCESSING
+# ============================================
+# nltk>=3.8.0                        # Optional: advanced NLP
+
+# ============================================
+# UTILITIES
+# ============================================
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# ============================================
+# OPTIONAL: AI Model APIs
+# ============================================
+# openai>=1.0.0          # For GPT fallback
+# anthropic>=0.18.0      # For Claude API direct calls
+
+# ============================================
+# GLOBAL INSTALLS (not pip)
+# ============================================
+# yt-dlp: pip install yt-dlp OR brew install yt-dlp
