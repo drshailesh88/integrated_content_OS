@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/shaileshsingh/integrated cowriting system/skills/cardiology/visual-design-system/.venv-manim/bin/python" "$0" "$@"
-' '''
+#!/home/user/integrated_content_OS/skills/cardiology/visual-design-system/.venv-manim/bin/python3
 import sys
 from manim.__main__ import main
 if __name__ == '__main__':

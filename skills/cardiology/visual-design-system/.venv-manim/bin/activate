@@ -35,11 +35,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/shaileshsingh/integrated cowriting system/skills/cardiology/visual-design-system/.venv-manim"
+VIRTUAL_ENV=/home/user/integrated_content_OS/skills/cardiology/visual-design-system/.venv-manim
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
-PATH="$VIRTUAL_ENV/bin:$PATH"
+PATH="$VIRTUAL_ENV/"bin":$PATH"
 export PATH
 
 # unset PYTHONHOME if set
@@ -52,9 +52,9 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-    PS1="(.venv-manim) ${PS1:-}"
+    PS1='(.venv-manim) '"${PS1:-}"
     export PS1
-    VIRTUAL_ENV_PROMPT="(.venv-manim) "
+    VIRTUAL_ENV_PROMPT='(.venv-manim) '
     export VIRTUAL_ENV_PROMPT
 fi
 
