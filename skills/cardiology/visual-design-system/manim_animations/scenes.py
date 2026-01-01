@@ -412,3 +412,399 @@ def _ecg_wave(points: List, color: str) -> VMobject:
     wave = VMobject(color=color, stroke_width=4)
     wave.set_points_as_corners(points)
     return wave
+
+
+# ============================================
+# ADDITIONAL DRUG MECHANISMS
+# ============================================
+
+class StatinMechanismScene(FlowScene):
+    TITLE = "Statin Mechanism"
+    STEPS = [
+        ("HMG-CoA inhibition", theme.COLORS["blue"]),
+        ("↓ Cholesterol synthesis", theme.COLORS["teal"]),
+        ("↑ LDL receptors", theme.COLORS["success"]),
+        ("↓ LDL-C", theme.COLORS["navy"]),
+    ]
+    OUTCOME = "30-50% LDL reduction"
+
+
+class PCSK9MechanismScene(FlowScene):
+    TITLE = "PCSK9 Inhibitor Pathway"
+    STEPS = [
+        ("PCSK9 antibody", theme.COLORS["blue"]),
+        ("Block PCSK9", theme.COLORS["teal"]),
+        ("LDL-R recycling", theme.COLORS["success"]),
+        ("↓↓ LDL-C", theme.COLORS["navy"]),
+    ]
+    OUTCOME = "50-60% additional LDL reduction"
+
+
+class DOACMechanismScene(FlowScene):
+    TITLE = "DOAC Mechanism"
+    STEPS = [
+        ("Factor Xa/IIa inhibition", theme.COLORS["blue"]),
+        ("Block clot formation", theme.COLORS["teal"]),
+        ("Prevent thrombus", theme.COLORS["success"]),
+        ("Stroke prevention", theme.COLORS["navy"]),
+    ]
+    OUTCOME = "64% stroke reduction in AF"
+
+
+class BetaBlockerMechanismScene(FlowScene):
+    TITLE = "Beta-Blocker Mechanism"
+    STEPS = [
+        ("β-receptor block", theme.COLORS["blue"]),
+        ("↓ Heart rate", theme.COLORS["teal"]),
+        ("↓ Contractility", theme.COLORS["success"]),
+        ("↓ O2 demand", theme.COLORS["navy"]),
+    ]
+    OUTCOME = "Mortality benefit in HFrEF"
+
+
+class CCBMechanismScene(FlowScene):
+    TITLE = "Calcium Channel Blocker"
+    STEPS = [
+        ("L-type Ca block", theme.COLORS["blue"]),
+        ("Vasodilation", theme.COLORS["teal"]),
+        ("↓ Afterload", theme.COLORS["success"]),
+        ("↓ Blood pressure", theme.COLORS["navy"]),
+    ]
+
+
+class DiureticMechanismScene(FlowScene):
+    TITLE = "Loop Diuretic Mechanism"
+    STEPS = [
+        ("Na-K-2Cl block", theme.COLORS["blue"]),
+        ("Natriuresis", theme.COLORS["teal"]),
+        ("Volume loss", theme.COLORS["success"]),
+        ("Decongestion", theme.COLORS["navy"]),
+    ]
+
+
+# ============================================
+# MORE ECG PATTERNS
+# ============================================
+
+class ECGSTEMIScene(Scene):
+    def construct(self) -> None:
+        title = Text(
+            "ECG: ST-Elevation MI",
+            font=theme.PRIMARY_FONT,
+            font_size=theme.FONT_SIZES["title"],
+            color=theme.COLORS["navy"],
+        ).to_edge(UP)
+
+        baseline = Line(LEFT * 5.5, RIGHT * 5.5, color=theme.COLORS["muted"]).shift(DOWN * 0.5)
+
+        points = [
+            LEFT * 5.5 + DOWN * 0.5,
+            LEFT * 4.6 + DOWN * 0.35,
+            LEFT * 4.0 + DOWN * 0.5,
+            LEFT * 3.4 + UP * 0.5,
+            LEFT * 3.2 + DOWN * 0.7,
+            LEFT * 2.8 + UP * 0.3,  # ST elevation starts
+            LEFT * 2.0 + UP * 0.4,  # Elevated segment
+            LEFT * 1.0 + UP * 0.2,
+            RIGHT * 0.5 + DOWN * 0.5,
+            RIGHT * 5.5 + DOWN * 0.5,
+        ]
+
+        wave = _ecg_wave(points, theme.COLORS["danger"])
+
+        arrow = Text(
+            "↑ ST elevation",
+            font=theme.PRIMARY_FONT,
+            font_size=theme.FONT_SIZES["small"],
+            color=theme.COLORS["danger"],
+        ).next_to(LEFT * 2.0 + UP * 0.4, UP, buff=0.3)
+
+        note = Text(
+            "Acute transmural ischemia",
+            font=theme.PRIMARY_FONT,
+            font_size=theme.FONT_SIZES["small"],
+            color=theme.COLORS["text"],
+        ).next_to(baseline, DOWN, buff=0.5)
+
+        self.play(FadeIn(title))
+        self.play(Create(baseline))
+        self.play(Create(wave))
+        self.play(FadeIn(arrow), FadeIn(note))
+        self.wait(0.5)
+
+
+class ECGHeartBlockScene(Scene):
+    def construct(self) -> None:
+        title = Text(
+            "ECG: Complete Heart Block",
+            font=theme.PRIMARY_FONT,
+            font_size=theme.FONT_SIZES["title"],
+            color=theme.COLORS["navy"],
+        ).to_edge(UP)
+
+        baseline = Line(LEFT * 5.5, RIGHT * 5.5, color=theme.COLORS["muted"]).shift(DOWN * 0.5)
+
+        # P waves at regular intervals
+        p_wave_1 = _ecg_wave([LEFT * 5.0 + DOWN * 0.5, LEFT * 4.7 + DOWN * 0.3, LEFT * 4.4 + DOWN * 0.5], theme.COLORS["blue"])
+        p_wave_2 = _ecg_wave([LEFT * 3.0 + DOWN * 0.5, LEFT * 2.7 + DOWN * 0.3, LEFT * 2.4 + DOWN * 0.5], theme.COLORS["blue"])
+        p_wave_3 = _ecg_wave([LEFT * 1.0 + DOWN * 0.5, LEFT * 0.7 + DOWN * 0.3, LEFT * 0.4 + DOWN * 0.5], theme.COLORS["blue"])
+        p_wave_4 = _ecg_wave([RIGHT * 1.0 + DOWN * 0.5, RIGHT * 1.3 + DOWN * 0.3, RIGHT * 1.6 + DOWN * 0.5], theme.COLORS["blue"])
+
+        # QRS at different, slower intervals (dissociated)
+        qrs_1 = _ecg_wave([LEFT * 4.0 + DOWN * 0.5, LEFT * 3.8 + UP * 0.4, LEFT * 3.6 + DOWN * 0.8, LEFT * 3.4 + DOWN * 0.5], theme.COLORS["danger"])
+        qrs_2 = _ecg_wave([RIGHT * 0.0 + DOWN * 0.5, RIGHT * 0.2 + UP * 0.4, RIGHT * 0.4 + DOWN * 0.8, RIGHT * 0.6 + DOWN * 0.5], theme.COLORS["danger"])
+        qrs_3 = _ecg_wave([RIGHT * 4.0 + DOWN * 0.5, RIGHT * 4.2 + UP * 0.4, RIGHT * 4.4 + DOWN * 0.8, RIGHT * 4.6 + DOWN * 0.5], theme.COLORS["danger"])
+
+        note = Text(
+            "P waves and QRS independent (AV dissociation)",
+            font=theme.PRIMARY_FONT,
+            font_size=theme.FONT_SIZES["small"],
+            color=theme.COLORS["text"],
+        ).next_to(baseline, DOWN, buff=0.5)
+
+        self.play(FadeIn(title))
+        self.play(Create(baseline))
+        self.play(Create(p_wave_1), Create(p_wave_2), Create(p_wave_3), Create(p_wave_4))
+        self.play(Create(qrs_1), Create(qrs_2), Create(qrs_3))
+        self.play(FadeIn(note))
+        self.wait(0.5)
+
+
+# ============================================
+# CLINICAL DECISION PATHWAYS
+# ============================================
+
+class ASCVDRiskScene(FlowScene):
+    TITLE = "ASCVD Risk Assessment"
+    STEPS = [
+        ("Risk factors", theme.COLORS["warning"]),
+        ("10-yr ASCVD", theme.COLORS["blue"]),
+        ("Risk-enhancers", theme.COLORS["teal"]),
+        ("Statin decision", theme.COLORS["success"]),
+    ]
+
+
+class CHA2DS2VAScScene(BarScene):
+    TITLE = "CHA2DS2-VASc Score"
+    BARS = [
+        ("0", 0, theme.COLORS["success"]),
+        ("1", 1, theme.COLORS["teal"]),
+        ("2", 2, theme.COLORS["warning"]),
+        ("≥3", 3, theme.COLORS["danger"]),
+    ]
+    FOOTNOTE = "Score ≥2 in men, ≥3 in women → anticoagulate"
+
+
+class HASBLEDScene(BarScene):
+    TITLE = "HAS-BLED Score"
+    BARS = [
+        ("0-2", 1.5, theme.COLORS["success"]),
+        ("3", 3, theme.COLORS["warning"]),
+        ("≥4", 4.5, theme.COLORS["danger"]),
+    ]
+    FOOTNOTE = "Higher scores = higher bleeding risk"
+
+
+class HeartScoreScene(FlowScene):
+    TITLE = "HEART Score for Chest Pain"
+    STEPS = [
+        ("History", theme.COLORS["blue"]),
+        ("ECG", theme.COLORS["teal"]),
+        ("Age", theme.COLORS["success"]),
+        ("Risk factors", theme.COLORS["warning"]),
+    ]
+    OUTCOME = "Troponin → Risk stratify"
+
+
+# ============================================
+# LANDMARK TRIAL RESULTS
+# ============================================
+
+class PARADIGMHFScene(KaplanMeierBaseScene):
+    TITLE = "PARADIGM-HF: Sacubitril/Valsartan"
+    TREATMENT_POINTS = [(0, 1.0), (6, 0.92), (12, 0.85), (18, 0.78), (24, 0.72), (30, 0.66)]
+    CONTROL_POINTS = [(0, 1.0), (6, 0.89), (12, 0.80), (18, 0.72), (24, 0.65), (30, 0.57)]
+    HR_TEXT = "HR 0.80, p<0.001 — 20% mortality reduction"
+
+
+class DAPAHFScene(KaplanMeierBaseScene):
+    TITLE = "DAPA-HF: Dapagliflozin in HFrEF"
+    TREATMENT_POINTS = [(0, 1.0), (6, 0.93), (12, 0.87), (18, 0.82)]
+    CONTROL_POINTS = [(0, 1.0), (6, 0.90), (12, 0.82), (18, 0.75)]
+    HR_TEXT = "HR 0.74, p<0.001 — 26% reduction"
+
+
+class EMPERORReducedScene(KaplanMeierBaseScene):
+    TITLE = "EMPEROR-Reduced: Empagliflozin"
+    TREATMENT_POINTS = [(0, 1.0), (6, 0.92), (12, 0.85), (18, 0.79)]
+    CONTROL_POINTS = [(0, 1.0), (6, 0.88), (12, 0.79), (18, 0.70)]
+    HR_TEXT = "HR 0.75, p<0.001 — 25% reduction"
+
+
+class FOURIERTrialScene(KaplanMeierBaseScene):
+    TITLE = "FOURIER: Evolocumab (PCSK9i)"
+    TREATMENT_POINTS = [(0, 1.0), (12, 0.95), (24, 0.90), (36, 0.86)]
+    CONTROL_POINTS = [(0, 1.0), (12, 0.93), (24, 0.87), (36, 0.82)]
+    HR_TEXT = "HR 0.85, p<0.001 — 15% MACE reduction"
+
+
+class SELECTTrialScene(KaplanMeierBaseScene):
+    TITLE = "SELECT: Semaglutide CV Outcomes"
+    TREATMENT_POINTS = [(0, 1.0), (12, 0.96), (24, 0.92), (36, 0.88), (48, 0.84)]
+    CONTROL_POINTS = [(0, 1.0), (12, 0.94), (24, 0.89), (36, 0.83), (48, 0.78)]
+    HR_TEXT = "HR 0.80, p<0.001 — 20% MACE reduction"
+
+
+# ============================================
+# COMPARISON SCENES
+# ============================================
+
+class StatinIntensityScene(ComparisonScene):
+    TITLE = "Statin Intensity Comparison"
+    LEFT_LABEL = "Moderate-intensity"
+    RIGHT_LABEL = "High-intensity"
+    LEFT_VALUE = "30-49% LDL↓"
+    RIGHT_VALUE = "≥50% LDL↓"
+    METRIC = "High-intensity for ASCVD"
+
+
+class DOACvsWarfarinScene(ComparisonScene):
+    TITLE = "DOAC vs Warfarin"
+    LEFT_LABEL = "Warfarin"
+    RIGHT_LABEL = "DOAC"
+    LEFT_VALUE = "INR 2-3"
+    RIGHT_VALUE = "Fixed dose"
+    METRIC = "DOACs: fewer ICH, no monitoring"
+
+
+class HFpEFvsHFrEFScene(ComparisonScene):
+    TITLE = "HFpEF vs HFrEF"
+    LEFT_LABEL = "HFpEF"
+    RIGHT_LABEL = "HFrEF"
+    LEFT_VALUE = "EF ≥50%"
+    RIGHT_VALUE = "EF ≤40%"
+    METRIC = "Different therapies, similar outcomes"
+
+
+# ============================================
+# ADDITIONAL BAR CHARTS
+# ============================================
+
+class HeartFailureGDMTScene(BarScene):
+    TITLE = "GDMT Mortality Reduction"
+    BARS = [
+        ("ACEi/ARB", 17, theme.COLORS["blue"]),
+        ("Beta-blocker", 34, theme.COLORS["teal"]),
+        ("MRA", 30, theme.COLORS["success"]),
+        ("SGLT2i", 25, theme.COLORS["navy"]),
+    ]
+    FOOTNOTE = "% mortality reduction"
+
+
+class LDLTargetsScene(BarScene):
+    TITLE = "LDL-C Targets by Risk"
+    BARS = [
+        ("Low", 130, theme.COLORS["success"]),
+        ("Moderate", 100, theme.COLORS["teal"]),
+        ("High", 70, theme.COLORS["blue"]),
+        ("Very high", 55, theme.COLORS["navy"]),
+    ]
+    FOOTNOTE = "LDL-C targets in mg/dL"
+
+
+class A1cTargetsScene(BarScene):
+    TITLE = "HbA1c Targets in DM"
+    BARS = [
+        ("Strict", 6.5, theme.COLORS["success"]),
+        ("Standard", 7.0, theme.COLORS["teal"]),
+        ("Relaxed", 8.0, theme.COLORS["blue"]),
+    ]
+    FOOTNOTE = "Individualize based on patient factors"
+
+
+# ============================================
+# ADDITIONAL TIMELINES
+# ============================================
+
+class ACSTreatmentTimelineScene(TimelineScene):
+    TITLE = "ACS Treatment Timeline"
+    EVENTS = [
+        ("0h", "ASA + P2Y12"),
+        ("2h", "Heparin"),
+        ("24h", "Statin"),
+        ("48h", "Beta-blocker"),
+    ]
+
+
+class PostMIRehabScene(TimelineScene):
+    TITLE = "Post-MI Rehabilitation"
+    EVENTS = [
+        ("Week 1", "Early mobilization"),
+        ("Week 2", "Outpatient rehab"),
+        ("Month 1", "Exercise program"),
+        ("Month 3", "Return to activity"),
+    ]
+
+
+class HFHospDischargeScene(TimelineScene):
+    TITLE = "HF Hospital Discharge"
+    EVENTS = [
+        ("Day 0", "Optimize GDMT"),
+        ("Day 1", "Euvolemia"),
+        ("Day 2-3", "Transition oral"),
+        ("1 week", "Follow-up"),
+    ]
+
+
+# ============================================
+# ADDITIONAL FLOW PATHWAYS
+# ============================================
+
+class ChestPainTriageScene(FlowScene):
+    TITLE = "Chest Pain Triage"
+    STEPS = [
+        ("Chest pain", theme.COLORS["warning"]),
+        ("ECG <10 min", theme.COLORS["blue"]),
+        ("Troponin", theme.COLORS["teal"]),
+        ("Risk score", theme.COLORS["success"]),
+    ]
+
+
+class SyncopeWorkupScene(FlowScene):
+    TITLE = "Syncope Workup"
+    STEPS = [
+        ("Syncope", theme.COLORS["warning"]),
+        ("History/PE", theme.COLORS["blue"]),
+        ("ECG", theme.COLORS["teal"]),
+        ("Risk stratify", theme.COLORS["success"]),
+    ]
+
+
+class PEWorkupScene(FlowScene):
+    TITLE = "Pulmonary Embolism Workup"
+    STEPS = [
+        ("Suspicion", theme.COLORS["warning"]),
+        ("Wells score", theme.COLORS["blue"]),
+        ("D-dimer", theme.COLORS["teal"]),
+        ("CTPA", theme.COLORS["success"]),
+    ]
+
+
+class HypertensionWorkupScene(FlowScene):
+    TITLE = "HTN Workup"
+    STEPS = [
+        ("Elevated BP", theme.COLORS["warning"]),
+        ("Confirm HTN", theme.COLORS["blue"]),
+        ("Assess risk", theme.COLORS["teal"]),
+        ("Lifestyle + Rx", theme.COLORS["success"]),
+    ]
+
+
+class PreopCardiacScene(FlowScene):
+    TITLE = "Preoperative Cardiac Evaluation"
+    STEPS = [
+        ("Surgery planned", theme.COLORS["blue"]),
+        ("ACS risk", theme.COLORS["warning"]),
+        ("Functional capacity", theme.COLORS["teal"]),
+        ("Testing?", theme.COLORS["success"]),
+    ]
