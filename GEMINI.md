@@ -5,6 +5,19 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, **Gemini CLI**.
 
 ---
 
+## ACTIVE PROJECT HANDOVERS
+
+> **Check these first if resuming multi-session work:**
+
+| Project | Handover File | Status |
+|---------|---------------|--------|
+| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | ✅ COMPLETE - Production Ready |
+| **Infographic System** | `INFOGRAPHIC-SYSTEM-HANDOVER.md` | ✅ COMPLETE - Production Ready |
+
+*To resume: Read the handover file first, then continue from "Current Progress" section.*
+
+---
+
 ## GEMINI: YOUR ROLE IN THIS SYSTEM
 
 > **CONTEXT FOR GEMINI CLI**
@@ -58,7 +71,7 @@ The user runs **both Gemini CLI and Claude Code** and switches based on:
 | **Research Guidelines** | RAG from AstraDB | `knowledge-pipeline`, ACC/ESC/ADA |
 | **Find Trending Topics** | Google Trends, Reddit, Perplexity | `social-media-trends-research` |
 | **Predict Viral Content** | ML scoring | `viral-content-predictor` |
-| **Generate Images** | Blog headers, infographics | `infographic-generator`, `gemini-imagegen` (YOUR native tool) |
+| **Generate Images** | Blog headers, infographics, animated viz | `infographic-generator` (6 templates), `antv_infographic` (200+ templates), `vizzu_animations` (animated data), `g2_charts` (grammar-based), `lida_quick_viz` (prototyping), `gemini-imagegen` (YOUR native tool) |
 | **Long Document Writing** | Chapters, deep research | `academic-chapter-writer`, `deep-researcher` |
 | **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
 | **Track Competitors** | Topol/Attia/Indian channels | `influencer-analyzer` |
@@ -138,6 +151,8 @@ python skills/cardiology/social-media-trends-research/scripts/trend_research.py 
 ---
 
 ## COMPLETE SKILLS INVENTORY (193+ Skills)
+
+**NEW:** 4 visualization frameworks integrated (AntV Infographic, Vizzu, G2, LIDA)
 
 ### Cardiology Skills (59 Skills)
 **Location:** `skills/cardiology/`

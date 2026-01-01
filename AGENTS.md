@@ -5,6 +5,19 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, Gemini CLI, **Codex CLI**
 
 ---
 
+## ACTIVE PROJECT HANDOVERS
+
+> **Check these first if resuming multi-session work:**
+
+| Project | Handover File | Status |
+|---------|---------------|--------|
+| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | ✅ COMPLETE - Production Ready |
+| **Infographic System** | `INFOGRAPHIC-SYSTEM-HANDOVER.md` | ✅ COMPLETE - Production Ready |
+
+*To resume: Read the handover file first, then continue from "Current Progress" section.*
+
+---
+
 ## CODEX: YOUR ROLE IN THIS SYSTEM
 
 > **CRITICAL CONTEXT FOR CODEX CLI**
@@ -108,7 +121,7 @@ When stopping mid-task, update `handover.md`:
 | **Query PubMed** | Python scripts | `pubmed-database` skill |
 | **Analyze Data** | Python + pandas | `viral-content-predictor` |
 | **Generate Charts** | Python + plotly | Data visualization |
-| **Generate Infographics** | Visual templates + Satori pipeline | `infographic-generator` |
+| **Generate Infographics** | 6 Satori templates + 200+ AntV templates | `infographic-generator`, `antv_infographic`, `vizzu_animations`, `g2_charts`, `lida_quick_viz` |
 | **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
 | **Track Competitors** | Topol/Attia/Indian channels | `influencer-analyzer` |
 | **Optimize SEO** | 3-agent P0/P1/P2 audit | `content-seo-optimizer` |
@@ -209,9 +222,11 @@ python pipelines/twitter-content/generate.py "GLP-1 cardiovascular effects"
 
 ---
 
-## COMPLETE SKILLS INVENTORY (187+ Skills)
+## COMPLETE SKILLS INVENTORY (193+ Skills)
 
-### Cardiology Skills (52 Skills)
+**NEW:** 4 visualization frameworks integrated (AntV Infographic, Vizzu, G2, LIDA)
+
+### Cardiology Skills (59 Skills)
 **Location:** `skills/cardiology/`
 
 #### YouTube & Hinglish Content
