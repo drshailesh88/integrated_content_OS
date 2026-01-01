@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "description": "Medical icon library manifest for visual content system",
+  "sources": [
+    {
+      "name": "medical-webfont",
+      "repo": "https://github.com/samcome/webfont-medical-icons",
+      "license": "MIT",
+      "path": "medical-webfont/packages/svg"
+    },
+    {
+      "name": "medic-icons",
+      "repo": "https://github.com/medic/icon-library",
+      "license": "Apache-2.0",
+      "path": "medic-icons/forms_tasks_targets/SVGs"
+    }
+  ],
+  "categories": {
+    "cardiology": {
+      "description": "Heart and cardiovascular icons",
+      "icons": [
+        { "name": "cardiology", "file": "medical-webfont/packages/svg/cardiology.svg" },
+        { "name": "cardiology-inverse", "file": "medical-webfont/packages/svg/i-cardiology.svg" },
+        { "name": "cath-lab", "file": "medical-webfont/packages/svg/cath-lab.svg" },
+        { "name": "cath-lab-inverse", "file": "medical-webfont/packages/svg/i-cath-lab.svg" }
+      ]
+    },
+    "conditions": {
+      "description": "Disease and condition icons",
+      "icons": [
+        { "name": "diabetes", "file": "medic-icons/forms_tasks_targets/SVGs/icon-disease-diabetes.svg" },
+        { "name": "respiratory", "file": "medical-webfont/packages/svg/respiratory.svg" },
+        { "name": "oncology", "file": "medical-webfont/packages/svg/oncology.svg" },
+        { "name": "neurology", "file": "medical-webfont/packages/svg/neurology.svg" },
+        { "name": "mental-health", "file": "medical-webfont/packages/svg/mental-health.svg" },
+        { "name": "infectious-diseases", "file": "medical-webfont/packages/svg/infectious-diseases.svg" }
+      ]
+    },
+    "diagnostics": {
+      "description": "Imaging and diagnostic icons",
+      "icons": [
+        { "name": "ultrasound", "file": "medical-webfont/packages/svg/ultrasound.svg" },
+        { "name": "mri", "file": "medical-webfont/packages/svg/imaging-alternative-mri.svg" },
+        { "name": "ct-scan", "file": "medical-webfont/packages/svg/imaging-alternative-ct.svg" },
+        { "name": "laboratory", "file": "medical-webfont/packages/svg/laboratory.svg" },
+        { "name": "radiology", "file": "medical-webfont/packages/svg/radiology.svg" },
+        { "name": "pathology", "file": "medical-webfont/packages/svg/pathology.svg" },
+        { "name": "mammography", "file": "medical-webfont/packages/svg/mammography.svg" }
+      ]
+    },
+    "treatment": {
+      "description": "Treatment and therapy icons",
+      "icons": [
+        { "name": "pharmacy", "file": "medical-webfont/packages/svg/pharmacy.svg" },
+        { "name": "surgery", "file": "medical-webfont/packages/svg/surgery.svg" },
+        { "name": "anesthesia", "file": "medical-webfont/packages/svg/anesthesia.svg" },
+        { "name": "physical-therapy", "file": "medical-webfont/packages/svg/physical-therapy.svg" },
+        { "name": "immunizations", "file": "medical-webfont/packages/svg/immunizations.svg" }
+      ]
+    },
+    "facilities": {
+      "description": "Hospital and facility icons",
+      "icons": [
+        { "name": "hospital", "file": "medical-webfont/packages/svg/hospital.svg" },
+        { "name": "emergency", "file": "medical-webfont/packages/svg/emergency.svg" },
+        { "name": "ambulance", "file": "medical-webfont/packages/svg/ambulance.svg" },
+        { "name": "intensive-care", "file": "medical-webfont/packages/svg/intensive-care.svg" },
+        { "name": "inpatient", "file": "medical-webfont/packages/svg/inpatient.svg" },
+        { "name": "outpatient", "file": "medical-webfont/packages/svg/outpatient.svg" }
+      ]
+    },
+    "specialties": {
+      "description": "Medical specialty icons",
+      "icons": [
+        { "name": "internal-medicine", "file": "medical-webfont/packages/svg/internal-medicine.svg" },
+        { "name": "pediatrics", "file": "medical-webfont/packages/svg/pediatrics.svg" },
+        { "name": "womens-health", "file": "medical-webfont/packages/svg/womens-health.svg" },
+        { "name": "dermatology", "file": "medical-webfont/packages/svg/dermatology.svg" },
+        { "name": "ophthalmology", "file": "medical-webfont/packages/svg/ophthalmology.svg" },
+        { "name": "genetics", "file": "medical-webfont/packages/svg/genetics.svg" }
+      ]
+    },
+    "lifestyle": {
+      "description": "Lifestyle and prevention icons",
+      "icons": [
+        { "name": "nutrition", "file": "medical-webfont/packages/svg/nutrition.svg" },
+        { "name": "smoking", "file": "medical-webfont/packages/svg/smoking.svg" },
+        { "name": "no-smoking", "file": "medical-webfont/packages/svg/no-smoking.svg" },
+        { "name": "health-education", "file": "medical-webfont/packages/svg/health-education.svg" },
+        { "name": "diabetes-education", "file": "medical-webfont/packages/svg/diabetes-education.svg" }
+      ]
+    },
+    "people": {
+      "description": "Healthcare worker and patient icons",
+      "icons": [
+        { "name": "family", "file": "medic-icons/forms_tasks_targets/SVGs/icon-people-family.svg" },
+        { "name": "nurse", "file": "medic-icons/forms_tasks_targets/SVGs/icon-people-nurse-crop.svg" },
+        { "name": "doctor-female", "file": "medic-icons/forms_tasks_targets/SVGs/icon-people-CHW-female.svg" },
+        { "name": "woman", "file": "medic-icons/forms_tasks_targets/SVGs/icon-people-woman.svg" },
+        { "name": "man", "file": "medic-icons/forms_tasks_targets/SVGs/icon-people-man.svg" },
+        { "name": "mother-baby", "file": "medic-icons/forms_tasks_targets/SVGs/icon-people-woman-baby.svg" }
+      ]
+    },
+    "status": {
+      "description": "Warning and status icons",
+      "icons": [
+        { "name": "warning-red", "file": "medic-icons/forms_tasks_targets/SVGs/icon-warning-red.svg" },
+        { "name": "warning-amber", "file": "medic-icons/forms_tasks_targets/SVGs/icon-warning-amber.svg" },
+        { "name": "warning-black", "file": "medic-icons/forms_tasks_targets/SVGs/icon-warning-black.svg" },
+        { "name": "danger-sign", "file": "medic-icons/forms_tasks_targets/SVGs/icon-healthcare-warning.svg" },
+        { "name": "first-aid", "file": "medical-webfont/packages/svg/first-aid.svg" }
+      ]
+    },
+    "organs": {
+      "description": "Organ and anatomy icons",
+      "icons": [
+        { "name": "kidney", "file": "medical-webfont/packages/svg/kidney.svg" }
+      ]
+    }
+  }
+}

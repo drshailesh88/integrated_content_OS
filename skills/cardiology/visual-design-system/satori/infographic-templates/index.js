@@ -29,6 +29,7 @@ const infographicChecklist = require('./infographic-checklist');
 const infographicTimeline = require('./infographic-timeline');
 const infographicQuote = require('./infographic-quote');
 const infographicRiskFactors = require('./infographic-risk-factors');
+const infographicMedicalStat = require('./infographic-medical-stat');
 
 // ============================================
 // BRAND CONSTANTS (from carousel tokens)
@@ -570,6 +571,7 @@ const INFOGRAPHIC_TEMPLATES = {
   'infographic-timeline': infographicTimeline,
   'infographic-quote': infographicQuote,
   'infographic-risk-factors': infographicRiskFactors,
+  'infographic-medical-stat': infographicMedicalStat,
 };
 
 /**
@@ -610,6 +612,7 @@ module.exports = {
   infographicTimeline,
   infographicQuote,
   infographicRiskFactors,
+  infographicMedicalStat,
 
   // Template registry
   INFOGRAPHIC_TEMPLATES,

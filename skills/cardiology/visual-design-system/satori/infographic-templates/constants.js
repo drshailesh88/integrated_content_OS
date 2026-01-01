@@ -516,6 +516,102 @@ function hexToRgba(hex, alpha = 1) {
   return `rgba(${r}, ${g}, ${b}, ${clampedAlpha})`;
 }
 
+// ============================================
+// MEDICAL SVG ICONS
+// ============================================
+
+// Lazy-load icon loader to avoid circular deps
+let iconLoader = null;
+function getIconLoader() {
+  if (!iconLoader) {
+    try {
+      iconLoader = require('../../icons/icon-loader');
+    } catch (e) {
+      console.warn('Medical icon loader not available:', e.message);
+      return null;
+    }
+  }
+  return iconLoader;
+}
+
+/**
+ * Create a Satori element using a medical SVG icon
+ *
+ * @param {string} iconName - Name from icon manifest (e.g., 'cardiology', 'diabetes')
+ * @param {object} options - Styling options
+ * @param {number} options.size - Icon size in pixels (default: 64)
+ * @param {string} options.color - SVG fill color (default: null = original colors)
+ * @param {string} options.backgroundColor - Background color (default: transparent)
+ * @param {number} options.borderRadius - Border radius (default: 0)
+ * @param {number} options.padding - Padding inside container (default: 0)
+ */
+function createMedicalIcon(iconName, options = {}) {
+  const loader = getIconLoader();
+  if (!loader) {
+    // Fallback to emoji if loader not available
+    return createIconContainer(iconName, options);
+  }
+
+  const {
+    size = 64,
+    color = null,
+    backgroundColor = 'transparent',
+    borderRadius = 0,
+    padding = 0,
+  } = options;
+
+  try {
+    const dataUri = loader.loadIconAsDataUri(iconName, { color });
+
+    return {
+      type: 'div',
+      props: {
+        style: {
+          width: `${size}px`,
+          height: `${size}px`,
+          padding: `${padding}px`,
+          backgroundColor,
+          borderRadius: `${borderRadius}px`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+        },
+        children: {
+          type: 'img',
+          props: {
+            src: dataUri,
+            width: size - (padding * 2),
+            height: size - (padding * 2),
+          },
+        },
+      },
+    };
+  } catch (e) {
+    // Fallback to emoji icon
+    console.warn(`Medical icon '${iconName}' not found, using fallback`);
+    return createIconContainer('heart', options);
+  }
+}
+
+/**
+ * List available medical icons
+ */
+function listMedicalIcons(category = null) {
+  const loader = getIconLoader();
+  if (!loader) return [];
+  return loader.listIcons(category);
+}
+
+/**
+ * List medical icon categories
+ */
+function listMedicalIconCategories() {
+  const loader = getIconLoader();
+  if (!loader) return [];
+  return loader.listCategories();
+}
+
 module.exports = {
   BRAND,
   DIMENSIONS,
@@ -528,4 +624,8 @@ module.exports = {
   createSectionCard,
   createTagBadge,
   hexToRgba,
+  // Medical icon support
+  createMedicalIcon,
+  listMedicalIcons,
+  listMedicalIconCategories,
 };
