@@ -4,12 +4,13 @@ import { MythSlide, MythSlideData } from './templates/MythSlide';
 import { StatSlide, StatSlideData } from './templates/StatSlide';
 import { TipsSlide, TipsSlideData } from './templates/TipsSlide';
 import { CTASlide, CTASlideData } from './templates/CTASlide';
+import { DataSlide, DataSlideData } from './templates/DataSlide';
 
-type SlideType = 'hook' | 'myth' | 'stat' | 'tips' | 'cta';
+type SlideType = 'hook' | 'myth' | 'stat' | 'tips' | 'cta' | 'data';
 
 interface SlideData {
   type: SlideType;
-  data: HookSlideData | MythSlideData | StatSlideData | TipsSlideData | CTASlideData;
+  data: HookSlideData | MythSlideData | StatSlideData | TipsSlideData | CTASlideData | DataSlideData;
 }
 
 export function RenderPage() {
@@ -78,6 +79,8 @@ export function RenderPage() {
         return <TipsSlide {...(slideData.data as TipsSlideData)} />;
       case 'cta':
         return <CTASlide {...(slideData.data as CTASlideData)} />;
+      case 'data':
+        return <DataSlide {...(slideData.data as DataSlideData)} />;
       default:
         return <div>Unknown slide type: {slideData.type}</div>;
     }

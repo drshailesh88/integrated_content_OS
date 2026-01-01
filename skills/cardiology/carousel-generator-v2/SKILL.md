@@ -78,11 +78,11 @@ OUTPUT
 | **STATS** | Big number + context | Data-driven insights |
 | **COMPARISON** | Before/after, vs layout | Contrasts, improvements |
 | **STORY** | Patient narrative, quote | Human interest, case studies |
-| **DATA** | Chart, graph, forest plot | Research results, evidence |
+| **DATA** | Chart, graph, forest plot | Research results, evidence (NEW: Plotly integration) |
 | **STEPS** | Process with numbered steps | How-to guides, procedures |
 | **MYTH** | Crossed-out myth + truth | Myth-busting, corrections |
 | **QUOTE** | Expert opinion | Authority, credibility |
-| **CTA** | Call to action | Last slide, follow prompt |
+| **CTA** | Call to action | Last slide, follow prompt (NEW: Config-based branding) |
 
 ---
 
@@ -399,11 +399,14 @@ kaleido>=0.2.0      # Plotly export (optional)
 ## Roadmap
 
 ### Completed
-- [x] Pillow rendering for all 10 slide types
+- [x] React + Puppeteer rendering (high fidelity)
 - [x] Brand token system
 - [x] Quality checking (WCAG, anti-AI, density)
-- [x] CLI interface
-- [x] Template presets
+- [x] CLI interface with dual-ratio support
+- [x] Template presets (5 carousel types)
+- [x] DataSlide with Plotly chart integration (NEW)
+- [x] Author profile configuration system (NEW)
+- [x] 4:5 and 1:1 dual-ratio rendering
 
 ### In Progress
 - [ ] AI content structuring (Claude/GPT-4o-mini)
@@ -411,11 +414,16 @@ kaleido>=0.2.0      # Plotly export (optional)
 - [ ] 4A Framework classifier
 
 ### Planned
-- [ ] Satori React rendering (optional)
-- [ ] Visual router (Pillow/Gemini/Plotly)
 - [ ] Caption and hashtag generator
 - [ ] Content-OS integration
 - [ ] Batch generation
+- [ ] Animated data visualizations
+
+### New Features Documentation
+See **NEW_FEATURES.md** for detailed documentation on:
+- DataSlide with Plotly charts (forest plots, bar charts, line graphs)
+- Author profile configuration system
+- Test suite and examples
 
 ---
 

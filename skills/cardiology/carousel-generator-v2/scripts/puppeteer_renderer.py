@@ -31,6 +31,7 @@ import os
 import subprocess
 import tempfile
 import time
+import sys
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Union
 
@@ -55,13 +56,14 @@ DIMENSIONS = {
 class PuppeteerRenderer:
     """Renders carousel slides using React + Puppeteer."""
 
-    def __init__(self, renderer_dir: Optional[str] = None, dimensions: str = "portrait"):
+    def __init__(self, renderer_dir: Optional[str] = None, dimensions: str = "portrait", account: int = 1):
         """
         Initialize the renderer.
 
         Args:
             renderer_dir: Path to the renderer React project. If None, uses default location.
             dimensions: Output dimensions ("square" or "portrait").
+            account: Author account to use (1 or 2). Defaults to 1.
         """
         if renderer_dir:
             self.renderer_dir = Path(renderer_dir)
@@ -73,6 +75,10 @@ class PuppeteerRenderer:
         self.dimensions = dimensions if dimensions in DIMENSIONS else "square"
         self.width = DIMENSIONS[self.dimensions]["width"]
         self.height = DIMENSIONS[self.dimensions]["height"]
+        self.account = account
+
+        # Load author config
+        self.author_config = self._load_author_config()
 
         # Verify the renderer exists
         if not self.render_script.exists():
@@ -80,6 +86,128 @@ class PuppeteerRenderer:
                 f"Render script not found at {self.render_script}. "
                 "Make sure npm dependencies are installed."
             )
+
+    def _load_author_config(self) -> Dict[str, Any]:
+        """Load author configuration from config file."""
+        config_path = Path(__file__).parent.parent / "config" / "author-config.json"
+
+        # Default config if file doesn't exist
+        default_config = {
+            "author": {
+                "name": "Dr Shailesh Singh",
+                "credentials": "Cardiologist | Evidence-Based Medicine",
+                "photo": "assets/5e4311be9235ba207024edfb13240abe8cf20f3f.png",
+                "accounts": {
+                    "1": {
+                        "handle": "@heartdocshailesh",
+                        "platform": "Instagram",
+                        "followerCount": "50K+",
+                        "bio": "Follow for evidence-based cardiology insights"
+                    },
+                    "2": {
+                        "handle": "@dr.shailesh.singh",
+                        "platform": "Instagram",
+                        "followerCount": "25K+",
+                        "bio": "Clinical cardiology and lifestyle medicine"
+                    }
+                },
+                "defaultAccount": "1"
+            },
+            "branding": {
+                "tagline": "Evidence-Based Cardiology",
+                "secondaryText": "New posts every week",
+                "valueProposition": "Follow for myth-busting cardiology content"
+            }
+        }
+
+        if config_path.exists():
+            try:
+                with open(config_path, 'r') as f:
+                    return json.load(f)
+            except Exception as e:
+                print(f"Warning: Failed to load author config: {e}. Using defaults.")
+                return default_config
+        else:
+            return default_config
+
+    def _generate_plotly_chart(
+        self,
+        chart_type: str,
+        data: Dict[str, Any],
+        output_path: str,
+        title: str = ""
+    ) -> str:
+        """
+        Generate a Plotly chart and save as PNG.
+
+        Args:
+            chart_type: Type of chart ('bar', 'forest', 'line', 'survival')
+            data: Chart data (varies by type)
+            output_path: Path to save PNG
+            title: Chart title
+
+        Returns:
+            Path to the saved chart image
+        """
+        # Add plotly_charts.py to path
+        plotly_script_dir = Path(__file__).parent.parent.parent / "cardiology-visual-system" / "scripts"
+        if plotly_script_dir.exists():
+            sys.path.insert(0, str(plotly_script_dir))
+
+        try:
+            from plotly_charts import (
+                create_bar_chart,
+                create_forest_plot,
+                create_trend_line,
+                create_survival_curve,
+                save_chart
+            )
+            import pandas as pd
+        except ImportError:
+            print("Warning: Plotly not available. Data slides will use StatSlide template.")
+            return None
+
+        # Generate chart based on type
+        fig = None
+
+        if chart_type == "bar" and "data" in data:
+            df = pd.DataFrame(data["data"])
+            x = data.get("x", df.columns[0])
+            y = data.get("y", df.columns[1])
+            color = data.get("color", None)
+            fig = create_bar_chart(df, x, y, title, color)
+
+        elif chart_type == "forest" and "studies" in data:
+            fig = create_forest_plot(
+                studies=data["studies"],
+                estimates=data["estimates"],
+                lower_ci=data["lower_ci"],
+                upper_ci=data["upper_ci"],
+                title=title,
+                null_value=data.get("null_value", 1.0)
+            )
+
+        elif chart_type == "line" and "data" in data:
+            df = pd.DataFrame(data["data"])
+            x = data.get("x", df.columns[0])
+            y = data.get("y", df.columns[1])
+            color = data.get("color", None)
+            fig = create_trend_line(df, x, y, title, color)
+
+        elif chart_type == "survival" and "time_data" in data:
+            fig = create_survival_curve(
+                time_data=data["time_data"],
+                survival_data=data["survival_data"],
+                group_names=data["group_names"],
+                title=title
+            )
+
+        if fig:
+            # Save chart at publication quality
+            save_chart(fig, output_path, width=800, height=600, scale=4)
+            return output_path
+
+        return None
 
     def _normalize_icon_name(self, icon: Optional[str]) -> Optional[str]:
         """Normalize icon names to lucide-react PascalCase where possible."""
@@ -164,7 +292,7 @@ class PuppeteerRenderer:
                 },
             }
 
-        if slide_type in ["stats", "data"]:
+        if slide_type == "stats":
             context, source = self._split_context_source(
                 slide.stat_context or slide.body or "",
                 slide.source
@@ -179,7 +307,63 @@ class PuppeteerRenderer:
                     "context": context,
                     "source": source or "",
                     "icon": self._normalize_icon_name(slide.icon_name or "TrendingUp"),
-                    "color": "green" if slide_type == "stats" else "teal",
+                    "color": "green",
+                    "dimensions": self.dimensions,
+                },
+            }
+
+        if slide_type == "data":
+            # Check if slide has chart data that should use Plotly
+            if hasattr(slide, "chart_data") and slide.chart_data:
+                # Generate Plotly chart
+                chart_type = getattr(slide, "chart_type", "bar")
+                chart_title = slide.title or "Data Visualization"
+
+                # Create temp file for chart
+                import uuid
+                chart_filename = f"chart_{uuid.uuid4().hex[:8]}.png"
+                chart_path = Path(tempfile.gettempdir()) / chart_filename
+
+                # Generate chart
+                chart_file = self._generate_plotly_chart(
+                    chart_type=chart_type,
+                    data=slide.chart_data,
+                    output_path=str(chart_path),
+                    title=chart_title
+                )
+
+                if chart_file:
+                    # Return DataSlide with chart
+                    return {
+                        "type": "data",
+                        "data": {
+                            "slideNumber": slide_number,
+                            "totalSlides": total_slides,
+                            "title": chart_title,
+                            "chartPath": chart_file,
+                            "caption": getattr(slide, "stat_context", None) or getattr(slide, "body", None),
+                            "source": getattr(slide, "source", None),
+                            "icon": self._normalize_icon_name(getattr(slide, "icon_name", None) or "BarChart3"),
+                            "dimensions": self.dimensions,
+                        },
+                    }
+
+            # Fallback to StatSlide if no chart data or Plotly unavailable
+            context, source = self._split_context_source(
+                slide.stat_context or slide.body or "",
+                slide.source
+            )
+            return {
+                "type": "stat",
+                "data": {
+                    "slideNumber": slide_number,
+                    "totalSlides": total_slides,
+                    "stat": slide.statistic or "",
+                    "label": slide.stat_label or slide.title or "",
+                    "context": context,
+                    "source": source or "",
+                    "icon": self._normalize_icon_name(slide.icon_name or "TrendingUp"),
+                    "color": "teal",
                     "dimensions": self.dimensions,
                 },
             }
@@ -252,17 +436,30 @@ class PuppeteerRenderer:
             }
 
         if slide_type == "cta":
+            # Get author and account info from config
+            author = self.author_config.get("author", {})
+            account_str = str(self.account)
+            account_info = author.get("accounts", {}).get(account_str, {})
+            branding = self.author_config.get("branding", {})
+
+            # Resolve photo path relative to renderer/src directory
+            photo_path = author.get("photo", "assets/5e4311be9235ba207024edfb13240abe8cf20f3f.png")
+            # Convert to path accessible from React app (starts with @ for alias or src/ for relative)
+            if not photo_path.startswith("@/") and not photo_path.startswith("http"):
+                photo_path = f"@/{photo_path}"
+
             return {
                 "type": "cta",
                 "data": {
                     "slideNumber": slide_number,
                     "totalSlides": total_slides,
-                    "name": "Dr Shailesh Singh",
-                    "credentials": "Cardiologist | Evidence-Based Medicine",
-                    "handle": slide.cta_handle or "@dr.shailesh.singh",
-                    "valueProposition": slide.cta_text or "Follow for evidence-based cardiology",
-                    "secondaryText": "",
-                    "followerCount": "",
+                    "name": author.get("name", "Dr Shailesh Singh"),
+                    "credentials": author.get("credentials", "Cardiologist | Evidence-Based Medicine"),
+                    "handle": slide.cta_handle or account_info.get("handle", "@dr.shailesh.singh"),
+                    "valueProposition": slide.cta_text or branding.get("valueProposition", "Follow for evidence-based cardiology"),
+                    "secondaryText": branding.get("secondaryText", ""),
+                    "followerCount": account_info.get("followerCount", ""),
+                    "photoPath": photo_path,
                     "dimensions": self.dimensions,
                 },
             }
@@ -506,29 +703,112 @@ class PuppeteerRenderer:
             }
         }
 
+    def create_data_slide(
+        self,
+        slide_number: int,
+        total_slides: int,
+        title: str,
+        chart_data: Dict[str, Any],
+        chart_type: str = "bar",
+        caption: Optional[str] = None,
+        source: Optional[str] = None,
+        icon: Optional[str] = None,
+        output_dir: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Create a data slide with Plotly chart.
+
+        Args:
+            slide_number: Slide number
+            total_slides: Total slides in carousel
+            title: Slide title
+            chart_data: Data for Plotly chart (format varies by chart_type)
+            chart_type: Type of chart ('bar', 'forest', 'line', 'survival')
+            caption: Optional caption below chart
+            source: Data source citation
+            icon: Icon name (lucide-react)
+            output_dir: Directory to save chart PNG (uses temp dir if None)
+
+        Returns:
+            Slide data dictionary
+        """
+        # Generate Plotly chart
+        import uuid
+        chart_filename = f"chart_{uuid.uuid4().hex[:8]}.png"
+
+        if output_dir:
+            chart_path = Path(output_dir) / chart_filename
+        else:
+            chart_path = Path(tempfile.gettempdir()) / chart_filename
+
+        chart_file = self._generate_plotly_chart(
+            chart_type=chart_type,
+            data=chart_data,
+            output_path=str(chart_path),
+            title=title
+        )
+
+        if chart_file:
+            return {
+                "type": "data",
+                "data": {
+                    "slideNumber": slide_number,
+                    "totalSlides": total_slides,
+                    "title": title,
+                    "chartPath": chart_file,
+                    "caption": caption,
+                    "source": source,
+                    "icon": self._normalize_icon_name(icon or "BarChart3"),
+                    "dimensions": self.dimensions,
+                },
+            }
+        else:
+            # Fallback to stat slide if Plotly unavailable
+            return self.create_stat_slide(
+                slide_number=slide_number,
+                total_slides=total_slides,
+                stat="Data",
+                label=title,
+                context=caption,
+                source=source,
+                icon=icon or "BarChart3"
+            )
+
     def create_cta_slide(
         self,
         slide_number: int,
         total_slides: int,
-        value_proposition: str,
-        name: str = "Dr Shailesh Singh",
-        credentials: str = "Cardiologist | Evidence-Based Medicine",
-        handle: str = "@dr.shailesh.singh",
+        value_proposition: Optional[str] = None,
+        name: Optional[str] = None,
+        credentials: Optional[str] = None,
+        handle: Optional[str] = None,
         secondary_text: Optional[str] = None,
         follower_count: Optional[str] = None
     ) -> Dict[str, Any]:
-        """Create a CTA slide data structure."""
+        """Create a CTA slide data structure using author config."""
+        # Get author and account info from config
+        author = self.author_config.get("author", {})
+        account_str = str(self.account)
+        account_info = author.get("accounts", {}).get(account_str, {})
+        branding = self.author_config.get("branding", {})
+
+        # Resolve photo path
+        photo_path = author.get("photo", "assets/5e4311be9235ba207024edfb13240abe8cf20f3f.png")
+        if not photo_path.startswith("@/") and not photo_path.startswith("http"):
+            photo_path = f"@/{photo_path}"
+
         return {
             "type": "cta",
             "data": {
                 "slideNumber": slide_number,
                 "totalSlides": total_slides,
-                "name": name,
-                "credentials": credentials,
-                "handle": handle,
-                "valueProposition": value_proposition,
-                "secondaryText": secondary_text,
-                "followerCount": follower_count,
+                "name": name or author.get("name", "Dr Shailesh Singh"),
+                "credentials": credentials or author.get("credentials", "Cardiologist | Evidence-Based Medicine"),
+                "handle": handle or account_info.get("handle", "@dr.shailesh.singh"),
+                "valueProposition": value_proposition or branding.get("valueProposition", "Follow for evidence-based cardiology"),
+                "secondaryText": secondary_text or branding.get("secondaryText", ""),
+                "followerCount": follower_count or account_info.get("followerCount", ""),
+                "photoPath": photo_path,
                 "dimensions": self.dimensions,
             }
         }
