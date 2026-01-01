@@ -26,6 +26,9 @@ const infographicComparison = require('./infographic-comparison');
 const infographicMyth = require('./infographic-myth');
 const infographicProcess = require('./infographic-process');
 const infographicChecklist = require('./infographic-checklist');
+const infographicTimeline = require('./infographic-timeline');
+const infographicQuote = require('./infographic-quote');
+const infographicRiskFactors = require('./infographic-risk-factors');
 
 // ============================================
 // BRAND CONSTANTS (from carousel tokens)
@@ -564,6 +567,9 @@ const INFOGRAPHIC_TEMPLATES = {
   'infographic-myth': infographicMyth,
   'infographic-process': infographicProcess,
   'infographic-checklist': infographicChecklist,
+  'infographic-timeline': infographicTimeline,
+  'infographic-quote': infographicQuote,
+  'infographic-risk-factors': infographicRiskFactors,
 };
 
 /**
@@ -601,6 +607,9 @@ module.exports = {
   infographicMyth,
   infographicProcess,
   infographicChecklist,
+  infographicTimeline,
+  infographicQuote,
+  infographicRiskFactors,
 
   // Template registry
   INFOGRAPHIC_TEMPLATES,
