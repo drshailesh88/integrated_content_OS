@@ -1,0 +1,9 @@
+#!/bin/sh
+'''exec' "/Users/shaileshsingh/integrated cowriting system/skills/cardiology/visual-design-system/.venv-manim/bin/python" "$0" "$@"
+' '''
+import sys
+from Cython.Build.Cythonize import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())

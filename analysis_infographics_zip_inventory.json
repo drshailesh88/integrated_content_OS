@@ -1,0 +1,1094 @@
+{
+  "total_zips": 54,
+  "all_exts_top20": {
+    ".tsx": 2808,
+    ".ts": 162,
+    ".md": 162,
+    ".css": 108,
+    ".html": 54,
+    ".json": 54,
+    ".png": 54
+  },
+  "zips": [
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (1).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (10).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (11).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (12).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (13).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (14).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (15).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (16).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (17).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (18).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (19).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (2).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (20).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (21).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (22).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (23).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (24).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (25).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (26).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (27).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (28).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (29).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (3).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (30).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (31).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (32).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (33).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (34).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (35).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (36).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (37).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (38).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (39).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (4).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (40).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (41).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (42).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (43).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (44).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (45).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (46).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (47).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (48).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (49).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (5).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (50).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (51).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (52).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (53).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (54).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (6).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (7).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (8).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    },
+    {
+      "zip": "/Users/shaileshsingh/Downloads/Create Infographic Design (9).zip",
+      "file_count": 63,
+      "exts": {
+        ".tsx": 52,
+        ".ts": 3,
+        ".md": 3,
+        ".css": 2,
+        ".html": 1,
+        ".json": 1,
+        ".png": 1
+      },
+      "top_level": {
+        "src": 59,
+        "vite.config.ts": 1,
+        "index.html": 1,
+        "package.json": 1,
+        "README.md": 1
+      }
+    }
+  ]
+}

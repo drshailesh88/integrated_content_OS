@@ -10,7 +10,9 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, **Gemini CLI**.
 > **CONTEXT FOR GEMINI CLI**
 > You are Gemini, operating as a **parallel writer** in this integrated content system. You share this codebase with Claude Code. The user may switch between you and Claude on-demand based on availability, cost, or task fit.
 >
-> **YOUR STRENGTHS:** Long-context processing, research synthesis, fact-checking, free tier availability, image generation via native API.
+> **YOUR STRENGTHS:** Long-context processing, research synthesis, fact-checking, image generation via native API.
+>
+> **AUTHENTICATION:** You are running on the user's **Gemini Advanced Pro subscription** (OAuth login via `gemini auth login`), NOT API billing. No API key is used for your operation.
 >
 > **SKILL ROUTING:** See `SKILL-CATALOG.md` for purpose-based skill lookup ("I want to do X → use skill Y").
 
@@ -21,8 +23,8 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, **Gemini CLI**.
 ### On-Demand Switching Model
 The user runs **both Gemini CLI and Claude Code** and switches based on:
 - Whichever terminal is free
-- Cost optimization (you have free tier)
 - Task fit (you excel at research, long documents)
+- All models run on Pro subscriptions (no per-token billing)
 
 ### Avoiding Conflicts
 1. **Check before writing:** If working on a file, check if it was recently modified
@@ -56,8 +58,12 @@ The user runs **both Gemini CLI and Claude Code** and switches based on:
 | **Research Guidelines** | RAG from AstraDB | `knowledge-pipeline`, ACC/ESC/ADA |
 | **Find Trending Topics** | Google Trends, Reddit, Perplexity | `social-media-trends-research` |
 | **Predict Viral Content** | ML scoring | `viral-content-predictor` |
-| **Generate Images** | Blog headers, infographics | `gemini-imagegen` (YOUR native tool) |
+| **Generate Images** | Blog headers, infographics | `infographic-generator`, `gemini-imagegen` (YOUR native tool) |
 | **Long Document Writing** | Chapters, deep research | `academic-chapter-writer`, `deep-researcher` |
+| **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
+| **Track Competitors** | Topol/Attia/Indian channels | `influencer-analyzer` |
+| **Optimize SEO** | 3-agent P0/P1/P2 audit | `content-seo-optimizer` |
+| **Score Content Ideas** | Multi-model consensus | `ensemble-content-scorer` |
 
 ---
 
@@ -131,69 +137,118 @@ python skills/cardiology/social-media-trends-research/scripts/trend_research.py 
 
 ---
 
-## COMPLETE SKILLS INVENTORY (181+ Skills)
+## COMPLETE SKILLS INVENTORY (193+ Skills)
 
-### Cardiology Skills (46 Skills)
+### Cardiology Skills (59 Skills)
 **Location:** `skills/cardiology/`
+
 
 #### YouTube & Hinglish Content
 | Skill | Purpose |
 |-------|---------|
-| `youtube-script-master` | Data-driven Hinglish scripts, 15-30 min |
-| `youtube-script-hinglish` | Hinglish voice patterns |
-| `debunk-script-writer` | Counter misinformation, 8 narratives |
-| `hook-generator` | Viral hooks for YouTube |
+| `cardiology-youtube-scriptwriter` | Complete workflow from "Hello" to finished script. Combin... |
+| `debunk-script-writer` | > Location: `/.claude/skills/youtube-script-master/SKILL.... |
+| `hook-generator` | Metadata - Name: hook-generator - Version: 1.0 - Purpose:... |
+| `youtube-script-hinglish` | > Location: `/.claude/skills/youtube-script-master/SKILL.... |
+| `youtube-script-master` | Data-driven Hinglish YouTube scripts (15-30 min) |
 
 #### Twitter/X & Social Media
 | Skill | Purpose |
 |-------|---------|
-| `x-post-creator-skill` | Twitter posts with frameworks + 6 references |
-| `cardiology-tweet-writer` | Tweet writing + seed ideas + modifiers |
-| `cremieux-cardio` | Data-driven posts with visualizations |
-| `twitter-longform-medical` | Long-form threads |
-| `cardiology-content-repurposer` | Multi-platform adaptation |
+| `cardiology-content-repurposer` | Overview |
+| `cardiology-tweet-writer` | Simplified tweet generation with seed + modifier permutation |
+| `cremieux-cardio` | You're a cardiologist with a point of view, writing for s... |
+| `twitter-longform-medical` | Write data-driven, evidence-first long-form Twitter conte... |
+| `x-post-creator-skill` | Twitter thought leadership with frameworks (batches of 10) |
 
 #### Newsletters & Editorials
 | Skill | Purpose |
 |-------|---------|
-| `cardiology-newsletter-writer` | Newsletter + anti-AI guidelines |
-| `medical-newsletter-writer` | Topol style guide + workflow |
-| `cardiology-editorial` | Eric Topol style, hybrid scoring |
-| `cardiology-trial-editorial` | Trial analysis + scoring script |
-| `cardiology-topol-writer` | Transform thought dumps |
-| `academic-chapter-writer` | 5,000-15,000 word chapters (YOUR STRENGTH) |
-| `cardiology-science-for-people` | General audience writing |
+| `academic-chapter-writer` | Transform topics into publishable textbook chapters with ... |
+| `cardiology-editorial` | This skill transforms you into a specialized cardiology e... |
+| `cardiology-newsletter-writer` | Newsletter creation with Topol style + anti-AI guidelines |
+| `cardiology-science-for-people` | Write rigorous cardiology science that real people actual... |
+| `cardiology-topol-writer` | Transform unstructured thought dumps into polished cardio... |
+| `cardiology-trial-editorial` | Landmark trial editorials with scoring + infographics |
+| `cardiology-writer` | Transform unstructured thought dumps into polished cardio... |
+| `medical-newsletter-writer` | Create high-quality, evidence-based medical newsletters i... |
 
 #### Research & Discovery
 | Skill | Purpose |
 |-------|---------|
-| `social-media-trends-research` | pytrends + Reddit + Perplexity |
-| `viral-content-predictor` | ML prediction + analysis |
-| `knowledge-pipeline` | RAG + PubMed synthesis |
-| `deep-researcher` | Multi-layered research (YOUR STRENGTH) |
-| `perplexity-search` | AI-powered web search |
-| `literature-review` | Systematic reviews |
+| `citation-management` | Systematic citation management for accurate referencing i... |
+| `clinicaltrials-database` | Query the U.S. National Library of Medicine's clinical tr... |
+| `content-marketing-social-listening` | Overview |
+| `content-research-writer` | This skill acts as your writing partner, helping you rese... |
+| `content-trend-researcher` | A comprehensive content research and analysis skill desig... |
+| `deep-researcher` | Comprehensive research methodology with file-based tracki... |
+| `knowledge-pipeline` | RAG system for AstraDB guidelines + PubMed synthesis |
+| `literature-review` | Comprehensive, systematic literature reviews following ri... |
+| `perplexity-search` | Overview |
+| `research-synthesizer` | Metadata - Name: research-synthesizer - Version: 1.0 - Pu... |
+| `social-media-trends-research` | Zero-cost trend research using pytrends + Reddit + Perple... |
+| `viral-content-predictor` | ML-based viral potential scoring (0-100) |
+
+#### Research Amplification
+| Skill | Purpose |
+|-------|---------|
+| `content-seo-optimizer` | 3-agent SEO pipeline: scrapes content → analyzes SERP → P... |
+| `ensemble-content-scorer` | Multi-model consensus scoring: Claude + GPT-4o + Gemini s... |
+| `influencer-analyzer` | Track Topol, Attia, York Cardiology, Indian channels. Dis... |
+| `parallel-literature-search` | Parallel search across PubMed + Perplexity + RAG. All sou... |
+| `quick-topic-researcher` | 5-min topic mastery: generates 5 questions → parallel Pub... |
+| `research-paper-extractor` | Extract structured data from cardiology research paper PD... |
+| `video-delivery-coach` | Analyze video recordings: voice (pace, pitch), facial (em... |
 
 #### Quality & Voice
 | Skill | Purpose |
 |-------|---------|
-| `authentic-voice` | AI detection elimination |
-| `content-reflection` | Pre-publish QA |
+| `authentic-voice` | AI detection avoidance and human-sounding content verific... |
+| `content-reflection` | A rigorous pre-publication review system that evaluates c... |
+| `scientific-critical-thinking` | Systematic evaluation of research rigor through methodolo... |
 
 #### Visual Content
 | Skill | Purpose |
 |-------|---------|
-| `cardiology-visual-system` | Auto-routes to best tool |
-| `gemini-imagegen` | Gemini API images (YOUR NATIVE TOOL) |
+| `cardiology-visual-system` | Intelligent routing to optimal visual tool (Fal.ai, Gemin... |
+| `carousel-generator` | Generate branded Instagram carousels (1080x1080px) from t... |
+| `carousel-generator-v2` | World-class Instagram carousel generator with AI content ... |
+| `gemini-imagegen` | Generate and edit images using Google's Gemini API. The e... |
+| `infographic-generator` | Publication-grade infographics from the visual-design-system templates |
 
-### Scientific Skills (135 Skills)
+#### Multi-Model & Utilities
+| Skill | Purpose |
+|-------|---------|
+| `article-extractor` | This skill extracts the main content from web articles an... |
+| `browser-automation` | Use your ChatGPT Plus and Gemini Advanced subscriptions t... |
+| `content-os` | The "produce everything" button. Give one seed idea → get... |
+| `mcp-management` | Skill for managing and interacting with Model Context Pro... |
+| `multi-model-writer` | Unified routing to 6 LLM models (Claude, GPT, Gemini, Gro... |
+| `system-awareness` | Philosophy |
+
+#### Other
+| Skill | Purpose |
+|-------|---------|
+| `analyze-ecg-waveforms-uploaded` | Analyze ECG waveforms from uploaded images to detect arrh... |
+| `clinical-decision-support` | Generate professional clinical decision support documents... |
+| `clinical-reports` | Professional clinical documentation covering case reports... |
+| `peer-review` | Systematic framework for conducting rigorous peer review ... |
+| `scientific-writing` | Core skill for producing research manuscripts, evidence-b... |
+| `statistical-analysis` | Rigorous statistical analysis guidance for interpreting a... |
+| `transcribe-audio-podcast-interviews` | Transcribe audio from podcast interviews |
+| `visual-design-system` | Purpose: Publication-grade design tokens and utilities fo... |
+| `youtube-comment-analyzer` | Trigger phrases: - "Analyze comments for [URL]" - "Analyz... |
+
+### Scientific Skills (134 Skills)
 **Location:** `skills/scientific/`
 
-**Databases:** alphafold, biorxiv, chembl, clinicaltrials, clinvar, cosmic, drugbank, ensembl, gnomad, gwas-catalog, kegg, pdb, pubmed, reactome, string, uniprot
+Located in `skills/scientific/`
 
-**Bioinformatics:** biopython, scanpy, anndata, cellxgene-census, deepchem, genomics-tools
+**Databases:** alphafold-database, biorxiv-database, brenda-database, chembl-database, clinicaltrials-database, clinpgx-database, clinvar-database, cosmic-database, drugbank-database, ena-database, ensembl-database, fda-database, gene-database, geo-database, gwas-database, hmdb-database
 
-**Data Science:** dask, pandas-workflows, plotly, polars, pytorch, scikit-learn, scipy, seaborn, statsmodels
+**Bioinformatics:** anndata, biomni, biopython, bioservices, latchbio-integration, scanpy, scikit-bio, scvi-tools
+
+**Data Science:** dask, geopandas, plotly, pytorch-lightning, scikit-learn, scikit-survival, statsmodels, torch_geometric, torchdrug
 
 ---
 
@@ -300,29 +355,42 @@ integrated cowriting system/
 
 ---
 
-## API KEYS (.env)
+## AUTHENTICATION
 
-You have access to these via environment variables:
+### Your Login (Gemini CLI)
+You operate on the user's **Gemini Advanced Pro subscription**, authenticated via OAuth:
+```bash
+# Already authenticated - no action needed
+gemini auth login  # If re-auth needed, opens browser for Google account
+```
+
+**You do NOT use `GOOGLE_API_KEY` or `GEMINI_API_KEY` for your operation.** Those keys in `.env` are only for Python scripts that call the Gemini API directly (like `gemini-imagegen`).
+
+### API Keys in .env (For Python Scripts Only)
+These environment variables are used by **research pipelines and scripts**, not by your CLI:
 
 ```env
-# MANDATORY
-NCBI_API_KEY                    # PubMed
-GOOGLE_API_KEY                  # Gemini (YOUR API)
-ASTRA_DB_API_ENDPOINT           # RAG
-ASTRA_DB_APPLICATION_TOKEN      # RAG
+# Research Infrastructure (used by Python scripts)
+NCBI_API_KEY                    # PubMed API for knowledge-pipeline
+ASTRA_DB_API_ENDPOINT           # RAG vector database
+ASTRA_DB_APPLICATION_TOKEN      # RAG authentication
 
-# Other LLMs (for multi-model-writer)
-ANTHROPIC_API_KEY               # Claude
-OPENAI_API_KEY                  # GPT
+# Image Generation Scripts
+GOOGLE_API_KEY                  # For gemini-imagegen Python script
+FAL_KEY                         # For fal.ai image generation
+
+# Multi-Model Router (for multi-model-writer skill)
+ANTHROPIC_API_KEY               # Claude API
+OPENAI_API_KEY                  # GPT API
 OPENROUTER_API_KEY              # Multiple models
-
-# Visual
-FAL_KEY                         # Fal.ai
-GEMINI_API_KEY                  # Gemini images (YOU)
 
 # Scraping
 APIFY_API_KEY                   # Twitter scraping
 ```
+
+**Key distinction:**
+- **Gemini CLI (you)** = Pro subscription via OAuth
+- **Python scripts** = API keys from .env
 
 ---
 
@@ -417,4 +485,4 @@ cat handover.md
 
 ---
 
-*This is Dr. Shailesh Singh's integrated content operating system. You (Gemini) are a parallel writer alongside Claude Code. Use your strengths: long context, research synthesis, image generation, and free tier availability.*
+*This is Dr. Shailesh Singh's integrated content operating system. You (Gemini) are a parallel writer alongside Claude Code, running on a Gemini Advanced Pro subscription. Use your strengths: long context, research synthesis, and image generation.*

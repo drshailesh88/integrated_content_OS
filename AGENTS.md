@@ -16,10 +16,18 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, Gemini CLI, **Codex CLI**
 > **Your mission:** Write cardiology content following the voice standards and skills in this system. Use your code execution abilities to run research scripts, but your primary output is WRITING.
 
 ### Why You're Here
-- The user has a ChatGPT Pro subscription (you're already paid for)
+- The user has a **ChatGPT Pro subscription** (you're authenticated via `codex auth`, NOT API billing)
 - GPT-4o excels at structured, analytical content
 - You can run Python scripts for research
 - You're part of a 3-model parallel writing system
+
+### Authentication
+You operate on the user's **ChatGPT Pro subscription**, authenticated via OAuth:
+```bash
+# Already authenticated - no action needed
+codex auth  # If re-auth needed, opens browser for OpenAI account
+```
+**You do NOT use `OPENAI_API_KEY` for your operation.** That key is only for Python scripts.
 
 ### Your Parallel Writers
 | Model | Context File | Primary Strength |
@@ -100,6 +108,11 @@ When stopping mid-task, update `handover.md`:
 | **Query PubMed** | Python scripts | `pubmed-database` skill |
 | **Analyze Data** | Python + pandas | `viral-content-predictor` |
 | **Generate Charts** | Python + plotly | Data visualization |
+| **Generate Infographics** | Visual templates + Satori pipeline | `infographic-generator` |
+| **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
+| **Track Competitors** | Topol/Attia/Indian channels | `influencer-analyzer` |
+| **Optimize SEO** | 3-agent P0/P1/P2 audit | `content-seo-optimizer` |
+| **Score Content Ideas** | Multi-model consensus | `ensemble-content-scorer` |
 
 ---
 
@@ -109,6 +122,7 @@ When stopping mid-task, update `handover.md`:
 You can invoke skills by mentioning them:
 - `$youtube-script-master` - Generate YouTube script
 - `$cardiology-tweet-writer` - Write tweets
+- `$infographic-generator` - Generate an infographic
 - `$viral-content-predictor` - Analyze content ideas
 
 ### Skill Locations
@@ -121,13 +135,14 @@ skills/cardiology/
 │   └── scripts/           # Executable helpers
 ├── x-post-creator-skill/
 ├── cardiology-newsletter-writer/
-└── ... (46 total skills)
+└── ... (59 total skills)
 ```
 
 ### Key Skills for You
 | Skill | Best For |
 |-------|----------|
 | `cardiology-trial-editorial` | Analyzing clinical trials |
+| `infographic-generator` | Publication-grade infographic outputs |
 | `x-post-creator-skill` | Batch tweet generation |
 | `viral-content-predictor` | Scoring content ideas |
 | `knowledge-pipeline` | RAG + PubMed synthesis |
@@ -194,9 +209,9 @@ python pipelines/twitter-content/generate.py "GLP-1 cardiovascular effects"
 
 ---
 
-## COMPLETE SKILLS INVENTORY (181+ Skills)
+## COMPLETE SKILLS INVENTORY (187+ Skills)
 
-### Cardiology Skills (46 Skills)
+### Cardiology Skills (52 Skills)
 **Location:** `skills/cardiology/`
 
 #### YouTube & Hinglish Content
@@ -229,6 +244,16 @@ python pipelines/twitter-content/generate.py "GLP-1 cardiovascular effects"
 | `viral-content-predictor` | ML prediction + analysis |
 | `knowledge-pipeline` | RAG + PubMed synthesis |
 | `deep-researcher` | Multi-layered research |
+
+#### Research Amplification (NEW - from Awesome-LLM-Apps)
+| Skill | Purpose |
+|-------|---------|
+| `quick-topic-researcher` | **5-min topic mastery** - 5 questions → parallel PubMed search → McKinsey brief |
+| `parallel-literature-search` | PubMed + Perplexity + RAG in parallel, 30-second evidence gathering |
+| `influencer-analyzer` | Track Topol/Attia/competitors, find content gaps, compare strategies |
+| `content-seo-optimizer` | 3-agent SEO pipeline, P0/P1/P2 recommendations for organic reach |
+| `video-delivery-coach` | Analyze YOUR video recordings - voice, facial, 5-dimension scoring |
+| `ensemble-content-scorer` | Multi-model consensus scoring (Claude + GPT + Gemini) for content ideas |
 
 #### Quality & Voice
 | Skill | Purpose |
@@ -298,18 +323,35 @@ integrated cowriting system/
 
 ---
 
-## API KEYS (.env)
+## AUTHENTICATION & API KEYS
 
-You have access to these via environment variables:
+### Your Login (Codex CLI)
+You operate on the user's **ChatGPT Pro subscription**, authenticated via OAuth:
+```bash
+# Already authenticated - no action needed
+codex auth  # If re-auth needed, opens browser for OpenAI account
+```
+
+**You do NOT use `OPENAI_API_KEY` for your operation.** That key in `.env` is only for Python scripts that call the OpenAI API directly.
+
+### API Keys in .env (For Python Scripts Only)
+These environment variables are used by **research pipelines and scripts**, not by your CLI:
 
 ```env
-OPENAI_API_KEY                  # Your primary API
-NCBI_API_KEY                    # PubMed
-ASTRA_DB_API_ENDPOINT           # RAG
-ASTRA_DB_APPLICATION_TOKEN      # RAG
-GOOGLE_API_KEY                  # Gemini (for images)
-ANTHROPIC_API_KEY               # Claude (fallback)
+# Research Infrastructure (used by Python scripts)
+NCBI_API_KEY                    # PubMed API for knowledge-pipeline
+ASTRA_DB_API_ENDPOINT           # RAG vector database
+ASTRA_DB_APPLICATION_TOKEN      # RAG authentication
+
+# Multi-Model Router (for multi-model-writer skill)
+OPENAI_API_KEY                  # For Python scripts calling GPT API
+ANTHROPIC_API_KEY               # Claude API
+GOOGLE_API_KEY                  # Gemini API (for images)
 ```
+
+**Key distinction:**
+- **Codex CLI (you)** = Pro subscription via OAuth
+- **Python scripts** = API keys from .env
 
 ---
 
@@ -384,4 +426,4 @@ Configuration based on:
 
 ---
 
-*This is Dr. Shailesh Singh's integrated content operating system. You (Codex) are a parallel CONTENT WRITER alongside Claude Code and Gemini CLI. Your GPT-4o brain can write excellent content - use it.*
+*This is Dr. Shailesh Singh's integrated content operating system. You (Codex) are a parallel CONTENT WRITER alongside Claude Code and Gemini CLI, running on a ChatGPT Pro subscription. Your GPT-4o brain can write excellent content - use it.*

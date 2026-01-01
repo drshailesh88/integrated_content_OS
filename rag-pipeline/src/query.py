@@ -22,6 +22,9 @@ from datetime import datetime
 
 # Add src directory to path
 sys.path.insert(0, str(Path(__file__).parent))
+ROOT_DIR = Path(__file__).resolve().parents[2]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 # Import components
 try:
@@ -234,6 +237,35 @@ Examples:
         action="store_true",
         help="Return only retrieved chunks without synthesis"
     )
+    parser.add_argument(
+        "--notion",
+        action="store_true",
+        help="Publish output to Notion"
+    )
+    parser.add_argument(
+        "--notion-status",
+        type=str,
+        default=None,
+        help="Notion status (Draft/Final/Published)"
+    )
+    parser.add_argument(
+        "--notion-tags",
+        type=str,
+        default=None,
+        help="Comma-separated tags for Notion"
+    )
+    parser.add_argument(
+        "--notion-platform",
+        type=str,
+        default=None,
+        help="Override Notion platform label"
+    )
+    parser.add_argument(
+        "--notion-title",
+        type=str,
+        default=None,
+        help="Override Notion page title"
+    )
     
     args = parser.parse_args()
     
@@ -264,6 +296,56 @@ Examples:
             rag.display_chunks(result)
         else:
             rag.display_result(result)
+
+    auto_publish = os.getenv("NOTION_AUTO_PUBLISH", "").lower() in {"1", "true", "yes"}
+    if args.notion or auto_publish:
+        try:
+            from scripts.notion_publisher import publish_to_notion, parse_tags
+        except Exception as exc:
+            print(f"Notion publish skipped: {exc}")
+            return
+
+        content_lines = [f"# {args.notion_title or args.query}", ""]
+        if args.chunks_only:
+            content_lines.append("## Retrieved Chunks")
+            content_lines.append("")
+            for chunk in result.get("chunks", []):
+                source = chunk.get("metadata", {}).get("source", "Unknown")
+                page = chunk.get("metadata", {}).get("page", "N/A")
+                content_lines.append(f"- **{source}** (p. {page})")
+                content_lines.append(f"  - {chunk.get('content', '')[:500]}")
+                content_lines.append("")
+        else:
+            content_lines.append(result.get("synthesis", "No synthesis available"))
+            sources = result.get("sources_used", [])
+            if sources:
+                content_lines.extend(["", "## Sources", ""])
+                for source in sources:
+                    label = source.get("source", "Unknown")
+                    year = source.get("year")
+                    source_type = source.get("type", "")
+                    suffix = f" ({source_type}, {year})" if year or source_type else ""
+                    content_lines.append(f"- {label}{suffix}")
+
+        content = "\n".join(content_lines)
+        citations = [source.get("source") for source in result.get("sources_used", []) if source.get("source")]
+
+        try:
+            publish_to_notion(
+                title=args.notion_title or args.query,
+                content=content,
+                platform=args.notion_platform or "Other",
+                status=args.notion_status or "Draft",
+                tags=parse_tags(args.notion_tags),
+                output_type="Research Note",
+                source_pipeline="rag-pipeline",
+                word_count=len(content.split()),
+                local_path=args.save,
+                citations=citations,
+                research_question=args.query,
+            )
+        except Exception as exc:
+            print(f"Notion publish failed: {exc}")
 
 
 if __name__ == "__main__":

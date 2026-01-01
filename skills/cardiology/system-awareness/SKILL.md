@@ -363,24 +363,160 @@ python scripts/registry_updater.py --unused       # Find unused skills
 
 ---
 
+## Connected Sync Architecture
+
+The system-awareness skill now maintains a **connected pipeline** from disk to context files.
+
+### The Sync Pipeline
+
+```
+skills/cardiology/*          skills/scientific/*
+        │                           │
+        └───────────┬───────────────┘
+                    │
+                    ▼
+            sync_skills.py
+     (Scans directories for SKILL.md)
+                    │
+                    ▼
+        capability-registry.json
+         (SINGLE SOURCE OF TRUTH)
+                    │
+                    ▼
+          generate_context.py
+     (Rebuilds context file sections)
+                    │
+        ┌───────────┼───────────┬───────────────┐
+        ▼           ▼           ▼               ▼
+   CLAUDE.md   GEMINI.md   AGENTS.md   SKILL-CATALOG.md
+```
+
+### Sync Commands
+
+```bash
+# Discover new skills from disk
+python scripts/sync_skills.py              # Report only
+python scripts/sync_skills.py --update     # Add to registry
+
+# Regenerate context files
+python scripts/generate_context.py --preview   # See what would be generated
+python scripts/generate_context.py --update    # Update all context files
+
+# Full sync pipeline
+python scripts/sync_skills.py --update && python scripts/generate_context.py --update
+```
+
+### When to Run
+
+- **After adding a new skill**: Run full pipeline
+- **Weekly maintenance**: Run `sync_skills.py` to check for drift
+- **Before major sessions**: Ensure registry is current
+
+### Auto-Generated Section Markers
+
+Context files (CLAUDE.md, GEMINI.md, AGENTS.md) must contain these markers for auto-update:
+
+```markdown
+<!-- AUTO-GENERATED SKILLS START -->
+... skills content here ...
+<!-- AUTO-GENERATED SKILLS END -->
+```
+
+Content between these markers will be replaced by `generate_context.py`.
+
+---
+
+## Complete HR Pipeline (End-to-End)
+
+The system now has a **fully integrated pipeline** from gap detection to skill deployment:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        THE COMPLETE HR LOOP                                     │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  1. GAP DETECTED                                                                │
+│     └─► gap_logger.py → gap-log.json                                           │
+│                                                                                 │
+│  2. GAPS ANALYZED                                                               │
+│     └─► gap_analyzer.py → patterns, priorities                                 │
+│                                                                                 │
+│  3. SKILL PROPOSED                                                              │
+│     └─► skill_proposer.py → skill-templates/*.md                               │
+│                                                                                 │
+│  4. SKILL BUILT ★ (one command)                                                │
+│     └─► skill_builder.py → skills/cardiology/[name]/                           │
+│         ├── Creates SKILL.md                                                   │
+│         ├── Creates scripts/ & references/                                     │
+│         ├── Marks gap as resolved                                              │
+│         └── Archives proposal                                                  │
+│                                                                                 │
+│  5. SYSTEM SYNCED (auto-runs)                                                  │
+│     └─► sync_skills.py → capability-registry.json                              │
+│                                                                                 │
+│  6. CONTEXT UPDATED (auto-runs)                                                │
+│     └─► generate_context.py → CLAUDE.md, GEMINI.md, etc.                       │
+│                                                                                 │
+│  7. SKILL AVAILABLE ✓                                                          │
+│     └─► Ready to use in next conversation                                      │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Quick Commands
+
+```bash
+# Log a gap
+python scripts/gap_logger.py "I need to analyze ECG images"
+
+# Analyze gaps and find patterns
+python scripts/gap_analyzer.py --report
+
+# Create a proposal from a gap
+python scripts/skill_proposer.py --gap-id gap_xxxx
+
+# BUILD the skill (one command does everything)
+python scripts/skill_builder.py --proposal ecg-analyzer-proposal.md
+
+# Or build directly from a gap (skip proposal step)
+python scripts/skill_builder.py --from-gap gap_xxxx
+
+# Or build directly with name and purpose
+python scripts/skill_builder.py --name "ecg-analyzer" --purpose "Analyze ECG images"
+```
+
+### Skill Builder Options
+
+```bash
+python skill_builder.py --list-proposals    # See pending proposals
+python skill_builder.py --list-gaps         # See open gaps
+python skill_builder.py --proposal FILE     # Build from proposal
+python skill_builder.py --from-gap ID       # Build from gap (fast path)
+python skill_builder.py --name X --purpose Y # Build directly
+python skill_builder.py --no-sync           # Skip auto-sync (manual control)
+```
+
+---
+
 ## Files in This Skill
 
 ```
 system-awareness/
 ├── SKILL.md                         # This file
 ├── data/
-│   ├── capability-registry.json     # All skills inventory
-│   ├── gap-log.json                 # Logged gaps
+│   ├── capability-registry.json     # All 190+ skills inventory
+│   ├── gap-log.json                 # Logged capability gaps
 │   ├── skill-backlog.json           # Prioritized build queue
-│   └── skill-templates/             # Templates for new skills
-│       ├── basic-skill.md           # Simple skill template
-│       ├── research-skill.md        # Research-focused template
-│       └── script-skill.md          # Skill with Python scripts
+│   └── skill-templates/             # Skill proposals
+│       ├── approved/                # Archived approved proposals
+│       └── *-proposal.md            # Pending proposals
 ├── scripts/
 │   ├── gap_logger.py                # Log unmet requests
 │   ├── gap_analyzer.py              # Analyze gap patterns
 │   ├── skill_proposer.py            # Generate skill proposals
-│   └── registry_updater.py          # Update capability registry
+│   ├── skill_builder.py             # ★ BUILD skills (the missing piece)
+│   ├── sync_skills.py               # Discover skills from disk
+│   └── generate_context.py          # Update context files
 └── references/
     ├── skill-anatomy.md             # What makes a good skill
     └── gap-patterns.md              # Common gap pattern recognition

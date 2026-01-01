@@ -1,0 +1,2651 @@
+{
+  "total_zips": 54,
+  "overall_colors_top20": {
+    "#207178": 972,
+    "#e63946": 918,
+    "#333333": 810,
+    "#f28c81": 324,
+    "#f8f9fa": 108,
+    "#e4f1ef": 54
+  },
+  "overall_fonts": {
+    "Inter, sans-serif": 54
+  },
+  "overall_dimensions": {
+    "1080x1350": 54
+  },
+  "overall_icons_top20": {
+    "Pill": 54,
+    "Utensils": 54,
+    "Clock": 54,
+    "Heart": 54,
+    "CheckCircle2": 54,
+    "AlertCircle": 54
+  },
+  "overall_class_tokens_top30": {
+    "flex": 1620,
+    "gap-2.5": 1242,
+    "text-white": 1134,
+    "rounded-full": 1026,
+    "items-start": 1026,
+    "flex-shrink-0": 1026,
+    "text-[#333333]": 810,
+    "w-2": 810,
+    "h-2": 810,
+    "mt-1.5": 810,
+    "items-center": 486,
+    "bg-[#E63946]": 432,
+    "gap-2": 378,
+    "rounded-3xl": 324,
+    "p-5": 324,
+    "w-6": 324,
+    "h-6": 324,
+    "backdrop-blur-sm": 324,
+    "mb-3": 270,
+    "text-[#E63946]": 270,
+    "mb-2.5": 270,
+    "text-[#207178]": 216,
+    "mb-1": 216,
+    "border-2": 216,
+    "grid": 216,
+    "rounded-2xl": 216,
+    "bg-[#207178]": 216,
+    "w-4": 216,
+    "h-4": 216,
+    "mt-1": 216
+  },
+  "zips": [
+    {
+      "zip": "Create Infographic Design (1).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (10).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (11).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (12).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (13).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (14).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (15).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (16).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (17).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (18).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (19).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (2).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (20).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (21).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (22).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (23).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (24).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (25).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (26).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (27).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (28).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (29).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (3).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (30).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (31).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (32).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (33).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (34).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (35).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (36).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (37).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (38).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (39).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (4).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (40).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (41).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (42).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (43).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (44).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (45).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (46).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (47).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (48).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (49).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (5).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (50).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (51).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (52).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (53).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (54).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (6).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (7).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (8).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    },
+    {
+      "zip": "Create Infographic Design (9).zip",
+      "component": "AngiographyPrepInfographic",
+      "component_file": "src/components/AngiographyPrepInfographic.tsx",
+      "asset_count": 1,
+      "colors_top": {
+        "#207178": 18,
+        "#e63946": 17,
+        "#333333": 15,
+        "#f28c81": 6,
+        "#f8f9fa": 2,
+        "#e4f1ef": 1
+      },
+      "fonts": [
+        "Inter, sans-serif"
+      ],
+      "dimensions": "1080x1350",
+      "icons": [
+        "Pill",
+        "Utensils",
+        "Clock",
+        "Heart",
+        "CheckCircle2",
+        "AlertCircle"
+      ],
+      "gradients": [
+        "linear-gradient(180deg, #E4F1EF 0%, #F8F9FA 100%)",
+        "radial-gradient(circle, #E63946 0%, transparent 70%)",
+        "radial-gradient(circle, #207178 0%, transparent 70%)"
+      ],
+      "figma_assets": [
+        "5e4311be9235ba207024edfb13240abe8cf20f3f.png"
+      ],
+      "class_tokens_top": {
+        "flex": 30,
+        "gap-2.5": 23,
+        "text-white": 21,
+        "rounded-full": 19,
+        "items-start": 19,
+        "flex-shrink-0": 19,
+        "text-[#333333]": 15,
+        "w-2": 15,
+        "h-2": 15,
+        "mt-1.5": 15,
+        "items-center": 9,
+        "bg-[#E63946]": 8
+      }
+    }
+  ]
+}

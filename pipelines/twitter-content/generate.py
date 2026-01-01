@@ -11,6 +11,7 @@ Usage:
 
 import asyncio
 import argparse
+import os
 import sys
 
 sys.path.insert(0, '.')
@@ -36,6 +37,35 @@ async def main():
     parser.add_argument(
         '--save', '-s',
         help='Save output to file'
+    )
+    parser.add_argument(
+        '--notion',
+        action='store_true',
+        help='Publish output to Notion'
+    )
+    parser.add_argument(
+        '--notion-status',
+        type=str,
+        default=None,
+        help='Notion status (Draft/Final/Published)'
+    )
+    parser.add_argument(
+        '--notion-tags',
+        type=str,
+        default=None,
+        help='Comma-separated tags for Notion'
+    )
+    parser.add_argument(
+        '--notion-platform',
+        type=str,
+        default=None,
+        help='Override Notion platform label'
+    )
+    parser.add_argument(
+        '--notion-title',
+        type=str,
+        default=None,
+        help='Override Notion page title'
     )
 
     args = parser.parse_args()
@@ -81,6 +111,29 @@ async def main():
         if args.save:
             result.save_to_file(args.save)
             print(f'\nSaved to: {args.save}')
+
+        auto_publish = os.getenv("NOTION_AUTO_PUBLISH", "").lower() in {"1", "true", "yes"}
+        should_publish = args.notion or auto_publish
+        if should_publish:
+            try:
+                from scripts.notion_publisher import publish_to_notion, parse_tags
+
+                page_url = publish_to_notion(
+                    title=args.notion_title or args.question,
+                    content=result.content.content,
+                    platform=args.notion_platform or "Twitter/X",
+                    status=args.notion_status or "Draft",
+                    tags=parse_tags(args.notion_tags),
+                    output_type=result.content.format.value,
+                    source_pipeline="twitter-content",
+                    word_count=result.content.word_count,
+                    local_path=args.save,
+                    citations=result.brief.citations,
+                    research_question=args.question,
+                )
+                print(f'\nNotion published: {page_url}')
+            except Exception as e:
+                print(f'\nNotion publish failed: {e}')
     else:
         print('Failed to generate content')
         sys.exit(1)

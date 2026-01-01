@@ -10,6 +10,8 @@ Usage:
 import os
 import json
 import argparse
+import subprocess
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List, Dict
@@ -328,6 +330,14 @@ def main():
     print(f"   Markdown: {md_output}")
     print(f"   Total videos planned: {calendar['total_videos']}")
     print(f"   Weeks covered: {len(calendar['by_week'])}")
+
+    if os.getenv("NOTION_AUTO_PUBLISH", "").lower() in {"1", "true", "yes"}:
+        root_dir = Path(__file__).resolve().parents[1]
+        sync_script = root_dir / "scripts" / "notion_sync.py"
+        if sync_script.exists():
+            subprocess.run([sys.executable, str(sync_script), "--path", str(args.output)], cwd=str(root_dir))
+        else:
+            print("Notion sync skipped: scripts/notion_sync.py not found.")
 
 
 if __name__ == '__main__':

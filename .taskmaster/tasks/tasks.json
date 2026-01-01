@@ -1,0 +1,261 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": "1",
+        "title": "Complete Phase 1 Foundation for Carousel Generator v2",
+        "description": "Set up the foundational components including documentation, brand tokens, health icons, fonts, and design standards for the carousel generator",
+        "details": "Create SKILL.md documentation in skills/cardiology/carousel-generator-v2/. Verify brand-tokens.json contains all required colors and typography tokens. Download Health Icons SVG set (heart, medication, exercise, food, symptoms, procedures) and store in assets/icons/. Set up Inter font family files in assets/fonts/. Create references/design-standards.md with WCAG AA contrast requirements (4.5:1 ratio) and typography specifications. Ensure all paths are properly structured for the skill directory.",
+        "testStrategy": "Verify SKILL.md follows standard format, brand-tokens.json loads without errors, all health icons are accessible, Inter fonts render correctly, and design standards document contains complete WCAG specifications",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create SKILL.md documentation file",
+            "description": "Create comprehensive SKILL.md documentation in the skills/cardiology/carousel-generator-v2/ directory following standard format",
+            "dependencies": [],
+            "details": "Create SKILL.md file in skills/cardiology/carousel-generator-v2/ directory with complete skill documentation including name, description, inputs, outputs, domain classification, and usage examples. Follow the established SKILL.md format used by other skills in the system.",
+            "status": "pending",
+            "testStrategy": "Verify SKILL.md follows standard format, contains all required sections, and loads without parsing errors",
+            "parentId": "undefined"
+          },
+          {
+            "id": 2,
+            "title": "Verify and update brand-tokens.json",
+            "description": "Ensure brand-tokens.json contains all required colors and typography tokens for the carousel generator",
+            "dependencies": [],
+            "details": "Review brand-tokens.json file to verify it contains all necessary color tokens, typography specifications, and design tokens required for carousel generation. Add any missing tokens needed for consistent branding across carousel components.",
+            "status": "pending",
+            "testStrategy": "Validate JSON syntax, confirm all required tokens are present, and test loading without errors in dependent systems",
+            "parentId": "undefined"
+          },
+          {
+            "id": 3,
+            "title": "Download and organize Health Icons SVG set",
+            "description": "Download Health Icons SVG collection and organize them in the assets/icons/ directory",
+            "dependencies": [],
+            "details": "Download the complete Health Icons SVG set including heart, medication, exercise, food, symptoms, and procedures icons. Store them in assets/icons/ directory with proper naming conventions and folder structure for easy access by the carousel generator.",
+            "status": "pending",
+            "testStrategy": "Verify all required health icons are downloaded, properly named, accessible as SVG files, and can be loaded by the application",
+            "parentId": "undefined"
+          },
+          {
+            "id": 4,
+            "title": "Set up Inter font family files",
+            "description": "Download and configure Inter font family files in the assets/fonts/ directory",
+            "dependencies": [],
+            "details": "Download Inter font family files in various weights and styles needed for carousel text rendering. Store them in assets/fonts/ directory with proper file organization and ensure they are accessible for web and application use.",
+            "status": "pending",
+            "testStrategy": "Confirm Inter fonts render correctly across different weights and styles, and verify proper file paths and accessibility",
+            "parentId": "undefined"
+          },
+          {
+            "id": 5,
+            "title": "Create design standards documentation",
+            "description": "Create comprehensive design standards document with WCAG AA compliance requirements",
+            "dependencies": [
+              2,
+              3,
+              4
+            ],
+            "details": "Create references/design-standards.md document containing WCAG AA contrast requirements with 4.5:1 ratio specifications, typography guidelines using Inter font, color usage standards from brand tokens, and icon implementation guidelines. Include accessibility standards and implementation best practices.",
+            "status": "pending",
+            "testStrategy": "Verify design standards document contains complete WCAG specifications, typography rules, color contrast ratios, and accessibility guidelines are comprehensive and actionable",
+            "parentId": "undefined"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "title": "Build Phase 2 Template Library with React/JSX Components",
+        "description": "Create 10 specialized React/JSX slide templates for different content types with brand token integration and responsive design",
+        "details": "Create templates/react/ directory with 10 components: HookSlide.jsx (bold questions/stats), TipsSlide.jsx (numbered lists with icons), StatsSlide.jsx (prominent numbers), ComparisonSlide.jsx (before/after layouts), StorySlide.jsx (patient narratives), DataSlide.jsx (Plotly integration), StepsSlide.jsx (process flows), MythSlide.jsx (myth-busting format), QuoteSlide.jsx (expert opinions), CTASlide.jsx (call-to-action). Each template must accept props for content/colors/variant, use brand tokens from tokens.py, support 4:5 (1080x1350) and 1:1 (1080x1080) aspect ratios, maintain WCAG AA contrast, and limit text to 15 words per slide.",
+        "testStrategy": "Test each template with sample data, verify aspect ratio switching, validate WCAG AA contrast ratios, confirm 15-word limit enforcement, and ensure brand token integration works correctly",
+        "priority": "high",
+        "dependencies": [
+          "1"
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": "3",
+        "title": "Build Phase 3 Rendering Engine with Satori and Pillow",
+        "description": "Implement the rendering pipeline using Satori for React-to-PNG conversion with Pillow fallback and intelligent routing",
+        "details": "Create services/satori-service/package.json with Satori, React, and dependencies. Build services/satori-service/index.js as HTTP server that converts React components to PNG using Satori. Enhance pillow_renderer.py as fallback renderer when Satori is unavailable. Create scripts/visual_router.py to intelligently select rendering tool based on slide type complexity (use Satori for React components, Pillow for simple layouts). Implement error handling and graceful fallbacks between rendering engines.",
+        "testStrategy": "Test Satori service with all 10 template types, verify Pillow fallback activation, validate PNG output quality and dimensions, test routing logic with various slide types, and ensure error handling works properly",
+        "priority": "high",
+        "dependencies": [
+          "2"
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": "4",
+        "title": "Build Phase 4 Content Intelligence System",
+        "description": "Implement AI-powered content structuring, hook generation, and research integration for automatic carousel creation",
+        "details": "Create scripts/content_structurer.py to convert topics or long-form content into structured slide JSON using ANTHROPIC_API_KEY. Implement 4A Framework classifier (Actionable, Analytical, Aspirational, Anthropological) for content categorization. Build scripts/hooks_generator.py with proven hook patterns for engagement. Integrate PubMed MCP for research when topic is provided. Add dynamic color mode selection logic (light/dark per slide based on content sentiment and type). Use existing API keys from .env configuration.",
+        "testStrategy": "Test topic-to-slides conversion with various medical topics, validate 4A Framework classification accuracy, verify hook generation effectiveness, test PubMed integration with sample queries, and confirm dynamic color selection works appropriately",
+        "priority": "medium",
+        "dependencies": [
+          "3"
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": "5",
+        "title": "Build Phase 5 Quality Assurance System",
+        "description": "Implement comprehensive quality validation including accessibility, text density, voice consistency, and brand compliance",
+        "details": "Enhance scripts/quality_checker.py with WCAG AA contrast validation (4.5:1 minimum ratio). Add text density validator that rejects slides exceeding 15 words. Integrate anti-AI voice checker to ensure natural, human-like content. Implement brand consistency validator against brand tokens. Create mobile preview generator that displays all slides in a grid format for quick review. Add automated scoring system for overall carousel quality.",
+        "testStrategy": "Test contrast validation with edge cases, verify 15-word limit enforcement, validate anti-AI voice detection accuracy, confirm brand consistency checking, and ensure mobile preview generation works across different screen sizes",
+        "priority": "medium",
+        "dependencies": [
+          "4"
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": "6",
+        "title": "Build Phase 6 Integration and CLI Interface",
+        "description": "Complete the carousel generator with Content-OS integration, CLI interface, batch processing, and caption generation",
+        "details": "Add Content-OS integration for forward mode (topic to all content types) and backward mode (long-form to carousel). Create comprehensive CLI interface for standalone usage with argument parsing and help documentation. Implement batch generation support for processing multiple topics simultaneously. Build caption and hashtag generator per carousel using content intelligence. Update SKILL.md with comprehensive usage examples, API documentation, and integration guides.",
+        "testStrategy": "Test Content-OS integration in both modes, verify CLI functionality with various input types, validate batch processing with multiple topics, confirm caption/hashtag generation quality, and ensure documentation completeness",
+        "priority": "medium",
+        "dependencies": [
+          "5"
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": "7",
+        "title": "Complete capability-registry.json with Missing Skills",
+        "description": "Add the 6 missing skill entries to the capability registry and update the coverage matrix",
+        "details": "Add entries for quick-topic-researcher, content-seo-optimizer, influencer-analyzer, video-delivery-coach, parallel-literature-search, and ensemble-content-scorer to the skills array in capability-registry.json. Update the coverage_matrix to include these new skills in their appropriate domains (research, optimization, analysis, coaching, search, scoring). Ensure each entry follows the established JSON schema with proper metadata, inputs, outputs, and domain classifications.",
+        "testStrategy": "Validate JSON syntax and schema compliance, verify all 6 skills are properly categorized in coverage_matrix, confirm no duplicate entries exist, and test registry loading in dependent systems",
+        "priority": "high",
+        "dependencies": [],
+        "status": "done",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Add quick-topic-researcher and content-seo-optimizer skill entries",
+            "description": "Create JSON entries for quick-topic-researcher and content-seo-optimizer skills in the capability registry",
+            "dependencies": [],
+            "details": "Add complete JSON objects for quick-topic-researcher (research domain) and content-seo-optimizer (optimization domain) to the skills array in capability-registry.json. Include proper metadata, inputs (topic/content), outputs (research data/optimized content), domain classifications, and follow established schema structure.\n<info added on 2026-01-01T06:17:16.676Z>\nStarted implementation by referencing the JSON structure from SESSION-HANDOVER-2026-01-01.md. Currently working on adding the quick-topic-researcher skill entry first, following the established schema pattern for proper metadata, input/output definitions, and domain classification within the research domain.\n</info added on 2026-01-01T06:17:16.676Z>",
+            "status": "done",
+            "testStrategy": "Validate JSON syntax, verify schema compliance for both entries, and confirm proper domain classification",
+            "updatedAt": "2026-01-01T06:17:22.434Z",
+            "parentId": "undefined"
+          },
+          {
+            "id": 2,
+            "title": "Add influencer-analyzer and video-delivery-coach skill entries",
+            "description": "Create JSON entries for influencer-analyzer and video-delivery-coach skills in the capability registry",
+            "dependencies": [],
+            "details": "Add complete JSON objects for influencer-analyzer (analysis domain) and video-delivery-coach (coaching domain) to the skills array in capability-registry.json. Include proper metadata, inputs (influencer data/video content), outputs (analysis reports/coaching feedback), domain classifications, and follow established schema structure.",
+            "status": "done",
+            "testStrategy": "Validate JSON syntax, verify schema compliance for both entries, and confirm proper domain classification",
+            "parentId": "undefined",
+            "updatedAt": "2026-01-01T06:55:38.289Z"
+          },
+          {
+            "id": 3,
+            "title": "Add parallel-literature-search and ensemble-content-scorer skill entries",
+            "description": "Create JSON entries for parallel-literature-search and ensemble-content-scorer skills in the capability registry",
+            "dependencies": [],
+            "details": "Add complete JSON objects for parallel-literature-search (search domain) and ensemble-content-scorer (scoring domain) to the skills array in capability-registry.json. Include proper metadata, inputs (search queries/content), outputs (literature results/content scores), domain classifications, and follow established schema structure.",
+            "status": "done",
+            "testStrategy": "Validate JSON syntax, verify schema compliance for both entries, and confirm proper domain classification",
+            "parentId": "undefined",
+            "updatedAt": "2026-01-01T06:55:54.150Z"
+          },
+          {
+            "id": 4,
+            "title": "Update coverage matrix with new skills in appropriate domains",
+            "description": "Add all 6 new skills to the coverage_matrix section organized by their respective domains",
+            "dependencies": [
+              1,
+              2,
+              3
+            ],
+            "details": "Update the coverage_matrix in capability-registry.json to include quick-topic-researcher and parallel-literature-search in research/search domains, content-seo-optimizer in optimization domain, influencer-analyzer in analysis domain, video-delivery-coach in coaching domain, and ensemble-content-scorer in scoring domain. Ensure proper categorization and no duplicate entries.",
+            "status": "done",
+            "testStrategy": "Verify all 6 skills appear in coverage_matrix, confirm proper domain categorization, and check for duplicate entries",
+            "parentId": "undefined",
+            "updatedAt": "2026-01-01T06:56:17.330Z"
+          },
+          {
+            "id": 5,
+            "title": "Validate complete registry and test integration",
+            "description": "Perform comprehensive validation of the updated capability registry and test loading in dependent systems",
+            "dependencies": [
+              4
+            ],
+            "details": "Run JSON schema validation on the complete capability-registry.json file. Verify all 6 new skills are properly integrated with correct metadata, inputs, outputs, and domain classifications. Test registry loading in dependent systems to ensure no breaking changes. Confirm total skill count and coverage matrix completeness.",
+            "status": "done",
+            "testStrategy": "JSON schema validation, registry loading tests in dependent systems, skill count verification, and end-to-end integration testing",
+            "parentId": "undefined",
+            "updatedAt": "2026-01-01T06:56:48.957Z"
+          }
+        ],
+        "updatedAt": "2026-01-01T06:56:48.957Z"
+      },
+      {
+        "id": "8",
+        "title": "Build sync_skills.py for Automatic Skill Discovery",
+        "description": "Create automated skill discovery system that scans directories and updates the capability registry",
+        "details": "Create scripts/sync_skills.py that scans skills/cardiology/ and skills/scientific/ directories for SKILL.md files. Parse each SKILL.md to extract metadata (name, description, inputs, outputs, domain). Compare discovered skills with capability-registry.json to identify new skills, missing skills, and changes. Automatically add new skills to registry and flag discrepancies. Include logging and reporting of all changes made. Implement dry-run mode for safe testing.",
+        "testStrategy": "Test with existing skills to ensure no false positives, create test skill directories to verify discovery, test parsing of various SKILL.md formats, validate registry updates are correct, and confirm reporting accuracy",
+        "priority": "medium",
+        "dependencies": [
+          "7"
+        ],
+        "status": "done",
+        "subtasks": [],
+        "updatedAt": "2026-01-01T09:26:38.104Z"
+      },
+      {
+        "id": "9",
+        "title": "Build generate_context.py for Context File Management",
+        "description": "Create automated system to update context files (CLAUDE.md, GEMINI.md, AGENTS.md) with current skill inventory",
+        "details": "Create scripts/generate_context.py that reads capability-registry.json as source of truth. Generate markdown tables of skills organized by category and domain. Update skill inventory sections in CLAUDE.md, GEMINI.md, AGENTS.md, and SKILL-CATALOG.md while preserving non-skill content. Implement purpose-based routing updates for SKILL-CATALOG.md. Add template system for consistent formatting across context files.",
+        "testStrategy": "Test context file updates preserve existing content, verify markdown table generation is properly formatted, confirm all context files are updated consistently, and validate that routing information is accurate",
+        "priority": "medium",
+        "dependencies": [
+          "8"
+        ],
+        "status": "done",
+        "subtasks": [],
+        "updatedAt": "2026-01-01T09:33:35.799Z"
+      },
+      {
+        "id": "10",
+        "title": "Complete System Awareness Documentation and Pipeline Testing",
+        "description": "Document the complete connected workflow and perform end-to-end testing of the skill discovery and context update pipeline",
+        "details": "Update skills/cardiology/system-awareness/SKILL.md with complete workflow documentation covering sync_skills.py discovery process, generate_context.py context updates, and the full disk-to-registry-to-context pipeline. Include CLI usage examples, automation options (git hooks, scheduled runs), and troubleshooting guides. Create comprehensive test suite that adds/removes test skills and verifies the entire pipeline works correctly. Document edge cases and error handling procedures.",
+        "testStrategy": "Create test skill with minimal SKILL.md, run full pipeline and verify all updates, remove test skill and confirm cleanup, test edge cases like malformed SKILL.md files, and validate documentation completeness and accuracy",
+        "priority": "medium",
+        "dependencies": [
+          "9"
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "version": "1.0.0",
+      "lastModified": "2026-01-01T09:33:35.825Z",
+      "taskCount": 10,
+      "completedCount": 3,
+      "tags": [
+        "master"
+      ]
+    }
+  }
+}

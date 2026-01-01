@@ -46,6 +46,9 @@ env/
 *~
 .DS_Store
 
+# Local AI tool config
+.claude/
+
 # Jupyter
 .ipynb_checkpoints/
 

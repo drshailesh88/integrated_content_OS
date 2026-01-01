@@ -30,6 +30,22 @@ SCRAPER_DIR = SCRIPT_DIR / "scraper"
 ANALYZER_DIR = SCRIPT_DIR / "analyzer"
 DATA_DIR = SCRIPT_DIR / "data"
 OUTPUT_DIR = SCRIPT_DIR / "output"
+ROOT_DIR = SCRIPT_DIR.parent
+
+
+def should_publish_to_notion() -> bool:
+    return os.getenv("NOTION_AUTO_PUBLISH", "").lower() in {"1", "true", "yes"}
+
+
+def sync_outputs_to_notion(paths):
+    sync_script = ROOT_DIR / "scripts" / "notion_sync.py"
+    if not sync_script.exists():
+        print("Notion sync skipped: scripts/notion_sync.py not found.")
+        return
+    cmd = [sys.executable, str(sync_script)]
+    for path in paths:
+        cmd.extend(["--path", str(path)])
+    subprocess.run(cmd, cwd=str(ROOT_DIR))
 
 
 def run_command(cmd, description):
@@ -183,6 +199,9 @@ def run_full_pipeline(args):
 ║    3. Run /new-script in Claude Code to write scripts             ║
 ╚══════════════════════════════════════════════════════════════════╝
     """)
+
+    if should_publish_to_notion():
+        sync_outputs_to_notion([OUTPUT_DIR, DATA_DIR / "scraped"])
 
 
 def main():

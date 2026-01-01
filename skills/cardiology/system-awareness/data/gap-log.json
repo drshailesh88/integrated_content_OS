@@ -18,8 +18,11 @@
       "similar_requests": [],
       "potential_skill": "analyze-ecg-waveforms-uploaded",
       "source": "cli",
-      "status": "open",
-      "notes": []
+      "status": "resolved",
+      "notes": [
+        "Skill built on 2026-01-01"
+      ],
+      "resolved_at": "2026-01-01T11:12:18.183491"
     },
     {
       "id": "gap_20251231_162237_93863f",
@@ -33,8 +36,11 @@
       "similar_requests": [],
       "potential_skill": "transcribe-audio-podcast-interviews",
       "source": "cli",
-      "status": "open",
-      "notes": []
+      "status": "resolved",
+      "notes": [
+        "Skill built on 2026-01-01"
+      ],
+      "resolved_at": "2026-01-01T11:13:21.844951"
     },
     {
       "id": "gap_20251231_162237_59baec",
@@ -50,8 +56,11 @@
       ],
       "potential_skill": "extract-data-uploaded-pdf",
       "source": "cli",
-      "status": "open",
-      "notes": []
+      "status": "resolved",
+      "notes": [
+        "Built as research-paper-extractor skill on 2026-01-01"
+      ],
+      "resolved_at": "2026-01-01T11:22:43.231609"
     },
     {
       "id": "gap_20251231_162237_2c6876",
@@ -67,8 +76,11 @@
       ],
       "potential_skill": "analyze-chest-x-ray-images",
       "source": "cli",
-      "status": "open",
-      "notes": []
+      "status": "cancelled",
+      "notes": [
+        "Cancelled on 2026-01-01 - Not needed for current workflow"
+      ],
+      "cancelled_at": "2026-01-01T11:20:28.661961"
     }
   ]
 }

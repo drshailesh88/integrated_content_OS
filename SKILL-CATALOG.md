@@ -1,326 +1,289 @@
-# Skill Catalog: Purpose-Based Lookup
+# Skill Catalog - Purpose-Based Lookup
 
-**Last Updated:** 2025-12-29
+> **Quick Reference:** Find the right skill for your task
 
-> When you want to do X, use skill Y. This is Claude's reference for routing your requests to the right skill.
-
----
-
-## Quick Lookup: "I want to..."
-
-### Write a TWEET / X Post
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Single tweet with references | `x-post-creator-skill` | 6 frameworks + citations, Eric Topol voice |
-| Batch of 10 tweets | `cardiology-tweet-writer` | Seeds × modifiers system, feedback loop |
-| Data-heavy long post (2000+ chars) | `cremieux-cardio` | Evidence-first, 3-4 studies deep, Rajesh persona |
-| Thread (5-10 tweets) | `twitter-longform-medical` | Topol + Cremieux synthesis, with visuals |
-
-**Default choice:** `x-post-creator-skill` for single posts, `cardiology-tweet-writer` for batch generation.
-
----
-
-### Write a NEWSLETTER
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Patient-facing newsletter | `medical-newsletter-writer` | PDF trend analysis, engagement prediction, Topol voice |
-| Doctor-facing newsletter | `cardiology-newsletter-writer` | Topic discovery, deeper technical content |
-
-**Default choice:** `medical-newsletter-writer` for B2C, `cardiology-newsletter-writer` for B2B.
-
----
-
-### Write an EDITORIAL / Opinion Piece
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| 500-word trial commentary | `cardiology-editorial` | Hybrid scoring (rules + LLM), full/abstract workflows |
-| Trial discovery + editorial + infographic | `cardiology-trial-editorial` | Includes importance scoring, HTML visual |
-| Transform rough thoughts into polished piece | `cardiology-topol-writer` | Thought dump → structured editorial |
-
-**Default choice:** `cardiology-editorial` for quick takes, `cardiology-trial-editorial` for comprehensive trial coverage.
-
----
-
-### Write a YOUTUBE SCRIPT
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Data-driven Hinglish script | `youtube-script-master` | **PRIMARY** - Uses research-engine data, 6-point voice check |
-| Script from seeds + modifiers | `cardiology-youtube-scriptwriter` | Alternative approach, social listening integrated |
-
-**Default choice:** `youtube-script-master` - it's the unified, data-driven approach.
-
----
-
-### Write LONG-FORM Content
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Textbook chapter (5,000-15,000 words) | `academic-chapter-writer` | Vancouver citations, approval workflow |
-| Science for general audience | `cardiology-science-for-people` | Rigorous but accessible, statistics translated |
-| General cardiology content | `cardiology-writer` | Flexible, all-purpose |
-
----
-
-### RESEARCH a Topic
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| PubMed search (direct API) | `pubmed-database` | MeSH terms, field tags, citation export |
-| RAG + PubMed parallel | `knowledge-pipeline` | Vector search + BM25 + reranking, guidelines included |
-| Comprehensive 6-step research | `deep-researcher` | Definition → exploratory → deep dive → validation → synthesis |
-| Real-time web search | `perplexity-search` | AI-powered, multiple models, current events |
-| Clinical trials search | `clinicaltrials-database` | ClinicalTrials.gov API |
-
-**Default choice:** Always start with `PubMed MCP tools` (mandatory), then `knowledge-pipeline` for RAG synthesis.
-
----
-
-### Find TRENDING Topics
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Programmatic trends (Google/Reddit) | `social-media-trends-research` | pytrends + Reddit scraper + Perplexity |
-| Multi-platform viral patterns | `content-marketing-social-listening` | 10+ platforms, knowledge gaps, demand scoring |
-| Platform-specific with outlines | `content-trend-researcher` | Intent analysis, generates content outlines |
-
-**Default choice:** `social-media-trends-research` for quick trend check, `content-trend-researcher` for content planning.
-
----
-
-### POLISH / Improve Content
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Remove AI tells | `authentic-voice` | 5 deadly patterns, vocabulary swaps, humanization |
-| Pre-publish QA | `content-reflection` | 6 dimensions: rigor, voice, positioning, audience, risk, engagement |
-| Evidence quality check | `scientific-critical-thinking` | GRADE framework, bias detection, logical fallacies |
-| Full manuscript review | `peer-review` | 7-stage systematic review, CONSORT/STROBE compliance |
-| Statistical validation | `statistical-analysis` | Effect sizes, CI, NNT/NNH, clinical vs statistical significance |
-
-**Default polish chain:** `authentic-voice` → `content-reflection` → `scientific-critical-thinking`
-
----
-
-### REPURPOSE Content
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Multi-format adaptation | `cardiology-content-repurposer` | 4A framework, articles → tweets → threads → blogs |
-
----
-
-### Generate VISUALS
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Auto-route to best tool | `cardiology-visual-system` | Routes to Fal.ai/Gemini/Mermaid/Plotly based on request |
-| Photo-realistic images | → Fal.ai | Blog headers, lifestyle photos |
-| Infographics, illustrations | → Gemini | Medical illustrations, educational graphics |
-| Flowcharts, algorithms | → Mermaid | Clinical pathways, decision trees |
-| Data charts | → Plotly | Trial results, statistics |
-| Instagram carousels | `content-os` | 1080x1080px carousel generator |
-
-**Default choice:** Just describe what you want - `cardiology-visual-system` auto-routes.
-
----
-
-### Use OTHER AI Models
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Route to GPT-4o, Gemini, Grok, GLM | `multi-model-writer` | 6 LLM routing, cost-optimized |
-| Use ChatGPT Plus / Gemini Advanced | `browser-automation` | Playwright MCP, web interface automation |
-
----
-
-### Analyze CONTENT Performance
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Predict viral potential | `viral-content-predictor` | ML scoring, trend research, content blueprint |
-| Analyze YouTube comments | `youtube-comment-analyzer` | Scrape 2000+ comments, free LLM analysis |
-
----
-
-### Counter MISINFORMATION
-
-| If you want... | Use this skill | Notes |
-|----------------|----------------|-------|
-| Debunk dangerous narratives | `debunk-script-writer` | 8 narratives: LDL skepticism, statin fear, etc. |
-
----
-
-## Workflow Templates (Optional)
-
-Use these when you want a structured approach. Skip them when you want to work freeform.
-
-### Newsletter Workflow
-```
-1. RESEARCH
-   - PubMed MCP → find recent evidence
-   - knowledge-pipeline → pull guideline context
-
-2. DRAFT
-   - medical-newsletter-writer (B2C) or cardiology-newsletter-writer (B2B)
-
-3. POLISH
-   - authentic-voice → remove AI patterns
-
-4. FACT-CHECK
-   - scientific-critical-thinking → verify claims
-
-5. FINAL QA
-   - content-reflection → pre-publish check
-```
-
-### Twitter Content Workflow
-```
-1. TREND CHECK (optional)
-   - social-media-trends-research → what's hot
-
-2. RESEARCH
-   - PubMed MCP → mandatory citations
-   - knowledge-pipeline → guideline context
-
-3. WRITE
-   - x-post-creator-skill (single) or cardiology-tweet-writer (batch)
-
-4. POLISH
-   - authentic-voice → humanize
-```
-
-### Editorial Workflow
-```
-1. FIND TRIAL
-   - cardiology-trial-editorial → discovery + importance scoring
-
-2. RESEARCH
-   - PubMed MCP → related studies
-   - pubmed_article_connections → similar articles, citations
-
-3. WRITE
-   - cardiology-editorial → 500-word commentary
-
-4. VISUAL (optional)
-   - cardiology-visual-system → infographic
-
-5. FACT-CHECK
-   - scientific-critical-thinking → evidence quality
-```
-
-### YouTube Script Workflow
-```
-1. RESEARCH PHASE
-   - research-engine → run_pipeline.py --quick
-   - viral-content-predictor → score topic
-
-2. WRITE
-   - youtube-script-master → Hinglish script
-
-3. POLISH
-   - authentic-voice → natural speech patterns
-   - content-reflection → audience fit check
-```
-
----
-
-## Scientific Skills Quick Reference
-
-These 135 skills in `skills/scientific/` are specialized. Key ones for content work:
-
-| Skill | When to use |
-|-------|-------------|
-| `peer-review` | Full manuscript critique, 7-stage systematic review |
-| `scientific-critical-thinking` | Evaluate evidence quality, detect bias, GRADE framework |
-| `literature-review` | Systematic reviews, PICO framework, thematic synthesis |
-| `statistical-analysis` | Interpret trial statistics, effect sizes, clinical significance |
-| `scientific-writing` | IMRAD structure, reporting guidelines (CONSORT, STROBE) |
-| `citation-management` | Format references (AMA, Vancouver, APA, BibTeX) |
-
----
-
-## Overlap Resolution Guide
-
-When multiple skills could work, here's how to choose:
-
-### YouTube Scripts
-- **youtube-script-master**: When you have research-engine data, want data-driven approach
-- **cardiology-youtube-scriptwriter**: When starting from scratch with seed ideas
-
-### Newsletters
-- **medical-newsletter-writer**: Patient audience, engagement prediction needed
-- **cardiology-newsletter-writer**: Doctor audience, deeper technical analysis
-
-### Editorials
-- **cardiology-editorial**: Quick commentary on a known trial
-- **cardiology-trial-editorial**: Need to discover important trials first
-
-### Twitter
-- **x-post-creator-skill**: Single polished post with citations
-- **cardiology-tweet-writer**: Batch generation (10 at a time)
-- **cremieux-cardio**: Data-heavy, evidence-obsessed long post
-- **twitter-longform-medical**: Multi-tweet thread with narrative
-
-### Polish/QA
-- **authentic-voice**: Focus on removing AI detection patterns
-- **content-reflection**: Broader QA (audience fit, positioning, risk)
-- **scientific-critical-thinking**: Deep evidence evaluation
-- **peer-review**: Full manuscript-level review
-
----
-
-## Voice Standards Reference
-
-| Content Type | Voice | Key Traits |
-|--------------|-------|------------|
-| YouTube | Peter Attia + Hinglish | 70% Hindi / 30% English, intellectual depth |
-| Twitter/Writing | Eric Topol (Ground Truths) | Evidence-first, Q1 citations, specific stats |
-| B2B (Doctors) | JACC editorial | Technical, guideline-referenced, peer-level |
-| B2C (Patients) | Science-for-people | Rigorous but accessible, stats translated |
-
-### Anti-AI Patterns (Enforced Everywhere)
-**NEVER use:**
-- "It's important to note"
-- "In conclusion"
-- "Stands as a testament"
-- "Delve" / "Groundbreaking" / "Game-changer"
-- Excessive em dashes
-- "In today's world"
-
-**ALWAYS use:**
-- Specific data (HR, NNT, CI)
-- Journal names
-- First-person insights
-- Natural sentence variety
-- Contractions
-
----
-
-## Pipelines Quick Reference
-
-| Pipeline | Command | Purpose |
-|----------|---------|---------|
-| Twitter Content | `python pipelines/twitter-content/generate.py "question"` | Question → researched tweet |
-| Twitter Harvest | `python pipelines/twitter-content/main.py harvest` | Scrape influencers → generate |
-| Journal Fetch | `python pipelines/journal-fetch/main.py --markdown` | Daily digest |
-| YouTube Research | `python research-engine/run_pipeline.py --quick` | Competitive analysis (10 min) |
-| Content Calendar | `python research-engine/calendar_generator.py --show-next 5` | Next topics |
+_Auto-generated from capability-registry.json on 2026-01-01_
 
 ---
 
 ## How to Use This Catalog
 
-1. **Tell me what you want to create** - "I want to write a newsletter about GLP-1"
-2. **I'll route to the right skill** - Using this catalog as reference
-3. **We'll apply polish chain if needed** - authentic-voice → content-reflection → fact-check
-4. **If output isn't right consistently** - We update the skill's system prompt together
-
-You don't need to memorize this. Just describe your intent, and I'll handle the routing.
+**By Purpose:** "I want to write tweets" → Find in Twitter/X section
+**By Name:** Search for skill ID like `youtube-script-master`
+**By Category:** Browse Cardiology or Scientific sections
 
 ---
 
-*This catalog is Claude's routing reference. Updated as skills evolve.*
+## Purpose-Based Quick Routing
+
+| I want to... | Use this skill |
+|--------------|----------------|
+| Write YouTube scripts | `youtube-script-master` |
+| Create Twitter content | `x-post-creator-skill` |
+| Write newsletters | `cardiology-newsletter-writer` |
+| Write editorials/long-form | `cardiology-editorial` |
+| Research literature | `knowledge-pipeline, pubmed-database` |
+| Find trending topics | `social-media-trends-research` |
+| Generate images/carousels | `cardiology-visual-system` |
+| Improve voice/quality | `authentic-voice` |
+| Score/analyze content | `ensemble-content-scorer` |
+
+---
+
+## Cardiology Skills
+
+
+#### YouTube & Hinglish Content
+| Skill | Purpose |
+|-------|---------|
+| `cardiology-youtube-scriptwriter` | Complete workflow from "Hello" to finished script. Combines social listening ... |
+| `debunk-script-writer` | > Location: `/.claude/skills/youtube-script-master/SKILL.md` > Please use the... |
+| `hook-generator` | Metadata - Name: hook-generator - Version: 1.0 - Purpose: Generate viral hook... |
+| `youtube-script-hinglish` | > Location: `/.claude/skills/youtube-script-master/SKILL.md` > Please use the... |
+| `youtube-script-master` | Data-driven Hinglish YouTube scripts (15-30 min) |
+
+#### Twitter/X & Social Media
+| Skill | Purpose |
+|-------|---------|
+| `cardiology-content-repurposer` | Overview |
+| `cardiology-tweet-writer` | Simplified tweet generation with seed + modifier permutation |
+| `cremieux-cardio` | You're a cardiologist with a point of view, writing for someone who needs to ... |
+| `twitter-longform-medical` | Write data-driven, evidence-first long-form Twitter content on medicine and c... |
+| `x-post-creator-skill` | Twitter thought leadership with frameworks (batches of 10) |
+
+#### Newsletters & Editorials
+| Skill | Purpose |
+|-------|---------|
+| `academic-chapter-writer` | Transform topics into publishable textbook chapters with comprehensive resear... |
+| `cardiology-editorial` | This skill transforms you into a specialized cardiology editorial writer, cre... |
+| `cardiology-newsletter-writer` | Newsletter creation with Topol style + anti-AI guidelines |
+| `cardiology-science-for-people` | Write rigorous cardiology science that real people actually want to read. Sam... |
+| `cardiology-topol-writer` | Transform unstructured thought dumps into polished cardiology content that so... |
+| `cardiology-trial-editorial` | Landmark trial editorials with scoring + infographics |
+| `cardiology-writer` | Transform unstructured thought dumps into polished cardiology content that so... |
+| `medical-newsletter-writer` | Create high-quality, evidence-based medical newsletters in the style of Eric ... |
+
+#### Research & Discovery
+| Skill | Purpose |
+|-------|---------|
+| `citation-management` | Systematic citation management for accurate referencing in scientific and med... |
+| `clinicaltrials-database` | Query the U.S. National Library of Medicine's clinical trials registry throug... |
+| `content-marketing-social-listening` | Overview |
+| `content-research-writer` | This skill acts as your writing partner, helping you research, outline, draft... |
+| `content-trend-researcher` | A comprehensive content research and analysis skill designed for content crea... |
+| `deep-researcher` | Comprehensive research methodology with file-based tracking, parallel executi... |
+| `knowledge-pipeline` | RAG system for AstraDB guidelines + PubMed synthesis |
+| `literature-review` | Comprehensive, systematic literature reviews following rigorous academic meth... |
+| `perplexity-search` | Overview |
+| `research-synthesizer` | Metadata - Name: research-synthesizer - Version: 1.0 - Purpose: Analyze YouTu... |
+| `social-media-trends-research` | Zero-cost trend research using pytrends + Reddit + Perplexity |
+| `viral-content-predictor` | ML-based viral potential scoring (0-100) |
+
+#### Research Amplification
+| Skill | Purpose |
+|-------|---------|
+| `content-seo-optimizer` | 3-agent SEO pipeline: scrapes content → analyzes SERP → P0/P1/P2 prioritized ... |
+| `ensemble-content-scorer` | Multi-model consensus scoring: Claude + GPT-4o + Gemini score in parallel, ag... |
+| `influencer-analyzer` | Track Topol, Attia, York Cardiology, Indian channels. Discovers content patte... |
+| `parallel-literature-search` | Parallel search across PubMed + Perplexity + RAG. All sources simultaneously,... |
+| `quick-topic-researcher` | 5-min topic mastery: generates 5 questions → parallel PubMed + web search → M... |
+| `research-paper-extractor` | Extract structured data from cardiology research paper PDFs for content creat... |
+| `video-delivery-coach` | Analyze video recordings: voice (pace, pitch), facial (emotions, eye contact)... |
+
+#### Quality & Voice
+| Skill | Purpose |
+|-------|---------|
+| `authentic-voice` | AI detection avoidance and human-sounding content verification |
+| `content-reflection` | A rigorous pre-publication review system that evaluates cardiology content ac... |
+| `scientific-critical-thinking` | Systematic evaluation of research rigor through methodology assessment, bias ... |
+
+#### Visual Content
+| Skill | Purpose |
+|-------|---------|
+| `cardiology-visual-system` | Intelligent routing to optimal visual tool (Fal.ai, Gemini, Mermaid, Plotly) |
+| `carousel-generator` | Generate branded Instagram carousels (1080x1080px) from text content. |
+| `carousel-generator-v2` | World-class Instagram carousel generator with AI content intelligence, multi-... |
+| `gemini-imagegen` | Generate and edit images using Google's Gemini API. The environment variable ... |
+| `infographic-generator` | Publication-grade infographics from the visual-design-system templates |
+
+#### Multi-Model & Utilities
+| Skill | Purpose |
+|-------|---------|
+| `article-extractor` | This skill extracts the main content from web articles and blog posts, removi... |
+| `browser-automation` | Use your ChatGPT Plus and Gemini Advanced subscriptions through browser autom... |
+| `content-os` | The "produce everything" button. Give one seed idea → get all content types. ... |
+| `mcp-management` | Skill for managing and interacting with Model Context Protocol (MCP) servers. |
+| `multi-model-writer` | Unified routing to 6 LLM models (Claude, GPT, Gemini, Grok, GLM) |
+| `system-awareness` | Philosophy |
+
+#### Other
+| Skill | Purpose |
+|-------|---------|
+| `analyze-ecg-waveforms-uploaded` | Analyze ECG waveforms from uploaded images to detect arrhythmias |
+| `clinical-decision-support` | Generate professional clinical decision support documents with GRADE evidence... |
+| `clinical-reports` | Professional clinical documentation covering case reports, diagnostic reports... |
+| `peer-review` | Systematic framework for conducting rigorous peer review of scientific manusc... |
+| `scientific-writing` | Core skill for producing research manuscripts, evidence-based articles, and p... |
+| `statistical-analysis` | Rigorous statistical analysis guidance for interpreting and reporting researc... |
+| `transcribe-audio-podcast-interviews` | Transcribe audio from podcast interviews |
+| `visual-design-system` | Purpose: Publication-grade design tokens and utilities for Nature/JACC/NEJM q... |
+| `youtube-comment-analyzer` | Trigger phrases: - "Analyze comments for [URL]" - "Analyze this video: [URL]"... |
+
+---
+
+## Scientific Skills
+
+
+#### Bioinformatics
+| Skill | Purpose |
+|-------|---------|
+| `scanpy` | Single-cell RNA-seq analysis with Leiden clustering, UMAP... |
+
+#### Chemicals
+| Skill | Purpose |
+|-------|---------|
+| `chembl-database` | 2M+ bioactive molecules with IC50/Ki data |
+
+#### Clinical
+| Skill | Purpose |
+|-------|---------|
+| `pubmed-database` | 35M+ biomedical articles via NCBI E-utilities API |
+
+#### General
+| Skill | Purpose |
+|-------|---------|
+| `adaptyv` | Adaptyv is a cloud laboratory platform that provides auto... |
+| `aeon` | Overview |
+| `anndata` | Overview |
+| `arboreto` | Overview |
+| `astropy` | Overview |
+| `benchling-integration` | Overview |
+| `biomni` | Overview |
+| `biopython` | Overview |
+| `biorxiv-database` | Overview |
+| `bioservices` | Overview |
+| `brenda-database` | Overview |
+| `cellxgene-census` | Overview |
+| `cirq` | Cirq is Google Quantum AI's open-source framework for des... |
+| `citation-management` | Overview |
+| `clinical-decision-support` | Description |
+| `clinical-reports` | Overview |
+| `clinicaltrials-database` | Overview |
+| `clinpgx-database` | Overview |
+| `clinvar-database` | Overview |
+| `cobrapy` | Overview |
+| `cosmic-database` | Overview |
+| `dask` | Overview |
+| `datacommons-client` | Overview |
+| `datamol` | Overview |
+| `deepchem` | Overview |
+| `deeptools` | Overview |
+| `denario` | Overview |
+| `diffdock` | Overview |
+| `dnanexus-integration` | Overview |
+| `drugbank-database` | Overview |
+| `ena-database` | Overview |
+| `ensembl-database` | Overview |
+| `esm` | Overview |
+| `etetoolkit` | Overview |
+| `exploratory-data-analysis` | Overview |
+| `fda-database` | Overview |
+| `flowio` | Overview |
+| `fluidsim` | Overview |
+| `gene-database` | Overview |
+| `generate-image` | Generate and edit high-quality images using OpenRouter's ... |
+| `geniml` | Overview |
+| `geo-database` | Overview |
+| `geopandas` | GeoPandas extends pandas to enable spatial operations on ... |
+| `get-available-resources` | Overview |
+| `gget` | Overview |
+| `gtars` | Overview |
+| `gwas-database` | Overview |
+| `histolab` | Overview |
+| `hmdb-database` | Overview |
+| `hypogenic` | Overview |
+| `hypothesis-generation` | Overview |
+| `kegg-database` | Overview |
+| `labarchive-integration` | Overview |
+| `lamindb` | Overview |
+| `latchbio-integration` | Overview |
+| `latex-posters` | Overview |
+| `literature-review` | Overview |
+| `market-research-reports` | Overview |
+| `markitdown` | Overview |
+| `matchms` | Overview |
+| `matplotlib` | Overview |
+| `medchem` | Overview |
+| `metabolomics-workbench-database` | Overview |
+| `modal` | Overview |
+| `molfeat` | Overview |
+| `networkx` | Overview |
+| `neurokit2` | Overview |
+| `omero-integration` | Overview |
+| `openalex-database` | Overview |
+| `opentargets-database` | Overview |
+| `opentrons-integration` | Overview |
+| `paper-2-web` | Overview |
+| `pathml` | Overview |
+| `pdb-database` | Overview |
+| `peer-review` | Overview |
+| `pennylane` | Overview |
+| `perplexity-search` | Overview |
+| `plotly` | Python graphing library for creating interactive, publica... |
+| `polars` | Overview |
+| `pptx-posters` | Overview |
+| `protocolsio-integration` | Overview |
+| `pubchem-database` | Overview |
+| `pufferlib` | Overview |
+| `pydeseq2` | Overview |
+| `pydicom` | Overview |
+| `pyhealth` | Overview |
+| `pylabrobot` | Overview |
+| `pymatgen` | Overview |
+| `pymc` | Overview |
+| `pymoo` | Overview |
+| `pyopenms` | Overview |
+| `pysam` | Overview |
+| `pytdc` | Overview |
+| `pytorch-lightning` | Overview |
+| `qiskit` | Overview |
+| `qutip` | Overview |
+| `rdkit` | Overview |
+| `reactome-database` | Overview |
+| `research-grants` | Overview |
+| `research-lookup` | Overview |
+| `scholar-evaluation` | Overview |
+| `scientific-brainstorming` | Overview |
+| `scientific-critical-thinking` | Overview |
+| `scientific-schematics` | Overview |
+| `scientific-slides` | Overview |
+| `scientific-visualization` | Overview |
+| `scientific-writing` | Overview |
+| `scikit-bio` | Overview |
+| `scikit-learn` | Overview |
+| `scikit-survival` | Overview |
+| `scvi-tools` | Overview |
+| `seaborn` | Overview |
+| `shap` | Overview |
+| `simpy` | Overview |
+| `stable-baselines3` | Overview |
+| `statistical-analysis` | Overview |
+| `statsmodels` | Overview |
+| `string-database` | Overview |
+| `sympy` | Overview |
+| `torch_geometric` | Overview |
+| `torchdrug` | Overview |
+| `transformers` | Overview |
+| `treatment-plans` | Overview |
+| `umap-learn` | Overview |
+| `uniprot-database` | Overview |
+| `uspto-database` | Overview |
+| `vaex` | Overview |
+| `venue-templates` | Overview |
+| `zarr-python` | Overview |
+| `zinc-database` | Overview |
+
+#### Proteins
+| Skill | Purpose |
+|-------|---------|
+| `alphafold-database` | AI-predicted protein structures, 200M+ proteins |

@@ -1,0 +1,175 @@
+# Product Requirements Document: Content Operating System Completion
+
+## Project Overview
+Complete the partially-built components of Dr. Shailesh Singh's integrated content operating system. This includes the Carousel Generator v2 and the System Awareness (HR Department) skill discovery system.
+
+## Background
+The content operating system has 187+ skills for content creation, research, and writing. Two major components were started but not completed due to a system crash. This PRD defines the remaining work.
+
+---
+
+## Workstream 1: Carousel Generator v2
+
+### Goal
+Build a world-class Instagram carousel generator that combines AI content intelligence, multi-tool visual generation, and professional design systems.
+
+### Current State
+- Research: Complete
+- Planning: Complete
+- Phase 1 Foundation: Partial (some Python scripts exist)
+- Phases 2-6: Not started
+
+### Requirements
+
+#### Task: Complete Phase 1 Foundation
+- Create SKILL.md documentation for the carousel-generator-v2 skill
+- Verify brand-tokens.json has all required colors and typography
+- Download Health Icons SVG set (heart, medication, exercise, food, symptoms, procedures)
+- Set up Inter font family files
+- Create references/design-standards.md with WCAG and typography specs
+
+#### Task: Build Phase 2 Template Library
+Create 10 React/JSX slide templates in templates/react/:
+- HookSlide.jsx - Bold question, surprising stat, curiosity gap
+- TipsSlide.jsx - Numbered list with icons (3-5 tips)
+- StatsSlide.jsx - Big number prominently displayed with context
+- ComparisonSlide.jsx - Before/after or vs layout with two columns
+- StorySlide.jsx - Patient narrative or quote with attribution
+- DataSlide.jsx - Plotly chart integration for data visualization
+- StepsSlide.jsx - Process flow with numbered steps and arrows
+- MythSlide.jsx - Crossed-out myth with truth below
+- QuoteSlide.jsx - Expert opinion with photo placeholder
+- CTASlide.jsx - Follow/save/share actions with handle
+
+Each template must:
+- Accept props for content, colors, variant
+- Use brand tokens from tokens.py
+- Support both 4:5 (1080x1350) and 1:1 (1080x1080) aspect ratios
+- Follow WCAG AA contrast (4.5:1 ratio)
+- Limit text to 15 words per slide
+
+#### Task: Build Phase 3 Rendering Engine
+- Create services/satori-service/package.json with Satori dependencies
+- Create services/satori-service/index.js as HTTP server for React to PNG
+- Enhance pillow_renderer.py as fallback when Satori unavailable
+- Create scripts/visual_router.py to select rendering tool based on slide type
+- Test rendering pipeline with sample slides
+
+#### Task: Build Phase 4 Content Intelligence
+- Create scripts/content_structurer.py to convert topic or long-form content into slide JSON
+- Implement 4A Framework classifier (Actionable, Analytical, Aspirational, Anthropological)
+- Create scripts/hooks_generator.py with proven hook patterns
+- Integrate PubMed MCP for research when topic is provided
+- Add dynamic color mode selection (light/dark per slide based on content)
+
+#### Task: Build Phase 5 Quality Assurance
+- Enhance scripts/quality_checker.py with WCAG AA contrast validation
+- Add text density validator (reject slides over 15 words)
+- Add anti-AI voice checker integration
+- Add brand consistency validator against tokens
+- Create mobile preview generator (show all slides in grid)
+
+#### Task: Build Phase 6 Integration
+- Add Content-OS integration for forward mode (topic to all content types)
+- Add Content-OS integration for backward mode (long-form to carousel)
+- Create CLI interface for standalone usage
+- Add batch generation support for multiple topics
+- Create caption and hashtag generator per carousel
+- Write comprehensive usage examples in SKILL.md
+
+---
+
+## Workstream 2: System Awareness (HR Department)
+
+### Goal
+Build a connected skill ecosystem where skills are auto-discovered from disk and context files (CLAUDE.md, GEMINI.md, etc.) are auto-updated.
+
+### Current State
+- 6 new skills built: Complete
+- Context files updated: Complete (manually)
+- capability-registry.json: Partial (missing 6 new skill entries)
+- Auto-sync scripts: Not started
+
+### Requirements
+
+#### Task: Complete capability-registry.json
+Add the 6 missing skill entries to the skills array:
+- quick-topic-researcher
+- content-seo-optimizer
+- influencer-analyzer
+- video-delivery-coach
+- parallel-literature-search
+- ensemble-content-scorer
+
+Update coverage_matrix to include new skills in appropriate domains.
+
+#### Task: Build sync_skills.py
+Create scripts/sync_skills.py that:
+- Scans skills/cardiology/ and skills/scientific/ directories
+- Identifies directories containing SKILL.md files
+- Parses each SKILL.md for metadata (name, description, inputs, outputs)
+- Compares with capability-registry.json
+- Adds new skills, flags missing skills, reports changes
+- Updates capability-registry.json with discovered skills
+
+#### Task: Build generate_context.py
+Create scripts/generate_context.py that:
+- Reads capability-registry.json as source of truth
+- Generates markdown tables of skills by category
+- Updates the skill inventory sections in CLAUDE.md
+- Updates the skill inventory sections in GEMINI.md
+- Updates the skill inventory sections in AGENTS.md
+- Updates SKILL-CATALOG.md with purpose-based routing
+- Preserves non-skill sections of each file
+
+#### Task: Update system-awareness SKILL.md
+Document the complete connected workflow:
+- How sync_skills.py discovers skills from disk
+- How generate_context.py updates context files
+- The full pipeline: disk to registry to context
+- CLI usage examples
+- Automation options (git hooks, scheduled runs)
+
+#### Task: Test Full Pipeline
+- Create a test skill directory with minimal SKILL.md
+- Run sync_skills.py and verify registry update
+- Run generate_context.py and verify context file updates
+- Remove test skill and verify cleanup works
+- Document any edge cases discovered
+
+---
+
+## Success Criteria
+
+### Carousel Generator v2
+- Can generate 8-10 slide carousel from just a topic
+- Can convert existing long-form content to carousel
+- All slides meet WCAG AA accessibility standards
+- Output includes both 4:5 and 1:1 versions
+- Captions and hashtags generated automatically
+
+### System Awareness
+- New skills are auto-discovered when added to skills/ directory
+- Context files stay in sync with actual skills on disk
+- No manual editing of context files required for skill changes
+- capability-registry.json is single source of truth
+
+---
+
+## Technical Notes
+
+### Carousel v2 Location
+skills/cardiology/carousel-generator-v2/
+
+### System Awareness Location
+skills/cardiology/system-awareness/
+
+### Dependencies
+- Carousel v2: Pillow, Satori (Node.js), Plotly, Inter font
+- System Awareness: Python standard library, markdown parsing
+
+### API Keys Required
+All already configured in .env:
+- ANTHROPIC_API_KEY (content intelligence)
+- GOOGLE_API_KEY (Gemini for infographics)
+- FAL_KEY (hero images if needed)

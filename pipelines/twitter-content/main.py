@@ -13,9 +13,10 @@ Usage:
 """
 
 import asyncio
+import os
 import sys
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 try:
     import typer
@@ -50,6 +51,53 @@ def validate_config():
         print("See .env.example for required variables.")
         return False
     return True
+
+
+def parse_tags(tag_string: Optional[str]) -> List[str]:
+    if not tag_string:
+        return []
+    return [tag.strip() for tag in tag_string.split(",") if tag.strip()]
+
+
+def should_publish_to_notion(flag: bool) -> bool:
+    return flag or os.getenv("NOTION_AUTO_PUBLISH", "").lower() in {"1", "true", "yes"}
+
+
+def publish_to_notion_safe(
+    title: str,
+    content: str,
+    output_type: str,
+    status: Optional[str],
+    platform: Optional[str],
+    tags: List[str],
+    word_count: int,
+    citations: List[str],
+    local_path: Optional[str],
+    research_question: Optional[str],
+) -> None:
+    try:
+        from scripts.notion_publisher import publish_to_notion
+    except Exception as exc:
+        print(f"\nNotion publish skipped: {exc}")
+        return
+
+    try:
+        page_url = publish_to_notion(
+            title=title,
+            content=content,
+            platform=platform,
+            status=status,
+            tags=tags,
+            output_type=output_type,
+            source_pipeline="twitter-content",
+            word_count=word_count,
+            local_path=local_path,
+            citations=citations,
+            research_question=research_question,
+        )
+        print(f"\nNotion published: {page_url}")
+    except Exception as exc:
+        print(f"\nNotion publish failed: {exc}")
 
 
 def print_content(content, format_type: str):
@@ -103,7 +151,14 @@ def print_results_summary(results):
             print(f"   Sources: {r.research.total_sources}")
 
 
-async def run_harvest(max_ideas: int = 3, format: Optional[str] = None):
+async def run_harvest(
+    max_ideas: int = 3,
+    format: Optional[str] = None,
+    notion: bool = False,
+    notion_status: Optional[str] = None,
+    notion_tags: Optional[str] = None,
+    notion_platform: Optional[str] = None,
+):
     """Run the harvest pipeline."""
     pipeline = create_pipeline()
     content_format = ContentFormat(format) if format else None
@@ -113,24 +168,51 @@ async def run_harvest(max_ideas: int = 3, format: Optional[str] = None):
         format=content_format,
     )
 
+    publish_to_notion = should_publish_to_notion(notion)
     for result in results:
         print_content(result.content, result.content.format.value)
 
         # Save to file
         filename = f"output/content_{result.idea.id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        saved_path = None
         try:
             import os
             os.makedirs("output", exist_ok=True)
             result.save_to_file(filename)
             print(f"\n📁 Saved to {filename}")
+            saved_path = filename
         except Exception as e:
             print(f"\nCould not save to file: {e}")
+
+        if publish_to_notion:
+            tags = parse_tags(notion_tags)
+            if not tags and getattr(result.idea, "topic_category", None):
+                tags = [result.idea.topic_category]
+            publish_to_notion_safe(
+                title=result.idea.research_question,
+                content=result.content.content,
+                output_type=result.content.format.value,
+                status=notion_status or "Draft",
+                platform=notion_platform or "Twitter/X",
+                tags=tags,
+                word_count=result.content.word_count,
+                citations=result.brief.citations,
+                local_path=saved_path,
+                research_question=result.idea.research_question,
+            )
 
     print_results_summary(results)
     return results
 
 
-async def run_direct(question: str, format: Optional[str] = None):
+async def run_direct(
+    question: str,
+    format: Optional[str] = None,
+    notion: bool = False,
+    notion_status: Optional[str] = None,
+    notion_tags: Optional[str] = None,
+    notion_platform: Optional[str] = None,
+):
     """Run the direct question pipeline."""
     pipeline = create_pipeline()
     content_format = ContentFormat(format) if format else None
@@ -155,13 +237,29 @@ async def run_direct(question: str, format: Optional[str] = None):
 
         # Save to file
         filename = f"output/content_direct_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        saved_path = None
         try:
             import os
             os.makedirs("output", exist_ok=True)
             result.save_to_file(filename)
             print(f"\n📁 Saved to {filename}")
+            saved_path = filename
         except Exception as e:
             print(f"\nCould not save to file: {e}")
+
+        if should_publish_to_notion(notion):
+            publish_to_notion_safe(
+                title=question,
+                content=result.content.content,
+                output_type=result.content.format.value,
+                status=notion_status or "Draft",
+                platform=notion_platform or "Twitter/X",
+                tags=parse_tags(notion_tags),
+                word_count=result.content.word_count,
+                citations=result.brief.citations,
+                local_path=saved_path,
+                research_question=question,
+            )
 
     return result
 
@@ -171,6 +269,10 @@ if HAS_RICH:
     def harvest(
         max_ideas: int = typer.Option(3, "--max", "-m", help="Maximum ideas to process"),
         format: Optional[str] = typer.Option(None, "--format", "-f", help="Output format: tweet, thread, long_post"),
+        notion: bool = typer.Option(False, "--notion", help="Publish output to Notion"),
+        notion_status: Optional[str] = typer.Option(None, "--notion-status", help="Notion status (Draft/Final/Published)"),
+        notion_tags: Optional[str] = typer.Option(None, "--notion-tags", help="Comma-separated tags for Notion"),
+        notion_platform: Optional[str] = typer.Option(None, "--notion-platform", help="Override Notion platform label"),
     ):
         """Harvest ideas from medical Twitter and generate content."""
         console.print("\n🐦 [bold]Twitter Content System[/bold]")
@@ -179,12 +281,16 @@ if HAS_RICH:
         if not validate_config():
             raise typer.Exit(1)
 
-        asyncio.run(run_harvest(max_ideas, format))
+        asyncio.run(run_harvest(max_ideas, format, notion, notion_status, notion_tags, notion_platform))
 
     @app.command()
     def direct(
         question: str = typer.Argument(..., help="Research question to explore"),
         format: Optional[str] = typer.Option(None, "--format", "-f", help="Output format: tweet, thread, long_post"),
+        notion: bool = typer.Option(False, "--notion", help="Publish output to Notion"),
+        notion_status: Optional[str] = typer.Option(None, "--notion-status", help="Notion status (Draft/Final/Published)"),
+        notion_tags: Optional[str] = typer.Option(None, "--notion-tags", help="Comma-separated tags for Notion"),
+        notion_platform: Optional[str] = typer.Option(None, "--notion-platform", help="Override Notion platform label"),
     ):
         """Generate content from a direct question."""
         console.print("\n🐦 [bold]Twitter Content System[/bold]")
@@ -193,7 +299,7 @@ if HAS_RICH:
         if not validate_config():
             raise typer.Exit(1)
 
-        asyncio.run(run_direct(question, format))
+        asyncio.run(run_direct(question, format, notion, notion_status, notion_tags, notion_platform))
 
     @app.command()
     def config_check():

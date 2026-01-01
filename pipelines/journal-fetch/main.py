@@ -17,10 +17,13 @@ import json
 import os
 import sys
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
 from config import RSS_FEEDS
 from fetchers.rss_fetcher import fetch_all_rss
@@ -79,6 +82,35 @@ def parse_args():
         action='store_true',
         help='Save output as Obsidian-compatible Markdown file'
     )
+    parser.add_argument(
+        '--notion',
+        action='store_true',
+        help='Publish output to Notion'
+    )
+    parser.add_argument(
+        '--notion-status',
+        type=str,
+        default=None,
+        help='Notion status (Draft/Final/Published)'
+    )
+    parser.add_argument(
+        '--notion-tags',
+        type=str,
+        default=None,
+        help='Comma-separated tags for Notion'
+    )
+    parser.add_argument(
+        '--notion-platform',
+        type=str,
+        default=None,
+        help='Override Notion platform label'
+    )
+    parser.add_argument(
+        '--notion-title',
+        type=str,
+        default=None,
+        help='Override Notion page title'
+    )
     return parser.parse_args()
 
 
@@ -89,6 +121,16 @@ def save_json(data: any, filename: str, output_dir: str):
     with open(filepath, 'w') as f:
         json.dump(data, f, indent=2, default=str)
     print(f"  💾 Saved: {filepath}")
+
+
+def parse_tags(tag_string: Optional[str]) -> List[str]:
+    if not tag_string:
+        return []
+    return [tag.strip() for tag in tag_string.split(",") if tag.strip()]
+
+
+def should_publish_to_notion(flag: bool) -> bool:
+    return flag or os.getenv("NOTION_AUTO_PUBLISH", "").lower() in {"1", "true", "yes"}
 
 
 def run_pipeline(args):
@@ -199,9 +241,35 @@ def run_pipeline(args):
     print("=" * 60)
     
     # Save Markdown digest (for Obsidian)
-    if args.markdown:
+    markdown_path = None
+    publish_to_notion = should_publish_to_notion(args.notion)
+    if args.markdown or publish_to_notion:
         markdown_path = save_markdown_digest(triaged, args.output_dir)
-        print(f"\n  📝 Markdown saved: {markdown_path}")
+        if args.markdown:
+            print(f"\n  📝 Markdown saved: {markdown_path}")
+
+    # Publish to Notion
+    if publish_to_notion and markdown_path:
+        try:
+            from scripts.notion_publisher import publish_to_notion
+
+            with open(markdown_path, "r", encoding="utf-8") as handle:
+                markdown_content = handle.read()
+
+            page_url = publish_to_notion(
+                title=args.notion_title or f"Medical Digest {date_str}",
+                content=markdown_content,
+                platform=args.notion_platform or "Newsletter",
+                status=args.notion_status or "Draft",
+                tags=parse_tags(args.notion_tags),
+                output_type="Digest",
+                source_pipeline="journal-fetch",
+                word_count=len(markdown_content.split()),
+                local_path=markdown_path,
+            )
+            print(f"\n  📝 Notion published: {page_url}")
+        except Exception as e:
+            print(f"\n  ⚠️  Notion publish failed: {e}")
     
     # Send email
     if not args.no_email:
