@@ -3,7 +3,7 @@
 **Project:** World-Class Publication Graphics System
 **Goal:** Nature/JACC/NEJM-quality visuals for medical content
 **Owner:** Dr. Shailesh Singh
-**Last Updated:** 2026-01-01 (Session 11 - Phase 3.1 COMPLETE + Satori Hardening)
+**Last Updated:** 2026-01-01 (Session 12 - Phase 3.2 COMPLETE + react-pdf Pipeline)
 
 ---
 
@@ -11,29 +11,32 @@
 
 > **What is this?** Building a publication-grade visual design system for Dr. Shailesh Singh's cardiology content. Think Nature/JACC/NEJM quality graphics.
 
-> **What's done?** **Phase 1 + Phase 2 + Phase 3.1 COMPLETE!** Design tokens, Satori infographics, svg_diagrams, Plotly charts, Component Library (6 components), SVG Infographic Templates (5 templates), Architecture Diagrams (9 types), Satori carousel templates, **Manim library with 30 scenes fully rendered and QA'd**, and **carousel-generator-v2 Satori pipeline hardened** with visual router preferring Satori + quality checks.
+> **What's done?** **Phase 1 + Phase 2 + Phase 3 COMPLETE!** Design tokens, Satori infographics, svg_diagrams, Plotly charts, Component Library (6 components), SVG Infographic Templates (5 templates), Architecture Diagrams (9 types), Satori carousel templates, **Manim library with 30 scenes fully rendered and QA'd**, **carousel-generator-v2 Satori pipeline hardened**, and **react-pdf pipeline for publication-grade PDFs** (4 templates: newsletter, editorial, trialSummary, clinicalReport).
 
-> **What's next?** Phase 3.2 (react-pdf for article PDFs) or Phase 4 (router upgrades, batch generation). All rendering pipelines are production-ready.
+> **What's next?** Phase 4 (batch generation CLI, router upgrades), add more Satori templates, expand Manim scene library. All rendering pipelines are production-ready.
 
-## COMPREHENSIVE STATUS SUMMARY (SESSION 11)
+## COMPREHENSIVE STATUS SUMMARY (SESSION 12)
 
 **Vision:** A publication-grade graphics pipeline matching Nature/JACC/NEJM standards for cardiology content.
 
-**Achieved to Date (Phases 1–3.1 COMPLETE):**
+**Achieved to Date (Phases 1–3 COMPLETE):**
 - **Foundation (Phase 1):** Design tokens + WCAG validation, Satori React→SVG→PNG (5 templates + carousel templates), drawsvg diagrams, Plotly standardization (300 DPI, tokenized colors, WCAG checks).
 - **Design System (Phase 2):** Component library (6 components), SVG infographic templates (5), architecture diagrams (9 types).
 - **Carousel integration:** Satori renderer integrated in `carousel-generator-v2` with visual router routing.
 - **Manim (Phase 3.1):** ✅ COMPLETE - Dedicated venv (cross-platform), primitives/templates, **30 scenes rendered and QA'd**, batch rendering script, CLI with catalog listing, router integration.
 - **Satori Hardening:** ✅ COMPLETE - Visual router prefers Satori for carousel slides, quality checks run after rendering, Arial/Roboto fonts bundled.
+- **react-pdf (Phase 3.2):** ✅ COMPLETE - Node.js react-pdf pipeline with 4 templates (newsletter, editorial, trialSummary, clinicalReport), Babel transpilation, Python wrapper with full API.
 
-**Outputs:** All 30 Manim scenes rendered to `outputs/manim/videos/scenes/`, Satori test outputs in `satori/test-output/`.
+**Outputs:** All 30 Manim scenes in `outputs/manim/videos/scenes/`, Satori test outputs in `satori/test-output/`, react-pdf test outputs in `react-pdf/test-output/`.
 
-**Remaining Work (Phases 3.2+):**
+**Remaining Work (Phase 4+):**
 - ~~Render and QA the full Manim catalog~~ ✅ DONE
 - ~~Harden `carousel-generator-v2`~~ ✅ DONE (Satori priority + quality checks)
 - ~~Add Helvetica/Arial font files to Satori~~ ✅ Arial bundled
-- Build Phase 3.2 `react-pdf` pipeline for full article PDFs.
-- Phase 4 router upgrades (batch generation across all tools).
+- ~~Build Phase 3.2 `react-pdf` pipeline for full article PDFs~~ ✅ DONE
+- Phase 4 batch generation CLI (unified generation across all tools)
+- Add more Satori templates
+- Expand Manim scene library
 
 ### Key File Locations:
 ```
@@ -206,8 +209,10 @@ python plotly_charts.py demo --quality-report --png --output-dir ../outputs
 - [x] Phase 2.3: mingrammer/diagrams Integration - COMPLETE (9 diagram types)
 - [x] Phase 3.1: Manim Animations - **COMPLETE** (30 scenes rendered + QA'd)
 - [x] Satori Pipeline Hardening - **COMPLETE** (visual router + quality checks)
-- [ ] Phase 3.2: react-pdf Pipeline
+- [x] Phase 3.2: react-pdf Pipeline - **COMPLETE** (4 templates + Python wrapper)
 - [ ] Phase 4: Batch Generation
+- [ ] Add more Satori templates
+- [ ] Expand Manim scene library
 - [ ] Update this file before context window < 20%
 
 ---
@@ -1024,8 +1029,66 @@ skills/cardiology/visual-design-system/satori/test-output/
 
 ---
 
+### Session 12: 2026-01-01
+
+**Completed:**
+- [x] **Phase 3.2: react-pdf Pipeline** - COMPLETE
+  - [x] Created react-pdf directory structure
+  - [x] Added @react-pdf/renderer, react, and Babel dependencies
+  - [x] Created 4 publication-grade PDF templates:
+    - `newsletter` - B2C patient newsletter (Eric Topol/Ground Truths style)
+    - `editorial` - JACC-style medical editorial with abstract, sections, references
+    - `trialSummary` - Clinical trial one-pager with PICO, endpoints, HR/CI/p-values
+    - `clinicalReport` - Case report format with patient info, investigations, management
+  - [x] Configured Babel with preset-env (CommonJS) + preset-react for JSX transpilation
+  - [x] Created build pipeline: JSX → transpiled JS in dist/
+  - [x] Created Python wrapper (`pdf_renderer.py`) with full API:
+    - `render()` - generic template rendering
+    - `render_newsletter()` - newsletter-specific API
+    - `render_editorial()` - editorial-specific API
+    - `render_trial_summary()` - trial summary-specific API
+    - `render_clinical_report()` - clinical report-specific API
+  - [x] All 4 templates tested and generating PDFs successfully
+  - [x] Updated handover file with Phase 3.2 completion
+
+**Generated Test Outputs (Session 12):**
+```
+skills/cardiology/visual-design-system/react-pdf/test-output/
+├── test.pdf               (2.2KB) - Default newsletter
+├── newsletter-with-data.pdf (3.0KB) - Newsletter with custom data
+├── editorial-test.pdf     (3.2KB) - SGLT2i editorial
+├── trial-summary-test.pdf (3.8KB) - EMPEROR-Preserved summary
+├── clinical-report-test.pdf (3.4KB) - STEMI case report
+├── python-test.pdf        (2.6KB) - Python CLI test
+├── api-newsletter.pdf     (2.8KB) - Python API test
+├── api-editorial.pdf      (2.8KB) - Python API test
+└── api-trial.pdf          (3.7KB) - Python API test
+```
+
+**react-pdf Usage:**
+```bash
+# Node.js CLI
+npm run list  # List templates
+npm run test  # Generate test PDF
+node dist/renderer.js --template newsletter --data '{"title": "..."}' --output out.pdf
+
+# Python API
+from pdf_renderer import PDFRenderer
+renderer = PDFRenderer()
+renderer.render_newsletter("Heart Health Update", "output.pdf", key_takeaways=["..."])
+renderer.render_trial_summary("DAPA-HF", "trial.pdf", primary_endpoint={...})
+```
+
+---
+
+| Session | Date | Completed |
+|---------|------|-----------|
+| 12 | 2026-01-01 | Phase 3.2 (react-pdf) - 4 templates + Python wrapper |
+
+---
+
 *Last session ended: 2026-01-01*
-*PHASE 1 + PHASE 2 + PHASE 3.1 COMPLETE*
-*All rendering pipelines production-ready: Manim (30 scenes), Satori (5 carousel templates), svg_diagrams, Plotly*
-*Next: Phase 3.2 (react-pdf) or Phase 4 (batch generation)*
+*PHASE 1 + PHASE 2 + PHASE 3 COMPLETE*
+*All rendering pipelines production-ready: Manim (30 scenes), Satori (5 carousel templates), svg_diagrams, Plotly, react-pdf (4 templates)*
+*Next: Phase 4 (batch generation CLI), add more Satori templates, expand Manim scenes*
 *To resume: `Read VISUAL-SYSTEM-HANDOVER.md`*
