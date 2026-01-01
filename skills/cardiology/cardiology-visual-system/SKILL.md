@@ -17,6 +17,7 @@ A unified meta-skill that intelligently routes visual content requests to the op
 | Slide deck, presentation | **Marp** | PPTX/PDF/HTML slides |
 | Data chart, trial results, trends over time | **Plotly** | Interactive HTML or PNG |
 | Interactive explainer, dashboard | **React Artifact** | Interactive HTML |
+| Quick visualization prototype, exploratory data viz | **LIDA** ⚠️ | PNG + Code (prototype only) |
 
 ## Automatic Routing Logic
 
@@ -88,6 +89,30 @@ Keywords: `interactive`, `dashboard`, `calculator`, `tool`, `widget`, `animated`
 - Animated diagrams
 - Patient education tools
 - Explorable explanations
+
+### → Route to LIDA (Quick Prototyping) ⚠️ PROTOTYPING ONLY
+Keywords: `quick`, `prototype`, `exploratory`, `rough draft`, `multiple options`, `try`, `experiment`, `brainstorm visualization`
+
+**⚠️ CRITICAL LIMITATIONS:**
+- **PROTOTYPING ONLY** - NOT for publication or patient-facing materials
+- Quality varies - ALWAYS review for medical accuracy
+- Works best with ≤10 data columns
+- No specialized medical charts (true forest plots, Kaplan-Meier)
+- Requires manual validation before ANY use
+
+**Best for:**
+- Quick exploratory data visualization ("what does this data show?")
+- Generating multiple visualization candidates
+- Brainstorming chart types for new data
+- Internal research review only
+
+**NOT for:**
+- Publication-ready charts → Use Plotly instead
+- Patient-facing materials → Use production tools
+- Regulatory submissions → Never
+- Final blog posts → Use Plotly or Gemini
+
+**When in doubt, use Plotly for data visualization instead of LIDA.**
 
 ---
 
@@ -361,6 +386,194 @@ fig.write_html('trends.html')
 
 ---
 
+## Tool 6: LIDA (Quick Prototyping) ⚠️ PROTOTYPING ONLY
+
+### ⚠️ Critical Warning
+
+**LIDA is a PROTOTYPING TOOL ONLY. Do NOT use for:**
+- Publication-ready visualizations
+- Patient-facing materials
+- Regulatory submissions
+- Final blog posts or social media
+
+**For production visualizations, use:**
+- Plotly (data charts)
+- Gemini (infographics)
+- Fal.ai (images)
+
+### Setup
+
+```bash
+# Install LIDA
+pip install lida llmx openai --break-system-packages
+
+# Set API key (choose one)
+export OPENAI_API_KEY="your-key"      # Recommended
+export GOOGLE_API_KEY="your-key"      # Free tier (Gemini)
+export ANTHROPIC_API_KEY="your-key"   # Claude
+```
+
+### What LIDA Does
+
+LIDA (Automatic Visualization Generation) uses LLMs to:
+1. Analyze your data structure
+2. Generate visualization code from natural language
+3. Create multiple visualization candidates
+4. Support multiple libraries (Plotly, Matplotlib, Seaborn, Altair)
+
+**Published:** ACL 2023 (Microsoft Research)
+
+### Limitations
+
+1. **≤10 columns recommended** - LLM context constraints
+2. **Quality varies** - AI-generated, needs review
+3. **No specialized medical charts** - No true forest plots, Kaplan-Meier
+4. **Error rate:** <3.5% reported, but ALWAYS verify medical accuracy
+5. **Not production-ready** - Use for exploration only
+
+### Usage
+
+**Basic Usage:**
+```bash
+python scripts/lida_quick_viz.py "Show mortality by treatment group" trial_data.csv
+```
+
+**Multiple Candidates:**
+```bash
+python scripts/lida_quick_viz.py "Compare outcomes" data.csv --candidates 3
+```
+
+**Use Medical Template:**
+```bash
+python scripts/lida_quick_viz.py "Trial results" data.csv --template trial_comparison
+```
+
+**Specify Library:**
+```bash
+python scripts/lida_quick_viz.py "Trends over time" data.csv --library plotly
+```
+
+**Interactive Mode:**
+```bash
+python scripts/lida_quick_viz.py --interactive data.csv
+```
+
+**List Templates:**
+```bash
+python scripts/lida_quick_viz.py --list-templates
+```
+
+### Medical Templates
+
+| Template | Description | Use Case |
+|----------|-------------|----------|
+| `trial_comparison` | Compare treatment arms | Primary endpoint results |
+| `patient_demographics` | Baseline characteristics | Patient population summary |
+| `outcome_comparison` | Primary/secondary endpoints | Multiple outcomes comparison |
+| `trend_analysis` | Trends over time | Longitudinal data |
+| `survival_curve` | Time-to-event (simplified) | Event-free survival (NOT true KM) |
+
+### Example Workflow
+
+**1. Exploratory Analysis (LIDA):**
+```bash
+# Quick exploration of new trial data
+python scripts/lida_quick_viz.py \
+  "Show primary endpoint by treatment arm with confidence intervals" \
+  trial_results.csv \
+  --template trial_comparison \
+  --candidates 3
+```
+
+**2. Review Candidates:**
+- Check medical accuracy
+- Verify data interpretation
+- Select best approach
+
+**3. Production Version (Plotly):**
+```bash
+# Recreate selected visualization in production quality
+python scripts/plotly_charts.py bar --data trial_results.csv --output final_chart.png
+```
+
+### Quality Validation Checklist
+
+Every LIDA output includes this checklist:
+
+```
+⚠️  QUALITY VALIDATION CHECKLIST - REVIEW BEFORE USE
+
+Medical Accuracy:
+[ ] Data interpretation is correct
+[ ] Statistical measures are appropriate
+[ ] Confidence intervals/error bars are correct
+[ ] P-values and significance are accurate
+[ ] Sample sizes are represented correctly
+
+Visual Design:
+[ ] Chart type is appropriate
+[ ] Color scheme is professional
+[ ] Labels are clear and complete
+[ ] Legend is accurate
+[ ] Title describes the content
+
+Medical Standards:
+[ ] Follows publication standards
+[ ] No misleading visualizations
+[ ] Appropriate precision
+[ ] Context is provided
+[ ] Source attribution if needed
+```
+
+### When to Use LIDA vs Plotly
+
+| Scenario | Tool | Reason |
+|----------|------|--------|
+| "What's the best way to show this data?" | **LIDA** | Exploration, multiple options |
+| "Show me trial results quickly" | **LIDA** | Speed over perfection |
+| "Generate 3 chart options" | **LIDA** | Multiple candidates |
+| "Publication-ready chart" | **Plotly** | Production quality |
+| "Blog post visualization" | **Plotly** | Final output |
+| "Patient education" | **Plotly** | Accuracy critical |
+| "Regulatory submission" | **Plotly** | Never use LIDA |
+
+### Cost
+
+| Model | Cost | Speed | Quality |
+|-------|------|-------|---------|
+| OpenAI (GPT-4o-mini) | $0.60/M tokens | Fast | Good |
+| Gemini (Free tier) | FREE | Fast | Good |
+| Claude (Sonnet) | Variable | Medium | Excellent |
+
+**Typical cost per visualization:** $0.01-0.05 (negligible)
+
+### Example: Interactive Session
+
+```bash
+python scripts/lida_quick_viz.py --interactive trial_data.csv
+
+# In interactive mode:
+> list                              # Show templates
+> template trial_comparison         # Set template
+> library plotly                    # Set library
+> viz Show mortality by treatment   # Generate viz
+> viz Compare age distribution      # Another viz
+> quit
+```
+
+### Output Structure
+
+```
+lida_output/
+├── candidate_1_code.py           # Generated Python code
+├── candidate_1.png                # Rendered visualization
+├── candidate_2_code.py
+├── candidate_2.png
+└── ...
+```
+
+---
+
 ## Integrated Workflow Example
 
 **Scenario:** You're writing a blog post about heart failure medications.
@@ -413,8 +626,13 @@ Before using this system, ensure these are set:
 # Fal.ai (blog images)
 export FAL_KEY="your-key"
 
-# Gemini (infographics)  
+# Gemini (infographics)
 export GEMINI_API_KEY="your-key"
+
+# LIDA (prototyping) - choose one
+export OPENAI_API_KEY="your-key"      # Recommended
+export GOOGLE_API_KEY="your-key"      # FREE (Gemini)
+export ANTHROPIC_API_KEY="your-key"   # Claude
 
 # Mermaid - uses MCP, no key needed
 # Plotly - local, no key needed
@@ -429,11 +647,14 @@ export GEMINI_API_KEY="your-key"
 |------|------|-------------|
 | Fal.ai (Recraft) | $0.04/image | 3-4 per blog = $0.16 |
 | Gemini | Free tier available | Infographics |
+| LIDA (prototyping) | $0.01-0.05/viz | Quick exploration (optional) |
 | Mermaid | Free (MCP) | Diagrams |
 | Plotly | Free | Data viz |
 | Marp | Free | Slides |
 
-**Total per blog post: ~$0.16-0.20** (vs separate subscriptions)
+**Total per blog post: ~$0.16-0.25** (vs separate subscriptions)
+
+**Note:** LIDA is optional - use FREE Gemini model for zero-cost prototyping
 
 ---
 
@@ -446,6 +667,7 @@ cardiology-visual-system/
 │   ├── fal_image.py           # Fal.ai image generation
 │   ├── gemini_infographic.py  # Gemini infographic generation
 │   ├── plotly_charts.py       # Common chart templates
+│   ├── lida_quick_viz.py      # LIDA prototyping (⚠️ prototype only)
 │   └── convert_slides.sh      # Marp conversion helper
 ├── templates/
 │   ├── marp_medical.md        # Medical slide template

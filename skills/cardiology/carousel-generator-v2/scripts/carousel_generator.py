@@ -493,12 +493,220 @@ class CarouselGenerator:
         return slides
 
 
+def verify_outputs(result: CarouselRenderResult) -> bool:
+    """
+    Verify carousel outputs are valid.
+
+    Args:
+        result: CarouselRenderResult to verify
+
+    Returns:
+        True if all checks pass
+    """
+    print("\n🔍 Verifying outputs...")
+
+    try:
+        from PIL import Image
+
+        all_passed = True
+        issues = []
+
+        for i, slide in enumerate(result.slides, 1):
+            output_path = Path(getattr(slide, 'output_path', slide))
+
+            # Check file exists
+            if not output_path.exists():
+                issues.append(f"Slide {i}: File not found ({output_path})")
+                all_passed = False
+                continue
+
+            # Check file size (should be > 10KB, < 5MB)
+            size_bytes = output_path.stat().st_size
+            size_kb = size_bytes / 1024
+
+            if size_kb < 10:
+                issues.append(f"Slide {i}: File too small ({size_kb:.1f}KB)")
+                all_passed = False
+            elif size_kb > 5120:
+                issues.append(f"Slide {i}: File too large ({size_kb/1024:.1f}MB)")
+                all_passed = False
+
+            # Check image dimensions
+            try:
+                img = Image.open(output_path)
+                width, height = img.size
+
+                # Check if dimensions match expected ratios
+                valid_dims = [
+                    (1080, 1350),  # 4:5
+                    (1080, 1080),  # 1:1
+                ]
+
+                if (width, height) not in valid_dims:
+                    issues.append(f"Slide {i}: Unexpected dimensions ({width}×{height})")
+                    all_passed = False
+
+            except Exception as e:
+                issues.append(f"Slide {i}: Cannot read image ({e})")
+                all_passed = False
+
+        if all_passed:
+            print("✅ All outputs verified successfully")
+            return True
+        else:
+            print(f"❌ Verification failed ({len(issues)} issues):")
+            for issue in issues[:5]:  # Show first 5 issues
+                print(f"  - {issue}")
+            return False
+
+    except ImportError:
+        print("⚠️  PIL not available, skipping image verification")
+        return True
+
+
+def run_batch_generation(batch_file: Path, args):
+    """
+    Run batch generation from a JSON file with multiple carousel configs.
+
+    Batch JSON format:
+    {
+      "carousels": [
+        {
+          "topic": "GLP-1 for weight loss",
+          "template": "tips_5",
+          "account": 1,
+          "both_ratios": true
+        },
+        {
+          "topic": "Statin myths",
+          "template": "myth_busting"
+        }
+      ]
+    }
+    """
+    print(f"\n📦 BATCH MODE")
+    print("=" * 60)
+
+    # Load batch config
+    with open(batch_file, 'r') as f:
+        batch_config = json.load(f)
+
+    carousels = batch_config.get('carousels', [])
+    if not carousels:
+        print("Error: No carousels found in batch file")
+        sys.exit(1)
+
+    # Create batch output directory
+    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    batch_output_dir = Path(args.output) if args.output else (
+        Path(__file__).parent.parent / "output" / "carousels" / f"batch-{timestamp}"
+    )
+    batch_output_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"Processing {len(carousels)} carousel(s)")
+    print(f"Output directory: {batch_output_dir}\n")
+
+    results = []
+    failed = []
+    start_time = time.time()
+
+    for i, carousel_config in enumerate(carousels, 1):
+        topic = carousel_config.get('topic')
+        if not topic:
+            print(f"❌ Carousel {i}: No topic specified, skipping")
+            failed.append((i, "No topic"))
+            continue
+
+        print(f"\n[{i}/{len(carousels)}] {topic}")
+        print("-" * 60)
+
+        try:
+            # Configure
+            config = CarouselConfig(
+                account=carousel_config.get('account', args.account),
+                aspect_ratio=AspectRatio.INSTAGRAM_4X5 if carousel_config.get('ratio', args.ratio) == '4:5' else AspectRatio.SQUARE_1X1,
+                output_dir=batch_output_dir / f"carousel-{i:02d}",
+                check_text_density=carousel_config.get('check_quality', not args.no_quality),
+                check_anti_ai=carousel_config.get('check_quality', not args.no_quality),
+                generate_both_ratios=carousel_config.get('both_ratios', args.both_ratios)
+            )
+
+            generator = CarouselGenerator(config)
+
+            # Generate
+            template = carousel_config.get('template', args.template)
+            use_ai = carousel_config.get('use_ai', not args.no_ai)
+
+            result = generator.generate_from_topic(topic, template=template, use_ai=use_ai)
+
+            # Verify if requested
+            if args.verify:
+                if not verify_outputs(result):
+                    failed.append((i, "Verification failed"))
+                    continue
+
+            results.append({
+                'index': i,
+                'topic': topic,
+                'slides': len(result.slides),
+                'output': result.output_directory,
+                'time_ms': result.total_render_time_ms
+            })
+
+            print(f"✅ Complete ({result.total_render_time_ms:.0f}ms)")
+
+        except Exception as e:
+            print(f"❌ Failed: {e}")
+            failed.append((i, str(e)))
+
+    total_time = time.time() - start_time
+
+    # Summary
+    print("\n" + "=" * 60)
+    print("BATCH SUMMARY")
+    print("=" * 60)
+    print(f"Total carousels: {len(carousels)}")
+    print(f"Successful: {len(results)}")
+    print(f"Failed: {len(failed)}")
+    print(f"Total time: {total_time:.1f}s ({total_time/60:.1f}m)")
+
+    if results:
+        avg_time = sum(r['time_ms'] for r in results) / len(results)
+        print(f"Average time per carousel: {avg_time/1000:.1f}s")
+
+    if failed:
+        print(f"\nFailed carousels:")
+        for idx, reason in failed:
+            carousel = carousels[idx - 1]
+            print(f"  [{idx}] {carousel.get('topic', 'Unknown')}: {reason}")
+
+    # Save batch report
+    report = {
+        'timestamp': timestamp,
+        'batch_file': str(batch_file),
+        'total_carousels': len(carousels),
+        'successful': len(results),
+        'failed': len(failed),
+        'total_time_seconds': total_time,
+        'results': results,
+        'failures': [{'index': idx, 'topic': carousels[idx-1].get('topic'), 'reason': reason}
+                     for idx, reason in failed]
+    }
+
+    report_path = batch_output_dir / "batch-report.json"
+    with open(report_path, 'w') as f:
+        json.dump(report, f, indent=2)
+
+    print(f"\nBatch report: {report_path}")
+    print(f"Output directory: {batch_output_dir}")
+
+
 def main():
     """CLI entry point."""
     parser = argparse.ArgumentParser(
         description='Generate Instagram carousels with AI-powered content structuring'
     )
-    parser.add_argument('input', help='Topic string, JSON file path, or text file')
+    parser.add_argument('input', help='Topic string, JSON file path, text file, or batch JSON')
     parser.add_argument('-t', '--template', default='tips_5',
                        choices=list(TEMPLATE_PRESETS.keys()),
                        help='Template preset (default: tips_5)')
@@ -517,8 +725,22 @@ def main():
                        help='Generate preview image strip')
     parser.add_argument('--no-quality', action='store_true',
                        help='Skip quality checks')
+    parser.add_argument('--batch', action='store_true',
+                       help='Batch mode: input is JSON array of carousel configs')
+    parser.add_argument('--verify', action='store_true',
+                       help='Verify all outputs (file size, dimensions)')
 
     args = parser.parse_args()
+
+    # Batch mode
+    if args.batch:
+        input_path = Path(args.input)
+        if not input_path.exists() or input_path.suffix != '.json':
+            print("Error: --batch requires a JSON file with array of carousel configs")
+            sys.exit(1)
+
+        run_batch_generation(input_path, args)
+        return
 
     # Configure
     config = CarouselConfig(
@@ -550,6 +772,10 @@ def main():
         )
 
     print(f"\nGenerated {len(result.slides)} slides to {result.output_directory}")
+
+    # Verify outputs if requested
+    if args.verify:
+        verify_outputs(result)
 
     # Generate quality report if requested
     if args.quality_report:

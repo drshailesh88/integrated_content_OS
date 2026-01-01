@@ -11,7 +11,8 @@ Works with: Antigravity, VS Code, Cursor, Claude Code.
 
 | Project | Handover File | Status |
 |---------|---------------|--------|
-| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | Content Engine Complete - Visual Overhaul Needed |
+| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | ✅ COMPLETE - Production Ready |
+| **Infographic System** | `INFOGRAPHIC-SYSTEM-HANDOVER.md` | ✅ COMPLETE - Production Ready |
 
 *To resume: Read the handover file first, then continue from "Current Progress" section.*
 
@@ -20,7 +21,7 @@ Works with: Antigravity, VS Code, Cursor, Claude Code.
 ## CLAUDE: YOUR SUPERPOWERS
 
 > **REMEMBER THIS AFTER EVERY /clear**
-> You are Claude, the DEFAULT writer in this system. You have access to 187+ skills, 3 research pipelines, 6 LLM models, and comprehensive social media research tools. The user NEVER needs to leave this cowriting system.
+> You are Claude, the DEFAULT writer in this system. You have access to 193+ skills, 3 research pipelines, 6 LLM models, comprehensive social media research tools, and 4 new visualization frameworks (AntV Infographic, Vizzu, G2, LIDA). The user NEVER needs to leave this cowriting system.
 >
 > **SKILL ROUTING:** See `SKILL-CATALOG.md` for purpose-based skill lookup ("I want to do X → use skill Y"). Use it to route user requests to the right skill.
 
@@ -36,7 +37,7 @@ Works with: Antigravity, VS Code, Cursor, Claude Code.
 | **Research Guidelines** | RAG from AstraDB | `knowledge-pipeline`, ACC/ESC/ADA |
 | **Find Trending Topics** | Google Trends, Reddit, Perplexity | `social-media-trends-research`, `perplexity-search` |
 | **Predict Viral Content** | ML scoring | `viral-content-predictor` |
-| **Generate Images** | Blog headers, infographics | `infographic-generator`, `cardiology-visual-system`, `gemini-imagegen` |
+| **Generate Images** | Blog headers, infographics, animated viz | `infographic-generator` (6 templates), `antv_infographic` (200+ templates), `vizzu_animations` (animated data), `g2_charts` (grammar-based), `lida_quick_viz` (prototyping), `cardiology-visual-system`, `gemini-imagegen` |
 | **Use Other AI Models** | GPT-4o, Gemini, Grok, GLM | `multi-model-writer`, `browser-automation` |
 | **Repurpose Content** | Multi-platform adaptation | `cardiology-content-repurposer` |
 | **Analyze YouTube Comments** | Just give me a URL | `youtube-comment-analyzer` |
@@ -129,6 +130,19 @@ python skills/cardiology/social-media-trends-research/scripts/trend_research.py 
 ### "Create an image for my blog"
 → Use `cardiology-visual-system` (auto-routes to best tool)
 → Fal.ai for photos, Gemini for infographics, Mermaid for flowcharts
+
+### "Create a template infographic" (NEW)
+→ Use `antv_infographic` - 11 medical templates
+→ Trial timelines, mechanism of action, patient journeys, risk stratification
+→ `python skills/cardiology/visual-design-system/antv_infographic/scripts/antv_cli.py render --template mechanism_of_action`
+→ Opens in browser → Download as SVG or PNG
+
+### "Prototype a visualization quickly" (NEW)
+→ Use `lida_quick_viz.py` - AI-driven visualization from natural language
+→ ⚠️  PROTOTYPING ONLY - recreate in Plotly for production
+→ Example: "Show me 3 ways to visualize trial results" → generates multiple options
+→ Medical templates: trial_comparison, patient_demographics, outcome_comparison
+→ `python skills/cardiology/cardiology-visual-system/scripts/lida_quick_viz.py "prompt" data.csv`
 
 ### "Research [topic] quickly for my video" (NEW)
 → Use `quick-topic-researcher` - 5 questions → parallel search → McKinsey brief
@@ -396,17 +410,39 @@ pubmed_article_connections(sourcePmid="12345678", relationshipType="pubmed_simil
 | You Ask For | Tool | Output |
 |-------------|------|--------|
 | Blog header, lifestyle photo | **Fal.ai** | PNG |
-| Infographic, medical illustration | **Gemini** | PNG/JPG |
+| Template-driven infographic (trials, mechanisms) | **AntV Infographic** | SVG/PNG (via HTML) |
+| Custom infographic, medical illustration | **Gemini** | PNG/JPG |
 | Flowchart, algorithm | **Mermaid** | SVG/PNG |
 | Presentation, slides | **Marp** | PPTX/PDF |
 | Data chart, trial results | **Plotly** | Interactive HTML |
+| Complex chart (forest plot, multi-panel) | **G2 Grammar** | PNG/SVG |
+| Animated data visualization (survival curves, meta-analysis) | **Vizzu** | HTML/MP4/GIF |
+| Quick viz prototype, exploratory data viz | **LIDA** ⚠️ | PNG + Code (prototype only) |
 
 ```bash
+# AntV template infographic (NEW - 11 medical templates)
+python skills/cardiology/visual-design-system/antv_infographic/scripts/antv_cli.py render \
+  --template mechanism_of_action --output mechanism.html
+
 # Gemini image
 python skills/cardiology/gemini-imagegen/scripts/generate_image.py "description"
 
 # Fal.ai blog image
 python skills/cardiology/cardiology-visual-system/scripts/fal_image.py "description"
+
+# G2 grammar-based chart (forest plot, Kaplan-Meier, etc.)
+python skills/cardiology/visual-design-system/g2_charts/g2_cli.py forest \
+  --studies "A,B,C" --estimates "0.8,0.7,0.9" --lower "0.7,0.6,0.8" \
+  --upper "0.9,0.8,1.0" -o forest.png
+
+# Vizzu animated data visualization
+python skills/cardiology/visual-design-system/vizzu_animations/vizzu_cli.py demo \
+  --template kaplan-meier  # Generates animated survival curves
+
+# LIDA quick prototype (⚠️  PROTOTYPING ONLY)
+python skills/cardiology/cardiology-visual-system/scripts/lida_quick_viz.py \
+  "Show mortality by treatment group with confidence intervals" \
+  trial_data.csv --template trial_comparison --candidates 3
 ```
 
 ---

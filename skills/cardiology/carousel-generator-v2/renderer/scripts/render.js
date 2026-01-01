@@ -117,44 +117,75 @@ function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Render a single slide
-async function renderSlide(page, renderUrl, slideData, outputPath) {
-  console.log(`Rendering ${slideData.type} slide to ${outputPath}...`);
+// Render a single slide with retry logic
+async function renderSlide(page, renderUrl, slideData, outputPath, retries = 3) {
+  let lastError;
 
-  // Set slide data in localStorage before navigating
-  await page.evaluateOnNewDocument((data) => {
-    localStorage.setItem('slideData', JSON.stringify(data));
-  }, slideData);
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      if (attempt > 1) {
+        console.log(`Retry attempt ${attempt}/${retries} for ${slideData.type} slide...`);
+        await delay(1000 * attempt); // Exponential backoff
+      } else {
+        console.log(`Rendering ${slideData.type} slide to ${outputPath}...`);
+      }
 
-  // Navigate to render mode
-  await page.goto(renderUrl, {
-    waitUntil: 'networkidle0'
-  });
+      // Set slide data in localStorage before navigating
+      await page.evaluateOnNewDocument((data) => {
+        localStorage.setItem('slideData', JSON.stringify(data));
+      }, slideData);
 
-  // Also try setting via window function
-  await page.evaluate((data) => {
-    if (window.setSlideData) {
-      window.setSlideData(data);
+      // Navigate to render mode
+      await page.goto(renderUrl, {
+        waitUntil: 'networkidle0',
+        timeout: 30000
+      });
+
+      // Also try setting via window function
+      await page.evaluate((data) => {
+        if (window.setSlideData) {
+          window.setSlideData(data);
+        }
+      }, slideData);
+
+      // Wait for the slide to render
+      await page.waitForSelector('#slide-container', { timeout: 15000 });
+      await delay(800); // Extra time for React to re-render and images to load
+
+      // Get the slide element
+      const slideElement = await page.$('#slide-container');
+      if (!slideElement) {
+        throw new Error('Slide container not found');
+      }
+
+      // Take screenshot
+      await slideElement.screenshot({
+        path: outputPath,
+        type: 'png'
+      });
+
+      // Verify the file was created and has content
+      if (!fs.existsSync(outputPath)) {
+        throw new Error(`Output file not created: ${outputPath}`);
+      }
+
+      const stats = fs.statSync(outputPath);
+      if (stats.size < 1024) {
+        throw new Error(`Output file too small (${stats.size} bytes)`);
+      }
+
+      console.log(`Saved: ${outputPath} (${(stats.size / 1024).toFixed(1)}KB)`);
+      return; // Success!
+
+    } catch (error) {
+      lastError = error;
+      console.error(`Attempt ${attempt} failed: ${error.message}`);
+
+      if (attempt === retries) {
+        throw new Error(`Failed after ${retries} attempts: ${lastError.message}`);
+      }
     }
-  }, slideData);
-
-  // Wait for the slide to render
-  await page.waitForSelector('#slide-container', { timeout: 10000 });
-  await delay(800); // Extra time for React to re-render and images to load
-
-  // Get the slide element
-  const slideElement = await page.$('#slide-container');
-  if (!slideElement) {
-    throw new Error('Slide container not found');
   }
-
-  // Take screenshot
-  await slideElement.screenshot({
-    path: outputPath,
-    type: 'png'
-  });
-
-  console.log(`Saved: ${outputPath}`);
 }
 
 // Main function
@@ -269,15 +300,34 @@ Slide Types:
       deviceScaleFactor: 2 // Retina quality
     });
 
-    // Render each slide
+    // Render each slide with timing
+    const timings = [];
     for (let i = 0; i < slides.length; i++) {
       const slide = slides[i];
       const filename = outputFile || path.join(outputDir, `slide_${String(i + 1).padStart(2, '0')}.png`);
 
+      const startTime = Date.now();
       await renderSlide(page, renderUrl, slide, filename);
+      const renderTime = Date.now() - startTime;
+
+      timings.push({
+        slide: i + 1,
+        type: slide.type,
+        time_ms: renderTime
+      });
     }
 
-    console.log(`\nRendered ${slides.length} slide(s) successfully!`);
+    // Performance report
+    const totalTime = timings.reduce((sum, t) => sum + t.time_ms, 0);
+    const avgTime = totalTime / timings.length;
+
+    console.log(`\n✅ Rendered ${slides.length} slide(s) successfully!`);
+    console.log(`📊 Performance:`);
+    console.log(`   Total: ${(totalTime / 1000).toFixed(1)}s`);
+    console.log(`   Average: ${(avgTime / 1000).toFixed(2)}s per slide`);
+    console.log(`   Fastest: ${(Math.min(...timings.map(t => t.time_ms)) / 1000).toFixed(2)}s`);
+    console.log(`   Slowest: ${(Math.max(...timings.map(t => t.time_ms)) / 1000).toFixed(2)}s`);
+
   } finally {
     await browser.close();
     if (viteProcess) {

@@ -18,6 +18,12 @@ python -m scripts.carousel_generator newsletter.txt
 
 # Generate both 4:5 and 1:1 outputs
 python -m scripts.carousel_generator "Statin myths" --template myth_busting --both-ratios
+
+# Batch mode: Generate multiple carousels at scale
+python -m scripts.carousel_generator batch.json --batch --verify
+
+# Verify output quality (file size, dimensions)
+python -m scripts.carousel_generator "Heart health" --verify
 ```
 
 Or use in Claude Code:
@@ -25,6 +31,7 @@ Or use in Claude Code:
 "Create a carousel about statins myth-busting"
 "Generate Instagram slides for GLP-1 benefits"
 "Turn this newsletter into carousel slides: [paste content]"
+"Batch generate carousels from examples/batch-example.json"
 ```
 
 ---
@@ -126,7 +133,7 @@ Best for: Tutorials, procedures, step-by-step guides
 python -m scripts.carousel_generator INPUT [OPTIONS]
 
 Arguments:
-  INPUT                    Topic string, JSON file, or text file
+  INPUT                    Topic string, JSON file, text file, or batch JSON
 
 Options:
   -t, --template TEXT      Template preset (tips_5, myth_busting, etc.)
@@ -135,6 +142,10 @@ Options:
   --both-ratios            Generate both 4:5 and 1:1 outputs
   -o, --output PATH        Output directory
   --no-ai                  Skip AI content structuring (uses curated database if available)
+  --batch                  Batch mode: INPUT is JSON array of carousel configs
+  --verify                 Verify outputs (file size, dimensions)
+  --quality-report         Generate detailed quality report
+  --preview                Generate preview image strip
 ```
 
 ### Examples
@@ -157,7 +168,103 @@ python -m scripts.carousel_generator "Hypertension myths" --both-ratios
 
 # Custom output directory
 python -m scripts.carousel_generator "GLP-1" -o ./client-carousel/
+
+# Batch generation
+python -m scripts.carousel_generator examples/batch-example.json --batch
+
+# Batch with verification
+python -m scripts.carousel_generator batch.json --batch --verify --quality-report
 ```
+
+---
+
+## Batch Mode
+
+Generate multiple carousels in a single run for production-scale content creation.
+
+### Batch JSON Format
+
+```json
+{
+  "description": "Weekly cardiology content batch",
+  "carousels": [
+    {
+      "topic": "GLP-1 for weight loss",
+      "template": "tips_5",
+      "account": 1,
+      "both_ratios": true,
+      "use_ai": false
+    },
+    {
+      "topic": "Statin myths debunked",
+      "template": "myth_busting",
+      "account": 1,
+      "ratio": "4:5"
+    },
+    {
+      "topic": "SGLT2 inhibitor benefits",
+      "template": "data_driven",
+      "account": 2
+    }
+  ]
+}
+```
+
+### Batch Output Structure
+
+```
+batch-20260101-143022/
+├── carousel-01/          # GLP-1 carousel
+│   ├── slide_01_4x5.png
+│   ├── slide_01_1x1.png
+│   ├── slide_02_4x5.png
+│   ├── slide_02_1x1.png
+│   └── metadata.json
+├── carousel-02/          # Statin myths carousel
+│   ├── slide_01_4x5.png
+│   ├── slide_02_4x5.png
+│   └── metadata.json
+├── carousel-03/          # SGLT2 carousel
+│   └── ...
+└── batch-report.json     # Summary with timings and failures
+```
+
+### Batch Report
+
+```json
+{
+  "timestamp": "20260101-143022",
+  "batch_file": "batch.json",
+  "total_carousels": 5,
+  "successful": 4,
+  "failed": 1,
+  "total_time_seconds": 234.5,
+  "results": [
+    {
+      "index": 1,
+      "topic": "GLP-1 for weight loss",
+      "slides": 8,
+      "output": "carousel-01/",
+      "time_ms": 45230
+    }
+  ],
+  "failures": [
+    {
+      "index": 3,
+      "topic": "Failed carousel",
+      "reason": "Puppeteer timeout"
+    }
+  ]
+}
+```
+
+### Reliability Features
+
+- **Retry Logic**: Automatic retry (3 attempts) if Puppeteer fails
+- **Output Validation**: Verifies file size (>10KB, <5MB) and dimensions (1080×1080 or 1080×1350)
+- **Error Recovery**: Continues batch even if one carousel fails
+- **Performance Timing**: Tracks render time per slide and per carousel
+- **Cleanup**: Removes temp files on failure
 
 ---
 

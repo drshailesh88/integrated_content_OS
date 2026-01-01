@@ -20,6 +20,8 @@ Generate publication-grade infographics that match your carousel visual quality.
 
 ## Quick Start
 
+### Single Infographic
+
 ```bash
 # Hero stat infographic
 python skills/cardiology/infographic-generator/scripts/infographic_cli.py \
@@ -57,6 +59,60 @@ python skills/cardiology/infographic-generator/scripts/infographic_cli.py \
   --data '{"tag":"PATIENT CHECKLIST","title":"Before Your Stress Test","icon":"heart","categories":[{"title":"24 Hours Before","items":[{"text":"Avoid caffeine"},{"text":"Continue medications"}]},{"title":"Day of Test","items":[{"text":"Wear comfortable shoes"},{"text":"Bring medication list"}]}],"callout":{"icon":"warning","text":"Tell staff about chest pain"}}' \
   --output outputs/checklist-stress.png
 ```
+
+### Batch Generation
+
+Generate multiple infographics from a config file (perfect for content campaigns):
+
+```bash
+# From JSON config
+python skills/cardiology/infographic-generator/scripts/batch_generate.py \
+  --config examples/batch_demo.json
+
+# Parallel generation (faster)
+python skills/cardiology/infographic-generator/scripts/batch_generate.py \
+  --config examples/batch_demo.json \
+  --parallel 4
+
+# Validate config without generating
+python skills/cardiology/infographic-generator/scripts/batch_generate.py \
+  --config my_config.json \
+  --dry-run
+```
+
+**Example batch config** (`examples/batch_demo.json`):
+```json
+[
+  {
+    "template": "infographic-hero",
+    "data": {
+      "stat": "26%",
+      "label": "Mortality Reduction",
+      "source": "PARADIGM-HF",
+      "icon": "chart-down",
+      "tag": "CLINICAL TRIAL"
+    },
+    "output": "outputs/hero-paradigm.png"
+  },
+  {
+    "template": "infographic-myth",
+    "data": {
+      "tag": "MYTH BUSTED",
+      "title": "Statins cause muscle damage",
+      "myth": {"text": "Taking statins will give you pain"},
+      "truth": {"text": "Only 5-10% experience symptoms"}
+    },
+    "output": "outputs/myth-statins.png"
+  }
+]
+```
+
+**Batch Features:**
+- ✅ Validate all configs before generating
+- ✅ Parallel generation (1-8 workers)
+- ✅ Stop on first error (optional)
+- ✅ JSON or YAML config formats
+- ✅ Progress tracking
 
 ## Template Data Schemas
 
