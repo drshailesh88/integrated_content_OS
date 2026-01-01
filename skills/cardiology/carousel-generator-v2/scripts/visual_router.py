@@ -92,10 +92,26 @@ class VisualRouter:
         return bool(os.getenv("FAL_KEY"))
 
     def _check_satori(self) -> bool:
-        """Check if Satori service is available."""
-        # Would check for Node.js service running
-        # For now, assume not available
-        return False
+        """Check if Satori renderer is available (Node.js + renderer.js + dependencies)."""
+        try:
+            # Check if Node.js is available
+            import shutil
+            if not shutil.which("node"):
+                return False
+
+            # Check if renderer.js exists
+            renderer_path = Path(__file__).resolve().parents[2] / "visual-design-system" / "satori" / "renderer.js"
+            if not renderer_path.exists():
+                return False
+
+            # Check if node_modules exists (dependencies installed)
+            node_modules = renderer_path.parent / "node_modules"
+            if not node_modules.exists():
+                return False
+
+            return True
+        except Exception:
+            return False
 
     def _resolve_manim_bin(self) -> Optional[Path]:
         """Resolve Manim binary from config, env, or local venv."""
@@ -191,7 +207,27 @@ class VisualRouter:
                 fallback=None
             )
 
-        # Default to Puppeteer for standard slides if available
+        # Prefer Satori for carousel slides (hook, myth, stat, tips, cta)
+        satori_slide_types = {
+            SlideType.HOOK, SlideType.MYTH, SlideType.STATS,
+            SlideType.TIPS, SlideType.CTA
+        }
+        if slide_type in satori_slide_types and self.available_tools[RenderTool.SATORI]:
+            return RouteDecision(
+                tool=RenderTool.SATORI,
+                reason=f"{slide_type.value} slide - using Satori for high-quality rendering",
+                fallback=RenderTool.PILLOW
+            )
+
+        # Use Satori for any standard slide if available
+        if self.available_tools[RenderTool.SATORI]:
+            return RouteDecision(
+                tool=RenderTool.SATORI,
+                reason="Standard slide - using Satori renderer",
+                fallback=RenderTool.PILLOW
+            )
+
+        # Fall back to Puppeteer if available
         if self.available_tools[RenderTool.PUPPETEER]:
             return RouteDecision(
                 tool=RenderTool.PUPPETEER,
@@ -201,7 +237,7 @@ class VisualRouter:
 
         return RouteDecision(
             tool=RenderTool.PILLOW,
-            reason="Standard slide - using Pillow renderer",
+            reason="Standard slide - using Pillow renderer (fallback)",
             fallback=None
         )
 
@@ -495,6 +531,7 @@ def route_and_render(slides: List[SlideContent],
         Tuple of (route decisions, render results)
     """
     from .pillow_renderer import PillowRenderer
+    from .satori_renderer import SatoriRenderer
 
     router = VisualRouter(config)
     routes = router.route_carousel(slides)
@@ -505,27 +542,45 @@ def route_and_render(slides: List[SlideContent],
     print(f"Estimated time: {router.estimate_render_time(routes):.1f}s")
     print(f"Estimated cost: ${router.estimate_cost(routes):.2f}")
 
-    # Initialize renderers
-    pillow = PillowRenderer(config)
-    plotly_renderer = PlotlyRenderer(config) if router.available_tools[RenderTool.PLOTLY] else None
-    manim_renderer = ManimRenderer(config, router.manim_bin) if router.available_tools[RenderTool.MANIM] else None
-
-    # Render each slide
-    results = []
+    # Prepare output directory
     output_dir = config.output_dir if config else Path("output/carousels")
     output_dir.mkdir(parents=True, exist_ok=True)
     manim_output_dir = output_dir / "manim"
     manim_output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Initialize renderers
+    pillow = PillowRenderer(config)
+    plotly_renderer = PlotlyRenderer(config) if router.available_tools[RenderTool.PLOTLY] else None
+    manim_renderer = ManimRenderer(config, router.manim_bin) if router.available_tools[RenderTool.MANIM] else None
+    satori_renderer = SatoriRenderer(output_dir=output_dir) if router.available_tools[RenderTool.SATORI] else None
+
+    # Render each slide
+    results = []
+    total_slides = len(slides)
+
     for slide in slides:
         route = routes[slide.slide_number]
 
-        if route.tool == RenderTool.MANIM and manim_renderer:
+        # Satori rendering (preferred for carousel slides)
+        if route.tool == RenderTool.SATORI and satori_renderer:
+            try:
+                result = satori_renderer.render_slide_content(
+                    slide, slide.slide_number, total_slides,
+                    output_filename=f"slide-{slide.slide_number:02d}"
+                )
+            except Exception as e:
+                print(f"Satori failed, falling back to Pillow: {e}")
+                result = pillow.render_slide(slide)
+
+        # Manim rendering
+        elif route.tool == RenderTool.MANIM and manim_renderer:
             try:
                 result = manim_renderer.render_scene(slide, manim_output_dir)
             except Exception as e:
                 print(f"Manim failed, falling back to Pillow: {e}")
                 result = pillow.render_slide(slide)
+
+        # Plotly rendering
         elif route.tool == RenderTool.PLOTLY and plotly_renderer:
             output_path = output_dir / f"slide-{slide.slide_number:02d}.png"
             chart_type = slide.chart_type or "bar"
@@ -549,4 +604,84 @@ def route_and_render(slides: List[SlideContent],
         results.append(result)
         print(f"  Rendered slide {slide.slide_number}: {result.renderer_used}")
 
+    # Run quality checks on rendered slides
+    quality_report = run_quality_checks(slides, results)
+    if quality_report["failed"]:
+        print(f"\nQuality warnings ({len(quality_report['warnings'])} issues):")
+        for warning in quality_report["warnings"][:5]:  # Show first 5
+            print(f"  - Slide {warning['slide']}: {warning['check']}: {warning['message']}")
+
     return routes, results
+
+
+def run_quality_checks(
+    slides: List[SlideContent],
+    results: List[SlideRenderResult]
+) -> Dict[str, Any]:
+    """
+    Run quality checks on rendered carousel.
+
+    Args:
+        slides: Original slide content
+        results: Render results
+
+    Returns:
+        Quality report with pass/fail status and warnings
+    """
+    try:
+        from .quality_checker import QualityChecker
+        checker = QualityChecker()
+    except ImportError:
+        return {"passed": True, "failed": False, "warnings": []}
+
+    warnings = []
+
+    for slide in slides:
+        # Text density check
+        try:
+            density_result = checker.check_text_density(slide)
+            if not density_result.passed:
+                warnings.append({
+                    "slide": slide.slide_number,
+                    "check": "text_density",
+                    "message": density_result.message
+                })
+        except Exception:
+            pass
+
+        # Anti-AI check
+        try:
+            ai_result = checker.check_anti_ai(slide)
+            if not ai_result.passed:
+                warnings.append({
+                    "slide": slide.slide_number,
+                    "check": "anti_ai",
+                    "message": ai_result.message
+                })
+        except Exception:
+            pass
+
+    # File integrity check for results
+    for result in results:
+        if result.output_path and Path(result.output_path).exists():
+            size = Path(result.output_path).stat().st_size
+            if size < 1000:  # Less than 1KB is suspicious
+                warnings.append({
+                    "slide": result.slide_number,
+                    "check": "file_integrity",
+                    "message": f"File size too small ({size} bytes)"
+                })
+        elif result.output_path:
+            warnings.append({
+                "slide": result.slide_number,
+                "check": "file_exists",
+                "message": "Output file not found"
+            })
+
+    return {
+        "passed": len(warnings) == 0,
+        "failed": len(warnings) > 0,
+        "warnings": warnings,
+        "total_slides": len(slides),
+        "checks_run": ["text_density", "anti_ai", "file_integrity"]
+    }

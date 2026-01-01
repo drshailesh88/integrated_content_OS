@@ -13,13 +13,44 @@ sys.path.insert(0, str(VISUAL_SYSTEM_ROOT))
 from tokens.index import get_tokens, get_color, get_accessible_pair
 
 
-def _first_font_name(font_family: str, fallback: str) -> str:
-    primary = font_family.split(",")[0].strip()
-    return primary or fallback
+def _get_available_font(preferred: list[str], fallback: str) -> str:
+    """
+    Return the first available font from the preferred list.
+    Falls back to a generic font if none are available.
+    """
+    import subprocess
+    try:
+        # Use fc-list with specific format to get just the family name
+        result = subprocess.run(
+            ["fc-list", "--format", "%{family}\n"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        # Parse multi-family entries (e.g., "Liberation Sans,Sans" becomes two entries)
+        available_fonts = set()
+        for line in result.stdout.split("\n"):
+            for family in line.split(","):
+                family_clean = family.strip()
+                if family_clean:
+                    available_fonts.add(family_clean)
+    except Exception:
+        available_fonts = set()
+
+    for font in preferred:
+        font_clean = font.strip()
+        if font_clean in available_fonts or not available_fonts:
+            return font_clean
+    return fallback
 
 
-PRIMARY_FONT = _first_font_name(get_tokens().get_font_family("primary"), "Arial")
-MONO_FONT = _first_font_name(get_tokens().get_font_family("monospace"), "Courier")
+# Font preferences with cross-platform fallbacks
+# Liberation Sans is metric-compatible with Arial/Helvetica on Linux
+_SANS_PREFERENCES = ["Helvetica", "Arial", "Liberation Sans", "FreeSans", "DejaVu Sans", "Sans"]
+_MONO_PREFERENCES = ["Courier", "Liberation Mono", "FreeMono", "DejaVu Sans Mono", "Monospace"]
+
+PRIMARY_FONT = _get_available_font(_SANS_PREFERENCES, "Sans")
+MONO_FONT = _get_available_font(_MONO_PREFERENCES, "Monospace")
 
 COLORS = {
     "navy": get_color("primary.navy"),

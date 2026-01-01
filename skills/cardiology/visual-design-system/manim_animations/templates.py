@@ -11,6 +11,7 @@ from manim import (
     GrowFromCenter,
     Indicate,
     LaggedStart,
+    RoundedRectangle,
     Scene,
     VGroup,
     Create,
@@ -160,7 +161,8 @@ class LineScene(Scene):
             y_values=y_vals,
             line_color=theme.COLORS["blue"],
             add_vertex_dots=True,
-            vertex_dot_style={"radius": 0.06, "color": theme.COLORS["blue"]},
+            vertex_dot_radius=0.06,
+            vertex_dot_style={"color": theme.COLORS["blue"]},
         )
 
         self.play(FadeIn(title))
