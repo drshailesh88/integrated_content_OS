@@ -1,0 +1,1 @@
+{"version":3,"file":"authContext.d.ts","sourceRoot":"","sources":["../../../../../src/mcp-server/transports/auth/lib/authContext.ts"],"names":[],"mappings":"AAAA;;;;;;;;GAQG;AAEH,OAAO,EAAE,iBAAiB,EAAE,MAAM,aAAa,CAAC;AAChD,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,gBAAgB,CAAC;AAE/C;;;GAGG;AACH,UAAU,SAAS;IACjB,QAAQ,EAAE,QAAQ,CAAC;CACpB;AAED;;;;;;;;;;;;GAYG;AACH,eAAO,MAAM,WAAW,8BAAqC,CAAC"}

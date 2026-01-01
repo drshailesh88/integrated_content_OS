@@ -1,0 +1,1 @@
+{"version":3,"file":"authTypes.d.ts","sourceRoot":"","sources":["../../../../../src/mcp-server/transports/auth/lib/authTypes.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH,OAAO,KAAK,EAAE,QAAQ,IAAI,WAAW,EAAE,MAAM,gDAAgD,CAAC;AAE9F;;;GAGG;AACH,MAAM,MAAM,QAAQ,GAAG,WAAW,GAAG;IACnC,OAAO,CAAC,EAAE,MAAM,CAAC;CAClB,CAAC"}

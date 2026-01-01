@@ -1,0 +1,1 @@
+{"version":3,"file":"httpTypes.d.ts","sourceRoot":"","sources":["../../../../src/mcp-server/transports/http/httpTypes.ts"],"names":[],"mappings":"AAAA;;;GAGG;AAEH,OAAO,KAAK,EAAE,eAAe,EAAE,cAAc,EAAE,MAAM,MAAM,CAAC;AAE5D;;;;;;GAMG;AACH,MAAM,MAAM,gBAAgB,GAAG;IAC7B,QAAQ,EAAE,eAAe,CAAC;IAC1B,QAAQ,EAAE,cAAc,CAAC;CAC1B,CAAC"}

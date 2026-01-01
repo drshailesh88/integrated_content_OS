@@ -1,0 +1,143 @@
+{
+  "name": "@cyanheads/pubmed-mcp-server",
+  "version": "1.4.4",
+  "description": "Production-ready PubMed Model Context Protocol (MCP) server that empowers AI agents and research tools with comprehensive access to PubMed's article database. Enables advanced, automated LLM workflows for searching, retrieving, analyzing, and visualizing biomedical and scientific literature via NCBI E-utilities.",
+  "mcpName": "io.github.cyanheads/pubmed-mcp-server",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "pubmed-mcp-server": "dist/index.js"
+  },
+  "exports": "./dist/index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyanheads/pubmed-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cyanheads/pubmed-mcp-server/issues"
+  },
+  "homepage": "https://github.com/cyanheads/pubmed-mcp-server#readme",
+  "scripts": {
+    "build": "tsc && node --loader ts-node/esm scripts/make-executable.ts dist/index.js",
+    "start": "node dist/index.js",
+    "start:stdio": "MCP_LOG_LEVEL=debug MCP_TRANSPORT_TYPE=stdio node dist/index.js",
+    "start:http": "MCP_LOG_LEVEL=debug MCP_TRANSPORT_TYPE=http node dist/index.js",
+    "rebuild": "ts-node --esm scripts/clean.ts && npm run build",
+    "docs:generate": "typedoc --tsconfig ./tsconfig.typedoc.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "tree": "ts-node --esm scripts/tree.ts",
+    "fetch-spec": "ts-node --esm scripts/fetch-openapi-spec.ts",
+    "format": "prettier --write \"**/*.{ts,js,json,md,html,css}\"",
+    "inspector": "mcp-inspector --config mcp.json --server pubmed-mcp-server",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.17.1",
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.64.1",
+    "@opentelemetry/exporter-metrics-otlp-http": "^0.205.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.205.0",
+    "@opentelemetry/instrumentation-winston": "^0.50.0",
+    "@opentelemetry/resources": "^2.1.0",
+    "@opentelemetry/sdk-metrics": "^2.1.0",
+    "@opentelemetry/sdk-node": "^0.205.0",
+    "@opentelemetry/sdk-trace-node": "^2.1.0",
+    "@opentelemetry/semantic-conventions": "^1.37.0",
+    "@types/node": "^24.4.0",
+    "@types/sanitize-html": "^2.16.0",
+    "@types/validator": "13.15.3",
+    "axios": "^1.12.2",
+    "chart.js": "^4.5.0",
+    "chartjs-node-canvas": "^5.0.0",
+    "chrono-node": "^2.8.3",
+    "citation-js": "^0.7.20",
+    "dotenv": "^16.6.1",
+    "fast-xml-parser": "^5.2.5",
+    "hono": "^4.8.4",
+    "jose": "^6.1.0",
+    "js-yaml": "^4.1.0",
+    "node-cron": "^4.2.1",
+    "openai": "^5.20.2",
+    "partial-json": "^0.1.7",
+    "patch-package": "^8.0.0",
+    "sanitize-html": "^2.17.0",
+    "tiktoken": "^1.0.22",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.43.0",
+    "validator": "13.15.15",
+    "winston": "^3.17.0",
+    "winston-transport": "^4.9.0",
+    "zod": "^3.25.74"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "llm",
+    "llm-integration",
+    "pubmed",
+    "pubmed-api",
+    "ncbi",
+    "e-utilities",
+    "biomedical-research",
+    "scientific-literature",
+    "computational-biology",
+    "typescript",
+    "ai-tools",
+    "bioinformatics",
+    "health-tech",
+    "research-automation",
+    "literature-search",
+    "citation-analysis",
+    "data-visualization",
+    "api-server",
+    "typescript",
+    "nodejs",
+    "ai-tools",
+    "research-agent",
+    "generative-ai"
+  ],
+  "author": "Casey Hand @cyanheads",
+  "email": "casey@caseyjhand.com",
+  "license": "Apache-2.0",
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/cyanheads"
+    },
+    {
+      "type": "buy_me_a_coffee",
+      "url": "https://www.buymeacoffee.com/cyanheads"
+    }
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node-cron": "^3.0.11",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "eslint": "^9.35.0",
+    "prettier": "^3.6.2",
+    "typedoc": "^0.28.13",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "patch-package": {
+      "tmp": "0.2.5"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

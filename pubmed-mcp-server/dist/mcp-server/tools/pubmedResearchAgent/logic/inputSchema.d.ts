@@ -1,0 +1,112 @@
+/**
+ * @fileoverview Defines the Zod input schema and TypeScript types for the pubmed_research_agent tool.
+ * This schema accepts detailed components of a research plan from the client,
+ * which the tool will then structure into a standardized output format.
+ * @module pubmedResearchAgent/logic/inputSchema
+ */
+import { z } from "zod";
+export declare const PubMedResearchAgentInputSchema: z.ZodObject<{
+    project_title_suggestion: z.ZodString;
+    primary_research_goal: z.ZodString;
+    research_keywords: z.ZodArray<z.ZodString, "many">;
+    organism_focus: z.ZodOptional<z.ZodString>;
+    p1_introduction_and_background: z.ZodOptional<z.ZodString>;
+    p1_specific_research_question: z.ZodOptional<z.ZodString>;
+    p1_knowledge_gap: z.ZodOptional<z.ZodString>;
+    p1_primary_hypothesis: z.ZodOptional<z.ZodString>;
+    p1_secondary_questions_or_hypotheses: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    p1_pubmed_search_strategy_description: z.ZodOptional<z.ZodString>;
+    p1_literature_review_scope: z.ZodOptional<z.ZodString>;
+    p1_lit_review_databases_and_approach: z.ZodOptional<z.ZodString>;
+    p1_experimental_paradigm: z.ZodOptional<z.ZodString>;
+    p1_data_acquisition_plan_existing_data: z.ZodOptional<z.ZodString>;
+    p1_data_acquisition_plan_new_data: z.ZodOptional<z.ZodString>;
+    p1_blast_utilization_plan: z.ZodOptional<z.ZodString>;
+    p1_controls_and_rigor: z.ZodOptional<z.ZodString>;
+    p1_methodological_challenges_and_mitigation: z.ZodOptional<z.ZodString>;
+    p2_data_collection_methods_wet_lab: z.ZodOptional<z.ZodString>;
+    p2_data_collection_methods_dry_lab: z.ZodOptional<z.ZodString>;
+    p2_data_preprocessing_and_qc_plan: z.ZodOptional<z.ZodString>;
+    p3_data_analysis_strategy: z.ZodOptional<z.ZodString>;
+    p3_bioinformatics_pipeline_summary: z.ZodOptional<z.ZodString>;
+    p3_results_interpretation_framework: z.ZodOptional<z.ZodString>;
+    p3_comparison_with_literature_plan: z.ZodOptional<z.ZodString>;
+    p4_dissemination_manuscript_plan: z.ZodOptional<z.ZodString>;
+    p4_dissemination_data_deposition_plan: z.ZodOptional<z.ZodString>;
+    p4_peer_review_and_publication_approach: z.ZodOptional<z.ZodString>;
+    p4_future_research_directions: z.ZodOptional<z.ZodString>;
+    cc_record_keeping_and_data_management: z.ZodOptional<z.ZodString>;
+    cc_collaboration_strategy: z.ZodOptional<z.ZodString>;
+    cc_ethical_considerations: z.ZodOptional<z.ZodString>;
+    include_detailed_prompts_for_agent: z.ZodDefault<z.ZodOptional<z.ZodBoolean>>;
+}, "strip", z.ZodTypeAny, {
+    project_title_suggestion: string;
+    primary_research_goal: string;
+    research_keywords: string[];
+    include_detailed_prompts_for_agent: boolean;
+    organism_focus?: string | undefined;
+    p1_introduction_and_background?: string | undefined;
+    p1_specific_research_question?: string | undefined;
+    p1_knowledge_gap?: string | undefined;
+    p1_primary_hypothesis?: string | undefined;
+    p1_secondary_questions_or_hypotheses?: string[] | undefined;
+    p1_pubmed_search_strategy_description?: string | undefined;
+    p1_literature_review_scope?: string | undefined;
+    p1_lit_review_databases_and_approach?: string | undefined;
+    p1_experimental_paradigm?: string | undefined;
+    p1_data_acquisition_plan_existing_data?: string | undefined;
+    p1_data_acquisition_plan_new_data?: string | undefined;
+    p1_blast_utilization_plan?: string | undefined;
+    p1_controls_and_rigor?: string | undefined;
+    p1_methodological_challenges_and_mitigation?: string | undefined;
+    p2_data_collection_methods_wet_lab?: string | undefined;
+    p2_data_collection_methods_dry_lab?: string | undefined;
+    p2_data_preprocessing_and_qc_plan?: string | undefined;
+    p3_data_analysis_strategy?: string | undefined;
+    p3_bioinformatics_pipeline_summary?: string | undefined;
+    p3_results_interpretation_framework?: string | undefined;
+    p3_comparison_with_literature_plan?: string | undefined;
+    p4_dissemination_manuscript_plan?: string | undefined;
+    p4_dissemination_data_deposition_plan?: string | undefined;
+    p4_peer_review_and_publication_approach?: string | undefined;
+    p4_future_research_directions?: string | undefined;
+    cc_record_keeping_and_data_management?: string | undefined;
+    cc_collaboration_strategy?: string | undefined;
+    cc_ethical_considerations?: string | undefined;
+}, {
+    project_title_suggestion: string;
+    primary_research_goal: string;
+    research_keywords: string[];
+    organism_focus?: string | undefined;
+    p1_introduction_and_background?: string | undefined;
+    p1_specific_research_question?: string | undefined;
+    p1_knowledge_gap?: string | undefined;
+    p1_primary_hypothesis?: string | undefined;
+    p1_secondary_questions_or_hypotheses?: string[] | undefined;
+    p1_pubmed_search_strategy_description?: string | undefined;
+    p1_literature_review_scope?: string | undefined;
+    p1_lit_review_databases_and_approach?: string | undefined;
+    p1_experimental_paradigm?: string | undefined;
+    p1_data_acquisition_plan_existing_data?: string | undefined;
+    p1_data_acquisition_plan_new_data?: string | undefined;
+    p1_blast_utilization_plan?: string | undefined;
+    p1_controls_and_rigor?: string | undefined;
+    p1_methodological_challenges_and_mitigation?: string | undefined;
+    p2_data_collection_methods_wet_lab?: string | undefined;
+    p2_data_collection_methods_dry_lab?: string | undefined;
+    p2_data_preprocessing_and_qc_plan?: string | undefined;
+    p3_data_analysis_strategy?: string | undefined;
+    p3_bioinformatics_pipeline_summary?: string | undefined;
+    p3_results_interpretation_framework?: string | undefined;
+    p3_comparison_with_literature_plan?: string | undefined;
+    p4_dissemination_manuscript_plan?: string | undefined;
+    p4_dissemination_data_deposition_plan?: string | undefined;
+    p4_peer_review_and_publication_approach?: string | undefined;
+    p4_future_research_directions?: string | undefined;
+    cc_record_keeping_and_data_management?: string | undefined;
+    cc_collaboration_strategy?: string | undefined;
+    cc_ethical_considerations?: string | undefined;
+    include_detailed_prompts_for_agent?: boolean | undefined;
+}>;
+export type PubMedResearchAgentInput = z.infer<typeof PubMedResearchAgentInputSchema>;
+//# sourceMappingURL=inputSchema.d.ts.map
