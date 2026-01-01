@@ -382,6 +382,18 @@ You can make HTTP requests to external APIs directly.
 
 ---
 
+## FRESH MACHINE SETUP (REQUIRED FOR PUBMED MCP)
+
+1. Create `.env` from `.env.example` and set `NCBI_API_KEY`.
+2. Install PubMed MCP dependencies:
+   ```bash
+   cd pubmed-mcp-server
+   npm install
+   ```
+3. MCP config is already wired in `.mcp.json` and points to `pubmed-mcp-server/dist/index.js`.
+
+---
+
 ## QUICK START EXAMPLES
 
 ```bash
