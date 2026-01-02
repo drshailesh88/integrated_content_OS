@@ -361,6 +361,51 @@ pip install typer rich anthropic openai astrapy feedparser scrapetube python-dot
 
 ## 9. CHANGE LOG
 
+### 2026-01-02 - Session 3: Major Feature Completion
+
+**Fixed by**: Claude Code Session
+**Branch**: claude/finish-visual-system-dSlJh
+
+**Features Implemented:**
+
+1. **PubMed wired to 3 more skills**
+   - `parallel_search.py` - Real NCBI API instead of simulation
+   - `quick_research.py` - Fetches real evidence before Claude synthesis
+   - `carousel_employee.py` - Research mode uses real PubMed
+
+2. **Caption & Hashtag Generator** - NEW
+   - File: `carousel-generator-v2/scripts/caption_generator.py`
+   - AI-powered caption generation with template fallback
+   - Topic-specific hashtag sets for cardiology
+   - Alt text generation for accessibility
+   - Integrated into carousel_generator.py workflow
+   - Outputs: caption.txt, hashtags.txt, alt-text.txt
+
+3. **Visual Router Improvements**
+   - Puppeteer now preferred over Satori for carousels
+   - Proper fallback chain: Puppeteer → Satori → Pillow
+
+4. **Batch Generation** - NEW
+   - `carousel_generator.py --batch topics.txt`
+   - Process multiple topics in sequence
+   - Supports .txt (one per line) and .json formats
+   - Summary with success/failure counts
+
+5. **Content-OS Orchestrator** - NEW
+   - File: `content-os/scripts/orchestrator.py`
+   - Forward mode: Topic → All content types
+   - Phase 1: PubMed research → research-brief.md
+   - Phase 2: Long-form outlines (YouTube, newsletters, editorial, blog)
+   - Phase 3: Short-form (tweets, thread, carousel content)
+   - Phase 4: Visual (carousel generation)
+   - Creates complete content package in organized directory
+
+6. **SKILL.md Roadmap Updated**
+   - Moved 9 features from "In Progress"/"Planned" to "Completed"
+   - Accurate reflection of actual codebase state
+
+---
+
 ### 2026-01-02 - Session 2: Codex Diagnosis Fixes
 
 **Fixed by**: Claude Code Session

@@ -404,18 +404,23 @@ kaleido>=0.2.0      # Plotly export (optional)
 - [x] Quality checking (WCAG, anti-AI, density)
 - [x] CLI interface
 - [x] Template presets
+- [x] AI content structuring (Claude/GPT-4o-mini) - `content_structurer.py`
+- [x] PubMed integration for research - `hooks_generator.py` uses `pubmed_client.py`
+- [x] 4A Framework classifier - `content_structurer.py:44-133`
+- [x] Satori React rendering (optional) - `satori_renderer.py`
+- [x] Visual router (Pillow/Gemini/Plotly/Puppeteer) - `visual_router.py`
+- [x] Caption and hashtag generator - `caption_generator.py`
+- [x] Content-OS integration - `content-os/scripts/orchestrator.py`
+- [x] Batch generation - `carousel_generator.py --batch`
+- [x] Puppeteer React rendering - `puppeteer_renderer.py` + `renderer/`
 
 ### In Progress
-- [ ] AI content structuring (Claude/GPT-4o-mini)
-- [ ] PubMed/RAG integration for research
-- [ ] 4A Framework classifier
+- [ ] Additional Manim animation scenes
+- [ ] Interactive point selection for data slides
 
 ### Planned
-- [ ] Satori React rendering (optional)
-- [ ] Visual router (Pillow/Gemini/Plotly)
-- [ ] Caption and hashtag generator
-- [ ] Content-OS integration
-- [ ] Batch generation
+- [ ] Video export (animated carousels)
+- [ ] A/B testing integration
 
 ---
 
