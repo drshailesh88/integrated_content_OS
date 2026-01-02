@@ -57,6 +57,12 @@ try:
 except ImportError:
     RESEARCH_AVAILABLE = False
 
+try:
+    from scientific_skills_bridge import ScientificSkillsBridge
+    SCIENTIFIC_SKILLS_AVAILABLE = True
+except ImportError:
+    SCIENTIFIC_SKILLS_AVAILABLE = False
+
 
 @dataclass
 class ContentPackage:
