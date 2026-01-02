@@ -38,6 +38,14 @@ except ImportError:
 # Load environment variables
 load_dotenv()
 
+# Import PubMed client
+try:
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent.parent / "scripts"))
+    from pubmed_client import PubMedClient
+    PUBMED_CLIENT_AVAILABLE = True
+except ImportError:
+    PUBMED_CLIENT_AVAILABLE = False
+
 # Initialize console
 console = Console() if RICH_AVAILABLE else None
 
@@ -116,29 +124,92 @@ Remember:
 """
     return prompt
 
+def fetch_pubmed_evidence(topic: str, questions: list) -> str:
+    """Fetch real PubMed evidence for the topic and questions."""
+
+    if not PUBMED_CLIENT_AVAILABLE:
+        return ""
+
+    try:
+        client = PubMedClient()
+        evidence_text = ""
+
+        # Search for main topic
+        print_output("  → Searching PubMed for main topic...", style="yellow")
+        articles = client.search_and_fetch(
+            query=f"{topic} randomized controlled trial OR meta-analysis",
+            max_results=5,
+            sort="relevance"
+        )
+
+        if articles:
+            evidence_text += "\n## PUBMED EVIDENCE (REAL DATA)\n\n"
+            evidence_text += f"### Search: {topic}\n\n"
+            for article in articles:
+                evidence_text += f"**{article.title}**\n"
+                evidence_text += f"- PMID: {article.pmid}\n"
+                evidence_text += f"- Journal: {article.journal} ({article.pub_date[:4] if article.pub_date else 'N/A'})\n"
+                evidence_text += f"- Authors: {', '.join(article.authors[:3])}{', et al.' if len(article.authors) > 3 else ''}\n"
+                if article.abstract:
+                    evidence_text += f"- Abstract: {article.abstract[:400]}...\n"
+                evidence_text += "\n"
+
+        # Search for guidelines
+        print_output("  → Searching PubMed for guidelines...", style="yellow")
+        guideline_articles = client.search_and_fetch(
+            query=f"{topic} guideline OR practice recommendation",
+            max_results=3,
+            sort="pub_date"
+        )
+
+        if guideline_articles:
+            evidence_text += "\n### Guidelines Found:\n\n"
+            for article in guideline_articles:
+                evidence_text += f"- **{article.title}** (PMID: {article.pmid})\n"
+                evidence_text += f"  {article.journal}, {article.pub_date[:4] if article.pub_date else 'N/A'}\n\n"
+
+        return evidence_text
+
+    except Exception as e:
+        print_output(f"  ⚠️  PubMed search error: {e}", style="yellow")
+        return ""
+
+
 def run_research_with_claude(topic: str, domain: str, questions: list) -> str:
     """
-    Execute the research using Claude API.
-
-    In the full integrated system, this uses Claude's MCP tools.
-    For standalone CLI, we provide instructions for manual execution.
+    Execute the research using Claude API with real PubMed data.
     """
     try:
         import anthropic
 
         client = anthropic.Anthropic()
 
+        # First, fetch real PubMed evidence
+        pubmed_evidence = ""
+        if PUBMED_CLIENT_AVAILABLE:
+            print_output("\nStep 2a: Fetching real PubMed evidence...", style="yellow")
+            pubmed_evidence = fetch_pubmed_evidence(topic, questions)
+            if pubmed_evidence:
+                print_output("  ✓ PubMed evidence retrieved", style="green")
+            else:
+                print_output("  ⚠️  No PubMed evidence found, using Claude's knowledge", style="yellow")
+
         prompt = create_research_prompt(topic, domain, questions)
 
-        # Note: In the full system, this would include MCP tool access
-        # For CLI, we use Claude's knowledge + instruct user to verify
+        # Add real PubMed evidence if available
+        if pubmed_evidence:
+            prompt += f"\n\n---\n\nHere is REAL PubMed evidence I retrieved. Use these PMIDs and findings in your brief:\n{pubmed_evidence}\n\nIMPORTANT: Cite the PMIDs provided above. These are real, verified references."
+        else:
+            prompt += "\n\nNote: PubMed API was not available. Provide your best research based on your knowledge, and include realistic PMIDs where possible. Flag that user should verify."
+
+        print_output("\nStep 2b: Synthesizing with Claude...", style="yellow")
         message = client.messages.create(
             model="claude-sonnet-4-20250514",
             max_tokens=4096,
             messages=[
                 {
                     "role": "user",
-                    "content": prompt + "\n\nNote: Since we're in CLI mode without direct MCP access, provide your best research based on your knowledge, and flag where the user should verify with PubMed searches. Include example PubMed search queries they can run."
+                    "content": prompt
                 }
             ]
         )

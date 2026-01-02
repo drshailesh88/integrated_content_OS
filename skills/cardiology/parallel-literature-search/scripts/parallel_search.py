@@ -44,6 +44,14 @@ env_path = Path(__file__).parent.parent.parent.parent.parent / ".env"
 if env_path.exists():
     load_dotenv(env_path)
 
+# Import PubMed client
+try:
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent.parent / "scripts"))
+    from pubmed_client import PubMedClient
+    PUBMED_CLIENT_AVAILABLE = True
+except ImportError:
+    PUBMED_CLIENT_AVAILABLE = False
+
 
 class ParallelLiteratureSearch:
     """Search multiple sources in parallel for medical literature."""
@@ -87,11 +95,61 @@ class ParallelLiteratureSearch:
             print(content)
             print('='*60 + "\n")
 
-    def search_pubmed_simulation(self, query: str) -> dict:
-        """Simulate PubMed search (actual implementation would use MCP)."""
+    def search_pubmed(self, query: str) -> dict:
+        """Search PubMed using the real NCBI E-utilities API."""
 
-        # In actual implementation, this would call:
-        # pubmed_search_articles(queryTerm=query, maxResults=10)
+        if not PUBMED_CLIENT_AVAILABLE:
+            self._print("  ⚠️  PubMed client not available, using simulation", "yellow")
+            return self._search_pubmed_fallback(query)
+
+        try:
+            client = PubMedClient()
+
+            # Search and fetch articles
+            articles = client.search_and_fetch(
+                query=query,
+                max_results=10,
+                sort="relevance"
+            )
+
+            # Format results
+            formatted_articles = []
+            for article in articles:
+                # Determine article type from publication types
+                pub_types = article.publication_types or []
+                article_type = "Article"
+                if any("randomized" in pt.lower() or "rct" in pt.lower() for pt in pub_types):
+                    article_type = "RCT"
+                elif any("meta-analysis" in pt.lower() for pt in pub_types):
+                    article_type = "Meta-analysis"
+                elif any("review" in pt.lower() for pt in pub_types):
+                    article_type = "Review"
+                elif any("observational" in pt.lower() or "cohort" in pt.lower() for pt in pub_types):
+                    article_type = "Observational"
+
+                formatted_articles.append({
+                    "pmid": article.pmid,
+                    "title": article.title,
+                    "authors": ", ".join(article.authors[:3]) + (", et al." if len(article.authors) > 3 else ""),
+                    "journal": article.journal,
+                    "year": article.pub_date[:4] if article.pub_date else "N/A",
+                    "type": article_type,
+                    "abstract_summary": article.abstract[:300] + "..." if article.abstract and len(article.abstract) > 300 else article.abstract or "No abstract available"
+                })
+
+            return {
+                "query": query,
+                "total_results": len(formatted_articles),
+                "articles": formatted_articles,
+                "source": "NCBI E-utilities API"
+            }
+
+        except Exception as e:
+            self._print(f"  ⚠️  PubMed API error: {e}, using simulation", "yellow")
+            return self._search_pubmed_fallback(query)
+
+    def _search_pubmed_fallback(self, query: str) -> dict:
+        """Fallback simulation when PubMed API is unavailable."""
 
         prompt = f"""You are a PubMed search assistant. For the query: "{query}"
 
@@ -130,13 +188,13 @@ Focus on high-quality evidence (RCTs, meta-analyses) when available.
         )
 
         try:
-            # Extract JSON from response
             content = response.content[0].text
-            # Find JSON in response
             start = content.find('{')
             end = content.rfind('}') + 1
             if start != -1 and end > start:
-                return json.loads(content[start:end])
+                result = json.loads(content[start:end])
+                result["source"] = "SIMULATION (API unavailable)"
+                return result
         except (json.JSONDecodeError, IndexError):
             pass
 
@@ -256,7 +314,7 @@ Focus on guideline recommendations and textbook knowledge.
 
         # Map source names to search functions
         search_functions = {
-            "pubmed": ("PubMed", self.search_pubmed_simulation),
+            "pubmed": ("PubMed", self.search_pubmed),
             "perplexity": ("Perplexity", self.search_perplexity_simulation),
             "rag": ("RAG (Knowledge Base)", self.search_rag_simulation)
         }

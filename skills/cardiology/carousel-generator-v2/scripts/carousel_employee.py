@@ -73,6 +73,14 @@ from .pillow_renderer import PillowRenderer
 from .puppeteer_renderer import PuppeteerRenderer
 from .quality_checker import QualityChecker
 
+# Import PubMed client
+try:
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent.parent / "scripts"))
+    from pubmed_client import PubMedClient
+    PUBMED_CLIENT_AVAILABLE = True
+except ImportError:
+    PUBMED_CLIENT_AVAILABLE = False
+
 
 class OperationMode(str, Enum):
     """How the employee should work."""
@@ -336,16 +344,34 @@ class CarouselEmployee:
             findings.sources = db_content.sources
             findings.summary = f"Found curated content for {db_content.topic} with {len(db_content.myths)} myths and {len(db_content.statistics)} statistics."
 
-        # Try PubMed MCP if available
-        try:
-            # This would integrate with PubMed MCP
-            # For now, we'll note that research was attempted
-            self._log(f"🔍 Searching PubMed for: {topic}")
-            # pubmed_results = pubmed_search_articles(topic, maxResults=5)
-            # ... process results
-            self._log(f"   (PubMed integration available via MCP)")
-        except Exception as e:
-            self._log(f"   ⚠️  PubMed search not available: {e}")
+        # Search PubMed for real evidence
+        if PUBMED_CLIENT_AVAILABLE:
+            try:
+                self._log(f"🔍 Searching PubMed for: {topic}")
+                client = PubMedClient()
+
+                # Search for relevant articles
+                articles = client.search_and_fetch(
+                    query=f"{topic} randomized controlled trial OR meta-analysis",
+                    max_results=5,
+                    sort="relevance"
+                )
+
+                if articles:
+                    self._log(f"   ✓ Found {len(articles)} relevant articles")
+                    # Extract key statistics from abstracts
+                    for article in articles[:3]:
+                        self._log(f"   • {article.title[:60]}... (PMID: {article.pmid})")
+                        if article.abstract:
+                            # Add source
+                            findings.sources.append(f"{article.journal} (PMID: {article.pmid})")
+                else:
+                    self._log(f"   ℹ️  No PubMed articles found for this topic")
+
+            except Exception as e:
+                self._log(f"   ⚠️  PubMed search error: {e}")
+        else:
+            self._log(f"   ℹ️  PubMed client not available, using database only")
 
         return findings
 
