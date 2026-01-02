@@ -38,6 +38,7 @@ Works with: Antigravity, VS Code, Cursor, Claude Code.
 | **Find Trending Topics** | Google Trends, Reddit, Perplexity | `social-media-trends-research`, `perplexity-search` |
 | **Predict Viral Content** | ML scoring | `viral-content-predictor` |
 | **Generate Images** | Blog headers, infographics | `infographic-generator`, `cardiology-visual-system`, `gemini-imagegen` |
+| **Write Visual Copy** | Carousel/infographic text | `carousel-copy`, `infographic-copy` |
 | **Use Other AI Models** | GPT-4o, Gemini, Grok, GLM | `multi-model-writer`, `browser-automation` |
 | **Repurpose Content** | Multi-platform adaptation | `cardiology-content-repurposer` |
 | **Analyze YouTube Comments** | Just give me a URL | `youtube-comment-analyzer` |
@@ -284,9 +285,11 @@ time.sleep(5)  # Rate limiting
 | Skill | Purpose |
 |-------|---------|
 | `cardiology-visual-system` | Intelligent routing to optimal visual tool (Fal.ai, Gemini, Mermaid, Plotly) |
+| `carousel-copy` | Transform research → carousel copy. ≤15 words/slide, authority markers, anti-AI |
 | `carousel-generator` | Generate branded Instagram carousels (1080x1080px) from text content. |
 | `carousel-generator-v2` | World-class Instagram carousel generator with AI content intelligence, multi-... |
 | `gemini-imagegen` | Generate and edit images using Google's Gemini API. The environment variable ... |
+| `infographic-copy` | Transform research → infographic copy. ≤8 words/bullet, precision signals |
 | `infographic-generator` | Publication-grade infographics from the visual-design-system templates |
 
 #### Multi-Model & Utilities

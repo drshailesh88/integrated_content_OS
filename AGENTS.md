@@ -122,6 +122,7 @@ When stopping mid-task, update `handover.md`:
 | **Analyze Data** | Python + pandas | `viral-content-predictor` |
 | **Generate Charts** | Python + plotly | Data visualization |
 | **Generate Infographics** | 20 Satori templates + medical icons | `infographic-generator`, `visual-design-system` |
+| **Write Visual Copy** | Carousel/infographic text | `carousel-copy`, `infographic-copy` |
 | **Generate Animations** | 61 Manim scenes for video | `visual-design-system` |
 | **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
 | **Track Competitors** | Topol/Attia/Indian channels | `influencer-analyzer` |

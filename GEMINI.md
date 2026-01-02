@@ -73,6 +73,7 @@ The user runs **both Gemini CLI and Claude Code** and switches based on:
 | **Predict Viral Content** | ML scoring | `viral-content-predictor` |
 | **Generate Images** | Blog headers, infographics | `infographic-generator`, `gemini-imagegen` (YOUR native tool) |
 | **Generate Infographics** | 20 Satori templates + 51+ medical icons | `visual-design-system`, `infographic-generator` |
+| **Write Visual Copy** | Carousel/infographic text | `carousel-copy`, `infographic-copy` |
 | **Generate Animations** | 61 Manim scenes for video content | `visual-design-system` |
 | **Long Document Writing** | Chapters, deep research | `academic-chapter-writer`, `deep-researcher` |
 | **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
@@ -227,9 +228,11 @@ python skills/cardiology/social-media-trends-research/scripts/trend_research.py 
 |-------|---------|
 | `visual-design-system` | **COMPLETE**: 20 Satori templates, 61 Manim scenes, 51+ medical icons, react-pdf, batch generator |
 | `cardiology-visual-system` | Intelligent routing to optimal visual tool (Fal.ai, Gemini, Mermaid, Plotly) |
+| `carousel-copy` | Transform research → carousel copy. ≤15 words/slide, authority markers |
 | `carousel-generator` | Generate branded Instagram carousels (1080x1080px) from text |
 | `carousel-generator-v2` | World-class Instagram carousel with React + Puppeteer renderer |
 | `gemini-imagegen` | Generate and edit images using Google's Gemini API (YOUR native tool) |
+| `infographic-copy` | Transform research → infographic copy. ≤8 words/bullet, precision signals |
 | `infographic-generator` | Publication-grade infographics from visual-design-system templates |
 
 #### Multi-Model & Utilities
