@@ -331,7 +331,11 @@ if HAS_RICH:
             table.add_row("LLM Model", config.llm.openrouter_model if config.llm.openrouter_api_key else config.llm.anthropic_model)
             table.add_row("Embedding Model", config.openai.embedding_model)
             table.add_row("AstraDB Collection", config.astradb.collection_name)
-            table.add_row("Inspiration Accounts", str(len(config.apify.max_tweets_per_account)))
+            try:
+                from config import INSPIRATION_ACCOUNTS
+            except ImportError:
+                from src.config import INSPIRATION_ACCOUNTS
+            table.add_row("Inspiration Accounts", str(len(INSPIRATION_ACCOUNTS)))
 
             console.print(table)
 

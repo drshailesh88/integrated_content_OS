@@ -10,11 +10,12 @@
 
 | # | Problem | Location | Severity | Fix Time | Status |
 |---|---------|----------|----------|----------|--------|
-| 1 | PubMed MCP never called from skills | 30+ skills | CRITICAL | 8 hrs | Open |
+| 1 | PubMed MCP never called from skills | 30+ skills | CRITICAL | 8 hrs | **IN PROGRESS** (pubmed_client.py created) |
 | 2 | HR scripts have hardcoded Mac paths | system-awareness/scripts/ | CRITICAL | 1 hr | **FIXED** |
-| 3 | Twitter pipeline import paths broken | pipelines/twitter-content/ | CRITICAL | 30 min | **FIXED** |
+| 3 | Twitter pipeline import paths broken | pipelines/twitter-content/ | CRITICAL | 30 min | **FIXED** (all 3 files) |
 | 4 | visual_router.py type mismatch crash | carousel-generator-v2 | CRITICAL | 30 min | **FIXED** |
-| 5 | Duplicate token systems (colors) | visual-design-system vs carousel-v2 | HIGH | 2 hrs | Open |
+| 5 | Duplicate token systems (colors) | visual-design-system vs carousel-v2 | HIGH | - | **BY DESIGN** (different purposes) |
+| 6 | len() on integer TypeError | test_components.py, main.py | CRITICAL | 10 min | **FIXED** |
 
 ---
 
@@ -359,6 +360,39 @@ pip install typer rich anthropic openai astrapy feedparser scrapetube python-dot
 ---
 
 ## 9. CHANGE LOG
+
+### 2026-01-02 - Session 2: Codex Diagnosis Fixes
+
+**Fixed by**: Claude Code Session
+**Branch**: claude/finish-visual-system-dSlJh
+
+**Issues Addressed from Codex CLI Diagnosis:**
+
+1. **Twitter pipeline remaining imports** - FIXED (2 files)
+   - File: `pipelines/twitter-content/generate.py` - Fixed src.xxx imports
+   - File: `pipelines/twitter-content/test_components.py` - Fixed 8 import blocks
+   - All now use try/except pattern for relative/absolute imports
+
+2. **len() on integer TypeError** - FIXED (2 files)
+   - File: `pipelines/twitter-content/test_components.py:55`
+   - File: `pipelines/twitter-content/main.py:334`
+   - Issue: `len(config.apify.max_tweets_per_account)` called len() on int (50)
+   - Fix: Changed to `len(INSPIRATION_ACCOUNTS)` (the actual list of accounts)
+
+3. **Research-engine calendar generator TODOs** - BY DESIGN
+   - File: `research-engine/calendar_generator.py:260,268`
+   - These are intentional template placeholders ("TODO: Write hook", "TODO: Define CTA")
+   - The generator creates markdown briefs with checkboxes for users to fill in
+   - This is working as designed, not a bug
+
+4. **carousel-generator-v2 feature audit** - VERIFIED HONEST
+   - SKILL.md Roadmap clearly shows Completed/In Progress/Planned
+   - PubMed integration: ✅ Actually wired (hooks_generator.py:267-320)
+   - Visual router: ✅ Has bar_chart, line_chart, forest_plot, Manim
+   - Architecture diagram shows vision; roadmap shows current state
+   - No false advertising - documentation is accurate
+
+---
 
 ### 2026-01-02 - P1 Progress: PubMed Integration
 

@@ -8,8 +8,17 @@ import asyncio
 import sys
 from datetime import datetime
 
-# Add src to path
+# Add current directory to path for local imports
 sys.path.insert(0, '.')
+
+# Setup import helper for src.xxx -> local modules
+def _import_local(module_name: str, fallback_name: str = None):
+    """Import from local modules, falling back if needed."""
+    name = fallback_name or module_name.replace('src.', '')
+    try:
+        return __import__(name, fromlist=[''])
+    except ImportError:
+        return __import__(module_name, fromlist=[''])
 
 
 def print_header(title: str):
@@ -28,7 +37,10 @@ async def test_config():
     print_header("TEST 1: Configuration")
 
     try:
-        from src.config import config
+        try:
+            from config import config
+        except ImportError:
+            from src.config import config
 
         # Check each component
         print_result(bool(config.apify.api_key), f"Apify API key: {'configured' if config.apify.api_key else 'MISSING'}")
@@ -40,7 +52,11 @@ async def test_config():
 
         # Show collection name
         print(f"\n  AstraDB collection: {config.astradb.collection_name}")
-        print(f"  Inspiration accounts: {len(config.apify.max_tweets_per_account)} configured")
+        try:
+            from config import INSPIRATION_ACCOUNTS
+        except ImportError:
+            from src.config import INSPIRATION_ACCOUNTS
+        print(f"  Inspiration accounts: {len(INSPIRATION_ACCOUNTS)} configured")
 
         issues = config.validate()
         if issues:
@@ -60,7 +76,10 @@ async def test_pubmed():
     print_header("TEST 2: PubMed API")
 
     try:
-        from src.utils.pubmed import pubmed_client
+        try:
+            from utils.pubmed import pubmed_client
+        except ImportError:
+            from src.utils.pubmed import pubmed_client
 
         # Simple search - uses free NCBI API
         print("  Searching PubMed for 'SGLT2 heart failure'...")
@@ -99,13 +118,19 @@ async def test_astradb():
     print_header("TEST 3: AstraDB Connection")
 
     try:
-        from src.config import config
+        try:
+            from config import config
+        except ImportError:
+            from src.config import config
 
         if not config.astradb.api_endpoint or not config.astradb.application_token:
             print_result(False, "AstraDB not configured - skipping")
             return False
 
-        from src.utils.astradb import astradb_client
+        try:
+            from utils.astradb import astradb_client
+        except ImportError:
+            from src.utils.astradb import astradb_client
 
         # Test with a simple query (uses 1 embedding call)
         print(f"  Collection: {config.astradb.collection_name}")
@@ -143,7 +168,10 @@ async def test_llm_minimal():
     print_header("TEST 4: LLM API (Minimal)")
 
     try:
-        from src.utils.llm import llm_client
+        try:
+            from utils.llm import llm_client
+        except ImportError:
+            from src.utils.llm import llm_client
 
         # Super minimal prompt to test connectivity
         print("  Testing LLM with minimal prompt...")
@@ -170,7 +198,10 @@ async def test_embedding():
     print_header("TEST 5: OpenAI Embedding")
 
     try:
-        from src.utils.llm import llm_client
+        try:
+            from utils.llm import llm_client
+        except ImportError:
+            from src.utils.llm import llm_client
 
         print("  Testing embedding generation...")
         print("  (This will use 1 embedding call)")
@@ -194,8 +225,12 @@ async def test_harvester_mock():
     print_header("TEST 6: Harvester (Mock)")
 
     try:
-        from src.harvester import IdeaHarvester
-        from src.utils.apify import Tweet
+        try:
+            from harvester import IdeaHarvester
+            from utils.apify import Tweet
+        except ImportError:
+            from src.harvester import IdeaHarvester
+            from src.utils.apify import Tweet
         from datetime import datetime
 
         harvester = IdeaHarvester()
@@ -242,12 +277,20 @@ async def test_synthesizer_mock():
     print_header("TEST 7: Synthesizer (Mock)")
 
     try:
-        from src.synthesizer import KnowledgeSynthesizer
-        from src.researcher import ResearchResults
-        from src.harvester import ContentIdea
-        from src.utils.pubmed import PubMedArticle
-        from src.utils.astradb import RAGResult
-        from src.utils.apify import Tweet
+        try:
+            from synthesizer import KnowledgeSynthesizer
+            from researcher import ResearchResults
+            from harvester import ContentIdea
+            from utils.pubmed import PubMedArticle
+            from utils.astradb import RAGResult
+            from utils.apify import Tweet
+        except ImportError:
+            from src.synthesizer import KnowledgeSynthesizer
+            from src.researcher import ResearchResults
+            from src.harvester import ContentIdea
+            from src.utils.pubmed import PubMedArticle
+            from src.utils.astradb import RAGResult
+            from src.utils.apify import Tweet
         from datetime import datetime
 
         synthesizer = KnowledgeSynthesizer()
@@ -321,8 +364,12 @@ async def test_writer_mock():
     print_header("TEST 8: Content Writer (Mock)")
 
     try:
-        from src.writer import ContentWriter, ContentFormat
-        from src.synthesizer import KnowledgeBrief
+        try:
+            from writer import ContentWriter, ContentFormat
+            from synthesizer import KnowledgeBrief
+        except ImportError:
+            from src.writer import ContentWriter, ContentFormat
+            from src.synthesizer import KnowledgeBrief
 
         writer = ContentWriter()
 

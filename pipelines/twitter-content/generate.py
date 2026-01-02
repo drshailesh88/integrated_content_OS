@@ -70,8 +70,13 @@ async def main():
 
     args = parser.parse_args()
 
-    from src.pipeline import create_pipeline
-    from src.writer import ContentFormat
+    # Import from local modules (not src/ subdirectory)
+    try:
+        from .pipeline import create_pipeline
+        from .writer import ContentFormat
+    except ImportError:
+        from pipeline import create_pipeline
+        from writer import ContentFormat
 
     format_map = {
         'tweet': ContentFormat.TWEET,
