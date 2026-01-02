@@ -25,6 +25,8 @@ _Auto-generated from capability-registry.json on 2026-01-01_
 | Research literature | `knowledge-pipeline, pubmed-database` |
 | Find trending topics | `social-media-trends-research` |
 | Generate images/carousels | `cardiology-visual-system` |
+| Write carousel copy | `carousel-copy` |
+| Write infographic copy | `infographic-copy` |
 | Improve voice/quality | `authentic-voice` |
 | Score/analyze content | `ensemble-content-scorer` |
 
@@ -101,9 +103,11 @@ _Auto-generated from capability-registry.json on 2026-01-01_
 | Skill | Purpose |
 |-------|---------|
 | `cardiology-visual-system` | Intelligent routing to optimal visual tool (Fal.ai, Gemini, Mermaid, Plotly) |
+| `carousel-copy` | Transform research → carousel copy. ≤15 words/slide, authority markers, anti-AI patterns |
 | `carousel-generator` | Generate branded Instagram carousels (1080x1080px) from text content. |
 | `carousel-generator-v2` | World-class Instagram carousel generator with AI content intelligence, multi-... |
 | `gemini-imagegen` | Generate and edit images using Google's Gemini API. The environment variable ... |
+| `infographic-copy` | Transform research → infographic copy. ≤8 words/bullet, precision signals, scannable |
 | `infographic-generator` | Publication-grade infographics from the visual-design-system templates |
 
 #### Multi-Model & Utilities
