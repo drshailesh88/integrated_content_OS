@@ -4,17 +4,23 @@ Content Database for Carousel Generator v2
 Curated, evidence-based cardiology content for generating high-quality carousels.
 All data is sourced from peer-reviewed literature and clinical guidelines.
 
-Topics covered:
-- Statins
-- LDL Cholesterol
-- GLP-1 Agonists
-- Blood Pressure
-- Heart Attack/MI
-- CAC Scoring
-- Diabetes-Cardio
-- Cholesterol
-- Atrial Fibrillation
-- Heart Failure
+Topics covered (16 total):
+- Statins (myths, NNT, nocebo effect)
+- LDL Cholesterol (targets, causality, Mendelian randomization)
+- GLP-1 Agonists (Ozempic, Wegovy, Mounjaro - CV benefits)
+- Blood Pressure (new thresholds, silent killer)
+- Heart Attack/MI (symptoms, women's presentations)
+- CAC Scoring (risk stratification, when to test)
+- Atrial Fibrillation (stroke prevention, anticoagulation)
+- Heart Failure (GDMT, four pillars)
+- Diabetes-Cardio (SGLT2i/GLP-1 benefits)
+- PCSK9 Inhibitors (Repatha, Praluent - LDL lowering)
+- ARNI/Entresto (sacubitril-valsartan for HF)
+- Ezetimibe (add-on therapy, IMPROVE-IT)
+- Aspirin (primary vs secondary prevention changes)
+- Exercise & Heart (cardiac rehab, resistance training)
+- Sleep & Heart (sleep apnea, optimal sleep duration)
+- SGLT2 Inhibitors (Jardiance, Farxiga - HF/CKD benefits)
 """
 
 from typing import Dict, List, Optional, Any
@@ -669,6 +675,489 @@ DIABETES_CARDIO = TopicContent(
 
 
 # ============================================================================
+# PCSK9 INHIBITORS CONTENT
+# ============================================================================
+PCSK9_INHIBITORS = TopicContent(
+    topic="pcsk9 inhibitors",
+    core_subject="PCSK9 inhibitors",
+    aliases=["pcsk9", "repatha", "praluent", "evolocumab", "alirocumab",
+             "pcsk9 antibody", "pcsk9 injection", "injectable cholesterol"],
+    myths=[
+        {
+            "myth": "PCSK9 inhibitors are only for people who can't take statins",
+            "truth": "They're for anyone with very high LDL or established CVD who needs more LDL lowering beyond statins.",
+            "source": "2019 ACC/AHA Guidelines"
+        },
+        {
+            "myth": "Injections every 2 weeks is too inconvenient",
+            "truth": "Once-monthly options exist. Most patients prefer 2 injections/month over daily pills.",
+            "source": "Patient preference studies"
+        },
+        {
+            "myth": "They're too new to be safe",
+            "truth": "Over 10 years of clinical experience and large trials (FOURIER, ODYSSEY) confirm safety.",
+            "source": "PMID: 28304224"
+        },
+        {
+            "myth": "PCSK9 inhibitors cause cognitive problems",
+            "truth": "No cognitive effects in EBBINGHAUS trial despite very low LDL levels achieved.",
+            "source": "PMID: 28864496"
+        },
+        {
+            "myth": "They're too expensive to be practical",
+            "truth": "Prices have dropped 60%+ since launch. For high-risk patients, they're cost-effective.",
+            "source": "2024 pricing updates"
+        },
+    ],
+    truths=[
+        {"fact": "PCSK9 inhibitors reduce LDL by 50-60% on top of statins", "context": "Dramatic additional lowering"},
+        {"fact": "15% reduction in major cardiovascular events", "context": "FOURIER trial result"},
+        {"fact": "LDL levels <25 mg/dL are safe and beneficial", "context": "No lower limit identified"},
+    ],
+    statistics=[
+        {"value": "50-60%", "label": "additional LDL reduction beyond statins", "context": "Dramatic added benefit"},
+        {"value": "15%", "label": "reduction in major CV events", "context": "FOURIER trial"},
+        {"value": "<25", "label": "mg/dL LDL safely achieved", "context": "No adverse effects at very low levels"},
+        {"value": "60%+", "label": "price reduction since 2015 launch", "context": "Now more affordable"},
+        {"value": "1.5M", "label": "patients on PCSK9i globally", "context": "Growing adoption"},
+    ],
+    tips=[
+        "PCSK9 inhibitors are add-ons, not replacements for statins",
+        "Self-injection is easier than it sounds - most learn in one visit",
+        "Store in refrigerator but let warm to room temperature before injecting",
+        "Injection site rotation prevents discomfort",
+        "Oral PCSK9 inhibitors are in development - coming soon",
+    ],
+    quotes=[
+        {"text": "PCSK9 inhibitors represent the biggest LDL-lowering advance since statins.", "author": "Dr. Shailesh Singh, Cardiologist"},
+        {"text": "When it comes to LDL, lower is better with no floor identified.", "author": "FOURIER Trial Investigators"},
+    ],
+    hooks=[
+        "PCSK9 inhibitors: the injection that drops LDL by 60%",
+        "Why some patients need more than statins",
+        "5 PCSK9 myths debunked by science",
+        "The future of cholesterol treatment is here",
+        "How low can LDL safely go? (Lower than you think)",
+    ],
+    sources=["PMID: 28304224", "PMID: 28864496", "FOURIER Trial", "ODYSSEY Outcomes"]
+)
+
+
+# ============================================================================
+# ARNI (ENTRESTO) CONTENT
+# ============================================================================
+ARNI = TopicContent(
+    topic="arni",
+    core_subject="ARNI",
+    aliases=["entresto", "sacubitril", "sacubitril-valsartan", "arni heart failure",
+             "neprilysin inhibitor", "lcz696"],
+    myths=[
+        {
+            "myth": "ARNI is just a fancy expensive blood pressure medicine",
+            "truth": "ARNI reduces heart failure death by 20% beyond ACE inhibitors - it's a life-saving medication.",
+            "source": "PARADIGM-HF Trial - PMID: 25176015"
+        },
+        {
+            "myth": "You can't switch from ACE inhibitor directly",
+            "truth": "True - need 36-hour washout to prevent angioedema. But switch is safe with proper timing.",
+            "source": "Prescribing information"
+        },
+        {
+            "myth": "ARNI is only for severe heart failure",
+            "truth": "Benefit exists across all NYHA classes. Earlier use = better outcomes.",
+            "source": "PARADIGM-HF subanalyses"
+        },
+        {
+            "myth": "Low blood pressure makes ARNI impossible to use",
+            "truth": "Start low, go slow. Most patients can tolerate with careful titration.",
+            "source": "Clinical practice"
+        },
+        {
+            "myth": "ARNI doesn't work for preserved EF heart failure",
+            "truth": "PARAGON-HF showed benefit trend in women and lower EF subgroups. New indications expanding.",
+            "source": "PMID: 31475794"
+        },
+    ],
+    truths=[
+        {"fact": "ARNI reduces CV death/HF hospitalization by 20%", "context": "vs ACE inhibitors"},
+        {"fact": "It's a first-line therapy for HFrEF", "context": "Guidelines recommend over ACEi/ARB"},
+        {"fact": "Combines neprilysin inhibition with ARB", "context": "Dual mechanism"},
+    ],
+    statistics=[
+        {"value": "20%", "label": "reduction in CV death/HF hospitalization", "context": "vs enalapril in PARADIGM-HF"},
+        {"value": "16%", "label": "reduction in all-cause mortality", "context": "PARADIGM-HF"},
+        {"value": "21%", "label": "reduction in sudden cardiac death", "context": "Important for SCD prevention"},
+        {"value": "36h", "label": "washout needed from ACE inhibitor", "context": "To prevent angioedema"},
+        {"value": "3.2M", "label": "patients prescribed ARNI worldwide", "context": "Standard of care"},
+    ],
+    tips=[
+        "Wait 36 hours after last ACE inhibitor dose before starting",
+        "Start with lowest dose (24/26mg twice daily) and titrate up",
+        "Dizziness from low BP usually improves with time",
+        "Monitor potassium and kidney function regularly",
+        "Don't give up too early - benefits take weeks to appear",
+    ],
+    quotes=[
+        {"text": "ARNI changed heart failure treatment forever. Every eligible patient deserves a trial.", "author": "Dr. Shailesh Singh, Cardiologist"},
+        {"text": "The PARADIGM-HF results were so strong we stopped the trial early.", "author": "PARADIGM-HF Investigators"},
+    ],
+    hooks=[
+        "The heart failure drug that changes everything",
+        "Why Entresto beats old heart failure meds",
+        "5 things about ARNI your cardiologist should explain",
+        "Heart failure treatment has entered a new era",
+        "ARNI myths that keep patients from life-saving therapy",
+    ],
+    sources=["PMID: 25176015", "PMID: 31475794", "PARADIGM-HF Trial"]
+)
+
+
+# ============================================================================
+# EZETIMIBE CONTENT
+# ============================================================================
+EZETIMIBE = TopicContent(
+    topic="ezetimibe",
+    core_subject="ezetimibe",
+    aliases=["zetia", "ezetrol", "cholesterol absorption inhibitor",
+             "ezetimibe statin", "vytorin"],
+    myths=[
+        {
+            "myth": "Ezetimibe doesn't reduce heart attacks",
+            "truth": "IMPROVE-IT proved 6.4% reduction in CV events when added to statins post-ACS.",
+            "source": "PMID: 25773607"
+        },
+        {
+            "myth": "If statins aren't working, ezetimibe won't help",
+            "truth": "Ezetimibe works by different mechanism (gut absorption) - adds 15-20% LDL reduction.",
+            "source": "Clinical pharmacology"
+        },
+        {
+            "myth": "Ezetimibe causes muscle pain like statins",
+            "truth": "Very few side effects. Mechanism is completely different from statins.",
+            "source": "Safety data"
+        },
+        {
+            "myth": "Combination pills (Vytorin) are marketing gimmicks",
+            "truth": "Combination therapy is now guideline-recommended for patients not at LDL goal.",
+            "source": "2019 ACC/AHA Guidelines"
+        },
+        {
+            "myth": "Ezetimibe is expensive",
+            "truth": "Generic ezetimibe is very affordable - pennies per day.",
+            "source": "Current pricing"
+        },
+    ],
+    truths=[
+        {"fact": "Ezetimibe adds 15-20% LDL reduction to statins", "context": "Different mechanism"},
+        {"fact": "6.4% reduction in CV events in IMPROVE-IT", "context": "Post-ACS patients"},
+        {"fact": "Very well tolerated with few side effects", "context": "Different from statins"},
+    ],
+    statistics=[
+        {"value": "15-20%", "label": "additional LDL reduction", "context": "On top of statin therapy"},
+        {"value": "6.4%", "label": "reduction in CV events", "context": "IMPROVE-IT trial"},
+        {"value": "53.2", "label": "mg/dL LDL achieved with combo", "context": "vs 69.9 with statin alone"},
+        {"value": "7 years", "label": "IMPROVE-IT follow-up", "context": "Long-term benefit proven"},
+        {"value": "10mg", "label": "one dose fits all", "context": "Simple dosing"},
+    ],
+    tips=[
+        "Take at any time of day - food doesn't affect absorption",
+        "Can be combined with any statin",
+        "Good option if statin dose increase causes side effects",
+        "Works within 2 weeks - rapid LDL reduction",
+        "First add-on to consider before PCSK9 inhibitors",
+    ],
+    quotes=[
+        {"text": "Ezetimibe is the unsung hero of cholesterol therapy - cheap, effective, and safe.", "author": "Dr. Shailesh Singh, Cardiologist"},
+        {"text": "When LDL isn't at goal, add ezetimibe before going to injectable therapy.", "author": "Lipid Guidelines"},
+    ],
+    hooks=[
+        "The forgotten cholesterol drug that actually works",
+        "Why you might need more than just a statin",
+        "Ezetimibe: the $4 add-on that reduces heart attacks",
+        "5 facts about ezetimibe every patient should know",
+        "Statin not enough? Here's your next step",
+    ],
+    sources=["PMID: 25773607", "IMPROVE-IT Trial", "2019 ACC/AHA Guidelines"]
+)
+
+
+# ============================================================================
+# ASPIRIN CONTENT
+# ============================================================================
+ASPIRIN = TopicContent(
+    topic="aspirin",
+    core_subject="aspirin",
+    aliases=["aspirin heart", "baby aspirin", "aspirin prevention",
+             "antiplatelet", "aspirin cardio", "81mg aspirin"],
+    myths=[
+        {
+            "myth": "Everyone should take aspirin to prevent heart attacks",
+            "truth": "Aspirin for primary prevention is no longer recommended for most people - bleeding risk outweighs benefit.",
+            "source": "ASPREE, ARRIVE, ASCEND Trials"
+        },
+        {
+            "myth": "Baby aspirin is harmless",
+            "truth": "Even low-dose aspirin increases GI bleeding risk by 60-70%.",
+            "source": "PMID: 30779719"
+        },
+        {
+            "myth": "If I've had a heart attack, I can stop aspirin after a year",
+            "truth": "Aspirin is usually lifelong after ACS or stent placement - stopping increases clot risk.",
+            "source": "Secondary prevention guidelines"
+        },
+        {
+            "myth": "Aspirin and fish oil do the same thing",
+            "truth": "Different mechanisms. Fish oil affects triglycerides; aspirin blocks platelet aggregation.",
+            "source": "Clinical pharmacology"
+        },
+        {
+            "myth": "Coated aspirin protects the stomach",
+            "truth": "GI effects are systemic (from blood), not local. Coating doesn't reduce bleeding risk.",
+            "source": "PMID: 31157361"
+        },
+    ],
+    truths=[
+        {"fact": "Aspirin for primary prevention no longer recommended for most", "context": "2019 guideline change"},
+        {"fact": "Mandatory after heart attack/stent for secondary prevention", "context": "Usually lifelong"},
+        {"fact": "81mg is as effective as 325mg with less bleeding", "context": "ADAPTABLE trial"},
+    ],
+    statistics=[
+        {"value": "19%", "label": "reduction in MACE for secondary prevention", "context": "After MI/stent"},
+        {"value": "60-70%", "label": "increased GI bleeding risk", "context": "Even with baby aspirin"},
+        {"value": "No benefit", "label": "for primary prevention in most people", "context": "ASPREE trial"},
+        {"value": "81mg", "label": "= 325mg for efficacy", "context": "But less bleeding with 81mg"},
+        {"value": "12mo", "label": "minimum dual antiplatelet after stent", "context": "With P2Y12 inhibitor"},
+    ],
+    tips=[
+        "Don't start aspirin without discussing with your doctor",
+        "If you've had a stent, never stop aspirin without cardiologist approval",
+        "Take with food to reduce stomach upset",
+        "Stop aspirin 5-7 days before surgery (if safe to do so)",
+        "Carry a card saying you're on aspirin for emergency situations",
+    ],
+    quotes=[
+        {"text": "The aspirin revolution is over for primary prevention. We now individualize.", "author": "Dr. Shailesh Singh, Cardiologist"},
+        {"text": "After a heart attack, aspirin is life-saving. For prevention, it's usually not.", "author": "AHA Guidelines"},
+    ],
+    hooks=[
+        "Should you really be taking that aspirin?",
+        "The aspirin guidelines changed (here's what you need to know)",
+        "5 aspirin myths your doctor believed 10 years ago",
+        "When aspirin helps and when it hurts",
+        "Baby aspirin: not as harmless as you think",
+    ],
+    sources=["ASPREE Trial", "ARRIVE Trial", "ASCEND Trial", "PMID: 30779719"]
+)
+
+
+# ============================================================================
+# EXERCISE AND HEART CONTENT
+# ============================================================================
+EXERCISE_HEART = TopicContent(
+    topic="exercise and heart",
+    core_subject="exercise",
+    aliases=["exercise heart health", "cardiac exercise", "heart exercise",
+             "physical activity heart", "walking heart", "gym heart"],
+    myths=[
+        {
+            "myth": "Only intense exercise benefits the heart",
+            "truth": "Moderate walking reduces cardiovascular risk by 30%. Any movement helps.",
+            "source": "PMID: 29728617"
+        },
+        {
+            "myth": "10,000 steps is the magic number",
+            "truth": "Benefits start at 4,000 steps. More helps, but 10,000 is marketing, not science.",
+            "source": "PMID: 31141585"
+        },
+        {
+            "myth": "Too much exercise damages the heart",
+            "truth": "Extreme endurance athletes may have minor changes, but for 99.9% more exercise = better.",
+            "source": "PMID: 30376049"
+        },
+        {
+            "myth": "Weight training is bad for heart health",
+            "truth": "Resistance training reduces cardiovascular mortality by 23% independent of aerobic exercise.",
+            "source": "PMID: 30376039"
+        },
+        {
+            "myth": "If you have heart disease, you should rest",
+            "truth": "Exercise is medicine for heart disease. Cardiac rehab reduces mortality by 25%.",
+            "source": "Cochrane Review"
+        },
+    ],
+    truths=[
+        {"fact": "150 min/week of moderate exercise reduces CV risk 30%", "context": "Guidelines recommendation"},
+        {"fact": "Exercise is as effective as some medications", "context": "For secondary prevention"},
+        {"fact": "Cardiac rehab reduces mortality by 25%", "context": "After heart attack"},
+    ],
+    statistics=[
+        {"value": "30%", "label": "reduction in CV events with regular exercise", "context": "150 min/week moderate"},
+        {"value": "4,000", "label": "steps daily for meaningful benefit", "context": "Not 10,000"},
+        {"value": "25%", "label": "mortality reduction with cardiac rehab", "context": "After MI"},
+        {"value": "23%", "label": "CV mortality reduction with resistance training", "context": "Independent of cardio"},
+        {"value": "5 hrs/week", "label": "optimal exercise dose", "context": "Diminishing returns above this"},
+    ],
+    tips=[
+        "Start with walking - 10 minutes after each meal adds up",
+        "Include 2+ days of resistance training per week",
+        "Any exercise is better than none - don't overthink it",
+        "After a heart event, ask about cardiac rehabilitation",
+        "Find activities you enjoy - consistency beats intensity",
+    ],
+    quotes=[
+        {"text": "Exercise is the best medicine we have for the heart. And the cheapest.", "author": "Dr. Shailesh Singh, Cardiologist"},
+        {"text": "The heart is a muscle. It gets stronger with use.", "author": "American Heart Association"},
+    ],
+    hooks=[
+        "The exercise myth that stops people from starting",
+        "How much exercise does your heart really need?",
+        "Why 10,000 steps is a lie (and what actually works)",
+        "Exercise after a heart attack: what you must know",
+        "Weight training for your heart (yes, really)",
+    ],
+    sources=["PMID: 29728617", "PMID: 31141585", "PMID: 30376039", "Cardiac Rehab Guidelines"]
+)
+
+
+# ============================================================================
+# SLEEP AND HEART CONTENT
+# ============================================================================
+SLEEP_HEART = TopicContent(
+    topic="sleep and heart",
+    core_subject="sleep",
+    aliases=["sleep heart health", "sleep apnea heart", "insomnia heart",
+             "poor sleep heart", "sleep cardiovascular"],
+    myths=[
+        {
+            "myth": "Sleep is just rest - it doesn't affect heart health",
+            "truth": "Short sleep (<6h) increases heart disease risk by 48%. Sleep is active cardiovascular maintenance.",
+            "source": "PMID: 29378001"
+        },
+        {
+            "myth": "Snoring is annoying but harmless",
+            "truth": "Snoring often indicates sleep apnea, which doubles heart attack and stroke risk.",
+            "source": "PMID: 26779909"
+        },
+        {
+            "myth": "You can catch up on weekend sleep",
+            "truth": "Sleep debt accumulates. Weekend catch-up doesn't reverse cardiovascular damage from weekday deprivation.",
+            "source": "PMID: 30905098"
+        },
+        {
+            "myth": "Sleep medications fix the problem",
+            "truth": "Sleep aids don't provide the same restorative sleep. Sleep hygiene and apnea treatment matter more.",
+            "source": "Sleep medicine consensus"
+        },
+        {
+            "myth": "Sleep apnea only affects overweight people",
+            "truth": "Up to 30% of sleep apnea patients are normal weight. Anatomy plays a major role.",
+            "source": "PMID: 27568340"
+        },
+    ],
+    truths=[
+        {"fact": "7-8 hours of sleep is optimal for heart health", "context": "U-shaped curve for risk"},
+        {"fact": "Sleep apnea doubles cardiovascular risk", "context": "Even when treated with CPAP"},
+        {"fact": "Insomnia increases heart attack risk by 45%", "context": "Independent of sleep duration"},
+    ],
+    statistics=[
+        {"value": "48%", "label": "increased heart disease with <6h sleep", "context": "Short sleep is risky"},
+        {"value": "2x", "label": "cardiovascular risk with sleep apnea", "context": "Major modifiable risk factor"},
+        {"value": "7-8h", "label": "optimal sleep for heart health", "context": "Sweet spot"},
+        {"value": "45%", "label": "increased MI risk with insomnia", "context": "Quality matters too"},
+        {"value": "1 billion", "label": "people have sleep apnea globally", "context": "Most undiagnosed"},
+    ],
+    tips=[
+        "Aim for 7-8 hours of sleep - both short and long sleep increase CV risk",
+        "Get tested for sleep apnea if you snore, gasp, or feel tired despite sleeping",
+        "Keep a consistent sleep schedule - even on weekends",
+        "Avoid screens 1 hour before bed - blue light disrupts sleep",
+        "Treat sleep apnea - CPAP reduces cardiovascular events",
+    ],
+    quotes=[
+        {"text": "Sleep is the third pillar of cardiovascular health, alongside diet and exercise.", "author": "Dr. Shailesh Singh, Cardiologist"},
+        {"text": "Skimping on sleep is borrowing against your heart's future.", "author": "Sleep and Heart Research"},
+    ],
+    hooks=[
+        "How poor sleep is killing your heart (silently)",
+        "The sleep number that predicts heart attacks",
+        "Snoring? Your heart might be in trouble",
+        "5 sleep habits that protect your heart",
+        "Why your cardiologist asks about sleep",
+    ],
+    sources=["PMID: 29378001", "PMID: 26779909", "PMID: 30905098"]
+)
+
+
+# ============================================================================
+# SGLT2 INHIBITORS CONTENT
+# ============================================================================
+SGLT2_INHIBITORS = TopicContent(
+    topic="sglt2 inhibitors",
+    core_subject="SGLT2 inhibitors",
+    aliases=["sglt2", "sglt2i", "jardiance", "farxiga", "empagliflozin", "dapagliflozin",
+             "invokana", "canagliflozin", "flozins"],
+    myths=[
+        {
+            "myth": "SGLT2 inhibitors are just diabetes medications",
+            "truth": "They reduce heart failure hospitalization by 30% and work even in non-diabetics.",
+            "source": "DAPA-HF, EMPEROR-Reduced Trials"
+        },
+        {
+            "myth": "The kidney side effects are dangerous",
+            "truth": "SGLT2i actually protect kidneys. Initial creatinine bump is expected and not harmful.",
+            "source": "CREDENCE, DAPA-CKD Trials"
+        },
+        {
+            "myth": "Urinary tract infections are a dealbreaker",
+            "truth": "UTI risk increase is modest (~5%). Genital yeast infections are more common but manageable.",
+            "source": "Meta-analysis data"
+        },
+        {
+            "myth": "DKA risk makes them too dangerous",
+            "truth": "Euglycemic DKA is rare (<0.1%). With proper patient education, it's preventable.",
+            "source": "FDA data"
+        },
+        {
+            "myth": "You need diabetes to benefit",
+            "truth": "Heart failure benefits exist regardless of diabetes status. FDA approved for HF without diabetes.",
+            "source": "DAPA-HF, EMPEROR-Reduced"
+        },
+    ],
+    truths=[
+        {"fact": "SGLT2i reduce heart failure hospitalization by 30%", "context": "Dramatic benefit"},
+        {"fact": "Kidney protective - reduce CKD progression by 39%", "context": "DAPA-CKD trial"},
+        {"fact": "Now a pillar of heart failure therapy", "context": "For both HFrEF and HFpEF"},
+    ],
+    statistics=[
+        {"value": "30%", "label": "reduction in HF hospitalization", "context": "DAPA-HF and EMPEROR trials"},
+        {"value": "39%", "label": "reduction in kidney disease progression", "context": "DAPA-CKD trial"},
+        {"value": "3%", "label": "average weight loss", "context": "Modest but consistent"},
+        {"value": "5mmHg", "label": "systolic BP reduction", "context": "Additional benefit"},
+        {"value": "0.5%", "label": "A1C reduction average", "context": "Modest glucose effect"},
+    ],
+    tips=[
+        "SGLT2i are now recommended for all heart failure with reduced EF",
+        "Hold during acute illness ('sick day rules') to prevent DKA",
+        "Increase water intake - these are diuretics",
+        "Watch for genital yeast infections - maintain hygiene",
+        "Can be used with any eGFR down to 20 for heart failure benefit",
+    ],
+    quotes=[
+        {"text": "SGLT2 inhibitors changed heart failure treatment forever - even for non-diabetics.", "author": "Dr. Shailesh Singh, Cardiologist"},
+        {"text": "The quadruple therapy era includes SGLT2i for all HFrEF patients.", "author": "2022 HF Guidelines"},
+    ],
+    hooks=[
+        "The diabetes drug that saves hearts (even without diabetes)",
+        "Why every heart failure patient should know about SGLT2i",
+        "5 SGLT2 inhibitor myths debunked",
+        "The kidney-protecting, heart-saving medication",
+        "SGLT2 inhibitors: what the trials are showing",
+    ],
+    sources=["DAPA-HF Trial", "EMPEROR-Reduced", "DAPA-CKD", "CREDENCE Trial"]
+)
+
+
+# ============================================================================
 # CONTENT DATABASE REGISTRY
 # ============================================================================
 CONTENT_DATABASE: Dict[str, TopicContent] = {
@@ -706,6 +1195,44 @@ CONTENT_DATABASE: Dict[str, TopicContent] = {
     "diabetes": DIABETES_CARDIO,
     "diabetes heart": DIABETES_CARDIO,
     "diabetic heart disease": DIABETES_CARDIO,
+    # PCSK9 Inhibitors
+    "pcsk9": PCSK9_INHIBITORS,
+    "pcsk9 inhibitors": PCSK9_INHIBITORS,
+    "repatha": PCSK9_INHIBITORS,
+    "praluent": PCSK9_INHIBITORS,
+    "evolocumab": PCSK9_INHIBITORS,
+    "alirocumab": PCSK9_INHIBITORS,
+    # ARNI
+    "arni": ARNI,
+    "entresto": ARNI,
+    "sacubitril": ARNI,
+    "sacubitril-valsartan": ARNI,
+    # Ezetimibe
+    "ezetimibe": EZETIMIBE,
+    "zetia": EZETIMIBE,
+    "vytorin": EZETIMIBE,
+    # Aspirin
+    "aspirin": ASPIRIN,
+    "baby aspirin": ASPIRIN,
+    "antiplatelet": ASPIRIN,
+    # Exercise
+    "exercise": EXERCISE_HEART,
+    "exercise heart": EXERCISE_HEART,
+    "cardiac exercise": EXERCISE_HEART,
+    "physical activity": EXERCISE_HEART,
+    # Sleep
+    "sleep": SLEEP_HEART,
+    "sleep heart": SLEEP_HEART,
+    "sleep apnea": SLEEP_HEART,
+    "insomnia heart": SLEEP_HEART,
+    # SGLT2 Inhibitors
+    "sglt2": SGLT2_INHIBITORS,
+    "sglt2i": SGLT2_INHIBITORS,
+    "sglt2 inhibitors": SGLT2_INHIBITORS,
+    "jardiance": SGLT2_INHIBITORS,
+    "farxiga": SGLT2_INHIBITORS,
+    "empagliflozin": SGLT2_INHIBITORS,
+    "dapagliflozin": SGLT2_INHIBITORS,
 }
 
 

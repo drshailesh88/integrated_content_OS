@@ -36,23 +36,25 @@ class QualityChecker:
         self.quality_gates = get_quality_gates()
 
         # Anti-AI detection patterns
+        # Only flag clearly AI-generated phrases, not common educational language
         self.ai_phrases = [
             r"it's important to note",
             r"in conclusion",
-            r"in summary",
             r"stands as a testament",
             r"plays a vital role",
-            r"groundbreaking",
-            r"game-changing",
-            r"revolutionary",
-            r"nestled",
-            r"breathtaking",
+            r"nestled in",  # Only flag "nestled in", not just "nestled"
             r"vibrant tapestry",
-            r"(?:^|\s)so,",  # Starting with "So,"
-            r"(?:^|\s)well,",  # Starting with "Well,"
+            r"delve into",
+            r"embark on a journey",
+            r"in the realm of",
+            r"a testament to",
+            r"at the end of the day",
+            # Note: Removed "groundbreaking", "game-changing", "revolutionary"
+            # as these are sometimes legitimate in medical content
+            # Note: Removed "So," and "Well," as they're common in conversational content
         ]
 
-        # Em dash overuse pattern
+        # Em dash overuse pattern - only flag excessive use
         self.em_dash_pattern = re.compile(r'—')
 
     def check_text_density(self, slide: SlideContent) -> QualityCheckResult:
@@ -99,10 +101,13 @@ class QualityChecker:
             if re.search(pattern, text_lower):
                 found_patterns.append(pattern)
 
-        # Check em dash usage (max 1 per paragraph)
+        # Check em dash usage - only flag excessive use
+        # For carousel slides (short text), allow up to 2 em-dashes
+        # For longer text (>200 chars), allow up to 3
         em_dashes = len(self.em_dash_pattern.findall(text))
-        if em_dashes > 1:
-            found_patterns.append(f"em_dash_overuse ({em_dashes})")
+        max_em_dashes = 3 if len(text) > 200 else 2
+        if em_dashes > max_em_dashes:
+            found_patterns.append(f"em_dash_overuse ({em_dashes} in {len(text)} chars)")
 
         passed = len(found_patterns) == 0
 

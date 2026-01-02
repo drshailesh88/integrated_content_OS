@@ -7,16 +7,19 @@
 - "Comment analysis for [VIDEO_ID]"
 - "YouTube comment insights for [URL]"
 
+**Source:** Based on https://github.com/drshailesh88/youtube-analyzer
+
 ---
 
 ## What This Does
 
-When the user gives you a YouTube URL or video ID and asks for comment analysis, you:
-
-1. **Extract the video ID** from the URL
-2. **Run the analyzer** (handles 2000+ comments with map-reduce)
-3. **Read the output** and present a clean summary
-4. **Save to file** for future reference
+Analyzes YouTube video comments to extract audience insights:
+- **Top Questions** people are asking (with urgency ratings)
+- **Top Myths** and misconceptions (with danger ratings)
+- **Pain Points** and frustrations
+- **Content Recommendations** (must address, gaps, viral potential)
+- **Sentiment Analysis** (positive/negative/neutral breakdown)
+- **Recurring Themes** in discussions
 
 ---
 
@@ -33,53 +36,39 @@ From URL patterns:
 ### Step 2: Run the Analyzer
 
 ```bash
-cd "/Users/shaileshsingh/integrated cowriting system/research-engine" && python analyze_chunked.py VIDEO_ID
+python skills/cardiology/youtube-comment-analyzer/scripts/analyze_comments.py VIDEO_URL_OR_ID
 ```
 
-**Options if needed:**
-- `--model gemini-2-flash` — Faster analysis
-- `--force-map-reduce` — For thorough analysis
-- `--max-comments 500` — Limit comments scraped
+**Options:**
+- `--max-comments 500` — Limit comments scraped (default: 500)
+- `--output path/to/file.json` — Custom output location
+- `--json` — Output raw JSON instead of formatted report
+
+**Examples:**
+```bash
+# Analyze by URL
+python skills/cardiology/youtube-comment-analyzer/scripts/analyze_comments.py "https://youtube.com/watch?v=abc123xyz"
+
+# Analyze by ID with limited comments
+python skills/cardiology/youtube-comment-analyzer/scripts/analyze_comments.py abc123xyz --max-comments 200
+
+# Get JSON output
+python skills/cardiology/youtube-comment-analyzer/scripts/analyze_comments.py abc123xyz --json
+```
 
 ### Step 3: Read the Output
 
-The script tells you where the output was saved. Read that file:
+The script outputs a formatted report directly. Full JSON is saved to:
 ```
-output/chunked_analysis_VIDEO_ID_TIMESTAMP.json
+skills/cardiology/youtube-comment-analyzer/output/analysis_VIDEO_ID_TIMESTAMP.json
 ```
-
-### Step 4: Present Summary
-
-Extract and present to user:
-- **Top 5 Questions** people are asking
-- **Top 5 Myths** that need addressing
-- **Top 3 Pain Points** viewers have
-- **Content Recommendations** (what to make next)
-- **Overall Sentiment** summary
 
 ---
 
-## Example Workflow
-
-**User says:** "Analyze comments for https://youtube.com/watch?v=abc123xyz"
-
-**Claude does:**
-
-1. Extract: `abc123xyz`
-2. Run:
-   ```bash
-   cd "/Users/shaileshsingh/integrated cowriting system/research-engine" && python analyze_chunked.py abc123xyz
-   ```
-3. Wait for completion (shows progress)
-4. Read the output JSON
-5. Present clean summary
-
----
-
-## Output Format for User
+## Output Format
 
 ```
-## Comment Analysis: [Video Title or ID]
+## Comment Analysis: [Video Title]
 
 **Analyzed:** 1,847 comments | **Time:** 45 seconds
 
@@ -106,21 +95,34 @@ Extract and present to user:
 ### Sentiment
 Positive: X | Negative: Y | Neutral: Z
 Summary: [one line]
+
+### Recurring Themes
+theme1, theme2, theme3, ...
 ```
+
+---
+
+## API Keys Required
+
+Set one of these in `.env`:
+- `YOUTUBE_API_KEY` or `GOOGLE_API_KEY` — For fetching comments via YouTube Data API v3
+- `ANTHROPIC_API_KEY` — For AI analysis (preferred)
+- `OPENROUTER_API_KEY` — Fallback for AI analysis (uses free Gemini model)
 
 ---
 
 ## Error Handling
 
-- **No comments found:** Tell user the video might have comments disabled
-- **API error:** Suggest trying again or using `--model gemini-2-flash`
-- **Rate limited:** Wait and retry, or try a different model
+- **No comments found:** Video may have comments disabled
+- **API error:** Check API key validity
+- **Rate limited:** Wait and retry, or reduce --max-comments
 
 ---
 
-## Notes
+## Technical Details
 
-- Uses **free LLMs** via OpenRouter (no cost)
-- Handles **2000+ comments** via map-reduce chunking
-- Output saved to file for future reference
+- Uses **YouTube Data API v3** for comment fetching
+- Uses **Claude** or **OpenRouter (Gemini)** for AI analysis
+- Handles **500+ comments** via map-reduce chunking
+- Output saved to JSON for future reference
 - Works with any YouTube video with comments enabled

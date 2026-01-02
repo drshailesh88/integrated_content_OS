@@ -86,23 +86,171 @@ class PuppeteerRenderer:
         if not icon:
             return None
 
+        # Comprehensive icon lookup for Lucide icons
+        # Keys are lowercase/normalized, values are PascalCase Lucide names
         lookup = {
+            # Cardiology & Medical
             "heart": "Heart",
+            "heartpulse": "HeartPulse",
+            "hearthandshake": "HeartHandshake",
             "pill": "Pill",
+            "pills": "Pill",
+            "stethoscope": "Stethoscope",
+            "thermometer": "Thermometer",
+            "syringe": "Syringe",
+            "activity": "Activity",
+            "pulse": "Activity",
+            "ecg": "Activity",
+            "hospital": "Hospital",
+            "ambulance": "Ambulance",
+            "brain": "Brain",
+            "bone": "Bone",
+            "eye": "Eye",
+            "microscope": "Microscope",
+
+            # Charts & Data
             "chart": "TrendingUp",
             "chartup": "TrendingUp",
             "chart-up": "TrendingUp",
             "trendingup": "TrendingUp",
+            "trendingdown": "TrendingDown",
+            "chartbar": "BarChart3",
+            "barchart": "BarChart3",
+            "barchart3": "BarChart3",
+            "linechart": "LineChart",
+            "piechart": "PieChart",
+            "areachart": "AreaChart",
+
+            # Lifestyle & Wellness
             "running": "Activity",
-            "exercise": "Activity",
-            "clock": "Clock",
-            "message": "MessageCircle",
-            "messagecircle": "MessageCircle",
+            "exercise": "Dumbbell",
+            "dumbbell": "Dumbbell",
+            "gym": "Dumbbell",
+            "weight": "Weight",
             "salad": "Salad",
             "food": "Salad",
+            "apple": "Apple",
+            "nutrition": "Apple",
+            "coffee": "Coffee",
+            "cigarette": "Cigarette",
+            "smoking": "Cigarette",
+            "cigaretteoff": "CigaretteOff",
+            "nosmoking": "CigaretteOff",
+            "bed": "Bed",
+            "sleep": "Moon",
+            "moon": "Moon",
+            "sun": "Sun",
+
+            # Communication
+            "clock": "Clock",
+            "timer": "Timer",
+            "calendar": "Calendar",
+            "message": "MessageCircle",
+            "messagecircle": "MessageCircle",
+            "messagesquare": "MessageSquare",
+            "mail": "Mail",
+            "phone": "Phone",
+            "bell": "Bell",
+            "megaphone": "Megaphone",
+
+            # Objects & Symbols
             "quote": "Quote",
             "star": "Star",
             "shield": "Shield",
+            "shieldcheck": "ShieldCheck",
+            "shieldx": "ShieldX",
+            "lock": "Lock",
+            "unlock": "Unlock",
+            "key": "Key",
+            "book": "Book",
+            "bookopen": "BookOpen",
+            "bookmark": "Bookmark",
+            "lightbulb": "Lightbulb",
+            "target": "Target",
+            "crosshair": "Crosshair",
+            "zap": "Zap",
+            "bolt": "Zap",
+            "flame": "Flame",
+            "fire": "Flame",
+            "droplet": "Droplet",
+            "water": "Droplet",
+            "leaf": "Leaf",
+            "flower": "Flower",
+
+            # Actions & Status
+            "check": "Check",
+            "checkmark": "Check",
+            "checkcircle": "CheckCircle",
+            "x": "X",
+            "xcircle": "XCircle",
+            "alerttriangle": "AlertTriangle",
+            "warning": "AlertTriangle",
+            "alertcircle": "AlertCircle",
+            "info": "Info",
+            "helpcircle": "HelpCircle",
+            "question": "HelpCircle",
+            "plus": "Plus",
+            "minus": "Minus",
+            "refresh": "RefreshCw",
+            "refreshcw": "RefreshCw",
+
+            # Arrows
+            "arrowup": "ArrowUp",
+            "arrowdown": "ArrowDown",
+            "arrowleft": "ArrowLeft",
+            "arrowright": "ArrowRight",
+            "chevronup": "ChevronUp",
+            "chevrondown": "ChevronDown",
+            "chevronleft": "ChevronLeft",
+            "chevronright": "ChevronRight",
+            "arrowupright": "ArrowUpRight",
+            "externallink": "ExternalLink",
+
+            # People & Social
+            "user": "User",
+            "users": "Users",
+            "usercircle": "UserCircle",
+            "userplus": "UserPlus",
+            "usercheck": "UserCheck",
+            "thumbsup": "ThumbsUp",
+            "thumbsdown": "ThumbsDown",
+            "share": "Share",
+            "share2": "Share2",
+            "instagram": "Instagram",
+            "twitter": "Twitter",
+            "facebook": "Facebook",
+            "youtube": "Youtube",
+            "linkedin": "Linkedin",
+
+            # Files & Folders
+            "file": "File",
+            "filetext": "FileText",
+            "folder": "Folder",
+            "download": "Download",
+            "upload": "Upload",
+            "clipboard": "Clipboard",
+            "copy": "Copy",
+
+            # UI Elements
+            "menu": "Menu",
+            "grid": "Grid",
+            "list": "List",
+            "search": "Search",
+            "filter": "Filter",
+            "settings": "Settings",
+            "sliders": "Sliders",
+            "maximize": "Maximize",
+            "minimize": "Minimize",
+            "expand": "Expand",
+            "shrink": "Shrink",
+
+            # Navigation
+            "home": "Home",
+            "map": "Map",
+            "mappin": "MapPin",
+            "navigation": "Navigation",
+            "compass": "Compass",
+            "globe": "Globe",
         }
 
         normalized = icon.strip().replace(" ", "").replace("_", "").replace("-", "").lower()
@@ -316,7 +464,7 @@ class PuppeteerRenderer:
             cwd=str(self.renderer_dir),
             capture_output=True,
             text=True,
-            timeout=60
+            timeout=120  # Increased for complex slides
         )
 
         if result.returncode != 0:
@@ -382,7 +530,7 @@ class PuppeteerRenderer:
                 cwd=str(self.renderer_dir),
                 capture_output=True,
                 text=True,
-                timeout=120
+                timeout=180  # 3 minutes for carousel with multiple slides
             )
 
             if result.returncode != 0:

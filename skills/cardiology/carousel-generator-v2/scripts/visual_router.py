@@ -93,25 +93,22 @@ class VisualRouter:
 
     def _check_satori(self) -> bool:
         """Check if Satori renderer is available (Node.js + renderer.js + dependencies)."""
-        try:
-            # Check if Node.js is available
-            import shutil
-            if not shutil.which("node"):
-                return False
-
-            # Check if renderer.js exists
-            renderer_path = Path(__file__).resolve().parents[2] / "visual-design-system" / "satori" / "renderer.js"
-            if not renderer_path.exists():
-                return False
-
-            # Check if node_modules exists (dependencies installed)
-            node_modules = renderer_path.parent / "node_modules"
-            if not node_modules.exists():
-                return False
-
-            return True
-        except Exception:
+        # Check if Node.js is available
+        import shutil
+        if not shutil.which("node"):
             return False
+
+        # Check if renderer.js exists
+        renderer_path = Path(__file__).resolve().parents[2] / "visual-design-system" / "satori" / "renderer.js"
+        if not renderer_path.exists():
+            return False
+
+        # Check if node_modules exists (dependencies installed)
+        node_modules = renderer_path.parent / "node_modules"
+        if not node_modules.exists():
+            return False
+
+        return True
 
     def _resolve_manim_bin(self) -> Optional[Path]:
         """Resolve Manim binary from config, env, or local venv."""
@@ -715,8 +712,15 @@ def run_quality_checks(
                     "check": "text_density",
                     "message": density_result.message
                 })
-        except Exception:
+        except AttributeError:
+            # Slide missing word_count - skip this check
             pass
+        except Exception as e:
+            warnings.append({
+                "slide": slide.slide_number,
+                "check": "text_density",
+                "message": f"Check failed: {type(e).__name__}: {str(e)[:100]}"
+            })
 
         # Anti-AI check
         try:
@@ -735,8 +739,9 @@ def run_quality_checks(
                         "check": "anti_ai",
                         "message": ai_result.message
                     })
-        except Exception:
-            pass
+        except Exception as e:
+            # Log the error but don't fail the whole check
+            print(f"Warning: Anti-AI check failed for slide {slide.slide_number}: {e}")
 
     # File integrity check for results
     for result in results:

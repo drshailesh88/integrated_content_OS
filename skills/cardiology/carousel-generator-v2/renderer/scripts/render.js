@@ -36,36 +36,36 @@ function startDevServer() {
 
     let serverReady = false;
 
-    vite.stdout.on('data', (data) => {
+    const handleOutput = async (data, source) => {
       const output = data.toString();
-      if ((output.includes('Local:') || output.includes('http://')) && !serverReady) {
+      if ((output.includes('Local:') || output.includes('http://') || output.includes('ready in')) && !serverReady) {
         serverReady = true;
+        console.log('Vite dev server detected ready signal');
+        // Wait a bit for server to fully initialize (fix race condition)
+        await delay(1500);
         console.log('Vite dev server ready');
         resolve(vite);
       }
-    });
+    };
+
+    vite.stdout.on('data', (data) => handleOutput(data, 'stdout'));
 
     vite.stderr.on('data', (data) => {
       // Vite outputs to stderr sometimes
-      const output = data.toString();
-      if ((output.includes('Local:') || output.includes('http://')) && !serverReady) {
-        serverReady = true;
-        console.log('Vite dev server ready');
-        resolve(vite);
-      }
+      handleOutput(data, 'stderr');
     });
 
     vite.on('error', (err) => {
       reject(new Error(`Failed to start Vite: ${err.message}`));
     });
 
-    // Timeout after 30 seconds
+    // Timeout after 60 seconds (increased from 30s)
     setTimeout(() => {
       if (!serverReady) {
         vite.kill();
-        reject(new Error('Vite dev server startup timeout'));
+        reject(new Error('Vite dev server startup timeout (60s)'));
       }
-    }, 30000);
+    }, 60000);
   });
 }
 
@@ -138,9 +138,9 @@ async function renderSlide(page, renderUrl, slideData, outputPath) {
     }
   }, slideData);
 
-  // Wait for the slide to render
-  await page.waitForSelector('#slide-container', { timeout: 10000 });
-  await delay(800); // Extra time for React to re-render and images to load
+  // Wait for the slide to render (increased timeout for complex slides)
+  await page.waitForSelector('#slide-container', { timeout: 30000 });
+  await delay(1000); // Extra time for React to re-render and images to load
 
   // Get the slide element
   const slideElement = await page.$('#slide-container');
