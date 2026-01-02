@@ -51,6 +51,12 @@ try:
 except ImportError:
     CAROUSEL_AVAILABLE = False
 
+try:
+    from research_integration import ResearchIntegration
+    RESEARCH_AVAILABLE = True
+except ImportError:
+    RESEARCH_AVAILABLE = False
+
 
 @dataclass
 class ContentPackage:
@@ -657,16 +663,73 @@ def main():
                        help='Phases to skip')
     parser.add_argument('-o', '--output', type=str,
                        help='Output directory')
+    parser.add_argument('--suggest-topics', action='store_true',
+                       help='Suggest topics from research engine')
+    parser.add_argument('--from-research', action='store_true',
+                       help='Use top research-suggested topic')
+    parser.add_argument('--batch-from-research', type=int, metavar='N',
+                       help='Process top N topics from research engine')
 
     args = parser.parse_args()
 
-    if not args.topic and not args.backward:
-        parser.print_help()
-        print("\nExample: python orchestrator.py \"Statin myths for Indians\"")
-        return
-
     output_dir = Path(args.output) if args.output else None
     orchestrator = ContentOSOrchestrator(output_dir)
+
+    # Suggest topics from research
+    if args.suggest_topics:
+        if not RESEARCH_AVAILABLE:
+            print("Error: Research integration not available")
+            return
+        research = ResearchIntegration()
+        topics = research.suggest_topics(count=15)
+        print("\n📊 SUGGESTED TOPICS FROM RESEARCH ENGINE:\n")
+        for i, topic in enumerate(topics, 1):
+            print(f"{i:2}. {topic.topic}")
+            print(f"     Score: {topic.score:.1f} | Formats: {', '.join(topic.suggested_formats)}")
+        print("\nUse: python orchestrator.py \"<topic>\" to generate content")
+        return
+
+    # Use top research topic
+    if args.from_research:
+        if not RESEARCH_AVAILABLE:
+            print("Error: Research integration not available")
+            return
+        research = ResearchIntegration()
+        topics = research.suggest_topics(count=1)
+        if topics:
+            args.topic = topics[0].topic
+            print(f"Using research-suggested topic: {args.topic}")
+        else:
+            print("No topics available from research. Run research pipeline first.")
+            return
+
+    # Batch from research
+    if args.batch_from_research:
+        if not RESEARCH_AVAILABLE:
+            print("Error: Research integration not available")
+            return
+        research = ResearchIntegration()
+        topics = research.suggest_topics(count=args.batch_from_research)
+        print(f"\n{'='*60}")
+        print(f"BATCH CONTENT-OS: {len(topics)} topics from research")
+        print(f"{'='*60}\n")
+        for i, topic in enumerate(topics, 1):
+            print(f"\n[{i}/{len(topics)}] {topic.topic}")
+            try:
+                package = orchestrator.run_forward(topic.topic, skip=args.skip or [])
+                print(f"  ✓ Output: {package.output_dir}")
+            except Exception as e:
+                print(f"  ✗ Failed: {e}")
+        return
+
+    if not args.topic and not args.backward:
+        parser.print_help()
+        print("\nExamples:")
+        print("  python orchestrator.py \"Statin myths for Indians\"")
+        print("  python orchestrator.py --suggest-topics")
+        print("  python orchestrator.py --from-research")
+        print("  python orchestrator.py --batch-from-research 5")
+        return
 
     if args.backward:
         print("Backward mode not yet implemented")
