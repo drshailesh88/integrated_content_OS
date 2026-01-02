@@ -12,6 +12,7 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, **Gemini CLI**.
 | Project | Handover File | Status |
 |---------|---------------|--------|
 | **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | Visual Design System Complete - Carousel Polish Remaining |
+| **Problem Management** | `PROBLEM-MANAGEMENT-HANDOVER.md` | 85+ issues tracked - Priority fixes identified |
 
 *To resume: Read the handover file first, then continue from "Current Progress" section.*
 
