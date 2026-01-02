@@ -1,8 +1,8 @@
 # Carousel Generator v2 - Visual Overhaul Handover
 
-**Last Updated**: 2026-01-01 (integration wired)
-**Status**: REACT + PUPPETEER INTEGRATION WIRED - TESTING PENDING
-**Priority**: HIGH - Validate end-to-end rendering + 4:5 output
+**Last Updated**: 2026-01-02 (visual design system complete)
+**Status**: VISUAL DESIGN SYSTEM COMPLETE - Carousel integration ready
+**Priority**: MEDIUM - Carousel visual polish remaining
 
 ---
 
@@ -88,20 +88,56 @@ hooks_generator.py              tokens/                      (Hook/Myth/Stat/Tip
 | **Quality Checker** | `scripts/quality_checker.py` | Anti-AI, contrast, density |
 | **Data Models** | `scripts/models.py` | 10 slide types defined |
 
-### Visual Design System (IN PROGRESS - Keep Evolving)
+### Visual Design System (COMPLETE)
 
-Location: `/Users/shaileshsingh/integrated cowriting system/skills/cardiology/visual-design-system/`
+Location: `skills/cardiology/visual-design-system/`
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| **Satori Renderer** | Complete | `satori/renderer.js` with 5 templates |
+| **Satori Renderer** | Complete | `satori/renderer.js` with 20 infographic templates |
 | **Color Tokens** | Complete | `tokens/colors.json` - WCAG compliant |
 | **Typography Tokens** | Complete | `tokens/typography.json` - Nature/JACC standards |
 | **Spacing Tokens** | Complete | `tokens/spacing.json` - 4px grid |
 | **Python Interface** | Complete | `scripts/generate_infographic.py` |
 | **drawsvg Pipeline** | Complete | Medical diagrams, charts |
-| **Fal.ai Integration** | Planned | For icons/elements |
-| **NanoBanana Pro** | Planned | Future enhancement |
+| **Medical Icon Library** | Complete | 51+ SVG icons in 10 categories |
+| **Manim Animations** | Complete | 61 scenes across 12 categories |
+| **react-pdf Pipeline** | Complete | Pharma-grade PDF generation |
+| **Batch Generator** | Complete | Unified CLI for all visual outputs |
+
+#### Satori Infographic Templates (20 total)
+- Core: key-message, comparison, timeline, process-flow, data-highlight
+- Clinical: checklist, risk-factors, drug-comparison, anatomy-callout
+- Statistics: forest-plot, kaplan-meier, bar-chart, before-after
+- Social: quote-card, stat-card, tip-card
+- Medical: medical-stat (with icon integration)
+- Carousel: hook, myth, stat, tips, cta
+
+#### Medical Icon Library
+Location: `skills/cardiology/visual-design-system/icons/`
+- 51+ SVG icons from medic/icon-library and webfont-medical-icons
+- 10 categories: cardiology, conditions, diagnostics, treatment, facilities, specialties, lifestyle, people, status, organs
+- `icon-manifest.json` for organized access
+- `icon-loader.js` with data URI support for Satori embedding
+- Integration via `createMedicalIcon()` in constants.js
+
+#### Manim Animation Scenes (61 total)
+Location: `skills/cardiology/visual-design-system/manim_animations/`
+
+| Category | Scenes |
+|----------|--------|
+| Core | mechanism |
+| Statistics | kaplan_meier, arr_rrr, nnt_explainer, forest_plot_summary, events_per_1000 |
+| Arrhythmia | ecg_wave, ecg_afib, ecg_stemi, ecg_heart_block, af_management, rate_vs_rhythm, conduction_system |
+| Cardiometabolic | sglt2_moa, glp1_moa, arni_pathway, hf_quad_therapy, ldl_reduction, bp_targets, hf_gdmt_mortality, ldl_targets, a1c_targets, hf_discharge |
+| ACS/CAD | acs_pathway, stemi_timeline, plaque_rupture, dapt_timeline, acs_treatment_timeline, post_mi_rehab, chest_pain_triage |
+| Devices | icd_decision, crt_selection, tavr_pathway, lvad_bridge |
+| Imaging/Dx | troponin_kinetics, echo_views, cta_workup, stress_test_flow |
+| Anatomy | heart_chambers |
+| Drug Mechanisms | statin_moa, pcsk9_moa, doac_moa, beta_blocker_moa, ccb_moa, diuretic_moa |
+| Clinical Decision | ascvd_risk, cha2ds2_vasc, has_bled, heart_score, syncope_workup, pe_workup, htn_workup, preop_cardiac |
+| Trials | paradigm_hf, dapa_hf, emperor_reduced, fourier, select |
+| Comparisons | statin_intensity, doac_vs_warfarin, hfpef_vs_hfref |
 
 ---
 
@@ -889,4 +925,133 @@ Phase 3: Python Bridge
 
 ---
 
-**End of Handover - USE PUPPETEER + REACT, NOT SATORI**
+### Session 7 (2026-01-02) - VISUAL DESIGN SYSTEM COMPLETE
+
+**Work Completed Across Multiple Sessions:**
+
+#### 1. Satori Template Fixes
+- Fixed resvg crashes in quote, timeline, and risk-factors templates
+- Root cause: Using `width: '${width}px'` instead of `width: '100%'`
+- Refactored all templates to use shared utilities from `constants.js`
+- All 20 Satori templates now render successfully
+
+#### 2. Medical Icon Library Added
+- Cloned repos: medic/icon-library and samcome/webfont-medical-icons
+- Created `icons/icon-manifest.json` cataloging 51+ icons in 10 categories
+- Created `icons/icon-loader.js` with functions:
+  - `loadIcon(name)` - Load SVG as string
+  - `loadIconAsDataUri(name, options)` - Load as base64 data URI with color customization
+  - `createIconElement(name, options)` - Create Satori-compatible element
+  - `listIcons()`, `listCategories()`, `findIcon(query)`
+- Added `createMedicalIcon()` to `satori/infographic-templates/constants.js`
+- Created `infographic-medical-stat.js` template showcasing medical icons
+- Icons can be used in any Satori template with color customization
+
+**Icon Categories:**
+| Category | Example Icons |
+|----------|---------------|
+| cardiology | cardiology, heart, heart-rate |
+| conditions | diabetes, asthma, cancer |
+| diagnostics | xray, mri, ultrasound, lab |
+| treatment | pharmacy, pills, injection, surgery |
+| facilities | hospital, clinic, ambulance |
+| specialties | pediatric, obstetrics, neurology |
+| lifestyle | nutrition, exercise, sleep |
+| people | doctor, nurse, patient |
+| status | emergency, critical, stable |
+| organs | brain, lungs, kidney, liver |
+
+#### 3. Manim Scene Library Expansion (30 → 61 scenes)
+Added 31 new scenes:
+
+**Drug Mechanisms (6):**
+- StatinMechanismScene - HMG-CoA inhibition pathway
+- PCSK9MechanismScene - LDL-receptor recycling
+- DOACMechanismScene - Factor Xa/IIa inhibition
+- BetaBlockerMechanismScene - Beta-receptor blockade
+- CCBMechanismScene - Calcium channel blocker
+- DiureticMechanismScene - Loop diuretic natriuresis
+
+**ECG Patterns (2):**
+- ECGSTEMIScene - ST-elevation MI
+- ECGHeartBlockScene - Complete heart block with AV dissociation
+
+**Clinical Decision Tools (4):**
+- ASCVDRiskScene - ASCVD risk assessment
+- CHA2DS2VAScScene - AF stroke risk score
+- HASBLEDScene - Bleeding risk score
+- HeartScoreScene - Chest pain risk stratification
+
+**Landmark Trials (5):**
+- PARADIGMHFScene - Sacubitril/valsartan
+- DAPAHFScene - Dapagliflozin in HFrEF
+- EMPERORReducedScene - Empagliflozin
+- FOURIERTrialScene - Evolocumab PCSK9i
+- SELECTTrialScene - Semaglutide CV outcomes
+
+**Comparisons (3):**
+- StatinIntensityScene - Moderate vs high-intensity
+- DOACvsWarfarinScene - DOAC vs warfarin
+- HFpEFvsHFrEFScene - Phenotype comparison
+
+**Bar Charts (3):**
+- HeartFailureGDMTScene - GDMT mortality reduction
+- LDLTargetsScene - LDL-C targets by risk
+- A1cTargetsScene - HbA1c targets in diabetes
+
+**Timelines (3):**
+- ACSTreatmentTimelineScene - ACS medication sequence
+- PostMIRehabScene - Cardiac rehabilitation
+- HFHospDischargeScene - Discharge checklist
+
+**Flow Pathways (5):**
+- ChestPainTriageScene - ED triage
+- SyncopeWorkupScene - Syncope evaluation
+- PEWorkupScene - PE diagnostic pathway
+- HypertensionWorkupScene - HTN workup
+- PreopCardiacScene - Preoperative cardiac risk
+
+#### 4. Batch Generator (Phase 4)
+- Unified CLI at `scripts/batch_generate.py`
+- Supports all output types: satori, manim, react-pdf, drawsvg
+- Parallel rendering with configurable workers
+- Format conversion (PNG, SVG, PDF, MP4)
+
+#### 5. react-pdf Pipeline (Phase 3.2)
+- Pharma-grade PDF generation
+- Clinical document templates
+- ADA/Section 508 accessibility compliance
+
+**Git Commits:**
+- `83934e9` - Expand Manim scene library to 61 scenes
+- `52e8013` - Add medical icon library with 51+ SVG icons
+- `aa7a263` - Add test outputs for new Satori templates
+- `edbfb96` - Add 3 new Satori infographic templates
+
+**Visual Design System Summary:**
+| Component | Count | Status |
+|-----------|-------|--------|
+| Satori Templates | 20 | Complete |
+| Manim Scenes | 61 | Complete |
+| Medical Icons | 51+ | Complete |
+| Design Tokens | 4 files | Complete |
+| Pipelines | 4 | Complete |
+
+**What's Next (Carousel-Specific):**
+1. Integrate medical icons into carousel templates
+2. Visual polish based on real output review
+3. Profile photo support in CTA template
+4. End-to-end carousel generation testing
+
+---
+
+**End of Handover - VISUAL DESIGN SYSTEM COMPLETE**
+
+The visual-design-system is now a comprehensive toolkit:
+- **Satori**: 20 infographic templates with medical icon support
+- **Manim**: 61 animated scenes for video content
+- **react-pdf**: Pharma-grade PDF generation
+- **Icons**: 51+ medical SVG icons ready for embedding
+- **Batch**: Unified CLI for all visual outputs
+
+For carousel work, use Puppeteer + React (not Satori for carousels).

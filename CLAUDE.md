@@ -11,7 +11,7 @@ Works with: Antigravity, VS Code, Cursor, Claude Code.
 
 | Project | Handover File | Status |
 |---------|---------------|--------|
-| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | Content Engine Complete - Visual Overhaul Needed |
+| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | Visual Design System Complete - Carousel Polish Remaining |
 
 *To resume: Read the handover file first, then continue from "Current Progress" section.*
 
