@@ -217,7 +217,6 @@ function infographicProcess(data, helpers = {}) {
               flex: 1,
               padding: '48px 60px 32px',
               position: 'relative',
-              zIndex: 1,
             },
             children: [
               // Header
@@ -280,6 +279,7 @@ function infographicProcess(data, helpers = {}) {
                 type: 'div',
                 props: {
                   style: {
+                    display: 'flex',
                     marginTop: '24px',
                     padding: '16px 24px',
                     backgroundColor: 'rgba(22, 105, 122, 0.06)',
