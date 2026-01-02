@@ -301,7 +301,12 @@ SKILLS_ROOT = SCRIPT_DIR.parent.parent.parent  # Relative to script location
 | ~~check_anti_ai() type mismatch~~ | visual_router.py:654 | CRITICAL | **FIXED** |
 | ~~Anti-AI regex false positives~~ | quality_checker.py:51-52 | Medium | **FIXED** - Softened patterns |
 | ~~Em-dash detection too strict~~ | quality_checker.py:103-105 | Low | **FIXED** - 2/3 threshold |
-| Only 3 checks in run_all_checks() | quality_checker.py:181-214 | Medium | Open |
+| ~~Only 3 checks in run_all_checks()~~ | quality_checker.py:181-214 | Medium | **FIXED** - 6 checks now |
+
+**New Quality Checks Added:**
+- `check_source_citation` - Validates stat slides have sources
+- `check_slide_variety` - Ensures varied slide types
+- `check_readability` - Simple readability scoring
 
 ### Visual Router
 
@@ -658,7 +663,7 @@ pip install typer rich anthropic openai astrapy feedparser scrapetube python-dot
 
 | # | Issue | Impact | Status |
 |---|-------|--------|--------|
-| 1 | Wire scientific skills to cardiology | Feature gap | Open |
+| 1 | ~~Wire scientific skills to cardiology~~ | Feature gap | **FIXED** - 26 skills mapped |
 | 2 | Add missing skill scripts | Documentation-only | N/A (doc-only by design) |
 | 3 | ~~Create integration tests~~ | Quality assurance | **FIXED** - 17 tests |
 | 4 | Unify LLM routing | Architecture cleanup | Open |

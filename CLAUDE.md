@@ -315,11 +315,44 @@ time.sleep(5)  # Rate limiting
 ### Scientific Skills (134 Skills)
 Located in `skills/scientific/`
 
-**Databases:** alphafold-database, biorxiv-database, brenda-database, chembl-database, clinicaltrials-database, clinpgx-database, clinvar-database, cosmic-database, drugbank-database, ena-database, ensembl-database, fda-database, gene-database, geo-database, gwas-database, hmdb-database
+**Router:** Use `python skills/cardiology/system-awareness/scripts/scientific_skills_router.py` to find the right skill.
 
-**Bioinformatics:** anndata, biomni, biopython, bioservices, latchbio-integration, scanpy, scikit-bio, scvi-tools
+#### Cardiology-Relevant Scientific Skills (26 skills mapped)
 
-**Data Science:** dask, geopandas, plotly, pytorch-lightning, scikit-learn, scikit-survival, statsmodels, torch_geometric, torchdrug
+| Need | Skill | Example |
+|------|-------|---------|
+| **Find clinical trials** | `clinicaltrials-database` | "Find recruiting SGLT2 trials" |
+| **Drug interactions** | `drugbank-database` | "Check statin interactions" |
+| **FDA approvals** | `fda-database` | "New cardiac drug approvals" |
+| **Genetic variants** | `clinvar-database` | "Cardiomyopathy variants" |
+| **Literature search** | `pubmed-database` | "Search PubMed for..." |
+| **GWAS data** | `gwas-database` | "CAD genetic associations" |
+| **Drug targets** | `opentargets-database` | "Find targets for CVD" |
+| **Trial data viz** | `plotly` | "Create forest plot" |
+| **ECG analysis** | `neurokit2` | "Analyze HRV data" |
+| **Survival analysis** | `scikit-survival` | "Kaplan-Meier curves" |
+| **Statistics** | `statsmodels` | "Calculate hazard ratios" |
+| **Cardiac imaging** | `pydicom` | "Process echo DICOMs" |
+| **Clinical NLP** | `pyhealth` | "Extract from EHR notes" |
+| **Lit review** | `literature-review` | "Systematic review" |
+| **Citations** | `citation-management` | "Format references" |
+| **GRADE evidence** | `clinical-decision-support` | "Create CDS content" |
+
+```bash
+# Find skills for a use case
+python skills/cardiology/system-awareness/scripts/scientific_skills_router.py \
+  --query "find clinical trials for statins"
+
+# List all database skills
+python skills/cardiology/system-awareness/scripts/scientific_skills_router.py \
+  --list-databases
+
+# Generate full routing guide
+python skills/cardiology/system-awareness/scripts/scientific_skills_router.py \
+  --generate-guide
+```
+
+**Full Guide:** See `skills/cardiology/system-awareness/data/SCIENTIFIC-SKILLS-ROUTING-GUIDE.md`
 
 ---
 

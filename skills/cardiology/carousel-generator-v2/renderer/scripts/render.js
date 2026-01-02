@@ -15,13 +15,15 @@
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 const { spawn } = require('child_process');
 
 const RENDERER_DIR = path.resolve(__dirname, '..');
 const DEFAULT_OUTPUT_DIR = path.join(RENDERER_DIR, 'output');
 const DEV_SERVER_PORT = 3001;
+const STATIC_SERVER_PORT = 3002;
 const DEV_SERVER_HOST = '127.0.0.1';
-const BUILD_DIR = path.join(RENDERER_DIR, 'build');
+const BUILD_DIR = path.join(RENDERER_DIR, 'dist');
 
 // Start Vite dev server
 function startDevServer() {
@@ -92,12 +94,53 @@ function buildStaticSite() {
   });
 }
 
+// Start a simple static file server for the built files
+function startStaticServer() {
+  return new Promise((resolve, reject) => {
+    console.log('Starting static file server...');
+
+    // Use npx serve for a simple static server
+    const server = spawn('npx', ['serve', BUILD_DIR, '-l', STATIC_SERVER_PORT.toString(), '-s'], {
+      cwd: RENDERER_DIR,
+      stdio: ['pipe', 'pipe', 'pipe'],
+      shell: true
+    });
+
+    let serverReady = false;
+
+    const handleOutput = async (data) => {
+      const output = data.toString();
+      if ((output.includes('Accepting connections') || output.includes('http://') || output.includes('Serving')) && !serverReady) {
+        serverReady = true;
+        await delay(500);
+        console.log('Static server ready');
+        resolve(server);
+      }
+    };
+
+    server.stdout.on('data', handleOutput);
+    server.stderr.on('data', handleOutput);
+
+    server.on('error', (err) => {
+      reject(new Error(`Failed to start static server: ${err.message}`));
+    });
+
+    // Timeout after 30 seconds
+    setTimeout(() => {
+      if (!serverReady) {
+        server.kill();
+        reject(new Error('Static server startup timeout'));
+      }
+    }, 30000);
+  });
+}
+
 async function resolveRenderTarget() {
   try {
     const viteProcess = await startDevServer();
     return {
       renderUrl: `http://${DEV_SERVER_HOST}:${DEV_SERVER_PORT}?mode=render`,
-      viteProcess
+      serverProcess: viteProcess
     };
   } catch (err) {
     console.warn(`Dev server failed (${err.message}). Falling back to static build...`);
@@ -105,10 +148,22 @@ async function resolveRenderTarget() {
     if (!fs.existsSync(indexPath)) {
       await buildStaticSite();
     }
-    return {
-      renderUrl: `file://${indexPath}?mode=render`,
-      viteProcess: null
-    };
+
+    // Start a proper HTTP server instead of using file:// protocol
+    try {
+      const staticServer = await startStaticServer();
+      return {
+        renderUrl: `http://${DEV_SERVER_HOST}:${STATIC_SERVER_PORT}?mode=render`,
+        serverProcess: staticServer
+      };
+    } catch (serverErr) {
+      // Ultimate fallback: use file:// but warn about limitations
+      console.warn(`Static server failed (${serverErr.message}). Using file:// protocol (may have limitations)...`);
+      return {
+        renderUrl: `file://${indexPath}?mode=render`,
+        serverProcess: null
+      };
+    }
   }
 }
 
@@ -233,11 +288,10 @@ Slide Types:
   }
 
   // Start dev server
-  const { renderUrl, viteProcess } = await resolveRenderTarget();
+  const { renderUrl, serverProcess } = await resolveRenderTarget();
 
-  // Launch browser
-  const userDataDir = path.join(RENDERER_DIR, '.puppeteer-profile');
-  fs.mkdirSync(userDataDir, { recursive: true });
+  // Launch browser with temporary profile (auto-cleaned)
+  const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'puppeteer-carousel-'));
 
   const browser = await puppeteer.launch({
     headless: 'new',
@@ -248,15 +302,9 @@ Slide Types:
       '--disable-setuid-sandbox',
       '--disable-crashpad',
       '--disable-breakpad',
-      `--user-data-dir=${userDataDir}`
-    ],
-    env: {
-      ...process.env,
-      HOME: userDataDir,
-      XDG_CACHE_HOME: userDataDir,
-      XDG_CONFIG_HOME: userDataDir,
-      XDG_DATA_HOME: userDataDir
-    }
+      '--disable-gpu',
+      '--disable-dev-shm-usage'
+    ]
   });
 
   try {
@@ -280,8 +328,14 @@ Slide Types:
     console.log(`\nRendered ${slides.length} slide(s) successfully!`);
   } finally {
     await browser.close();
-    if (viteProcess) {
-      viteProcess.kill();
+    if (serverProcess) {
+      serverProcess.kill();
+    }
+    // Clean up temp profile directory
+    try {
+      fs.rmSync(userDataDir, { recursive: true, force: true });
+    } catch (cleanupErr) {
+      // Ignore cleanup errors - OS will clean temp eventually
     }
   }
 }

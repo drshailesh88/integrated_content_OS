@@ -183,6 +183,90 @@ class QualityChecker:
             details={"last_slide_type": last_slide.slide_type.value}
         )
 
+    def check_source_citation(self, slide: SlideContent) -> QualityCheckResult:
+        """Check if statistical slides have source citations."""
+        from .models import SlideType
+
+        # Only check stat slides - they MUST have sources
+        if slide.slide_type != SlideType.STAT:
+            return QualityCheckResult(
+                passed=True,
+                check_name="source_citation",
+                message="N/A (not a stat slide)"
+            )
+
+        has_source = bool(slide.source_text and slide.source_text.strip())
+
+        return QualityCheckResult(
+            passed=has_source,
+            check_name="source_citation",
+            message="Has source" if has_source else "Missing source citation",
+            details={"source": slide.source_text if has_source else None}
+        )
+
+    def check_slide_variety(self, carousel: Carousel) -> QualityCheckResult:
+        """Check that carousel has variety in slide types."""
+        from .models import SlideType
+
+        if len(carousel.slides) < 3:
+            return QualityCheckResult(
+                passed=True,
+                check_name="slide_variety",
+                message="Too few slides to check variety"
+            )
+
+        slide_types = [s.slide_type for s in carousel.slides]
+        unique_types = set(slide_types)
+
+        # Should have at least 2-3 different types for good variety
+        min_types = min(3, len(carousel.slides) // 2)
+        has_variety = len(unique_types) >= min_types
+
+        return QualityCheckResult(
+            passed=has_variety,
+            check_name="slide_variety",
+            message=f"{len(unique_types)} slide types used",
+            details={
+                "types_used": [t.value for t in unique_types],
+                "type_counts": {t.value: slide_types.count(t) for t in unique_types}
+            }
+        )
+
+    def check_readability(self, text: str) -> QualityCheckResult:
+        """Check text readability using simple metrics."""
+        if not text or len(text) < 20:
+            return QualityCheckResult(
+                passed=True,
+                check_name="readability",
+                message="Text too short to analyze"
+            )
+
+        words = text.split()
+        sentences = len(re.findall(r'[.!?]+', text)) or 1
+
+        # Average words per sentence
+        avg_sentence_length = len(words) / sentences
+
+        # For carousel slides, sentences should be punchy (under 20 words avg)
+        is_readable = avg_sentence_length <= 20
+
+        # Check for overly complex words (3+ syllables rough estimate)
+        complex_words = sum(1 for w in words if len(w) > 10)
+        complex_ratio = complex_words / len(words) if words else 0
+
+        passed = is_readable and complex_ratio < 0.15
+
+        return QualityCheckResult(
+            passed=passed,
+            check_name="readability",
+            message=f"Avg {avg_sentence_length:.1f} words/sentence",
+            details={
+                "avg_sentence_length": avg_sentence_length,
+                "complex_word_ratio": complex_ratio,
+                "total_words": len(words)
+            }
+        )
+
     def run_all_checks(self, carousel: Carousel) -> Dict[str, List[QualityCheckResult]]:
         """Run all quality checks on a carousel."""
         results = {
@@ -193,6 +277,7 @@ class QualityChecker:
         # Carousel-level checks
         results["carousel"].append(self.check_slide_count(carousel))
         results["carousel"].append(self.check_cta_presence(carousel))
+        results["carousel"].append(self.check_slide_variety(carousel))
 
         # Slide-level checks
         for slide in carousel.slides:
@@ -208,6 +293,10 @@ class QualityChecker:
             ]))
             if all_text:
                 slide_results.append(self.check_anti_ai(all_text))
+                slide_results.append(self.check_readability(all_text))
+
+            # Source citation for stat slides
+            slide_results.append(self.check_source_citation(slide))
 
             # Hook quality for first slide
             from .models import SlideType
