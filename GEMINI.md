@@ -5,6 +5,18 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, **Gemini CLI**.
 
 ---
 
+## ACTIVE PROJECT HANDOVERS
+
+> **Check these first if resuming multi-session work:**
+
+| Project | Handover File | Status |
+|---------|---------------|--------|
+| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | Visual Design System Complete - Carousel Polish Remaining |
+
+*To resume: Read the handover file first, then continue from "Current Progress" section.*
+
+---
+
 ## GEMINI: YOUR ROLE IN THIS SYSTEM
 
 > **CONTEXT FOR GEMINI CLI**
@@ -59,6 +71,8 @@ The user runs **both Gemini CLI and Claude Code** and switches based on:
 | **Find Trending Topics** | Google Trends, Reddit, Perplexity | `social-media-trends-research` |
 | **Predict Viral Content** | ML scoring | `viral-content-predictor` |
 | **Generate Images** | Blog headers, infographics | `infographic-generator`, `gemini-imagegen` (YOUR native tool) |
+| **Generate Infographics** | 20 Satori templates + 51+ medical icons | `visual-design-system`, `infographic-generator` |
+| **Generate Animations** | 61 Manim scenes for video content | `visual-design-system` |
 | **Long Document Writing** | Chapters, deep research | `academic-chapter-writer`, `deep-researcher` |
 | **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
 | **Track Competitors** | Topol/Attia/Indian channels | `influencer-analyzer` |
@@ -207,14 +221,15 @@ python skills/cardiology/social-media-trends-research/scripts/trend_research.py 
 | `content-reflection` | A rigorous pre-publication review system that evaluates c... |
 | `scientific-critical-thinking` | Systematic evaluation of research rigor through methodolo... |
 
-#### Visual Content
+#### Visual Content (COMPLETE SYSTEM)
 | Skill | Purpose |
 |-------|---------|
-| `cardiology-visual-system` | Intelligent routing to optimal visual tool (Fal.ai, Gemin... |
-| `carousel-generator` | Generate branded Instagram carousels (1080x1080px) from t... |
-| `carousel-generator-v2` | World-class Instagram carousel generator with AI content ... |
-| `gemini-imagegen` | Generate and edit images using Google's Gemini API. The e... |
-| `infographic-generator` | Publication-grade infographics from the visual-design-system templates |
+| `visual-design-system` | **COMPLETE**: 20 Satori templates, 61 Manim scenes, 51+ medical icons, react-pdf, batch generator |
+| `cardiology-visual-system` | Intelligent routing to optimal visual tool (Fal.ai, Gemini, Mermaid, Plotly) |
+| `carousel-generator` | Generate branded Instagram carousels (1080x1080px) from text |
+| `carousel-generator-v2` | World-class Instagram carousel with React + Puppeteer renderer |
+| `gemini-imagegen` | Generate and edit images using Google's Gemini API (YOUR native tool) |
+| `infographic-generator` | Publication-grade infographics from visual-design-system templates |
 
 #### Multi-Model & Utilities
 | Skill | Purpose |

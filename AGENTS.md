@@ -5,6 +5,18 @@ Works with: Antigravity, VS Code, Cursor, Claude Code, Gemini CLI, **Codex CLI**
 
 ---
 
+## ACTIVE PROJECT HANDOVERS
+
+> **Check these first if resuming multi-session work:**
+
+| Project | Handover File | Status |
+|---------|---------------|--------|
+| **Carousel Generator v2** | `CAROUSEL-V2-VISUAL-OVERHAUL-HANDOVER.md` | Visual Design System Complete - Carousel Polish Remaining |
+
+*To resume: Read the handover file first, then continue from "Current Progress" section.*
+
+---
+
 ## CODEX: YOUR ROLE IN THIS SYSTEM
 
 > **CRITICAL CONTEXT FOR CODEX CLI**
@@ -108,7 +120,8 @@ When stopping mid-task, update `handover.md`:
 | **Query PubMed** | Python scripts | `pubmed-database` skill |
 | **Analyze Data** | Python + pandas | `viral-content-predictor` |
 | **Generate Charts** | Python + plotly | Data visualization |
-| **Generate Infographics** | Visual templates + Satori pipeline | `infographic-generator` |
+| **Generate Infographics** | 20 Satori templates + medical icons | `infographic-generator`, `visual-design-system` |
+| **Generate Animations** | 61 Manim scenes for video | `visual-design-system` |
 | **Quick Topic Research** | 5-min McKinsey brief | `quick-topic-researcher` |
 | **Track Competitors** | Topol/Attia/Indian channels | `influencer-analyzer` |
 | **Optimize SEO** | 3-agent P0/P1/P2 audit | `content-seo-optimizer` |
