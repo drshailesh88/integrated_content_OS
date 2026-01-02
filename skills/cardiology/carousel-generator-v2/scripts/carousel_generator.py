@@ -34,6 +34,7 @@ from .puppeteer_renderer import PuppeteerRenderer
 from .tokens import get_account, get_quality_gates
 from .content_structurer import ContentStructurer, structure_content, structure_from_text
 from .quality_checker import QualityChecker, QualityCheckResult
+from .caption_generator import CaptionGenerator, generate_caption_for_carousel
 
 
 class CarouselGenerator:
@@ -44,6 +45,7 @@ class CarouselGenerator:
         self.renderer = self._init_renderer()
         self.structurer = ContentStructurer(use_ai=True)
         self.quality_checker = QualityChecker()
+        self.caption_generator = CaptionGenerator(use_ai=True)
 
     def _init_renderer(self):
         """Initialize the preferred renderer."""
@@ -202,6 +204,40 @@ class CarouselGenerator:
                     for slide_num, checks in quality_results["slides"].items()
                 }
             }
+
+        # Generate caption and hashtags if enabled
+        caption_result = None
+        if self.config.generate_caption or self.config.generate_hashtags:
+            print("Generating caption and hashtags...")
+            # Determine style from template
+            style = "myth_busting" if "myth" in template else "tips" if "tip" in template else "educational"
+            caption_result = self.caption_generator.generate_caption(slides, topic, style)
+
+            # Save caption to file
+            if self.config.generate_caption:
+                caption_file = output_dir / "caption.txt"
+                with open(caption_file, "w") as f:
+                    f.write(self.caption_generator.format_for_instagram(caption_result))
+                print(f"  Caption saved: {caption_file}")
+
+            # Save hashtags to file
+            if self.config.generate_hashtags:
+                hashtags_file = output_dir / "hashtags.txt"
+                with open(hashtags_file, "w") as f:
+                    f.write(" ".join(caption_result.hashtags))
+                print(f"  Hashtags saved: {hashtags_file}")
+
+            # Save alt texts to file
+            if self.config.generate_alt_text and caption_result.alt_texts:
+                alt_text_file = output_dir / "alt-text.txt"
+                with open(alt_text_file, "w") as f:
+                    for alt in caption_result.alt_texts:
+                        f.write(f"{alt}\n")
+                print(f"  Alt texts saved: {alt_text_file}")
+
+            # Update carousel with caption info
+            carousel.caption = caption_result.caption
+            carousel.hashtags = caption_result.hashtags
 
         print(f"\nCarousel complete!")
         print(f"  Slides: {len(results)}")

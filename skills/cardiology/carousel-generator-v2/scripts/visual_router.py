@@ -207,23 +207,40 @@ class VisualRouter:
                 fallback=None
             )
 
-        # Prefer Satori for carousel slides (hook, myth, stat, tips, cta)
-        satori_slide_types = {
+        # Prefer Puppeteer for carousel slides (hook, myth, stat, tips, cta)
+        # Puppeteer provides full CSS support and better rendering than Satori
+        carousel_slide_types = {
             SlideType.HOOK, SlideType.MYTH, SlideType.STATS,
             SlideType.TIPS, SlideType.CTA
         }
-        if slide_type in satori_slide_types and self.available_tools[RenderTool.SATORI]:
+        if slide_type in carousel_slide_types and self.available_tools[RenderTool.PUPPETEER]:
             return RouteDecision(
-                tool=RenderTool.SATORI,
-                reason=f"{slide_type.value} slide - using Satori for high-quality rendering",
+                tool=RenderTool.PUPPETEER,
+                reason=f"{slide_type.value} slide - using Puppeteer for high-fidelity rendering",
                 fallback=RenderTool.PILLOW
             )
 
-        # Use Satori for any standard slide if available
+        # Fallback to Satori for carousel slides if Puppeteer unavailable
+        if slide_type in carousel_slide_types and self.available_tools[RenderTool.SATORI]:
+            return RouteDecision(
+                tool=RenderTool.SATORI,
+                reason=f"{slide_type.value} slide - using Satori (Puppeteer unavailable)",
+                fallback=RenderTool.PILLOW
+            )
+
+        # Use Puppeteer for any standard slide if available
+        if self.available_tools[RenderTool.PUPPETEER]:
+            return RouteDecision(
+                tool=RenderTool.PUPPETEER,
+                reason="Standard slide - using Puppeteer renderer",
+                fallback=RenderTool.PILLOW
+            )
+
+        # Use Satori as secondary fallback for standard slides
         if self.available_tools[RenderTool.SATORI]:
             return RouteDecision(
                 tool=RenderTool.SATORI,
-                reason="Standard slide - using Satori renderer",
+                reason="Standard slide - using Satori renderer (Puppeteer unavailable)",
                 fallback=RenderTool.PILLOW
             )
 
