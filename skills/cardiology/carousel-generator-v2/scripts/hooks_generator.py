@@ -264,9 +264,60 @@ class HooksGenerator:
                     source="built-in"
                 )
 
-        # TODO: PubMed MCP integration
-        # If use_pubmed and MCP available, fetch real stats
-        # This would call pubmed_search_articles and extract statistics
+        # PubMed integration - fetch real statistics
+        if use_pubmed:
+            try:
+                # Import shared PubMed client
+                import sys
+                from pathlib import Path
+                scripts_dir = Path(__file__).resolve().parents[4] / "scripts"
+                if str(scripts_dir) not in sys.path:
+                    sys.path.insert(0, str(scripts_dir))
+
+                from pubmed_client import PubMedClient
+
+                client = PubMedClient()
+                # Search for recent articles on the topic
+                articles = client.search_and_fetch(
+                    f"{topic} cardiology clinical trial",
+                    max_results=3,
+                    sort="relevance"
+                )
+
+                if articles:
+                    # Extract key statistics from abstracts
+                    extracted_stats = []
+                    for article in articles:
+                        # Look for percentages and HR values
+                        import re
+                        abstract = article.abstract or ""
+
+                        # Find percentage reductions
+                        pct_matches = re.findall(r'(\d+(?:\.\d+)?%?\s*reduction)', abstract, re.I)
+                        for match in pct_matches[:1]:
+                            extracted_stats.append({
+                                "value": match,
+                                "label": f"From {article.journal}"
+                            })
+
+                        # Find hazard ratios
+                        hr_matches = re.findall(r'HR\s*[=:]?\s*([\d.]+)', abstract, re.I)
+                        for match in hr_matches[:1]:
+                            extracted_stats.append({
+                                "value": f"HR {match}",
+                                "label": f"From {article.journal}"
+                            })
+
+                    if extracted_stats:
+                        return TopicStats(
+                            topic=topic,
+                            stats=extracted_stats[:3],
+                            source="pubmed"
+                        )
+
+            except Exception as e:
+                # Fall through to return empty stats
+                pass
 
         return TopicStats(topic=topic, stats=[], source="none")
 

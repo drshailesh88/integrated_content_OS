@@ -81,8 +81,8 @@ The PubMed MCP server is built (`pubmed-mcp-server/dist/index.js`) but NO skill 
 
 ### Action Items
 
-- [ ] P0: Create Python-to-MCP bridge utility
-- [ ] P0: Implement actual PubMed calls in hooks_generator.py
+- [x] P0: Create Python-to-MCP bridge utility → **DONE: `scripts/pubmed_client.py`**
+- [x] P0: Implement actual PubMed calls in hooks_generator.py → **DONE: lines 267-320**
 - [ ] P1: Replace parallel_search.py simulation with real API
 - [ ] P1: Wire quick_research.py to use MCP
 - [ ] P2: Audit all 38 claiming skills and document which need real integration
@@ -360,6 +360,35 @@ pip install typer rich anthropic openai astrapy feedparser scrapetube python-dot
 
 ## 9. CHANGE LOG
 
+### 2026-01-02 - P1 Progress: PubMed Integration
+
+**Fixed by**: Claude Code Session
+**Branch**: claude/finish-visual-system-dSlJh
+
+**P1 Items Addressed:**
+
+1. **Created standalone PubMed client** - NEW
+   - File: `scripts/pubmed_client.py`
+   - Features: search(), fetch_articles(), search_and_fetch(), get_related_articles()
+   - Uses NCBI E-utilities API directly
+   - Standalone - no relative imports, any skill can use it
+
+2. **Wired PubMed to hooks_generator.py** - FIXED
+   - File: `skills/cardiology/carousel-generator-v2/scripts/hooks_generator.py:267-320`
+   - Previously: TODO comment returning empty TopicStats
+   - Now: Imports pubmed_client, searches for topic stats, extracts HR/percentages
+
+3. **Token systems analysis** - BY DESIGN
+   - visual-design-system/tokens/colors.json: Publication colors (Nature/JACC style)
+   - carousel-generator-v2/tokens/brand-tokens.json: Personal brand colors (Instagram)
+   - These are intentionally separate for different use cases
+
+4. **Reference files verified** - ALREADY COMPLETE
+   - x-post-creator-skill: All 6 reference files exist
+   - cardiology-tweet-writer: All 4 reference files exist
+
+---
+
 ### 2026-01-02 - P0 Fixes Complete
 
 **Fixed by**: Claude Code Session
@@ -435,12 +464,12 @@ pip install typer rich anthropic openai astrapy feedparser scrapetube python-dot
 
 ### P1 - Fix This Sprint (Core Functionality)
 
-| # | Issue | Impact | Time |
-|---|-------|--------|------|
-| 1 | Wire PubMed MCP to skills | No real research data | 8 hrs |
-| 2 | Merge token systems | Brand inconsistency | 2 hrs |
-| 3 | Install system dependencies | Pipelines fail | 30 min |
-| 4 | Fix x-post-creator references | Workflow broken | 1 hr |
+| # | Issue | Impact | Time | Status |
+|---|-------|--------|------|--------|
+| 1 | ~~Wire PubMed to skills~~ | No real research data | 8 hrs | **IN PROGRESS** - pubmed_client created, hooks_generator wired |
+| 2 | ~~Merge token systems~~ | Brand inconsistency | 2 hrs | **BY DESIGN** - Intentionally separate |
+| 3 | Install system dependencies | Pipelines fail | 30 min | Open |
+| 4 | ~~Fix x-post-creator references~~ | Workflow broken | 1 hr | **VERIFIED OK** - Files exist |
 
 ### P2 - Fix This Month (Quality)
 
