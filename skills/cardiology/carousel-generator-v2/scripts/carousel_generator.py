@@ -529,12 +529,87 @@ class CarouselGenerator:
         return slides
 
 
+    def generate_batch(self, topics: List[str], template: str = "tips_5",
+                       use_ai: bool = True, parallel: bool = False) -> List[CarouselRenderResult]:
+        """
+        Generate multiple carousels in batch mode.
+
+        Args:
+            topics: List of topics to generate carousels for
+            template: Template preset to use for all
+            use_ai: Whether to use AI for content structuring
+            parallel: Whether to process in parallel (experimental)
+
+        Returns:
+            List of CarouselRenderResult objects
+        """
+        print(f"\n{'='*60}")
+        print(f"BATCH GENERATION: {len(topics)} carousels")
+        print(f"Template: {template}")
+        print(f"{'='*60}\n")
+
+        results = []
+        failed = []
+
+        for i, topic in enumerate(topics, 1):
+            print(f"\n[{i}/{len(topics)}] Processing: {topic}")
+            print("-" * 40)
+
+            try:
+                result = self.generate_from_topic(topic, template=template, use_ai=use_ai)
+                results.append(result)
+                print(f"  ✓ Success: {result.output_directory}")
+            except Exception as e:
+                print(f"  ✗ Failed: {e}")
+                failed.append({"topic": topic, "error": str(e)})
+
+        # Summary
+        print(f"\n{'='*60}")
+        print(f"BATCH COMPLETE")
+        print(f"  Successful: {len(results)}/{len(topics)}")
+        if failed:
+            print(f"  Failed: {len(failed)}")
+            for f in failed:
+                print(f"    - {f['topic']}: {f['error'][:50]}...")
+        print(f"{'='*60}\n")
+
+        return results
+
+    def generate_batch_from_file(self, topics_file: Path,
+                                 template: str = "tips_5",
+                                 use_ai: bool = True) -> List[CarouselRenderResult]:
+        """
+        Generate batch from a topics file (one topic per line, or JSON array).
+
+        Args:
+            topics_file: Path to file with topics (txt or json)
+            template: Template preset
+            use_ai: Whether to use AI
+
+        Returns:
+            List of CarouselRenderResult objects
+        """
+        if topics_file.suffix == '.json':
+            with open(topics_file, 'r') as f:
+                data = json.load(f)
+                if isinstance(data, list):
+                    topics = data
+                else:
+                    topics = data.get('topics', [])
+        else:
+            # Text file - one topic per line
+            with open(topics_file, 'r') as f:
+                topics = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+
+        return self.generate_batch(topics, template=template, use_ai=use_ai)
+
+
 def main():
     """CLI entry point."""
     parser = argparse.ArgumentParser(
         description='Generate Instagram carousels with AI-powered content structuring'
     )
-    parser.add_argument('input', help='Topic string, JSON file path, or text file')
+    parser.add_argument('input', nargs='?', help='Topic string, JSON file path, or text file')
     parser.add_argument('-t', '--template', default='tips_5',
                        choices=list(TEMPLATE_PRESETS.keys()),
                        help='Template preset (default: tips_5)')
@@ -553,6 +628,10 @@ def main():
                        help='Generate preview image strip')
     parser.add_argument('--no-quality', action='store_true',
                        help='Skip quality checks')
+    parser.add_argument('--batch', type=str, metavar='FILE',
+                       help='Batch mode: process topics from file (one per line, or JSON array)')
+    parser.add_argument('--no-caption', action='store_true',
+                       help='Skip caption/hashtag generation')
 
     args = parser.parse_args()
 
@@ -563,10 +642,32 @@ def main():
         output_dir=Path(args.output) if args.output else None,
         check_text_density=not args.no_quality,
         check_anti_ai=not args.no_quality,
-        generate_both_ratios=args.both_ratios
+        generate_both_ratios=args.both_ratios,
+        generate_caption=not args.no_caption,
+        generate_hashtags=not args.no_caption
     )
 
     generator = CarouselGenerator(config)
+
+    # Batch mode
+    if args.batch:
+        batch_path = Path(args.batch)
+        if not batch_path.exists():
+            print(f"Error: Batch file not found: {args.batch}")
+            return
+        results = generator.generate_batch_from_file(
+            batch_path,
+            template=args.template,
+            use_ai=not args.no_ai
+        )
+        print(f"\nGenerated {len(results)} carousels in batch mode")
+        return
+
+    # Single mode - requires input
+    if not args.input:
+        parser.print_help()
+        print("\nError: Input required (topic, JSON file, or use --batch)")
+        return
 
     # Determine input type
     input_path = Path(args.input)
