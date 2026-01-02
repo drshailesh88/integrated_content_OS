@@ -43,7 +43,7 @@ def resolve_manim_bin(manim_bin: str | None) -> tuple[str, bool]:
             if python_path.exists():
                 return str(python_path), True
             candidate = candidate / "bin" / "manim"
-        return str(candidate) if candidate.exists() else (None, False), False
+        return (str(candidate), False) if candidate.exists() else (None, False)
 
     env_bin = os.getenv("MANIM_BIN")
     if env_bin:

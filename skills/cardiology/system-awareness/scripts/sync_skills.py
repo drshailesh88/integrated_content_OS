@@ -43,7 +43,9 @@ SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data"
 REGISTRY_PATH = DATA_DIR / "capability-registry.json"
 REPORTS_DIR = DATA_DIR / "sync-reports"
-SKILLS_ROOT = Path("/Users/shaileshsingh/integrated cowriting system/skills")
+# Skill directories - resolve relative to this script's location
+# scripts/ -> system-awareness/ -> cardiology/ -> skills/
+SKILLS_ROOT = SCRIPT_DIR.parent.parent.parent
 
 CARDIOLOGY_DIR = SKILLS_ROOT / "cardiology"
 SCIENTIFIC_DIR = SKILLS_ROOT / "scientific"

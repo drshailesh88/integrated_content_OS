@@ -29,8 +29,9 @@ GAP_LOG_PATH = DATA_DIR / "gap-log.json"
 BACKLOG_PATH = DATA_DIR / "skill-backlog.json"
 REGISTRY_PATH = DATA_DIR / "capability-registry.json"
 
-# Skill directories
-SKILLS_ROOT = Path("/Users/shaileshsingh/integrated cowriting system/skills")
+# Skill directories - resolve relative to this script's location
+# scripts/ -> system-awareness/ -> cardiology/ -> skills/
+SKILLS_ROOT = SCRIPT_DIR.parent.parent.parent
 CARDIOLOGY_DIR = SKILLS_ROOT / "cardiology"
 SCIENTIFIC_DIR = SKILLS_ROOT / "scientific"
 

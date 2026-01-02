@@ -26,7 +26,9 @@ from collections import defaultdict
 SCRIPT_DIR = Path(__file__).parent
 DATA_DIR = SCRIPT_DIR.parent / "data"
 REGISTRY_PATH = DATA_DIR / "capability-registry.json"
-PROJECT_ROOT = Path("/Users/shaileshsingh/integrated cowriting system")
+# Project root - resolve relative to this script's location
+# scripts/ -> system-awareness/ -> cardiology/ -> skills/ -> project_root/
+PROJECT_ROOT = SCRIPT_DIR.parent.parent.parent.parent
 
 # Context files to update
 CONTEXT_FILES = {

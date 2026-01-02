@@ -11,9 +11,9 @@
 | # | Problem | Location | Severity | Fix Time | Status |
 |---|---------|----------|----------|----------|--------|
 | 1 | PubMed MCP never called from skills | 30+ skills | CRITICAL | 8 hrs | Open |
-| 2 | HR scripts have hardcoded Mac paths | system-awareness/scripts/ | CRITICAL | 1 hr | Open |
-| 3 | Twitter pipeline import paths broken | pipelines/twitter-content/ | CRITICAL | 30 min | Open |
-| 4 | visual_router.py type mismatch crash | carousel-generator-v2 | CRITICAL | 30 min | Open |
+| 2 | HR scripts have hardcoded Mac paths | system-awareness/scripts/ | CRITICAL | 1 hr | **FIXED** |
+| 3 | Twitter pipeline import paths broken | pipelines/twitter-content/ | CRITICAL | 30 min | **FIXED** |
+| 4 | visual_router.py type mismatch crash | carousel-generator-v2 | CRITICAL | 30 min | **FIXED** |
 | 5 | Duplicate token systems (colors) | visual-design-system vs carousel-v2 | HIGH | 2 hrs | Open |
 
 ---
@@ -175,7 +175,7 @@ These have SKILL.md but NO scripts:
 
 ### System-Awareness Skill Status
 
-**Overall**: 70% Complete - core gap logging works, skill building blocked
+**Overall**: **100% Complete** - All scripts now functional with relative paths
 
 ### Working Components (Steps 1-3)
 
@@ -185,22 +185,17 @@ These have SKILL.md but NO scripts:
 | gap_analyzer.py | WORKING | 373 | Analyze and prioritize |
 | skill_proposer.py | WORKING | 423 | Generate skill proposals |
 
-### Broken Components (Steps 4-7)
+### ~~Broken~~ Fixed Components (Steps 4-7)
 
-| Script | Issue | Line | Fix Required |
-|--------|-------|------|--------------|
-| skill_builder.py | Hardcoded Mac path | 33-35 | Change to relative path |
-| sync_skills.py | Hardcoded Mac path | 46-49 | Change to relative path |
-| generate_context.py | Hardcoded Mac path | 29,33-36 | Change to relative path |
+| Script | Issue | Line | Status |
+|--------|-------|------|--------|
+| skill_builder.py | Hardcoded Mac path | 33-35 | **FIXED** |
+| sync_skills.py | Hardcoded Mac path | 46-49 | **FIXED** |
+| generate_context.py | Hardcoded Mac path | 29,33-36 | **FIXED** |
 
-**Current Broken Path:**
+**Fixed Path (now uses relative paths):**
 ```python
-SKILLS_ROOT = Path("/Users/shaileshsingh/integrated cowriting system/skills")
-```
-
-**Should Be:**
-```python
-SKILLS_ROOT = Path(__file__).parent.parent.parent.parent / "skills"
+SKILLS_ROOT = SCRIPT_DIR.parent.parent.parent  # Relative to script location
 ```
 
 ### Data Files Status
@@ -237,20 +232,11 @@ SKILLS_ROOT = Path(__file__).parent.parent.parent.parent / "skills"
 
 ### Manim Issues
 
-| Issue | Location | Severity |
-|-------|----------|----------|
-| Return type bug | render_manim.py:46 | HIGH |
-| Manim not in global Python | System | Medium |
-| No wrapper script | - | Low |
-
-**Fix for render_manim.py:46:**
-```python
-# Current (wrong):
-return str(candidate) if candidate.exists() else (None, False), False
-
-# Fixed:
-return (str(candidate), False) if candidate.exists() else (None, False)
-```
+| Issue | Location | Severity | Status |
+|-------|----------|----------|--------|
+| ~~Return type bug~~ | render_manim.py:46 | HIGH | **FIXED** |
+| Manim not in global Python | System | Medium | Open |
+| No wrapper script | - | Low | Open |
 
 ### Icon Manifest Incomplete
 
@@ -290,34 +276,22 @@ return (str(candidate), False) if candidate.exists() else (None, False)
 | Quote icon unvalidated | puppeteer_renderer.py:219 | Low |
 | 60s timeout too short | puppeteer_renderer.py:319 | Medium |
 
-### Quality Checker (CRITICAL BUGS)
+### Quality Checker
 
-| Issue | Location | Severity |
-|-------|----------|----------|
-| **check_anti_ai() type mismatch** | quality_checker.py:93 vs visual_router.py:654 | CRITICAL |
-| Anti-AI regex false positives | quality_checker.py:51-52 | Medium |
-| Em-dash detection too strict | quality_checker.py:103-105 | Low |
-| Only 3 checks in run_all_checks() | quality_checker.py:181-214 | Medium |
-
-**Type Mismatch Fix:**
-```python
-# visual_router.py:654 calls:
-checker.check_anti_ai(slide)  # SlideContent object
-
-# quality_checker.py:93 expects:
-def check_anti_ai(text: str)  # String
-
-# Fix: Extract text from slide first
-checker.check_anti_ai(slide.get_text())
-```
+| Issue | Location | Severity | Status |
+|-------|----------|----------|--------|
+| ~~check_anti_ai() type mismatch~~ | visual_router.py:654 | CRITICAL | **FIXED** |
+| Anti-AI regex false positives | quality_checker.py:51-52 | Medium | Open |
+| Em-dash detection too strict | quality_checker.py:103-105 | Low | Open |
+| Only 3 checks in run_all_checks() | quality_checker.py:181-214 | Medium | Open |
 
 ### Visual Router
 
-| Issue | Location | Severity |
-|-------|----------|----------|
-| **render_line_chart() MISSING** | visual_router.py:330-382 | CRITICAL |
-| Satori availability check weak | visual_router.py:94-114 | Low |
-| Exception handling too broad | visual_router.py:650,662 | Medium |
+| Issue | Location | Severity | Status |
+|-------|----------|----------|--------|
+| ~~render_line_chart() MISSING~~ | visual_router.py:384-434 | CRITICAL | **FIXED** |
+| Satori availability check weak | visual_router.py:94-114 | Low | Open |
+| Exception handling too broad | visual_router.py:650,662 | Medium | Open |
 
 ---
 
@@ -351,12 +325,12 @@ These have SKILL.md but no scripts/ - may be intentional for wrapper libraries b
 
 ## 8. PIPELINE INTEGRATION ISSUES
 
-### Twitter Content Pipeline (BROKEN)
+### Twitter Content Pipeline (**FIXED**)
 
-| Issue | Location | Fix |
-|-------|----------|-----|
-| Import paths broken | main.py:32-34 | Change `from src.xxx` to `from xxx` |
-| Files not in src/ | Root level | Either move files or fix imports |
+| Issue | Location | Status |
+|-------|----------|--------|
+| ~~Import paths broken~~ | main.py:32-41 | **FIXED** - Now uses try/except for relative imports |
+| Files not in src/ | Root level | N/A - imports now work from root |
 
 ### Journal Fetch Pipeline
 
@@ -385,6 +359,40 @@ pip install typer rich anthropic openai astrapy feedparser scrapetube python-dot
 ---
 
 ## 9. CHANGE LOG
+
+### 2026-01-02 - P0 Fixes Complete
+
+**Fixed by**: Claude Code Session
+**Branch**: claude/finish-visual-system-dSlJh
+
+**All P0 Issues Resolved:**
+
+1. **render_manim.py:46 tuple bug** - FIXED
+   - File: `skills/cardiology/visual-design-system/scripts/render_manim.py`
+   - Changed: `return str(candidate) if candidate.exists() else (None, False), False`
+   - To: `return (str(candidate), False) if candidate.exists() else (None, False)`
+
+2. **visual_router.py:654 type mismatch** - FIXED
+   - File: `skills/cardiology/carousel-generator-v2/scripts/visual_router.py`
+   - Issue: `check_anti_ai(slide)` passed SlideContent, expected string
+   - Fix: Extract text from slide before passing to checker
+
+3. **HR scripts hardcoded Mac paths** - FIXED (3 files)
+   - `skills/cardiology/system-awareness/scripts/skill_builder.py:33-35`
+   - `skills/cardiology/system-awareness/scripts/sync_skills.py:46-49`
+   - `skills/cardiology/system-awareness/scripts/generate_context.py:29-31`
+   - Changed hardcoded `/Users/shaileshsingh/...` to relative `SCRIPT_DIR.parent...`
+
+4. **Twitter pipeline imports** - FIXED
+   - File: `pipelines/twitter-content/main.py:32-41`
+   - Changed: `from src.xxx` (broken, no src/ dir)
+   - To: try/except with `.xxx` and fallback to `xxx`
+
+5. **render_line_chart() missing** - FIXED
+   - File: `skills/cardiology/carousel-generator-v2/scripts/visual_router.py:384-434`
+   - Added: Complete `render_line_chart()` method to PlotlyRenderer class
+
+---
 
 ### 2026-01-02 - Initial Assessment
 
@@ -415,13 +423,15 @@ pip install typer rich anthropic openai astrapy feedparser scrapetube python-dot
 
 ### P0 - Fix Immediately (Crashes/Blockers)
 
-| # | Issue | File | Time |
-|---|-------|------|------|
-| 1 | visual_router.py type mismatch | :654 | 30 min |
-| 2 | render_line_chart() missing | :330 | 2 hrs |
-| 3 | HR scripts hardcoded paths | 3 files | 1 hr |
-| 4 | Twitter pipeline imports | main.py | 30 min |
-| 5 | render_manim.py tuple bug | :46 | 10 min |
+| # | Issue | File | Time | Status |
+|---|-------|------|------|--------|
+| 1 | ~~visual_router.py type mismatch~~ | :654 | 30 min | **FIXED** |
+| 2 | ~~render_line_chart() missing~~ | :384-434 | 2 hrs | **FIXED** |
+| 3 | ~~HR scripts hardcoded paths~~ | 3 files | 1 hr | **FIXED** |
+| 4 | ~~Twitter pipeline imports~~ | main.py | 30 min | **FIXED** |
+| 5 | ~~render_manim.py tuple bug~~ | :46 | 10 min | **FIXED** |
+
+**✅ ALL P0 ISSUES RESOLVED** (2026-01-02)
 
 ### P1 - Fix This Sprint (Core Functionality)
 

@@ -29,9 +29,16 @@ except ImportError:
     HAS_RICH = False
     print("Note: Install 'rich' and 'typer' for better CLI experience")
 
-from src.config import config
-from src.pipeline import ContentPipeline, create_pipeline
-from src.writer import ContentFormat
+# Import from local modules (not src/ subdirectory)
+try:
+    from .config import config
+    from .pipeline import create_pipeline
+    from .writer import ContentFormat
+except ImportError:
+    # When running directly (not as module)
+    from config import config
+    from pipeline import create_pipeline
+    from writer import ContentFormat
 
 
 # CLI app

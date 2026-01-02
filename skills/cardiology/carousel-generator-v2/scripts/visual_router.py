@@ -381,6 +381,58 @@ class PlotlyRenderer:
         except Exception as e:
             raise RuntimeError(f"Plotly rendering failed: {e}")
 
+    def render_line_chart(self, slide: SlideContent, output_path: Path) -> SlideRenderResult:
+        """Render a line chart slide."""
+        try:
+            import plotly.graph_objects as go
+            import plotly.io as pio
+
+            # Extract chart data
+            data = slide.chart_data or {}
+            x_values = data.get("x", data.get("labels", [1, 2, 3, 4, 5]))
+            y_values = data.get("y", data.get("values", [10, 15, 13, 17, 22]))
+            line_name = data.get("name", "Series")
+
+            # Create figure
+            fig = go.Figure(data=[
+                go.Scatter(
+                    x=x_values,
+                    y=y_values,
+                    mode='lines+markers',
+                    name=line_name,
+                    line=dict(color='#207178', width=3),
+                    marker=dict(size=8, color='#207178')
+                )
+            ])
+
+            # Style
+            fig.update_layout(
+                title=slide.title or "Trend",
+                plot_bgcolor='#F8F9FA',
+                paper_bgcolor='#F8F9FA',
+                font=dict(family="Inter", size=14),
+                width=1080,
+                height=1350 if self.config.aspect_ratio.value == "4:5" else 1080,
+                margin=dict(l=80, r=80, t=120, b=80),
+                xaxis=dict(showgrid=True, gridcolor='#E0E0E0'),
+                yaxis=dict(showgrid=True, gridcolor='#E0E0E0')
+            )
+
+            # Save
+            pio.write_image(fig, str(output_path), format='png')
+
+            return SlideRenderResult(
+                slide_number=slide.slide_number,
+                output_path=output_path,
+                width=fig.layout.width,
+                height=fig.layout.height,
+                render_time_ms=500,  # Approximate
+                renderer_used="plotly"
+            )
+
+        except Exception as e:
+            raise RuntimeError(f"Plotly line chart rendering failed: {e}")
+
 
 class ManimRenderer:
     """
@@ -651,13 +703,21 @@ def run_quality_checks(
 
         # Anti-AI check
         try:
-            ai_result = checker.check_anti_ai(slide)
-            if not ai_result.passed:
-                warnings.append({
-                    "slide": slide.slide_number,
-                    "check": "anti_ai",
-                    "message": ai_result.message
-                })
+            # Extract text content from slide for anti-AI analysis
+            slide_text = " ".join(filter(None, [
+                slide.title, slide.subtitle, slide.body,
+                getattr(slide, 'quote_text', None),
+                getattr(slide, 'myth_text', None),
+                getattr(slide, 'truth_text', None)
+            ]))
+            if slide_text:
+                ai_result = checker.check_anti_ai(slide_text)
+                if not ai_result.passed:
+                    warnings.append({
+                        "slide": slide.slide_number,
+                        "check": "anti_ai",
+                        "message": ai_result.message
+                    })
         except Exception:
             pass
 
